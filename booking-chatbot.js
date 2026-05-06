@@ -437,6 +437,24 @@
       return;
     }
 
+    // Swap in the Oranga AI logo on the chat avatar and launcher button.
+    var avatar = document.querySelector('.chat-avatar');
+    if (avatar) {
+      avatar.style.backgroundImage = 'url("/images/oranga-logo.png")';
+      avatar.style.backgroundSize  = 'cover';
+      avatar.style.backgroundPosition = 'center';
+    }
+    var launcher = document.getElementById('chatLauncher');
+    if (launcher) {
+      // Replace the SVG icon inside the launcher with the logo.
+      launcher.style.backgroundImage    = 'url("/images/oranga-logo.png")';
+      launcher.style.backgroundSize     = '70%';
+      launcher.style.backgroundPosition = 'center';
+      launcher.style.backgroundRepeat   = 'no-repeat';
+      // Hide any inline SVG children so only the logo shows.
+      Array.prototype.forEach.call(launcher.children, function (c) { c.style.display = 'none'; });
+    }
+
     // Clone the form to strip any existing submit listeners, then re-add ours.
     var newForm = $form.cloneNode(true);
     $form.parentNode.replaceChild(newForm, $form);
@@ -460,7 +478,6 @@
     });
 
     // When the chat launcher is clicked → greet on first open.
-    var launcher = document.getElementById('chatLauncher');
     if (launcher) {
       launcher.addEventListener('click', function () {
         setTimeout(function () {
