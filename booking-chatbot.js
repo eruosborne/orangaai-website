@@ -446,8 +446,12 @@
     }
     var launcher = document.getElementById('chatLauncher');
     if (launcher) {
-      // Transparent logo layered over the mint gradient; 90% fills the circle nicely.
-      launcher.style.background = 'url("/images/oranga-logo-transparent.png") center/90% no-repeat, linear-gradient(135deg, #7CE9C0, #2BA787)';
+      // Transparent logo layered over the mint gradient; use individual properties
+      // for reliable cross-browser multi-layer rendering.
+      launcher.style.backgroundImage    = 'url("/images/oranga-logo-transparent.png"), linear-gradient(135deg, #7CE9C0, #2BA787)';
+      launcher.style.backgroundSize     = '90% 90%, cover';
+      launcher.style.backgroundPosition = 'center, center';
+      launcher.style.backgroundRepeat   = 'no-repeat, no-repeat';
       // Hide any inline SVG children so only the logo shows.
       Array.prototype.forEach.call(launcher.children, function (c) { c.style.display = 'none'; });
     }
