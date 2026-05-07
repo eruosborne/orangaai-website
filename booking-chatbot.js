@@ -6,7 +6,7 @@
 (function () {
   'use strict';
 
-  // ─── Conversation state ─────────────────────────────────────────────────────
+  // ─── Conversation state ────────────────────────────────────────────────────
   var state = {
     step: 'idle',        // idle | day_select | slot_select | collect_name | collect_email | collect_phone | confirm | done
     selectedDate: null,  // 'YYYY-MM-DD'
@@ -115,7 +115,7 @@
     }).toUpperCase();
   }
 
-  // ─── Flow steps ──────────────────────────────────────────────────────────────
+  // ─── Flow steps ─────────────────────────────────────────────────────────────
 
   function greet() {
     state.step = 'idle';
@@ -330,7 +330,7 @@
     state.phone = null;
   }
 
-  // ─── Central dispatcher ──────────────────────────────────────────────────────
+  // ─── Central dispatcher ────────────────────────────────────────────────────
   function dispatch(text) {
     var lower = text.toLowerCase().trim();
 
@@ -425,7 +425,7 @@
     }
   }
 
-  // ─── Init ────────────────────────────────────────────────────────────────────
+  // ─── Init ──────────────────────────────────────────────────────────────────
   function init() {
     $messages    = document.getElementById('chatMessages');
     $form        = document.getElementById('chatForm');
@@ -446,11 +446,8 @@
     }
     var launcher = document.getElementById('chatLauncher');
     if (launcher) {
-      // Replace the SVG icon inside the launcher with the logo.
-      launcher.style.backgroundImage    = 'url("/images/oranga-logo.png")';
-      launcher.style.backgroundSize     = '70%';
-      launcher.style.backgroundPosition = 'center';
-      launcher.style.backgroundRepeat   = 'no-repeat';
+      // Transparent logo layered over the mint gradient; 90% fills the circle nicely.
+      launcher.style.background = 'url("/images/oranga-logo-transparent.png") center/90% no-repeat, linear-gradient(135deg, #7CE9C0, #2BA787)';
       // Hide any inline SVG children so only the logo shows.
       Array.prototype.forEach.call(launcher.children, function (c) { c.style.display = 'none'; });
     }
