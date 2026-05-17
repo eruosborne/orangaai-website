@@ -1,28 +1,29 @@
 // booking-chatbot.js
-// Replaces the Oranga AI chat widget's Q&A flow with a booking-first conversation.
+// Adds calendar booking flow + logo injection to the Oranga AI chat widget.
+// Coexists with the KB Q&A chatbot in index.html.
 // Requires: /api/availability  and  /api/book  Vercel serverless functions.
 // Add  <script src="/booking-chatbot.js" defer></script>  to index.html (before </body>).
 
 (function () {
   'use strict';
 
-  // ─── Conversation state ────────────────────────────────────────────────────
+  // ─── Conversation state ──────────────────────────────────────────────────────
   var state = {
-    step: 'idle',        // idle | day_select | slot_select | collect_name | collect_email | collect_phone | confirm | done
-    selectedDate: null,  // 'YYYY-MM-DD'
-    selectedStart: null, // ISO string
-    selectedEnd: null,   // ISO string
-    displayDate: null,   // 'Mon 12 May'
-    displayTime: null,   // '10:00 AM'
+    step: 'idle',         // idle | day_select | slot_select | collect_name | collect_email | collect_phone | confirm | done
+    selectedDate: null,   // 'YYYY-MM-DD'
+    selectedStart: null,  // ISO string
+    selectedEnd: null,    // ISO string
+    displayDate: null,    // 'Mon 12 May'
+    displayTime: null,    // '10:00 AM'
     name: null,
     email: null,
     phone: null,
   };
 
-  // ─── DOM references (populated in init) ────────────────────────────────────
+  // ─── DOM references (populated in init) ─────────────────────────────────────
   var $messages, $form, $input, $suggestions;
 
-  // ─── Low-level DOM helpers ──────────────────────────────────────────────────
+  // ─── Low-level DOM helpers ───────────────────────────────────────────────────
   function addMsg(html, who) {
     var typing = $messages.querySelector('.msg.typing');
     if (typing) typing.remove();
@@ -74,7 +75,7 @@
     });
   }
 
-  // ─── Date/time helpers ──────────────────────────────────────────────────────
+  // ─── Date/time helpers ───────────────────────────────────────────────────────
   var TZ = 'Australia/Brisbane';
 
   function todayInBrisbane() {
@@ -115,19 +116,7 @@
     }).toUpperCase();
   }
 
-  // ─── Flow steps ─────────────────────────────────────────────────────────────
-
-  function greet() {
-    state.step = 'idle';
-    $input.placeholder = 'Type a message…';
-    botReply(
-      "Hi! 👋 I'm the Oranga AI assistant.<br>" +
-      "I can book you a free 30-minute intro call with our team. When would you like to meet?",
-      500
-    ).then(function () {
-      setSuggestions([{ label: '📅 Book a call', value: '__book__' }]);
-    });
-  }
+  // ─── Flow steps ──────────────────────────────────────────────────────────────
 
   function startBookingFlow() {
     state.step = 'day_select';
@@ -210,7 +199,7 @@
     addMsg(text, 'user');
     state.step = 'collect_email';
     return botReply(
-      "Nice to meet you, " + state.name + "! 👋<br>What's your email address?"
+      "Nice to meet you, " + state.name + "! 🤝<br>What's your email address?"
     ).then(function () {
       $input.placeholder = 'your@email.com';
     });
@@ -240,11 +229,11 @@
 
     state.step = 'confirm';
     var lines = [
-      '📅 <strong>' + state.displayDate + '</strong> at <strong>' + state.displayTime + '</strong>',
-      '👤 ' + state.name,
-      '📧 ' + state.email,
+      '<strong>' + state.displayDate + '</strong> at <strong>' + state.displayTime + '</strong>',
+      state.name,
+      state.email,
     ];
-    if (state.phone) lines.push('📱 ' + state.phone);
+    if (state.phone) lines.push(state.phone);
 
     return botReply(
       "Here's your booking summary:<br><br>" +
@@ -254,7 +243,7 @@
       $input.placeholder = 'Type your message…';
       setSuggestions([
         { label: '✅ Confirm booking', value: '__confirm__' },
-        { label: '✏️ Start over',      value: '__restart__' },
+        { label: '✖️ Start over',      value: '__restart__' },
       ]);
     });
   }
@@ -330,7 +319,7 @@
     state.phone = null;
   }
 
-  // ─── Central dispatcher ────────────────────────────────────────────────────
+  // ─── Central dispatcher ──────────────────────────────────────────────────────
   function dispatch(text) {
     var lower = text.toLowerCase().trim();
 
@@ -342,23 +331,20 @@
       resetState();
       clearSuggestions();
       $messages.innerHTML = '';
-      greet();
+      // Let KB chatbot show its own greeting — do not call greet() here
       return;
     }
 
     switch (state.step) {
 
       case 'idle':
-        addMsg(text, 'user');
-        if (/book|call|meet|appointment|schedule|available|time|slot|intro/i.test(lower)) {
-          startBookingFlow();
-        } else {
-          botReply(
-            "I'm here to help you book a free intro call with our team! Would you like to schedule one?"
-          ).then(function () {
-            setSuggestions([{ label: '📅 Book a call', value: '__book__' }]);
-          });
-        }
+        // FIXED: Don't intercept when idle — let KB chatbot handle all Q&A.
+        // Only start booking flow if user explicitly asks to book via chip (__book__).
+        // Returning here means the capture-phase listener already blocked the
+        // KB chatbot's listener from seeing this message — so we must not return
+        // silently. We should NOT be in this branch for normal messages because
+        // the capture-phase listener only fires dispatch() when step !== 'idle'.
+        // This case is here only as a safety fallback.
         break;
 
       case 'day_select':
@@ -407,10 +393,10 @@
         } else if (/no|cancel|restart|start over|change/i.test(lower)) {
           resetState();
           $messages.innerHTML = '';
-          greet();
+          // Let KB chatbot handle — don't call greet()
         } else {
           addMsg(text, 'user');
-          botReply("Please tap <strong>✅ Confirm booking</strong> or <strong>✏️ Start over</strong> above.");
+          botReply("Please tap <strong>✅ Confirm booking</strong> or <strong>✖️ Start over</strong> above.");
         }
         break;
 
@@ -420,12 +406,11 @@
         break;
 
       default:
-        addMsg(text, 'user');
         startBookingFlow();
     }
   }
 
-  // ─── Init ──────────────────────────────────────────────────────────────────
+  // ─── Init ────────────────────────────────────────────────────────────────────
   function init() {
     $messages    = document.getElementById('chatMessages');
     $form        = document.getElementById('chatForm');
@@ -437,11 +422,12 @@
       return;
     }
 
+    // ── Logo injection ──────────────────────────────────────────────────────
     // Swap in the Oranga AI logo on the chat avatar and launcher button.
     var avatar = document.querySelector('.chat-avatar');
     if (avatar) {
-      avatar.style.backgroundImage = 'url("/images/oranga-logo.png")';
-      avatar.style.backgroundSize  = 'cover';
+      avatar.style.backgroundImage    = 'url("/images/oranga-logo.png")';
+      avatar.style.backgroundSize     = 'cover';
       avatar.style.backgroundPosition = 'center';
     }
     var launcher = document.getElementById('chatLauncher');
@@ -457,19 +443,19 @@
       Array.prototype.forEach.call(launcher.children, function (c) { c.style.display = 'none'; });
     }
 
-    // Clone the form to strip any existing submit listeners, then re-add ours.
-    var newForm = $form.cloneNode(true);
-    $form.parentNode.replaceChild(newForm, $form);
-    $form  = newForm;
-    $input = document.getElementById('chatInput'); // re-grab after clone
-
+    // ── FIXED: capture-phase submit listener ────────────────────────────────
+    // We use useCapture=true so this fires before the KB chatbot's bubble-phase
+    // listener. We ONLY take over when a booking flow is active (step !== 'idle').
+    // When idle, we do nothing and let the KB chatbot handle the message normally.
     $form.addEventListener('submit', function (e) {
+      if (state.step === 'idle') return; // KB chatbot handles Q&A
       e.preventDefault();
+      e.stopPropagation(); // prevent KB chatbot from also seeing it
       var text = $input.value.trim();
       if (!text) return;
       $input.value = '';
       dispatch(text);
-    });
+    }, true); // useCapture = true
 
     // Delegated click handler for dynamically-added suggestion chips.
     $suggestions.addEventListener('click', function (e) {
@@ -479,21 +465,15 @@
       dispatch(value);
     });
 
-    // When the chat launcher is clicked → greet on first open.
-    if (launcher) {
-      launcher.addEventListener('click', function () {
-        setTimeout(function () {
-          if ($messages.children.length === 0) greet();
-        }, 120); // wait for CSS open animation
-      });
-    }
-
-    // If the panel is already open on page load, greet immediately.
-    var panel = document.getElementById('chatPanel');
-    if (panel && panel.classList.contains('open') && $messages.children.length === 0) {
-      greet();
-    }
+    // ── FIXED: no greet() on launcher click ─────────────────────────────────
+    // The KB chatbot in index.html already handles the greeting when the panel
+    // opens. Calling greet() here would duplicate or override that message.
+    // We only need to listen for the __book__ chip to start the booking flow.
   }
+
+  // Expose startBookingFlow globally so KB chatbot answer chips can trigger it.
+  // e.g.  <button onclick="window.startBookingFlow()">Book a call</button>
+  window.startBookingFlow = startBookingFlow;
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
