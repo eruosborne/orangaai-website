@@ -1,15 +1,15 @@
 // api/availability.js
-// Returns open 30-min booking slots for a given date.
+// Returns open 60-min booking slots for a given date.
 // GET /api/availability?date=YYYY-MM-DD
 
 const { google } = require('googleapis');
 
-// ─── Config ────────────────────────────────────────────────────────────────
+// ─── Config ────────────────────────────────────────────────────────────
 const TZ          = process.env.BUSINESS_TIMEZONE || 'Australia/Brisbane';
 const CAL_ID      = process.env.HOST_CALENDAR_ID  || 'primary';
 const START_HOUR  = 8;   // 08:00
-const END_HOUR    = 18;  // 18:00 (last slot 17:30–18:00)
-const SLOT_MIN    = 30;  // minutes per slot
+const END_HOUR    = 18;  // 18:00 (last slot 17:00–18:00)
+const SLOT_MIN    = 60;  // minutes per slot
 const BUFFER_MIN  = 15;  // buffer around existing events
 const MIN_DAYS    = 1;   // no same-day
 const MAX_DAYS    = 14;  // booking window
@@ -74,11 +74,9 @@ function computeSlots(isoDate, busy) {
   }));
 
   const slots = [];
-  for (let h = START_HOUR; h < END_HOUR; h += 0.5) {
-    const hour = Math.floor(h);
-    const min  = h % 1 === 0 ? 0 : 30;
+  for (let h = START_HOUR; h < END_HOUR; h += 1) {
     if (h + SLOT_MIN / 60 > END_HOUR) break;
-    const slotStart = localToUtc(isoDate, hour, min);
+    const slotStart = localToUtc(isoDate, h, 0);
     const slotEnd   = new Date(slotStart.getTime() + SLOT_MIN * 60000);
     const overlaps  = blocked.some(b => slotStart < b.end && slotEnd > b.start);
     if (!overlaps) slots.push({ startISO: slotStart.toISOString(), endISO: slotEnd.toISOString() });
@@ -86,7 +84,7 @@ function computeSlots(isoDate, busy) {
   return slots;
 }
 
-// ─── Handler ───────────────────────────────────────────────────────────────
+// ─── Handler ────────────────────────────────────────────────────────────────
 module.exports = async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   if (req.method !== 'GET') return res.status(405).json({ error: 'Method not allowed' });
