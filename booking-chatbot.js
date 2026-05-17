@@ -443,16 +443,31 @@
       Array.prototype.forEach.call(launcher.children, function (c) { c.style.display = 'none'; });
     }
 
-    // ── FIXED: capture-phase submit listener ────────────────────────────────
-    // We use useCapture=true so this fires before the KB chatbot's bubble-phase
-    // listener. We ONLY take over when a booking flow is active (step !== 'idle').
-    // When idle, we do nothing and let the KB chatbot handle the message normally.
+    // ── Capture-phase submit listener ───────────────────────────────────────
+    // Fires before the KB chatbot's bubble-phase listener.
+    // In idle state: intercept ONLY booking-related messages and start the flow.
+    //   All other messages pass through to the KB chatbot unchanged.
+    // In an active booking flow: intercept everything.
     $form.addEventListener('submit', function (e) {
-      if (state.step === 'idle') return; // KB chatbot handles Q&A
-      e.preventDefault();
-      e.stopPropagation(); // prevent KB chatbot from also seeing it
       var text = $input.value.trim();
       if (!text) return;
+
+      if (state.step === 'idle') {
+        // Only intercept if the user is trying to book
+        if (/book|call|meet|appointment|schedule|available|time slot|intro/i.test(text)) {
+          e.preventDefault();
+          e.stopPropagation();
+          $input.value = '';
+          addMsg(text, 'user');
+          startBookingFlow();
+        }
+        // Otherwise fall through — KB chatbot handles it
+        return;
+      }
+
+      // Active booking flow — take over completely
+      e.preventDefault();
+      e.stopPropagation();
       $input.value = '';
       dispatch(text);
     }, true); // useCapture = true
