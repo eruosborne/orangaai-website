@@ -1830,19 +1830,19 @@
 
   const KB = [
     {
-      keywords: ['hi', 'hello', 'hey', 'howdy', 'greetings', 'kia ora'],
+      keywords: ['hi', 'hello', 'hey', 'howdy', 'greetings', 'kia ora', 'sup', 'yo', 'g day', 'good morning', 'good afternoon', 'good evening'],
       answer: "Kia ora — I'm Oranga AI's assistant. Ask me about our services, packages, pricing, timelines, or how to book a free strategy call."
     },
     {
-      keywords: ['what is oranga', 'who are you', 'what do you do', 'about oranga ai', 'about you', 'what is this'],
+      keywords: ['what is oranga', 'who are you', 'what do you do', 'about oranga ai', 'about you', 'what is this', 'tell me about', 'explain what', 'describe what', 'overview', 'summary', 'info', 'information', 'how does oranga', 'what exactly'],
       answer: "Oranga AI builds and manages AI systems for service businesses. We place dedicated AI employees inside your business to handle leads, follow-ups, and admin around the clock. One live dashboard so you can see everything working. We build it, we run it — you just do the work you're good at."
     },
     {
-      keywords: ['oranga', 'maori', 'māori', 'name mean', 'meaning', 'wellbeing', 'thriving'],
+      keywords: ['oranga', 'maori', 'name mean', 'meaning', 'wellbeing', 'thriving'],
       answer: "<strong>Oranga</strong> is a Māori word meaning <em>wellbeing</em> and <em>thriving</em>. That's exactly what we build — AI systems that let your business thrive without you burning out running it."
     },
     {
-      keywords: ['service', 'services', 'offer', 'what do you build', 'what can you build'],
+      keywords: ['service', 'services', 'offer', 'what do you build', 'what can you build', 'what do you offer', 'what can you do', 'capabilities', 'build for me', 'help with', 'employees', 'ai employees', 'dedicated', 'workers', 'what would you do', 'what would you build', 'provide'],
       answer: "We place dedicated AI employees inside your business — they handle lead follow-up, enquiry responses, scheduling, and admin around the clock. You also get a live dashboard showing everything in real time.<br><br>Three monthly plans: <a href='#pricing'>Foundation ($2k), Growth ($4.5k), Full Stack ($7.5k)</a>. One-time setup of $1,500–$3,000. We confirm the setup cost on your strategy call."
     },
     {
@@ -1850,87 +1850,91 @@
       answer: "Yes, websites are something we can discuss on your strategy call. We build conversion-focused sites — not just something that looks good, but one that's structured to turn visitors into booked calls. Pricing and scope get confirmed once we know what you actually need."
     },
     {
-      keywords: ['voice', 'receptionist', 'phone', 'call answer', 'answering', '24/7', 'ai phone', 'ai voice'],
+      keywords: ['voice', 'receptionist', 'phone', 'call answer', 'answering', '24 7', 'ai phone', 'ai voice', 'missed calls', 'pick up', 'answer calls'],
       answer: "Phone answering, call handling, and booking is part of what our AI employees do — 24/7, in your business name, qualifying leads and getting them into your calendar. It's included in our monthly plans. <a href='#pricing'>See the plans →</a>"
     },
     {
-      keywords: ['dashboard', 'agent', 'agents', 'automation', 'automate', 'operations', 'ops', 'workflow'],
+      keywords: ['dashboard', 'agent', 'agents', 'automation', 'automate', 'operations', 'ops', 'workflow', 'reporting', 'reports', 'visibility', 'tracking', 'track', 'monitor', 'data', 'pipeline', 'live view'],
       answer: "Every plan includes a live business dashboard — one screen showing your whole business in real time. Leads, jobs, follow-ups, all of it. The AI employees run in the background and the dashboard is how you see everything they're doing. Included across all monthly plans. <a href='#pricing'>See the plans →</a>"
     },
     {
-      keywords: ['package', 'packages', 'foundation', 'growth', 'full stack', 'tier', 'bundle', 'plan', 'plans'],
+      keywords: ['package', 'packages', 'foundation', 'full stack', 'tier', 'bundle', 'plan', 'plans', 'monthly plan', 'which plan', 'what plan', 'options', 'option', 'compare', 'comparison', 'included', 'what is included', 'subscription', 'retainer', 'monthly fee', 'per month'],
       answer: "Three monthly plans:<br><br><strong>Foundation — $2,000/month.</strong> 1–2 dedicated AI employees, live dashboard, lead follow-up and enquiry automation, monthly check-in.<br><strong>Growth — $4,500/month</strong> (recommended). 3–5 employees, full dashboard with reporting, leads/enquiries/admin all handled, monthly strategy call.<br><strong>Full Stack — $7,500/month.</strong> Unlimited employees, custom dashboard built around your workflow, everything handled, priority support.<br><br>All plans have a one-time setup fee of $1,500–$3,000. We confirm the exact amount on your strategy call."
     },
     {
-      keywords: ['process', 'how do you work', 'how does it work', 'steps', 'workflow do you', 'methodology'],
+      keywords: ['process', 'how do you work', 'how does it work', 'steps', 'workflow do you', 'methodology', 'how it works', 'next steps', 'onboard', 'onboarding', 'what happens', 'what happens next', 'after i sign up', 'after signing up'],
       answer: "Three steps:<br><br><strong>01 · Audit</strong> — we map your ops and find where leads, time, and revenue are leaking.<br><strong>02 · Build</strong> — we create the systems for the way you actually work.<br><strong>03 · Automate &amp; Optimise</strong> — we connect everything and improve until it's earning its keep."
     },
     {
-      keywords: ['audit', 'discovery', 'first step', 'strategy call'],
+      keywords: ['audit', 'discovery', 'first step', 'strategy call', 'free call', 'free consultation', 'discovery call', 'start with', 'begin with'],
       answer: "Start with a free 30-minute strategy call. We map exactly where your business is leaking and what it would cost to fix. No pitch, no pressure. Click <strong>Book a Call</strong> in the chat below to pick a time."
     },
     {
-      keywords: ['how long', 'timeline', 'how many weeks', 'duration', 'time to build', 'how soon'],
+      keywords: ['how long', 'timeline', 'how many weeks', 'duration', 'time to build', 'how soon', 'when will', 'how fast', 'quick', 'speed', 'delivery'],
       answer: "Timelines depend on scope, but we move in weeks, not quarters. We share a concrete timeline after the strategy call once we've mapped what you actually need."
     },
     {
-      keywords: ['price', 'pricing', 'cost', 'how much', 'rate', 'fee', 'budget'],
+      keywords: ['price', 'pricing', 'cost', 'how much', 'rate', 'fee', 'budget', 'monthly', 'pay', 'payment', 'charge', 'invest', 'investment', 'affordable', 'afford', 'worth it', 'total', 'setup fee', 'setup cost'],
       answer: "Monthly retainer plans:<br><br>• <strong>Foundation — $2,000/month</strong> (1–2 AI employees)<br>• <strong>Growth — $4,500/month</strong> (3–5 AI employees, recommended)<br>• <strong>Full Stack — $7,500/month</strong> (unlimited employees)<br><br>All plans include a one-time setup fee of $1,500–$3,000. See the full breakdown at <a href='#pricing'>Pricing</a>. Exact quote confirmed on your free strategy call."
     },
     {
-      keywords: ['cheap', 'expensive', 'wix', 'squarespace', 'template'],
-      answer: "You can use a template, but it won't have conversion-focused copy, won't be structured for local SEO, and won't be built around your specific customers. Our sites are built to <em>work</em>, not just exist. Worth the difference if you're paying for traffic."
+      keywords: ['contract', 'lock', 'locked in', 'cancel', 'cancellation', 'commitment', 'tied', 'exit', 'stop', 'quit', 'flexible', 'lock-in', 'no contract'],
+      answer: "No lock-in contracts. You're not tied in. If it's not working for you, we'd rather know and fix it. Our goal is for the system to pay for itself — if it doesn't, that's a conversation worth having."
     },
     {
-      keywords: ['who is this for', 'right fit', 'do you work with', 'industry', 'target', 'clients', 'who do you work with', 'tradie', 'tradies', 'dental', 'cleaning', 'small business'],
+      keywords: ['cheap', 'expensive', 'wix', 'squarespace', 'template', 'diy', 'do it myself', 'do it yourself'],
+      answer: "You could use a template, but it won't be structured for your specific customers, won't have the right copy, and won't be connected to your systems. Our builds are designed to work — not just exist. Worth it if you're serious about growth."
+    },
+    {
+      keywords: ['who is this for', 'right fit', 'do you work with', 'industry', 'target', 'clients', 'who do you work with', 'tradie', 'tradies', 'dental', 'cleaning', 'small business', 'right for me', 'suited', 'for me', 'my business', 'business type'],
       answer: "We're built for <strong>tradespeople and service businesses</strong> — tradies, dental clinics, cleaning businesses, and service operators. Best fit: owners doing <strong>$500k+ revenue</strong>, great at the work but stretched thin on admin."
     },
     {
-      keywords: ['book', 'call', 'meeting', 'consultation', 'demo', 'discovery', 'schedule', 'speak to', 'talk'],
-      answer: "Easy. Book a free 30-minute strategy call using the chat — we map where your business is leaking and what to fix first. No pitch deck, no hard sell."
+      keywords: ['book', 'meeting', 'consultation', 'demo', 'schedule', 'speak to', 'talk', 'get started', 'start today', 'sign up', 'join', 'ready', 'interested', 'learn more', 'find out more', 'want to know', 'keen', 'tell me more'],
+      answer: "Easy. Book a free 30-minute strategy call — we go through your business, find the biggest gaps, and show you exactly what we'd build. Click <strong>Book a Call</strong> to pick a time."
     },
     {
       keywords: ['contact', 'email', 'reach', 'get in touch', 'support'],
       answer: "Two ways: book a free strategy call via the chat for the fastest answer, or email <a href='mailto:support@orangaai.com'>support@orangaai.com</a>."
     },
     {
-      keywords: ['founder', 'team', 'who runs', 'who built', 'who made'],
+      keywords: ['founder', 'team', 'who runs', 'who built', 'who made', 'background', 'experience', 'credentials', 'about the team'],
       answer: "Oranga AI is a small team of operators and builders. We've shipped real systems for real businesses. Specifics about the team get covered on the strategy call."
     },
     {
-      keywords: ['why oranga', 'why you', 'different', 'unique', 'competitors', 'why hire'],
+      keywords: ['why oranga', 'why you', 'different', 'unique', 'competitors', 'why hire', 'why should i', 'convince me', 'what makes you', 'better than', 'vs', 'versus', 'alternative', 'stand out'],
       answer: "(1) We don't sell software — we <em>build and manage</em> the systems, then hand you the keys.<br>(2) We measure success in revenue earned and hours saved, not features delivered.<br>(3) We're not selling AI as a trend — we solve real problems: missed calls, manual work, disconnected tools, websites that don't convert.<br><br>Straight to the point. No overcomplication. No tech skills required on your end."
     },
     {
-      keywords: ['result', 'outcome', 'roi', 'work', 'guarantee', 'expect'],
-      answer: "Every system is built to do at least one of: increase revenue or reduce manual work. Concretely: more leads captured, more calls booked, less manual work, faster ops, clearer visibility. The voice receptionist alone usually pays for itself in the first 2–3 leads it saves you."
+      keywords: ['result', 'outcome', 'roi', 'guarantee', 'expect', 'success', 'proof', 'case study', 'examples', 'testimonial', 'review', 'worked', 'helped', 'saved', 'earned', 'revenue', 'return'],
+      answer: "Every system is built to do at least one of: increase revenue or reduce manual work. More leads captured, more calls booked, less manual work, faster ops, clearer visibility. The strategy call is where we show you the gap in your business and what fixing it is worth."
     },
     {
-      keywords: ['location', 'where are you', 'remote', 'based', 'country', 'in person'],
+      keywords: ['location', 'where are you', 'remote', 'based', 'country', 'in person', 'gold coast', 'australia', 'new zealand', 'nz', 'overseas', 'offshore', 'local'],
       answer: "We work fully remote with clients globally. Discovery, builds, and ongoing support happen over video and async — no travel needed."
     },
     {
-      keywords: ['integration', 'tools', 'crm', 'stack', 'connect', 'works with', 'whatsapp', 'spreadsheet'],
+      keywords: ['integration', 'tools', 'crm', 'stack', 'connect', 'works with', 'whatsapp', 'spreadsheet', 'existing tools', 'compatible', 'systems'],
       answer: "We connect to whatever stack you already run — CRMs, calendars, phones, email, even WhatsApp threads and spreadsheets. The dashboard ties them together. If you're not sure your stack will play nicely, that's exactly what the strategy call is for."
     },
     {
-      keywords: ['support', 'after launch', 'maintenance', 'ongoing', 'changes', 'cms'],
-      answer: "Yes — your website ships with a simple CMS so you can edit text and images yourself. For structural changes, ongoing voice receptionist tuning, or dashboard optimisation, we offer support packages. Details on the strategy call."
+      keywords: ['support', 'after launch', 'maintenance', 'ongoing', 'changes', 'cms', 'after we start', 'long term', 'ongoing help'],
+      answer: "We manage the system ongoing — it's not a handoff and goodbye. You get monthly check-ins (or strategy calls on Growth and above), and we keep optimising until it's earning its keep."
     },
     {
-      keywords: ['caller', 'will callers know', 'is it ai', 'ai voice', 'sound real', 'human'],
+      keywords: ['caller', 'will callers know', 'is it ai', 'sound real', 'natural', 'script', 'conversation', 'replies', 'respond'],
       answer: "Some callers will notice it's AI, some won't. What they'll know: someone picked up, was helpful, and got them booked. That's what matters — and that's what your competitors aren't doing."
     },
     {
-      keywords: ['complex', 'complicated', 'specific', 'edge case', 'flagged'],
+      keywords: ['complex', 'complicated', 'specific', 'edge case', 'flagged', 'escalate', 'tricky'],
       answer: "The voice agent handles FAQs and bookings. Anything complex gets flagged and escalated to you with a full transcript — so you call back already up to speed."
     },
     {
-      keywords: ['uptime', 'downtime', 'reliability', 'goes down', 'breaks'],
+      keywords: ['uptime', 'downtime', 'reliability', 'goes down', 'breaks', 'reliable', 'always on'],
       answer: "We monitor uptime and have fallback routing. Your calls never go unanswered. The dashboard has built-in alerts so you know if anything needs attention."
     },
     {
-      keywords: ['ai', 'artificial intelligence', 'llm', 'gpt', 'claude'],
+      keywords: ['ai', 'artificial intelligence', 'llm', 'gpt', 'claude', 'technology', 'tech', 'model', 'language model', 'chatgpt'],
       answer: "AI is the core of what we do — voice agent, dashboard agents, follow-up automation, all powered by current-generation models. But the goal is never AI for its own sake. It's <em>your business running as a system</em>."
     }
   ];
@@ -1990,7 +1994,7 @@
       });
       if (score > bestScore) { bestScore = score; best = entry; }
     });
-    if (bestScore >= 4) return best.answer;
+    if (bestScore >= 3) return best.answer;
     return null;
   }
 
