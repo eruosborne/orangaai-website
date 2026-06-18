@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free AI Strategy Call — Oranga AI</title>
+<meta name="description" content="Book a free 60-minute AI Strategy Call. Find out exactly which tasks in your service business should already be automated — and what it would cost vs. what you're losing now.">
+<link rel="icon" type="image/jpeg" href="/images/o_mark.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0A0B0E;
+    --bg-elev: #131419;
+    --bg-overlay: rgba(255,255,255,0.03);
+    --bg-overlay-hover: rgba(255,255,255,0.06);
+    --border: rgba(255,255,255,0.08);
+    --border-strong: rgba(255,255,255,0.14);
+    --border-mint: rgba(93,219,169,0.22);
+    --text: #F5F5F7;
+    --text-muted: #86868B;
+    --text-faint: #5A5A60;
+    --mint: #5DDBA9;
+    --mint-bright: #7CE9C0;
+    --mint-deep: #2BA787;
+    --mint-glow: rgba(93,219,169,0.16);
+    --mint-glow-strong: rgba(93,219,169,0.28);
+    --max-w: 1280px;
+    --pad-x: clamp(20px,5vw,64px);
+    --sans: 'Inter',-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',sans-serif;
+    --ease: cubic-bezier(0.22,1,0.36,1);
+    --o-mark: url("/images/o_mark.jpg");
+  }
+
+  *,*::before,*::after { box-sizing: border-box; margin:0; padding:0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    letter-spacing: -0.01em;
+  }
+  ::selection { background: var(--mint); color: #0A1A14; }
+  a { color: inherit; text-decoration: none; }
+  img { display: block; max-width: 100%; }
+
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background:
+      radial-gradient(ellipse 70% 50% at 50% 0%, rgba(93,219,169,0.06), transparent 60%),
+      radial-gradient(ellipse 50% 40% at 100% 100%, rgba(93,219,169,0.04), transparent 60%);
+    pointer-events: none; z-index: 0;
+  }
+  body::after {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' /%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+    opacity: 0.025; pointer-events: none; z-index: 0; mix-blend-mode: overlay;
+  }
+  main, nav, footer { position: relative; z-index: 1; }
+
+  .container { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--pad-x); }
+
+  .display { font-weight: 600; letter-spacing: -0.04em; line-height: 1.04; }
+
+  .eyebrow {
+    font-size: 0.75rem; font-weight: 500; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--mint);
+    display: inline-flex; align-items: center; gap: 10px;
+  }
+  .eyebrow::before {
+    content: ''; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--mint); box-shadow: 0 0 12px var(--mint);
+  }
+
+  /* NAV */
+  nav.site-nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(10,11,14,0.72);
+    backdrop-filter: blur(24px) saturate(140%);
+    -webkit-backdrop-filter: blur(24px) saturate(140%);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s var(--ease);
+  }
+  nav.site-nav.scrolled { border-bottom-color: var(--border); }
+  .nav-inner {
+    display: flex; align-items: center;
+    justify-content: space-between; height: 64px;
+  }
+  .logo {
+    display: flex; align-items: center; gap: 12px;
+    font-weight: 500; font-size: 1rem; letter-spacing: -0.01em;
+  }
+  .logo-mark {
+    width: 32px; height: 32px; border-radius: 50%;
+    background-image: var(--o-mark);
+    background-size: cover; background-position: center;
+  }
+  .nav-back {
+    display: flex; align-items: center; gap: 6px;
+    font-size: 0.875rem; color: var(--text-muted);
+    transition: color 0.2s;
+  }
+  .nav-back:hover { color: var(--text); }
+  .nav-back svg { width: 16px; height: 16px; }
+
+  /* BUTTONS */
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: var(--sans); font-size: 0.9rem; font-weight: 500;
+    letter-spacing: -0.01em; border: none; cursor: pointer;
+    padding: 11px 22px; border-radius: 980px;
+    transition: all 0.2s var(--ease);
+    text-decoration: none; white-space: nowrap;
+  }
+  .btn-primary {
+    background: var(--mint); color: #0A1A14;
+    box-shadow: 0 0 0 0 var(--mint-glow);
+  }
+  .btn-primary:hover {
+    background: var(--mint-bright);
+    box-shadow: 0 0 0 6px var(--mint-glow), 0 8px 24px var(--mint-glow);
+    transform: translateY(-1px);
+  }
+  .btn-large { padding: 15px 32px; font-size: 1rem; font-weight: 600; }
+  .btn svg { width: 16px; height: 16px; transition: transform 0.2s var(--ease); flex-shrink: 0; }
+  .btn:hover svg { transform: translateX(3px); }
+  .arrow { width: 16px; height: 16px; }
+
+  /* HERO */
+  .hero {
+    padding: clamp(80px,12vw,140px) 0 clamp(60px,8vw,100px);
+    text-align: center;
+  }
+  .hero-eyebrow { margin-bottom: 28px; justify-content: center; }
+  .hero h1 {
+    font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+    margin-bottom: 24px; max-width: 760px; margin-left: auto; margin-right: auto;
+  }
+  .accent { color: var(--mint); }
+  .hero-sub {
+    font-size: clamp(1rem, 1.6vw, 1.2rem);
+    color: var(--text-muted); max-width: 560px;
+    margin: 0 auto 36px; line-height: 1.65;
+  }
+  .hero-cta-row {
+    display: flex; align-items: center; justify-content: center;
+    gap: 16px; flex-wrap: wrap;
+  }
+  .hero-note {
+    font-size: 0.8rem; color: var(--text-faint); margin-top: 16px;
+  }
+
+  /* TRUST STRIP */
+  .trust-strip {
+    display: flex; align-items: center; justify-content: center;
+    gap: clamp(20px, 4vw, 48px); flex-wrap: wrap;
+    padding: 28px var(--pad-x);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .trust-item {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 0.85rem; color: var(--text-muted);
+  }
+  .trust-item svg { color: var(--mint); width: 16px; height: 16px; flex-shrink: 0; }
+
+  /* WHAT YOU GET */
+  .section { padding: clamp(60px,8vw,100px) var(--pad-x); }
+  .section-head { text-align: center; margin-bottom: clamp(40px,6vw,64px); }
+  .section-head h2 {
+    font-size: clamp(1.8rem,3.5vw,2.8rem);
+    margin-top: 16px; margin-bottom: 14px;
+  }
+  .section-head p { font-size: 1rem; color: var(--text-muted); max-width: 520px; margin: 0 auto; }
+
+  .gets-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2px; max-width: 900px; margin: 0 auto;
+    background: var(--border);
+    border-radius: 16px; overflow: hidden;
+  }
+  .get-card {
+    background: var(--bg-elev); padding: 32px 28px;
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  .get-card:first-child { border-radius: 14px 0 0 0; }
+  .get-card:last-child { border-radius: 0 0 14px 0; }
+  .get-icon {
+    width: 40px; height: 40px; border-radius: 10px;
+    background: var(--mint-glow);
+    border: 1px solid var(--border-mint);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; flex-shrink: 0;
+  }
+  .get-card h3 { font-size: 1rem; font-weight: 600; letter-spacing: -0.02em; }
+  .get-card p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; }
+
+  /* FOR YOU IF */
+  .for-you { background: var(--bg-elev); }
+  .pain-list {
+    list-style: none; max-width: 660px; margin: 0 auto;
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  .pain-list li {
+    display: flex; gap: 14px; align-items: flex-start;
+    padding: 16px 18px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    font-size: 0.95rem; line-height: 1.55;
+  }
+  .pain-check {
+    width: 20px; height: 20px; border-radius: 50%;
+    background: var(--mint-glow); border: 1px solid var(--border-mint);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; margin-top: 1px;
+  }
+  .pain-check svg { width: 10px; height: 10px; color: var(--mint); }
+
+  /* OBJECTIONS */
+  .objections-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px; max-width: 900px; margin: 0 auto;
+  }
+  .obj-card {
+    background: var(--bg-elev);
+    border: 1px solid var(--border);
+    border-radius: 12px; padding: 24px;
+  }
+  .obj-q {
+    font-size: 0.875rem; font-weight: 600;
+    color: var(--text-muted); margin-bottom: 8px;
+    font-style: italic;
+  }
+  .obj-a { font-size: 0.9rem; color: var(--text); line-height: 1.6; }
+
+  /* FINAL CTA SECTION */
+  .final-cta {
+    text-align: center;
+    padding: clamp(80px,10vw,120px) var(--pad-x);
+  }
+  .final-cta h2 {
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    margin-bottom: 18px; max-width: 680px; margin-left: auto; margin-right: auto;
+  }
+  .final-cta p {
+    font-size: 1rem; color: var(--text-muted);
+    max-width: 460px; margin: 0 auto 36px; line-height: 1.65;
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 28px var(--pad-x);
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 16px;
+    font-size: 0.8rem; color: var(--text-faint);
+  }
+  footer a { color: var(--text-muted); transition: color 0.2s; }
+  footer a:hover { color: var(--text); }
+
+  /* CHATBOT PANEL — copied 1:1 from index.html */
+  #chatLauncher {
+    position: fixed; bottom: 24px; right: 24px; z-index: 100;
+    width: 56px; height: 56px; border-radius: 50%;
+    background: var(--mint); color: #0A1A14;
+    border: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 20px rgba(93,219,169,0.4);
+    transition: all 0.3s var(--ease);
+  }
+  #chatLauncher:hover { transform: scale(1.08); box-shadow: 0 6px 28px rgba(93,219,169,0.55); }
+  #chatLauncher svg { width: 24px; height: 24px; transition: all 0.3s var(--ease); }
+  #chatLauncher.open svg.icon-chat { display: none; }
+  #chatLauncher.open svg.icon-close { display: block !important; }
+  #chatLauncher svg.icon-close { display: none; }
+
+  #chatPanel {
+    position: fixed; bottom: 92px; right: 24px; z-index: 100;
+    width: min(380px, calc(100vw - 32px));
+    height: min(560px, calc(100vh - 120px));
+    background: var(--bg-elev);
+    border: 1px solid var(--border-strong);
+    border-radius: 20px;
+    box-shadow: 0 24px 64px rgba(0,0,0,0.6), 0 0 0 1px rgba(93,219,169,0.08);
+    display: flex; flex-direction: column; overflow: hidden;
+    opacity: 0; pointer-events: none; transform: translateY(16px) scale(0.97);
+    transform-origin: bottom right;
+    transition: opacity 0.3s var(--ease), transform 0.3s var(--ease);
+  }
+  #chatPanel.open { opacity: 1; pointer-events: all; transform: translateY(0) scale(1); }
+
+  .chat-header {
+    display: flex; align-items: center; gap: 12px;
+    padding: 16px 18px; border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+  .chat-avatar {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: var(--mint-glow); border: 1px solid var(--border-mint);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; flex-shrink: 0; overflow: hidden;
+    background-image: url('/images/o_mark.jpg');
+    background-size: cover; background-position: center;
+  }
+  .chat-header-info { flex: 1; }
+  .chat-header-name { font-size: 0.875rem; font-weight: 600; }
+  .chat-header-status {
+    display: flex; align-items: center; gap: 5px;
+    font-size: 0.75rem; color: var(--text-muted);
+  }
+  .chat-header-status::before {
+    content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--mint);
+  }
+  #chatClose {
+    background: none; border: none; cursor: pointer;
+    color: var(--text-muted); padding: 4px;
+    display: flex; transition: color 0.2s;
+  }
+  #chatClose:hover { color: var(--text); }
+  #chatClose svg { width: 16px; height: 16px; }
+
+  #chatMessages {
+    flex: 1; overflow-y: auto; padding: 16px;
+    display: flex; flex-direction: column; gap: 8px;
+    scrollbar-width: thin; scrollbar-color: var(--border) transparent;
+  }
+  .msg {
+    max-width: 82%; padding: 10px 14px; border-radius: 16px;
+    font-size: 0.875rem; line-height: 1.55; word-break: break-word;
+  }
+  .msg.bot {
+    background: var(--bg-overlay); border: 1px solid var(--border);
+    align-self: flex-start; border-bottom-left-radius: 4px;
+  }
+  .msg.user {
+    background: var(--mint); color: #0A1A14; font-weight: 500;
+    align-self: flex-end; border-bottom-right-radius: 4px;
+    max-width: 76%;
+  }
+  .msg.typing { background: var(--bg-overlay); border: 1px solid var(--border); align-self: flex-start; border-bottom-left-radius: 4px; }
+  .msg.typing span {
+    display: inline-block; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--text-muted); margin: 0 2px;
+    animation: typingDot 1.2s infinite;
+  }
+  .msg.typing span:nth-child(2) { animation-delay: 0.2s; }
+  .msg.typing span:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes typingDot {
+    0%,60%,100% { transform: translateY(0); opacity: 0.4; }
+    30% { transform: translateY(-4px); opacity: 1; }
+  }
+
+  #chatSuggestions {
+    display: flex; flex-wrap: wrap; gap: 6px;
+    padding: 8px 16px 0; flex-shrink: 0;
+  }
+  .suggestion-chip {
+    background: var(--bg-overlay); border: 1px solid var(--border-strong);
+    color: var(--text); font-family: var(--sans); font-size: 0.8rem;
+    padding: 6px 12px; border-radius: 980px; cursor: pointer;
+    transition: all 0.15s; white-space: nowrap;
+  }
+  .suggestion-chip:hover { background: var(--bg-overlay-hover); border-color: var(--border-mint); color: var(--mint); }
+
+  #chatForm {
+    display: flex; gap: 8px; padding: 12px 16px;
+    border-top: 1px solid var(--border); flex-shrink: 0; background: var(--bg-elev);
+  }
+  #chatInput {
+    flex: 1; background: var(--bg-overlay); border: 1px solid var(--border);
+    border-radius: 980px; color: var(--text); font-family: var(--sans);
+    font-size: 0.875rem; padding: 9px 16px; outline: none;
+    transition: border-color 0.2s;
+  }
+  #chatInput:focus { border-color: var(--border-mint); }
+  #chatInput::placeholder { color: var(--text-faint); }
+  #chatForm button[type="submit"] {
+    width: 36px; height: 36px; border-radius: 50%; flex-shrink: 0;
+    background: var(--mint); border: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.2s var(--ease);
+  }
+  #chatForm button[type="submit"]:hover { background: var(--mint-bright); transform: scale(1.05); }
+  #chatForm button[type="submit"] svg { width: 16px; height: 16px; color: #0A1A14; }
+
+  /* Scroll nav border */
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s var(--ease), transform 0.6s var(--ease); }
+    .reveal.visible { opacity: 1; transform: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="site-nav" id="nav">
+  <div class="container nav-inner">
+    <a href="/" class="logo">
+      <span class="logo-mark"></span>
+      <span>Oranga AI</span>
+    </a>
+    <a href="/" class="nav-back">
+      <svg viewBox="0 0 16 16" fill="none"><path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Back to site
+    </a>
+  </div>
+</nav>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="eyebrow hero-eyebrow reveal">Free · 60 Minutes · No Obligation</div>
+      <h1 class="display reveal">
+        Find out exactly what's<br>
+        <span class="accent">slipping through the cracks</span><br>
+        in your business.
+      </h1>
+      <p class="hero-sub reveal">
+        In 60 minutes, we'll map out which parts of your business are leaking leads and time — and show you what an AI employee built to fix that would look like.
+      </p>
+      <div class="hero-cta-row reveal">
+        <button onclick="openBookingChat()" class="btn btn-primary btn-large">
+          Book your free Strategy Call
+          <svg class="arrow" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+      <p class="hero-note reveal">Mon–Fri · 8am–6pm AEST · Google Meet</p>
+    </div>
+  </section>
+
+  <!-- TRUST STRIP -->
+  <div class="trust-strip reveal">
+    <div class="trust-item">
+      <svg viewBox="0 0 16 16" fill="none"><path d="M13 4L6.5 11 3 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      No pitch. Just a diagnosis.
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 16 16" fill="none"><path d="M13 4L6.5 11 3 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      We tell you if it's not the right fit.
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 16 16" fill="none"><path d="M13 4L6.5 11 3 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      You leave with a clear picture either way.
+    </div>
+  </div>
+
+  <!-- WHAT YOU GET -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="eyebrow" style="justify-content:center;">What you leave with</div>
+        <h2 class="display">60 minutes. Three things you'll know.</h2>
+        <p>Most owners finish the call with more clarity about their business than they've had in months.</p>
+      </div>
+      <div class="gets-grid reveal">
+        <div class="get-card">
+          <div class="get-icon">🔍</div>
+          <h3>Where you're losing leads right now</h3>
+          <p>We'll look at your current response times, follow-up process, and booking flow — and show you exactly where enquiries are slipping out.</p>
+        </div>
+        <div class="get-card">
+          <div class="get-icon">💸</div>
+          <h3>What it's actually costing you</h3>
+          <p>We'll put a number on it. How many jobs per month are likely going to a competitor because of slow follow-up? What's the dollar value of that?</p>
+        </div>
+        <div class="get-card">
+          <div class="get-icon">🤖</div>
+          <h3>What an AI employee would handle for you</h3>
+          <p>A clear recommendation — which tasks, what it would change day-to-day, what it costs, and whether it makes sense for your business right now.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOR YOU IF -->
+  <section class="section for-you">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="eyebrow" style="justify-content:center;">Is this call for you?</div>
+        <h2 class="display">This call is worth 60 minutes<br>if any of these hit home.</h2>
+      </div>
+      <ul class="pain-list reveal">
+        <li>
+          <div class="pain-check"><svg viewBox="0 0 16 16" fill="none"><path d="M12 4L6.5 10 4 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <span>You've lost a job — or suspect you have — because you didn't reply fast enough to an enquiry.</span>
+        </li>
+        <li>
+          <div class="pain-check"><svg viewBox="0 0 16 16" fill="none"><path d="M12 4L6.5 10 4 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <span>You're still answering the same questions over and over — via phone, text, or email — instead of being on the tools.</span>
+        </li>
+        <li>
+          <div class="pain-check"><svg viewBox="0 0 16 16" fill="none"><path d="M12 4L6.5 10 4 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <span>You get enquiries after hours or on weekends and by the time you follow up, they've already gone elsewhere.</span>
+        </li>
+        <li>
+          <div class="pain-check"><svg viewBox="0 0 16 16" fill="none"><path d="M12 4L6.5 10 4 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <span>You know there's admin that could be handled automatically — but you haven't had the time to figure out how.</span>
+        </li>
+        <li>
+          <div class="pain-check"><svg viewBox="0 0 16 16" fill="none"><path d="M12 4L6.5 10 4 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <span>You're doing well but the business runs on you — and you're starting to feel it.</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- OBJECTIONS -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="eyebrow" style="justify-content:center;">Common questions</div>
+        <h2 class="display">A few things people wonder before booking.</h2>
+      </div>
+      <div class="objections-grid reveal">
+        <div class="obj-card">
+          <p class="obj-q">"Is this just a sales call?"</p>
+          <p class="obj-a">No. The call is a diagnosis first. We look at your business, identify where AI would and wouldn't help, and give you a straight answer. If it's not the right fit right now, we'll tell you.</p>
+        </div>
+        <div class="obj-card">
+          <p class="obj-q">"I'm not very technical — will I follow along?"</p>
+          <p class="obj-a">Completely. We don't talk about AI in technical terms. We talk about your business: which tasks, what changes, what it costs. No jargon.</p>
+        </div>
+        <div class="obj-card">
+          <p class="obj-q">"How long does it take to get set up?"</p>
+          <p class="obj-a">Most clients have their first AI employee live within two weeks of signing on. The call is just the first step — there's no long onboarding before you see results.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final-cta">
+    <div class="container">
+      <div class="eyebrow reveal" style="justify-content:center; margin-bottom:20px;">Free · No Obligation</div>
+      <h2 class="display reveal">
+        Stop losing jobs to<br>
+        <span class="accent">faster competitors.</span>
+      </h2>
+      <p class="reveal">Book your free 60-minute AI Strategy Call. Find out what's leaking and whether we can fix it.</p>
+      <div class="reveal">
+        <button onclick="openBookingChat()" class="btn btn-primary btn-large">
+          Book your free Strategy Call
+          <svg class="arrow" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+      <p class="hero-note" style="margin-top:14px;">Mon–Fri · 8am–6pm AEST · Google Meet link sent on confirmation</p>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <a href="/" class="logo" style="gap:10px; font-size:0.875rem;">
+    <span class="logo-mark" style="width:24px; height:24px;"></span>
+    <span>Oranga AI</span>
+  </a>
+  <span>© Oranga AI 2025</span>
+  <div style="display:flex; gap:20px;">
+    <a href="mailto:support@orangaai.com">support@orangaai.com</a>
+  </div>
+</footer>
+
+<!-- CHATBOT PANEL -->
+<button id="chatLauncher" aria-label="Book a call">
+  <svg class="icon-chat" viewBox="0 0 24 24" fill="none"><path d="M8 10h8M8 14h5M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <svg class="icon-close" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
+
+<div id="chatPanel" role="dialog" aria-label="Book a Strategy Call">
+  <div class="chat-header">
+    <div class="chat-avatar"></div>
+    <div class="chat-header-info">
+      <div class="chat-header-name">Oranga AI</div>
+      <div class="chat-header-status">Ready to book</div>
+    </div>
+    <button id="chatClose" aria-label="Close chat">
+      <svg viewBox="0 0 16 16" fill="none"><path d="M12 4L4 12M4 4l8 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+  <div id="chatMessages"></div>
+  <div id="chatSuggestions"></div>
+  <form id="chatForm" autocomplete="off">
+    <input id="chatInput" type="text" placeholder="Type your message…" autocomplete="off" />
+    <button type="submit" aria-label="Send">
+      <svg viewBox="0 0 16 16" fill="none"><path d="M14 8H2M14 8L9 3M14 8L9 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </form>
+</div>
+
+<script>
+  // Nav scroll border
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 10);
+  }, { passive: true });
+
+  // Reveal on scroll
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(el => observer.observe(el));
+
+  // Chat panel controls
+  const panel = document.getElementById('chatPanel');
+  const launcher = document.getElementById('chatLauncher');
+  const closeBtn = document.getElementById('chatClose');
+
+  function openChat() {
+    panel.classList.add('open');
+    launcher.classList.add('open');
+    document.getElementById('chatInput').focus();
+  }
+  function closeChat() {
+    panel.classList.remove('open');
+    launcher.classList.remove('open');
+  }
+
+  // CTA triggers booking flow directly
+  function openBookingChat() {
+    openChat();
+    // Give the panel a moment to open and booking-chatbot.js to init
+    setTimeout(function() {
+      if (typeof window.startBookingFlow === 'function') {
+        window.startBookingFlow();
+      }
+    }, 120);
+  }
+
+  launcher.addEventListener('click', () => {
+    if (panel.classList.contains('open')) closeChat();
+    else openChat();
+  });
+  closeBtn.addEventListener('click', closeChat);
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && panel.classList.contains('open')) closeChat();
+  });
+</script>
+
+<script src="/booking-chatbot.js" defer></script>
+
+</body>
+</html>

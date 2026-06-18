@@ -1571,10 +1571,10 @@
       <h1 class="display reveal">We build the operating system <span class="accent">for your business.</span></h1>
       <p class="hero-sub reveal">Dedicated employees that handle your leads, follow-ups, and admin around the clock, with a live dashboard so you can see everything working. We build it. We manage it. You just run your business.</p>
       <div class="hero-cta-row reveal">
-        <button onclick="openChat()" class="btn btn-primary btn-large">
+        <a href="/strategy-call" class="btn btn-primary btn-large">
           Book a Free Strategy Call
           <svg class="arrow" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
+        </a>
       </div>
     </div>
   </section>
@@ -1657,7 +1657,7 @@
           <div class="package-price">
             <span class="currency">$</span><span class="amount">2,000</span><span class="suffix">/month</span>
           </div>
-          <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.45; margin-bottom: 4px;">For solo operators and small teams ready to stop losing leads.</p>
+          <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.45; margin-bottom: 4px;">Your first AI employee answers every enquiry and follows up until they book. Stop losing jobs because you didn't reply fast enough.</p>
           <ul class="package-features">
             <li>1 to 2 dedicated employees set up and managed for you</li>
             <li>Live business dashboard</li>
@@ -1676,7 +1676,7 @@
           <div class="package-price">
             <span class="currency">$</span><span class="amount">4,500</span><span class="suffix">/month</span>
           </div>
-          <p style="font-size: 0.95rem; color: var(--text); line-height: 1.45; margin-bottom: 4px;">For businesses ready to grow without taking on more staff.</p>
+          <p style="font-size: 0.95rem; color: var(--text); line-height: 1.45; margin-bottom: 4px;">A full AI front-end for your business. Every lead answered, qualified, and booked before they call a competitor. No extra headcount needed.</p>
           <ul class="package-features">
             <li>3 to 5 dedicated employees set up and managed for you</li>
             <li>Full business dashboard with reporting</li>
@@ -1694,7 +1694,7 @@
           <div class="package-price">
             <span class="currency">$</span><span class="amount">7,500</span><span class="suffix">/month</span>
           </div>
-          <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.45; margin-bottom: 4px;">For operators who want their whole business running on one system.</p>
+          <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.45; margin-bottom: 4px;">Your entire client journey, automated. First enquiry to booked job to follow-up — all handled. You focus on the work, the AI handles everything around it.</p>
           <ul class="package-features">
             <li>Unlimited employees set up and managed for you</li>
             <li>Custom dashboard built around your exact workflow</li>
@@ -1982,7 +1982,7 @@
   }
 
   function findAnswer(query) {
-    const q = ' ' + query.toLowerCase().replace(/[^\w\s]/g, ' ').replace(/\s+/g, ' ').trim() + ' ';
+    const q = ' ' + query.toLowerCase().replace(/[^\\w\\s]/g, ' ').replace(/\\s+/g, ' ').trim() + ' ';
     let best = null;
     let bestScore = 0;
     KB.forEach((entry) => {
