@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Eru Osborne — Oranga AI</title>
+<meta name="description" content="15 years in IT. Built systems for banks, enterprises, and everything in between. Now building AI employees for service businesses that are tired of being the bottleneck in their own company.">
+<link rel="icon" type="image/jpeg" href="/images/o_mark.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0A0B0E;
+    --bg-elev: #131419;
+    --bg-overlay: rgba(255,255,255,0.03);
+    --bg-overlay-hover: rgba(255,255,255,0.06);
+    --border: rgba(255,255,255,0.08);
+    --border-strong: rgba(255,255,255,0.14);
+    --border-mint: rgba(93,219,169,0.22);
+    --text: #F5F5F7;
+    --text-muted: #86868B;
+    --text-faint: #5A5A60;
+    --mint: #5DDBA9;
+    --mint-bright: #7CE9C0;
+    --mint-deep: #2BA787;
+    --mint-glow: rgba(93,219,169,0.16);
+    --mint-glow-strong: rgba(93,219,169,0.28);
+    --max-w: 1280px;
+    --content-w: 680px;
+    --pad-x: clamp(20px,5vw,64px);
+    --sans: 'Inter',-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',sans-serif;
+    --serif: 'Lora', Georgia, serif;
+    --ease: cubic-bezier(0.22,1,0.36,1);
+    --o-mark: url("/images/o_mark.jpg");
+  }
+
+  *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    letter-spacing: -0.01em;
+  }
+  ::selection { background: var(--mint); color: #0A1A14; }
+  a { color: inherit; text-decoration: none; }
+  img { display: block; max-width: 100%; }
+
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background:
+      radial-gradient(ellipse 70% 50% at 50% 0%, rgba(93,219,169,0.05), transparent 60%),
+      radial-gradient(ellipse 40% 40% at 100% 80%, rgba(93,219,169,0.03), transparent 60%);
+    pointer-events: none; z-index: 0;
+  }
+  body::after {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' /%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+    opacity: 0.025; pointer-events: none; z-index: 0; mix-blend-mode: overlay;
+  }
+  main, nav, footer { position: relative; z-index: 1; }
+
+  .container { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--pad-x); }
+  .content { max-width: var(--content-w); margin: 0 auto; }
+
+  /* NAV */
+  nav.site-nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(10,11,14,0.72);
+    backdrop-filter: blur(24px) saturate(140%);
+    -webkit-backdrop-filter: blur(24px) saturate(140%);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s var(--ease);
+  }
+  nav.site-nav.scrolled { border-bottom-color: var(--border); }
+  .nav-inner {
+    display: flex; align-items: center;
+    justify-content: space-between; height: 64px;
+  }
+  .logo {
+    display: flex; align-items: center; gap: 12px;
+    font-weight: 500; font-size: 1rem; letter-spacing: -0.01em;
+  }
+  .logo-mark {
+    width: 32px; height: 32px; border-radius: 50%;
+    background-image: var(--o-mark);
+    background-size: cover; background-position: center;
+  }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: var(--sans); font-size: 0.9rem; font-weight: 500;
+    letter-spacing: -0.01em; border: none; cursor: pointer;
+    padding: 11px 22px; border-radius: 980px;
+    transition: all 0.2s var(--ease);
+    text-decoration: none; white-space: nowrap;
+  }
+  .btn-primary { background: var(--mint); color: #0A1A14; }
+  .btn-primary:hover {
+    background: var(--mint-bright);
+    box-shadow: 0 0 0 6px var(--mint-glow);
+    transform: translateY(-1px);
+  }
+  .btn svg { width: 16px; height: 16px; transition: transform 0.2s var(--ease); }
+  .btn:hover svg { transform: translateX(3px); }
+
+  .eyebrow {
+    font-size: 0.75rem; font-weight: 500; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--mint);
+    display: inline-flex; align-items: center; gap: 10px;
+  }
+  .eyebrow::before {
+    content: ''; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--mint); box-shadow: 0 0 12px var(--mint);
+  }
+
+  /* HERO */
+  .hero {
+    padding: clamp(60px,10vw,120px) var(--pad-x) clamp(50px,8vw,90px);
+    border-bottom: 1px solid var(--border);
+  }
+  .hero-inner {
+    max-width: var(--content-w);
+    margin: 0 auto;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--bg-elev); border: 1px solid var(--border);
+    border-radius: 980px; padding: 6px 14px 6px 6px;
+    margin-bottom: 32px;
+  }
+  .hero-badge-logo {
+    width: 28px; height: 28px; border-radius: 50%;
+    background-image: var(--o-mark);
+    background-size: cover; background-position: center;
+  }
+  .hero-badge span {
+    font-size: 0.8rem; font-weight: 500; color: var(--text-muted);
+  }
+  .hero h1 {
+    font-size: clamp(2.4rem, 5vw, 4rem);
+    font-weight: 600; letter-spacing: -0.04em; line-height: 1.06;
+    margin-bottom: 24px;
+  }
+  .hero h1 em {
+    font-style: normal; color: var(--mint);
+    font-family: var(--serif); font-style: italic; font-weight: 400;
+  }
+  .hero-meta {
+    display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+    font-size: 0.875rem; color: var(--text-faint);
+  }
+  .hero-meta span { display: flex; align-items: center; gap: 6px; }
+  .hero-meta svg { width: 14px; height: 14px; color: var(--mint); flex-shrink: 0; }
+
+  /* PROSE SECTIONS */
+  .prose-section {
+    padding: clamp(56px,8vw,96px) var(--pad-x);
+    border-bottom: 1px solid var(--border);
+  }
+  .prose-section:last-of-type { border-bottom: none; }
+
+  .prose-section h2 {
+    font-size: clamp(1.1rem, 1.5vw, 1.25rem);
+    font-weight: 600; letter-spacing: -0.02em;
+    color: var(--text-muted); text-transform: uppercase;
+    letter-spacing: 0.12em; font-size: 0.75rem;
+    margin-bottom: 28px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .prose-section h2::before {
+    content: ''; height: 1px; width: 32px; background: var(--border-strong);
+  }
+
+  .prose p {
+    font-size: clamp(1rem, 1.3vw, 1.1rem);
+    color: rgba(245,245,247,0.82);
+    line-height: 1.75;
+    margin-bottom: 22px;
+  }
+  .prose p:last-child { margin-bottom: 0; }
+  .prose strong { color: var(--text); font-weight: 600; }
+
+  /* PULL QUOTE */
+  .pull-quote {
+    border-left: 3px solid var(--mint);
+    padding: 20px 28px;
+    margin: 36px 0;
+    background: var(--bg-elev);
+    border-radius: 0 10px 10px 0;
+  }
+  .pull-quote p {
+    font-family: var(--serif);
+    font-size: clamp(1.1rem, 1.8vw, 1.35rem) !important;
+    font-style: italic;
+    color: var(--text) !important;
+    line-height: 1.6 !important;
+    margin: 0 !important;
+  }
+
+  /* CAREER TIMELINE */
+  .timeline {
+    display: flex; flex-direction: column; gap: 0;
+    margin: 32px 0;
+    position: relative;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 15px; top: 8px; bottom: 8px;
+    width: 1px; background: var(--border);
+  }
+  .tl-item {
+    display: flex; gap: 24px; align-items: flex-start;
+    padding: 0 0 28px;
+  }
+  .tl-item:last-child { padding-bottom: 0; }
+  .tl-dot {
+    width: 30px; height: 30px; border-radius: 50%;
+    background: var(--bg-elev); border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; position: relative; z-index: 1;
+    font-size: 13px;
+  }
+  .tl-dot.active {
+    background: var(--mint-glow); border-color: var(--border-mint);
+  }
+  .tl-content { padding-top: 4px; }
+  .tl-label {
+    font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--text-faint); margin-bottom: 3px;
+  }
+  .tl-text {
+    font-size: 0.95rem; color: var(--text-muted); line-height: 1.55;
+  }
+
+  /* ORANGA MEANING */
+  .oranga-card {
+    background: var(--bg-elev);
+    border: 1px solid var(--border-mint);
+    border-radius: 14px;
+    padding: 32px 28px;
+    margin: 32px 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .oranga-card::before {
+    content: '';
+    position: absolute; top: 0; right: 0;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, var(--mint-glow) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .oranga-word {
+    font-family: var(--serif);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-style: italic; font-weight: 400;
+    color: var(--mint); letter-spacing: -0.02em;
+    line-height: 1; margin-bottom: 8px;
+  }
+  .oranga-translation {
+    font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--text-faint);
+    margin-bottom: 20px;
+  }
+  .oranga-card p {
+    font-size: 1rem; color: rgba(245,245,247,0.75);
+    line-height: 1.7; position: relative; z-index: 1;
+  }
+
+  /* WHAT WE BUILD */
+  .examples-list {
+    list-style: none;
+    margin: 24px 0;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .examples-list li {
+    display: flex; gap: 12px; align-items: flex-start;
+    font-size: 0.95rem; color: rgba(245,245,247,0.78);
+    line-height: 1.6;
+    padding: 14px 16px;
+    background: var(--bg-elev);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  .ex-dot {
+    width: 18px; height: 18px; border-radius: 50%;
+    background: var(--mint-glow); border: 1px solid var(--border-mint);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; margin-top: 2px;
+  }
+  .ex-dot svg { width: 8px; height: 8px; color: var(--mint); }
+
+  /* INDUSTRIES */
+  .industries {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    margin: 20px 0;
+  }
+  .industry-tag {
+    background: var(--bg-elev); border: 1px solid var(--border);
+    padding: 6px 14px; border-radius: 980px;
+    font-size: 0.85rem; color: var(--text-muted);
+    transition: all 0.2s;
+  }
+  .industry-tag:hover { border-color: var(--border-mint); color: var(--mint); }
+
+  /* CTA SECTION */
+  .cta-section {
+    padding: clamp(64px,10vw,110px) var(--pad-x);
+    text-align: center;
+    border-top: 1px solid var(--border);
+  }
+  .cta-section h2 {
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 600; letter-spacing: -0.04em; line-height: 1.1;
+    margin-bottom: 16px;
+  }
+  .cta-section p {
+    font-size: 1rem; color: var(--text-muted); max-width: 420px;
+    margin: 0 auto 32px; line-height: 1.65;
+  }
+  .btn-large { padding: 15px 32px; font-size: 1rem; font-weight: 600; }
+  .cta-note { font-size: 0.8rem; color: var(--text-faint); margin-top: 14px; }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 28px var(--pad-x);
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 16px;
+    font-size: 0.8rem; color: var(--text-faint);
+  }
+  footer a { color: var(--text-muted); transition: color 0.2s; }
+  footer a:hover { color: var(--text); }
+
+  /* Reveal */
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.6s var(--ease), transform 0.6s var(--ease); }
+    .reveal.visible { opacity: 1; transform: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="site-nav" id="nav">
+  <div class="container nav-inner">
+    <a href="/" class="logo">
+      <span class="logo-mark"></span>
+      <span>Oranga AI</span>
+    </a>
+    <a href="/strategy-call" class="btn btn-primary">
+      Book a Call
+      <svg viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+</nav>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge reveal">
+        <div class="hero-badge-logo"></div>
+        <span>Founder, Oranga AI</span>
+      </div>
+      <h1 class="reveal">
+        Eru Osborne.<br>
+        <em>15 years building systems.</em>
+      </h1>
+      <div class="hero-meta reveal">
+        <span>
+          <svg viewBox="0 0 16 16" fill="none"><path d="M8 1.5A4.5 4.5 0 018 10.5M8 10.5C6 13.5 3 13.5 3 13.5s1-4 5-4 5 4 5 4-3 0-5-3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><circle cx="8" cy="5.5" r="2" stroke="currentColor" stroke-width="1.3"/></svg>
+          Gold Coast, Queensland
+        </span>
+        <span>
+          <svg viewBox="0 0 16 16" fill="none"><rect x="2" y="3" width="12" height="10" rx="1.5" stroke="currentColor" stroke-width="1.3"/><path d="M2 6h12" stroke="currentColor" stroke-width="1.3"/></svg>
+          15 years in IT infrastructure
+        </span>
+        <span>
+          <svg viewBox="0 0 16 16" fill="none"><path d="M8 2l1.5 3.5L13 6l-2.5 2.5.5 3.5L8 10.5 5 12l.5-3.5L3 6l3.5-.5L8 2z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
+          Founder, Oranga AI
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- BACKGROUND -->
+  <section class="prose-section">
+    <div class="content reveal">
+      <h2>Background</h2>
+      <div class="prose">
+
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-dot">🖥</div>
+            <div class="tl-content">
+              <div class="tl-label">Where it started</div>
+              <div class="tl-text">Helpdesk. Answering tickets, resetting passwords, solving the same problems over and over for people who just needed things to work.</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot">🔌</div>
+            <div class="tl-content">
+              <div class="tl-label">Infrastructure</div>
+              <div class="tl-text">Moved into networking — routers, switches, firewalls. Managing the backbone that keeps businesses running. Learning what happens when systems fail and what it costs.</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot active">⚙️</div>
+            <div class="tl-content">
+              <div class="tl-label">Senior systems engineering</div>
+              <div class="tl-text">Responsible for the architecture behind entire business environments. Where the real pattern became obvious.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pull-quote">
+          <p>"The technology is rarely the problem. The problem is that nobody built systems around how the business actually works."</p>
+        </div>
+
+        <p>Tools get bolted on. Processes get duct-taped together. And the people running the business end up doing work that a well-designed system would handle automatically.</p>
+
+        <p>That's what I kept seeing across every organisation I worked in. Not a lack of technology — too much of the wrong kind, poorly connected, built for someone else's workflow.</p>
+
+        <p>That's the problem I set out to solve. Just with different tools.</p>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY ORANGA -->
+  <section class="prose-section">
+    <div class="content reveal">
+      <h2>Why Oranga</h2>
+      <div class="prose">
+
+        <div class="oranga-card">
+          <div class="oranga-word">Oranga</div>
+          <div class="oranga-translation">Māori · wellbeing · health · flourishing</div>
+          <p>Not just surviving — genuinely thriving. Having what you need to grow, not just getting by.</p>
+        </div>
+
+        <p>That's exactly what we try to build for the businesses we work with. Not just fix an irritating process. Not just save a few hours a week. Build something that frees the people running the business to focus on the work only they can do — and let the systems handle everything else.</p>
+
+        <p>A business that's truly well-supported doesn't feel like it's held together by a busy owner doing ten jobs at once. It feels like it has room to breathe.</p>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT WE BUILD -->
+  <section class="prose-section">
+    <div class="content reveal">
+      <h2>What we build</h2>
+      <div class="prose">
+
+        <p>Oranga AI works with small service businesses across Australia and New Zealand. Owner-operated businesses where the owner is usually the bottleneck.</p>
+
+        <div class="industries">
+          <span class="industry-tag">Trades</span>
+          <span class="industry-tag">Allied health</span>
+          <span class="industry-tag">Real estate</span>
+          <span class="industry-tag">Cleaning</span>
+          <span class="industry-tag">Coaching</span>
+          <span class="industry-tag">Consulting</span>
+        </div>
+
+        <p>We build custom automation systems that handle the repetitive, time-consuming work that bogs those businesses down.</p>
+
+        <ul class="examples-list">
+          <li>
+            <div class="ex-dot"><svg viewBox="0 0 8 8" fill="none"><path d="M1 4l2 2 4-4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            A new enquiry comes in at 9pm on a Friday and gets a personalised, helpful response before the owner even knows it arrived.
+          </li>
+          <li>
+            <div class="ex-dot"><svg viewBox="0 0 8 8" fill="none"><path d="M1 4l2 2 4-4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            A lead that went quiet gets a follow-up without anyone having to remember to send it.
+          </li>
+          <li>
+            <div class="ex-dot"><svg viewBox="0 0 8 8" fill="none"><path d="M1 4l2 2 4-4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            The kind of work that gets dropped when someone gets busy — and always costs the business when it does.
+          </li>
+        </ul>
+
+        <p>No off-the-shelf packages. No cookie-cutter setups. We build around how your business actually operates, and we manage it so you don't have to.</p>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section reveal">
+    <div class="eyebrow" style="justify-content:center; margin-bottom:20px;">Free · 30 minutes · No obligation</div>
+    <h2>If any of this sounds familiar,<br>it's worth a conversation.</h2>
+    <p>Book a free 30-minute strategy call. We'll look at your business, find the gaps, and show you what we'd build.</p>
+    <a href="/strategy-call" class="btn btn-primary btn-large">
+      Book a free Strategy Call
+      <svg viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+    <p class="cta-note">Mon–Fri · 8am–6pm AEST · Google Meet</p>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <a href="/" class="logo" style="gap:10px; font-size:0.875rem;">
+    <span class="logo-mark" style="width:24px; height:24px;"></span>
+    <span>Oranga AI</span>
+  </a>
+  <span>© Oranga AI 2025</span>
+  <div style="display:flex; gap:20px;">
+    <a href="/about">About</a>
+    <a href="mailto:support@orangaai.com">support@orangaai.com</a>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 10);
+  }, { passive: true });
+
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+  reveals.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
