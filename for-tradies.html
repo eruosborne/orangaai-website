@@ -1,0 +1,1412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Oranga AI: For Trade Businesses</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #0A0B0E;
+      --surface: #131419;
+      --surface-2: #1a1b22;
+      --text: #F5F5F7;
+      --muted: #86868B;
+      --faint: #5A5A60;
+      --mint: #5DDBA9;
+      --mint-bright: #7CE9C0;
+      --mint-glow: rgba(93, 219, 169, 0.16);
+      --mint-glow-sm: rgba(93, 219, 169, 0.10);
+      --border: rgba(255, 255, 255, 0.08);
+      --border-strong: rgba(255, 255, 255, 0.14);
+      --border-mint: rgba(93, 219, 169, 0.22);
+      --radius-pill: 980px;
+      --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font);
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Ambient radial glow */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background:
+        radial-gradient(ellipse 80vw 60vh at 15% 20%, rgba(93, 219, 169, 0.055) 0%, transparent 65%),
+        radial-gradient(ellipse 60vw 50vh at 85% 70%, rgba(93, 219, 169, 0.040) 0%, transparent 60%),
+        radial-gradient(ellipse 40vw 40vh at 50% 110%, rgba(93, 219, 169, 0.035) 0%, transparent 60%);
+    }
+
+    /* Noise texture overlay */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.032;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background-size: 200px 200px;
+    }
+
+    /* Layout helpers */
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── NAV ── */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      background: rgba(10, 11, 14, 0.78);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text);
+    }
+
+    .nav-logo-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background-image: url('/images/o_mark.jpg');
+      background-size: cover;
+      background-position: center;
+      background-color: var(--surface-2);
+      border: 1px solid var(--border-strong);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .nav-logo-text {
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: var(--text);
+    }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      padding: 9px 22px;
+      background: var(--mint);
+      color: #0A0B0E;
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: var(--radius-pill);
+      transition: background 0.2s ease, transform 0.15s ease;
+    }
+
+    .nav-cta:hover {
+      background: var(--mint-bright);
+      transform: translateY(-1px);
+    }
+
+    /* ── EYEBROW ── */
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--mint);
+      margin-bottom: 18px;
+    }
+
+    .eyebrow::before {
+      content: '';
+      display: block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--mint);
+      flex-shrink: 0;
+    }
+
+    /* ── DISPLAY HEADINGS ── */
+    h1, h2 {
+      font-weight: 600;
+      letter-spacing: -0.04em;
+      line-height: 1.04;
+      color: var(--text);
+    }
+
+    h1 {
+      font-size: clamp(2.4rem, 5.5vw, 4rem);
+    }
+
+    h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+    }
+
+    .accent {
+      color: var(--mint);
+    }
+
+    /* ── REVEAL ANIMATION ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1), transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.08s; }
+    .reveal-delay-2 { transition-delay: 0.16s; }
+    .reveal-delay-3 { transition-delay: 0.24s; }
+    .reveal-delay-4 { transition-delay: 0.32s; }
+    .reveal-delay-5 { transition-delay: 0.40s; }
+    .reveal-delay-6 { transition-delay: 0.48s; }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 112px 0 100px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero h1 {
+      max-width: 820px;
+      margin: 0 auto 28px;
+    }
+
+    .hero-sub {
+      font-size: clamp(1.05rem, 1.8vw, 1.22rem);
+      color: var(--muted);
+      font-weight: 400;
+      max-width: 600px;
+      margin: 0 auto 44px;
+      line-height: 1.65;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      padding: 16px 36px;
+      background: var(--mint);
+      color: #0A0B0E;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: var(--radius-pill);
+      transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+      box-shadow: 0 0 32px rgba(93, 219, 169, 0.22);
+    }
+
+    .btn-primary:hover {
+      background: var(--mint-bright);
+      transform: translateY(-2px);
+      box-shadow: 0 0 48px rgba(93, 219, 169, 0.32);
+    }
+
+    .cta-note {
+      font-size: 0.82rem;
+      color: var(--faint);
+      margin-top: 14px;
+    }
+
+    /* ── TRUST STRIP ── */
+    .trust-strip {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 28px 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .trust-strip-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.875rem;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .trust-item-icon {
+      width: 20px;
+      height: 20px;
+      color: var(--mint);
+      flex-shrink: 0;
+    }
+
+    /* ── SECTION COMMON ── */
+    .section {
+      padding: 100px 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-header {
+      margin-bottom: 56px;
+    }
+
+    .section-header.centered {
+      text-align: center;
+    }
+
+    .section-header h2 {
+      max-width: 680px;
+    }
+
+    .section-header.centered h2 {
+      margin: 0 auto;
+    }
+
+    /* ── PROBLEM SECTION ── */
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .problem-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .problem-card::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: var(--mint);
+      opacity: 0;
+      transition: opacity 0.25s ease;
+      border-radius: 16px 0 0 16px;
+    }
+
+    .problem-card:hover {
+      border-color: var(--border-mint);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 48px rgba(0, 0, 0, 0.3);
+    }
+
+    .problem-card:hover::before {
+      opacity: 1;
+    }
+
+    .problem-card-title {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+
+    .problem-card-body {
+      font-size: 0.925rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* ── HOW IT WORKS ── */
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+
+    .step {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 36px 32px;
+      position: relative;
+      transition: border-color 0.25s ease, transform 0.25s ease;
+    }
+
+    .step:hover {
+      border-color: var(--border-mint);
+      transform: translateY(-3px);
+    }
+
+    .step-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--mint-glow);
+      border: 1px solid var(--border-mint);
+      color: var(--mint);
+      font-size: 0.875rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .step-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 10px;
+      letter-spacing: -0.02em;
+    }
+
+    .step-body {
+      font-size: 0.925rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* ── FEATURES SECTION ── */
+    .features-section {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2px;
+    }
+
+    .feature-item {
+      padding: 32px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      transition: background 0.2s ease;
+      border-radius: 12px;
+    }
+
+    .feature-item:hover {
+      background: var(--surface-2);
+    }
+
+    .feature-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: var(--mint-glow);
+      border: 1px solid var(--border-mint);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+      color: var(--mint);
+    }
+
+    .feature-title {
+      font-size: 0.975rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 8px;
+      letter-spacing: -0.02em;
+    }
+
+    .feature-desc {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ── INDUSTRIES ── */
+    .industries-section {
+      text-align: center;
+    }
+
+    .tag-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      margin-top: 40px;
+    }
+
+    .tag {
+      padding: 10px 22px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-pill);
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--muted);
+      transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+    }
+
+    .tag:hover {
+      border-color: var(--border-mint);
+      color: var(--mint);
+      background: var(--mint-glow);
+    }
+
+    /* ── OBJECTIONS ── */
+    .objections-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .objection-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      transition: border-color 0.25s ease, transform 0.25s ease;
+    }
+
+    .objection-card:hover {
+      border-color: var(--border-mint);
+      transform: translateY(-3px);
+    }
+
+    .objection-q {
+      font-size: 0.975rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 14px;
+      letter-spacing: -0.02em;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .objection-q-mark {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--mint-glow);
+      border: 1px solid var(--border-mint);
+      color: var(--mint);
+      font-size: 0.75rem;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .objection-a {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.65;
+      padding-left: 32px;
+    }
+
+    /* ── FINAL CTA ── */
+    .final-cta {
+      text-align: center;
+      padding: 120px 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .final-cta-glow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px;
+      height: 400px;
+      background: radial-gradient(ellipse at center, rgba(93, 219, 169, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .final-cta h2 {
+      max-width: 680px;
+      margin: 0 auto 20px;
+    }
+
+    .final-cta-sub {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 520px;
+      margin: 0 auto 40px;
+      line-height: 1.65;
+    }
+
+    .final-cta-note {
+      font-size: 0.82rem;
+      color: var(--faint);
+      margin-top: 16px;
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 48px 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text);
+    }
+
+    .footer-logo-mark {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background-image: url('/images/o_mark.jpg');
+      background-size: cover;
+      background-position: center;
+      background-color: var(--surface-2);
+      border: 1px solid var(--border);
+    }
+
+    .footer-logo-text {
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    .footer-right {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .footer-copy {
+      font-size: 0.8rem;
+      color: var(--faint);
+    }
+
+    .footer-email {
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .footer-email:hover {
+      color: var(--mint);
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      height: 1px;
+      background: var(--border);
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .hero {
+        padding: 80px 0 72px;
+      }
+
+      .section {
+        padding: 72px 0;
+      }
+
+      .trust-strip-inner {
+        gap: 24px;
+      }
+
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .steps {
+        grid-template-columns: 1fr;
+      }
+
+      .objections-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .problem-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .final-cta {
+        padding: 80px 0;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 16px;
+      }
+
+      .nav-inner {
+        padding: 0;
+      }
+    }
+  
+  /* CHATBOT PANEL — copied 1:1 from index.html */
+  #chatLauncher {
+    position: fixed; bottom: 24px; right: 24px; z-index: 100;
+    width: 56px; height: 56px; border-radius: 50%;
+    background: var(--mint); color: #0A1A14;
+    border: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 20px rgba(93,219,169,0.4);
+    transition: all 0.3s var(--ease);
+  }
+  #chatLauncher:hover { transform: scale(1.08); box-shadow: 0 6px 28px rgba(93,219,169,0.55); }
+  #chatLauncher svg { width: 24px; height: 24px; transition: all 0.3s var(--ease); }
+  #chatLauncher.open svg.icon-chat { display: none; }
+  #chatLauncher.open svg.icon-close { display: block !important; }
+  #chatLauncher svg.icon-close { display: none; }
+
+  #chatPanel {
+    position: fixed; bottom: 92px; right: 24px; z-index: 100;
+    width: min(380px, calc(100vw - 32px));
+    height: min(560px, calc(100vh - 120px));
+    background: var(--bg-elev);
+    border: 1px solid var(--border-strong);
+    border-radius: 20px;
+    box-shadow: 0 24px 64px rgba(0,0,0,0.6), 0 0 0 1px rgba(93,219,169,0.08);
+    display: flex; flex-direction: column; overflow: hidden;
+    opacity: 0; pointer-events: none; transform: translateY(16px) scale(0.97);
+    transform-origin: bottom right;
+    transition: opacity 0.3s var(--ease), transform 0.3s var(--ease);
+  }
+  #chatPanel.open { opacity: 1; pointer-events: all; transform: translateY(0) scale(1); }
+
+  .chat-header {
+    display: flex; align-items: center; gap: 12px;
+    padding: 16px 18px; border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+  .chat-avatar {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: var(--mint-glow); border: 1px solid var(--border-mint);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; flex-shrink: 0; overflow: hidden;
+    background-image: url('/images/o_mark.jpg');
+    background-size: cover; background-position: center;
+  }
+  .chat-header-info { flex: 1; }
+  .chat-header-name { font-size: 0.875rem; font-weight: 600; }
+  .chat-header-status {
+    display: flex; align-items: center; gap: 5px;
+    font-size: 0.75rem; color: var(--text-muted);
+  }
+  .chat-header-status::before {
+    content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--mint);
+  }
+  #chatClose {
+    background: none; border: none; cursor: pointer;
+    color: var(--text-muted); padding: 4px;
+    display: flex; transition: color 0.2s;
+  }
+  #chatClose:hover { color: var(--text); }
+  #chatClose svg { width: 16px; height: 16px; }
+
+  #chatMessages {
+    flex: 1; overflow-y: auto; padding: 16px;
+    display: flex; flex-direction: column; gap: 8px;
+    scrollbar-width: thin; scrollbar-color: var(--border) transparent;
+  }
+  .msg {
+    max-width: 82%; padding: 10px 14px; border-radius: 16px;
+    font-size: 0.875rem; line-height: 1.55; word-break: break-word;
+  }
+  .msg.bot {
+    background: var(--bg-overlay); border: 1px solid var(--border);
+    align-self: flex-start; border-bottom-left-radius: 4px;
+  }
+  .msg.user {
+    background: var(--mint); color: #0A1A14; font-weight: 500;
+    align-self: flex-end; border-bottom-right-radius: 4px;
+    max-width: 76%;
+  }
+  .msg.typing { background: var(--bg-overlay); border: 1px solid var(--border); align-self: flex-start; border-bottom-left-radius: 4px; }
+  .msg.typing span {
+    display: inline-block; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--text-muted); margin: 0 2px;
+    animation: typingDot 1.2s infinite;
+  }
+  .msg.typing span:nth-child(2) { animation-delay: 0.2s; }
+  .msg.typing span:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes typingDot {
+    0%,60%,100% { transform: translateY(0); opacity: 0.4; }
+    30% { transform: translateY(-4px); opacity: 1; }
+  }
+
+  #chatSuggestions {
+    display: flex; flex-wrap: wrap; gap: 6px;
+    padding: 8px 16px 0; flex-shrink: 0;
+  }
+  .suggestion-chip {
+    background: var(--bg-overlay); border: 1px solid var(--border-strong);
+    color: var(--text); font-family: var(--sans); font-size: 0.8rem;
+    padding: 6px 12px; border-radius: 980px; cursor: pointer;
+    transition: all 0.15s; white-space: nowrap;
+  }
+  .suggestion-chip:hover { background: var(--bg-overlay-hover); border-color: var(--border-mint); color: var(--mint); }
+
+  #chatForm {
+    display: flex; gap: 8px; padding: 12px 16px;
+    border-top: 1px solid var(--border); flex-shrink: 0; background: var(--bg-elev);
+  }
+  #chatInput {
+    flex: 1; background: var(--bg-overlay); border: 1px solid var(--border);
+    border-radius: 980px; color: var(--text); font-family: var(--sans);
+    font-size: 0.875rem; padding: 9px 16px; outline: none;
+    transition: border-color 0.2s;
+  }
+  #chatInput:focus { border-color: var(--border-mint); }
+  #chatInput::placeholder { color: var(--text-faint); }
+  #chatForm button[type="submit"] {
+    width: 36px; height: 36px; border-radius: 50%; flex-shrink: 0;
+    background: var(--mint); border: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.2s var(--ease);
+  }
+  #chatForm button[type="submit"]:hover { background: var(--mint-bright); transform: scale(1.05); }
+  #chatForm button[type="submit"] svg { width: 16px; height: 16px; color: #0A1A14; }
+
+  /* Scroll nav border */
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s var(--ease), transform 0.6s var(--ease); }
+    .reveal.visible { opacity: 1; transform: none; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="/" class="nav-logo">
+          <div class="nav-logo-mark" aria-hidden="true"></div>
+          <span class="nav-logo-text">Oranga AI</span>
+        </a>
+        <a href="/strategy-call" class="nav-cta">Book a Call</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="eyebrow reveal">For Trade Businesses</div>
+      <h1 class="reveal reveal-delay-1">
+        Every job you lost started with an enquiry you <span class="accent">didn't reply to fast enough.</span>
+      </h1>
+      <p class="hero-sub reveal reveal-delay-2">
+        We install AI employees that answer every lead the moment it comes in, follow up until the job is booked, and handle the admin between jobs. So you can focus on the work.
+      </p>
+      <div class="reveal reveal-delay-3">
+        <a href="/strategy-call" class="btn-primary">Book a free Strategy Call</a>
+        <p class="cta-note">Free &middot; 30 minutes &middot; No obligation</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST STRIP -->
+  <div class="trust-strip">
+    <div class="container">
+      <div class="trust-strip-inner">
+        <div class="trust-item reveal">
+          <svg class="trust-item-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M10 6v4l2.5 2.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          Replies within seconds, day or night
+        </div>
+        <div class="trust-item reveal reveal-delay-1">
+          <svg class="trust-item-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Works for plumbers, electricians, builders and more
+        </div>
+        <div class="trust-item reveal reveal-delay-2">
+          <svg class="trust-item-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="M10 3l2 4.5 5 .5-3.5 3.5 1 5L10 14l-4.5 2.5 1-5L3 8l5-.5L10 3z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+          </svg>
+          No lock-in contracts
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROBLEM SECTION -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="eyebrow reveal">The real cost</div>
+        <h2 class="reveal reveal-delay-1">The job went to the tradie who replied first. Not the best one.</h2>
+      </div>
+      <div class="problem-grid">
+        <div class="problem-card reveal reveal-delay-1">
+          <div class="problem-card-title">Missed after-hours enquiries</div>
+          <p class="problem-card-body">You're on the tools from 7am. By the time you see the 8pm message, they've already booked someone else.</p>
+        </div>
+        <div class="problem-card reveal reveal-delay-2">
+          <div class="problem-card-title">Manual follow-up that never happens</div>
+          <p class="problem-card-body">You mean to follow up on that quote, but jobs keep coming and it falls through. The lead goes cold and you don't find out until it's too late.</p>
+        </div>
+        <div class="problem-card reveal reveal-delay-3">
+          <div class="problem-card-title">Admin that eats your evenings</div>
+          <p class="problem-card-body">Confirmation messages, booking reminders, answering the same questions. Done on your phone, between jobs, when you should be done for the day.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- HOW IT WORKS -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header centered">
+        <div class="eyebrow reveal">How it works</div>
+        <h2 class="reveal reveal-delay-1">We build it. We run it. You just do the work.</h2>
+      </div>
+      <div class="steps">
+        <div class="step reveal reveal-delay-1">
+          <div class="step-number">1</div>
+          <div class="step-title">We map your gaps</div>
+          <p class="step-body">A free 30-minute call. We look at where enquiries are coming in, how fast you respond, and what's falling through.</p>
+        </div>
+        <div class="step reveal reveal-delay-2">
+          <div class="step-number">2</div>
+          <div class="step-title">We install your AI employee</div>
+          <p class="step-body">Built around your trade and how you actually work. Usually live within two weeks of signing on.</p>
+        </div>
+        <div class="step reveal reveal-delay-3">
+          <div class="step-number">3</div>
+          <div class="step-title">Nothing slips through</div>
+          <p class="step-body">Every lead answered. Every follow-up sent. Every booking confirmed. You see it all on your dashboard.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES SECTION -->
+  <section class="section features-section">
+    <div class="container">
+      <div class="section-header centered">
+        <div class="eyebrow reveal">What gets handled</div>
+        <h2 class="reveal reveal-delay-1">The work that keeps falling through the cracks.</h2>
+      </div>
+      <div class="features-grid">
+        <div class="feature-item reveal reveal-delay-1">
+          <div class="feature-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
+              <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M10 6v4l2.5 2.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="feature-title">After-hours enquiries</div>
+          <p class="feature-desc">Responds to every lead the moment it arrives, 24/7.</p>
+        </div>
+        <div class="feature-item reveal reveal-delay-2">
+          <div class="feature-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
+              <rect x="3" y="4" width="14" height="13" rx="2" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M7 2v4M13 2v4M3 9h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="feature-title">Job booking and scheduling</div>
+          <p class="feature-desc">Qualifies the lead and gets them in the calendar.</p>
+        </div>
+        <div class="feature-item reveal reveal-delay-3">
+          <div class="feature-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
+              <path d="M4 4h12v10H4z" stroke="currentColor" stroke-width="1.5" rx="2"/>
+              <path d="M7 8h6M7 11h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M8 17l2-3 2 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="feature-title">Quote follow-ups</div>
+          <p class="feature-desc">Checks in on outstanding quotes so you don't have to remember.</p>
+        </div>
+        <div class="feature-item reveal reveal-delay-4">
+          <div class="feature-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
+              <path d="M16 4H4a1 1 0 00-1 1v8a1 1 0 001 1h12a1 1 0 001-1V5a1 1 0 00-1-1z" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M3 7l7 5 7-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="feature-title">Booking confirmations</div>
+          <p class="feature-desc">Sends confirmation and reminder messages automatically.</p>
+        </div>
+        <div class="feature-item reveal reveal-delay-5">
+          <div class="feature-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
+              <path d="M10 3a7 7 0 100 14A7 7 0 0010 3z" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M10 7v3l2 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="feature-title">Repeat customer re-engagement</div>
+          <p class="feature-desc">Reaches back out to past customers at the right time.</p>
+        </div>
+        <div class="feature-item reveal reveal-delay-6">
+          <div class="feature-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
+              <path d="M10 18a8 8 0 100-16 8 8 0 000 16z" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M10 9v1M10 13v.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="feature-title">FAQ responses</div>
+          <p class="feature-desc">Answers "how much does it cost", "how quickly can you come", without you picking up the phone.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- INDUSTRIES -->
+  <section class="section industries-section">
+    <div class="container">
+      <div class="eyebrow reveal" style="justify-content:center;">Built for your trade</div>
+      <h2 class="reveal reveal-delay-1" style="text-align:center;max-width:560px;margin:0 auto;">Works across every trade.</h2>
+      <div class="tag-cloud reveal reveal-delay-2">
+        <span class="tag">Plumbing</span>
+        <span class="tag">Electrical</span>
+        <span class="tag">Building</span>
+        <span class="tag">Painting</span>
+        <span class="tag">Concreting</span>
+        <span class="tag">Landscaping</span>
+        <span class="tag">HVAC</span>
+        <span class="tag">Roofing</span>
+        <span class="tag">Tiling</span>
+        <span class="tag">Carpentry</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- OBJECTIONS -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header centered">
+        <div class="eyebrow reveal">Common questions</div>
+        <h2 class="reveal reveal-delay-1">Fair questions. Straight answers.</h2>
+      </div>
+      <div class="objections-grid">
+        <div class="objection-card reveal reveal-delay-1">
+          <div class="objection-q">
+            <span class="objection-q-mark" aria-hidden="true">Q</span>
+            <span>I already have someone who handles calls.</span>
+          </div>
+          <p class="objection-a">Great. This doesn't replace them. It handles the overflow, the after-hours, and the follow-ups they don't have time for.</p>
+        </div>
+        <div class="objection-card reveal reveal-delay-2">
+          <div class="objection-q">
+            <span class="objection-q-mark" aria-hidden="true">Q</span>
+            <span>Won't people know it's AI?</span>
+          </div>
+          <p class="objection-a">Some will, some won't. What they'll know is that someone responded quickly and got them booked. That's what wins the job.</p>
+        </div>
+        <div class="objection-card reveal reveal-delay-3">
+          <div class="objection-q">
+            <span class="objection-q-mark" aria-hidden="true">Q</span>
+            <span>I'm not sure I need this yet.</span>
+          </div>
+          <p class="objection-a">Book the call. If we can't show you a clear gap in your business in 30 minutes, we'll tell you that.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final-cta">
+    <div class="final-cta-glow" aria-hidden="true"></div>
+    <div class="container">
+      <h2 class="reveal">Stop losing jobs to the tradie who replied first.</h2>
+      <p class="final-cta-sub reveal reveal-delay-1">Book a free 30-minute strategy call. We'll show you exactly where the gaps are in your business.</p>
+      <div class="reveal reveal-delay-2">
+        <a href="/strategy-call" class="btn-primary">Book your free Strategy Call</a>
+        <p class="final-cta-note">Mon&ndash;Fri &middot; 8am&ndash;6pm AEST &middot; Google Meet</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <a href="/" class="footer-logo">
+          <div class="footer-logo-mark" aria-hidden="true"></div>
+          <span class="footer-logo-text">Oranga AI</span>
+        </a>
+        <div class="footer-right">
+          <a href="mailto:support@orangaai.com" class="footer-email">support@orangaai.com</a>
+          <span class="footer-copy">&copy; 2025 Oranga AI. All rights reserved.</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Reveal animation via IntersectionObserver
+    (function () {
+      var els = document.querySelectorAll('.reveal');
+
+      if (!window.IntersectionObserver) {
+        els.forEach(function (el) { el.classList.add('is-visible'); });
+        return;
+      }
+
+      var observer = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+      );
+
+      els.forEach(function (el) { observer.observe(el); });
+    })();
+  </script>
+
+
+
+<!-- CHATBOT PANEL -->
+<button id="chatLauncher" aria-label="Book a call">
+  <svg class="icon-chat" viewBox="0 0 24 24" fill="none"><path d="M8 10h8M8 14h5M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <svg class="icon-close" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
+
+<div id="chatPanel" role="dialog" aria-label="Book a Strategy Call">
+  <div class="chat-header">
+    <div class="chat-avatar"></div>
+    <div class="chat-header-info">
+      <div class="chat-header-name">Oranga AI</div>
+      <div class="chat-header-status">Ready to book</div>
+    </div>
+    <button id="chatClose" aria-label="Close chat">
+      <svg viewBox="0 0 16 16" fill="none"><path d="M12 4L4 12M4 4l8 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+  <div id="chatMessages"></div>
+  <div id="chatSuggestions"></div>
+  <form id="chatForm" autocomplete="off">
+    <input id="chatInput" type="text" placeholder="Type your message…" autocomplete="off" />
+    <button type="submit" aria-label="Send">
+      <svg viewBox="0 0 16 16" fill="none"><path d="M14 8H2M14 8L9 3M14 8L9 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </form>
+</div>
+
+
+<script>
+  // Nav scroll border
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 10);
+  }, { passive: true });
+
+  // Reveal on scroll
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(el => observer.observe(el));
+
+  // Chat DOM refs
+  const panel = document.getElementById('chatPanel');
+  const launcher = document.getElementById('chatLauncher');
+  const closeBtn = document.getElementById('chatClose');
+  const messagesEl = document.getElementById('chatMessages');
+  const suggestionsEl = document.getElementById('chatSuggestions');
+  const formEl = document.getElementById('chatForm');
+  const inputEl = document.getElementById('chatInput');
+
+  // ── Knowledge Base ────────────────────────────────────────────────────────
+  const KB = [
+    {
+      keywords: ['hi', 'hello', 'hey', 'howdy', 'greetings', 'kia ora', 'sup', 'yo', 'g day', 'good morning', 'good afternoon', 'good evening'],
+      answer: "Kia ora — I'm Oranga AI's assistant. Ask me about our services, packages, pricing, timelines, or book a free 30-minute strategy call."
+    },
+    {
+      keywords: ['what is oranga', 'who are you', 'what do you do', 'about oranga ai', 'about you', 'what is this', 'tell me about', 'explain what', 'describe what', 'overview', 'summary', 'info', 'information', 'how does oranga', 'what exactly'],
+      answer: "Oranga AI builds and manages AI systems for service businesses. We place dedicated AI employees inside your business to handle leads, follow-ups, and admin around the clock. One live dashboard so you can see everything working. We build it, we run it — you just do the work you're good at."
+    },
+    {
+      keywords: ['oranga', 'maori', 'name mean', 'meaning', 'wellbeing', 'thriving'],
+      answer: "<strong>Oranga</strong> is a Māori word meaning <em>wellbeing</em> and <em>thriving</em>. That's exactly what we build — AI systems that let your business thrive without you burning out running it."
+    },
+    {
+      keywords: ['service', 'services', 'offer', 'what do you build', 'what can you build', 'what do you offer', 'what can you do', 'capabilities', 'build for me', 'help with', 'employees', 'ai employees', 'dedicated', 'workers', 'what would you do', 'what would you build', 'provide'],
+      answer: "We place dedicated AI employees inside your business — they handle lead follow-up, enquiry responses, scheduling, and admin around the clock. You also get a live dashboard showing everything in real time.<br><br>Three monthly plans: Foundation ($2k), Growth ($4.5k), Full Stack ($7.5k). One-time setup of $1,500–$3,000. We confirm the setup cost on your strategy call."
+    },
+    {
+      keywords: ['package', 'packages', 'foundation', 'full stack', 'tier', 'plan', 'plans', 'monthly plan', 'which plan', 'options', 'compare', 'included', 'subscription', 'retainer', 'monthly fee', 'per month'],
+      answer: "Three monthly plans:<br><br><strong>Foundation — $2,000/month.</strong> 1–2 dedicated AI employees, live dashboard, lead follow-up and enquiry automation, monthly check-in.<br><strong>Growth — $4,500/month</strong> (recommended). 3–5 employees, full dashboard with reporting, all handled, monthly strategy call.<br><strong>Full Stack — $7,500/month.</strong> Unlimited employees, custom dashboard, everything handled, priority support.<br><br>All plans include a one-time setup fee of $1,500–$3,000."
+    },
+    {
+      keywords: ['process', 'how do you work', 'how does it work', 'steps', 'how it works', 'onboard', 'onboarding', 'what happens', 'what happens next', 'after i sign up'],
+      answer: "Three steps:<br><br><strong>01 · Audit</strong> — we map your ops and find where leads, time, and revenue are leaking.<br><strong>02 · Build</strong> — we create the systems for the way you actually work.<br><strong>03 · Automate &amp; Optimise</strong> — we connect everything and keep improving until it pays for itself."
+    },
+    {
+      keywords: ['how long', 'timeline', 'how many weeks', 'duration', 'time to build', 'how soon', 'how fast', 'speed', 'delivery'],
+      answer: "Timelines depend on scope, but we move in weeks not months. We share a concrete timeline after the strategy call once we've mapped what you actually need."
+    },
+    {
+      keywords: ['price', 'pricing', 'cost', 'how much', 'rate', 'fee', 'budget', 'monthly', 'pay', 'payment', 'charge', 'invest', 'investment', 'affordable', 'worth it', 'total', 'setup fee'],
+      answer: "Monthly retainer plans:<br><br>• <strong>Foundation — $2,000/month</strong> (1–2 AI employees)<br>• <strong>Growth — $4,500/month</strong> (3–5 AI employees, recommended)<br>• <strong>Full Stack — $7,500/month</strong> (unlimited employees)<br><br>All plans include a one-time setup fee of $1,500–$3,000. Exact quote confirmed on your free strategy call."
+    },
+    {
+      keywords: ['contract', 'lock', 'locked in', 'cancel', 'cancellation', 'commitment', 'exit', 'stop', 'flexible', 'lock-in', 'no contract'],
+      answer: "No lock-in contracts. Month to month. If it's not working, we'd rather know and fix it."
+    },
+    {
+      keywords: ['who is this for', 'right fit', 'industry', 'clients', 'who do you work with', 'tradie', 'tradies', 'dental', 'cleaning', 'small business', 'for me', 'my business', 'business type'],
+      answer: "We work with tradespeople, dental clinics, cleaning businesses, coaches, consultants, and service operators. Best fit: owner-operators who are great at their work but stretched thin on admin and lead follow-up."
+    },
+    {
+      keywords: ['book', 'call', 'meeting', 'consultation', 'demo', 'schedule', 'speak to', 'talk', 'get started', 'start today', 'sign up', 'join', 'ready', 'interested', 'strategy call', 'keen'],
+      answer: "Book a free 30-minute strategy call — we go through your business, find the biggest gaps, and show you exactly what we'd build.<br><br><button type='button' onclick='if(window.startBookingFlow)window.startBookingFlow()' style='background:#5DDBA9;color:#000;border:none;padding:8px 18px;border-radius:20px;font-weight:700;cursor:pointer;font-size:14px;'>📅 Pick a time</button>"
+    },
+    {
+      keywords: ['contact', 'email', 'reach', 'get in touch', 'support'],
+      answer: "Book a free strategy call via the chat, or email <a href='mailto:support@orangaai.com'>support@orangaai.com</a>."
+    },
+    {
+      keywords: ['voice', 'receptionist', 'phone', 'call answer', 'answering', '24 7', 'ai phone', 'ai voice', 'missed calls', 'pick up'],
+      answer: "Phone answering, call handling, and booking is part of what our AI employees do — 24/7, in your business name, qualifying leads and getting them into your calendar."
+    },
+    {
+      keywords: ['why oranga', 'why you', 'different', 'unique', 'competitors', 'better than', 'stand out'],
+      answer: "(1) We don't sell software — we <em>build and manage</em> the systems.<br>(2) We measure success in revenue earned and hours saved.<br>(3) No tech skills required on your end."
+    },
+    {
+      keywords: ['result', 'outcome', 'roi', 'guarantee', 'success', 'proof', 'case study', 'worked', 'saved', 'earned', 'revenue'],
+      answer: "Every system is built to increase revenue or reduce manual work. The strategy call is where we show you the gap in your business and what fixing it is worth."
+    },
+    {
+      keywords: ['ai', 'artificial intelligence', 'llm', 'gpt', 'claude', 'technology', 'tech', 'model', 'chatgpt'],
+      answer: "AI is the core of what we do — voice agents, dashboard agents, follow-up automation, all powered by current-generation models. The goal is never AI for its own sake — it's your business running as a system."
+    }
+  ];
+
+  const SUGGESTIONS = [
+    "What services do you offer?",
+    "How does your process work?",
+    "How much does it cost?",
+    "Book a call"
+  ];
+
+  // ── Q&A helpers ───────────────────────────────────────────────────────────
+  function addMessage(text, who, opts = {}) {
+    const msg = document.createElement('div');
+    msg.className = 'msg ' + who;
+    if (opts.html) msg.innerHTML = text;
+    else msg.textContent = text;
+    messagesEl.appendChild(msg);
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+    return msg;
+  }
+
+  function showTyping() {
+    const t = document.createElement('div');
+    t.className = 'msg bot typing';
+    t.innerHTML = '<span></span><span></span><span></span>';
+    messagesEl.appendChild(t);
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+    return t;
+  }
+
+  function renderSuggestions(list) {
+    suggestionsEl.innerHTML = '';
+    list.forEach((q) => {
+      const chip = document.createElement('button');
+      chip.className = 'suggestion-chip';
+      chip.type = 'button';
+      chip.textContent = q;
+      chip.addEventListener('click', () => {
+        if (q === 'Book a call' && typeof window.startBookingFlow === 'function') {
+          suggestionsEl.innerHTML = '';
+          window.startBookingFlow();
+          return;
+        }
+        handleUserMessage(q);
+        suggestionsEl.innerHTML = '';
+      });
+      suggestionsEl.appendChild(chip);
+    });
+  }
+
+  function findAnswer(query) {
+    const q = ' ' + query.toLowerCase().replace(/[^\w\s]/g, ' ').replace(/\s+/g, ' ').trim() + ' ';
+    let best = null, bestScore = 0;
+    KB.forEach((entry) => {
+      let score = 0;
+      entry.keywords.forEach((kw) => {
+        const k = kw.toLowerCase();
+        if (q.includes(' ' + k + ' ')) score += 10 + k.length * 0.5;
+        else if (q.includes(k)) score += 4 + k.length * 0.2;
+      });
+      if (score > bestScore) { bestScore = score; best = entry; }
+    });
+    return bestScore >= 3 ? best.answer : null;
+  }
+
+  function handleUserMessage(text) {
+    const trimmed = text.trim();
+    if (!trimmed) return;
+    addMessage(trimmed, 'user');
+    inputEl.value = '';
+    const typing = showTyping();
+    const delay = 400 + Math.min(800, trimmed.length * 12);
+    setTimeout(() => {
+      typing.remove();
+      const answer = findAnswer(trimmed);
+      if (answer) {
+        addMessage(answer, 'bot', { html: true });
+      } else {
+        addMessage(
+          "I don't have a clean answer for that one — but our team will. Book a call or email <a href='mailto:support@orangaai.com'>support@orangaai.com</a>. Or try one of these:",
+          'bot', { html: true }
+        );
+        renderSuggestions(SUGGESTIONS);
+      }
+    }, delay);
+  }
+
+  // ── Chat panel controls ───────────────────────────────────────────────────
+  function openChat() {
+    panel.classList.add('open');
+    launcher.classList.add('open');
+    inputEl.focus();
+    if (!messagesEl.dataset.greeted) {
+      messagesEl.dataset.greeted = '1';
+      setTimeout(() => {
+        addMessage(
+          "Kia ora — I'm Oranga AI's assistant. Ask me anything, or book your free 30-minute strategy call.",
+          'bot', { html: true }
+        );
+        renderSuggestions(SUGGESTIONS);
+      }, 240);
+    }
+  }
+
+  function closeChat() {
+    panel.classList.remove('open');
+    launcher.classList.remove('open');
+  }
+
+  // CTA button — opens chat and goes straight to booking
+  function openBookingChat() {
+    openChat();
+    setTimeout(function() {
+      if (typeof window.startBookingFlow === 'function') {
+        // Clear any greeting and jump straight to booking
+        messagesEl.innerHTML = '';
+        messagesEl.dataset.greeted = '1';
+        suggestionsEl.innerHTML = '';
+        window.startBookingFlow();
+      }
+    }, 120);
+  }
+
+  // ── Form submit — Q&A handler (booking-chatbot.js intercepts booking steps) ─
+  formEl.addEventListener('submit', function(e) {
+    // booking-chatbot.js uses capture-phase, so it fires first and
+    // stopPropagates when in an active booking flow.
+    // This handler only runs when the booking chatbot lets it through.
+    const text = inputEl.value.trim();
+    if (!text) return;
+    e.preventDefault();
+    handleUserMessage(text);
+  });
+
+  launcher.addEventListener('click', () => {
+    if (panel.classList.contains('open')) closeChat();
+    else openChat();
+  });
+  closeBtn.addEventListener('click', closeChat);
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && panel.classList.contains('open')) closeChat();
+  });
+</script>
+
+<script src="/booking-chatbot.js" defer></script>
+
+
+</body>

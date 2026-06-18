@@ -344,6 +344,136 @@
     .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.6s var(--ease), transform 0.6s var(--ease); }
     .reveal.visible { opacity: 1; transform: none; }
   }
+  /* CHATBOT PANEL — copied 1:1 from index.html */
+  #chatLauncher {
+    position: fixed; bottom: 24px; right: 24px; z-index: 100;
+    width: 56px; height: 56px; border-radius: 50%;
+    background: var(--mint); color: #0A1A14;
+    border: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 20px rgba(93,219,169,0.4);
+    transition: all 0.3s var(--ease);
+  }
+  #chatLauncher:hover { transform: scale(1.08); box-shadow: 0 6px 28px rgba(93,219,169,0.55); }
+  #chatLauncher svg { width: 24px; height: 24px; transition: all 0.3s var(--ease); }
+  #chatLauncher.open svg.icon-chat { display: none; }
+  #chatLauncher.open svg.icon-close { display: block !important; }
+  #chatLauncher svg.icon-close { display: none; }
+
+  #chatPanel {
+    position: fixed; bottom: 92px; right: 24px; z-index: 100;
+    width: min(380px, calc(100vw - 32px));
+    height: min(560px, calc(100vh - 120px));
+    background: var(--bg-elev);
+    border: 1px solid var(--border-strong);
+    border-radius: 20px;
+    box-shadow: 0 24px 64px rgba(0,0,0,0.6), 0 0 0 1px rgba(93,219,169,0.08);
+    display: flex; flex-direction: column; overflow: hidden;
+    opacity: 0; pointer-events: none; transform: translateY(16px) scale(0.97);
+    transform-origin: bottom right;
+    transition: opacity 0.3s var(--ease), transform 0.3s var(--ease);
+  }
+  #chatPanel.open { opacity: 1; pointer-events: all; transform: translateY(0) scale(1); }
+
+  .chat-header {
+    display: flex; align-items: center; gap: 12px;
+    padding: 16px 18px; border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+  .chat-avatar {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: var(--mint-glow); border: 1px solid var(--border-mint);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; flex-shrink: 0; overflow: hidden;
+    background-image: url('/images/o_mark.jpg');
+    background-size: cover; background-position: center;
+  }
+  .chat-header-info { flex: 1; }
+  .chat-header-name { font-size: 0.875rem; font-weight: 600; }
+  .chat-header-status {
+    display: flex; align-items: center; gap: 5px;
+    font-size: 0.75rem; color: var(--text-muted);
+  }
+  .chat-header-status::before {
+    content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--mint);
+  }
+  #chatClose {
+    background: none; border: none; cursor: pointer;
+    color: var(--text-muted); padding: 4px;
+    display: flex; transition: color 0.2s;
+  }
+  #chatClose:hover { color: var(--text); }
+  #chatClose svg { width: 16px; height: 16px; }
+
+  #chatMessages {
+    flex: 1; overflow-y: auto; padding: 16px;
+    display: flex; flex-direction: column; gap: 8px;
+    scrollbar-width: thin; scrollbar-color: var(--border) transparent;
+  }
+  .msg {
+    max-width: 82%; padding: 10px 14px; border-radius: 16px;
+    font-size: 0.875rem; line-height: 1.55; word-break: break-word;
+  }
+  .msg.bot {
+    background: var(--bg-overlay); border: 1px solid var(--border);
+    align-self: flex-start; border-bottom-left-radius: 4px;
+  }
+  .msg.user {
+    background: var(--mint); color: #0A1A14; font-weight: 500;
+    align-self: flex-end; border-bottom-right-radius: 4px;
+    max-width: 76%;
+  }
+  .msg.typing { background: var(--bg-overlay); border: 1px solid var(--border); align-self: flex-start; border-bottom-left-radius: 4px; }
+  .msg.typing span {
+    display: inline-block; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--text-muted); margin: 0 2px;
+    animation: typingDot 1.2s infinite;
+  }
+  .msg.typing span:nth-child(2) { animation-delay: 0.2s; }
+  .msg.typing span:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes typingDot {
+    0%,60%,100% { transform: translateY(0); opacity: 0.4; }
+    30% { transform: translateY(-4px); opacity: 1; }
+  }
+
+  #chatSuggestions {
+    display: flex; flex-wrap: wrap; gap: 6px;
+    padding: 8px 16px 0; flex-shrink: 0;
+  }
+  .suggestion-chip {
+    background: var(--bg-overlay); border: 1px solid var(--border-strong);
+    color: var(--text); font-family: var(--sans); font-size: 0.8rem;
+    padding: 6px 12px; border-radius: 980px; cursor: pointer;
+    transition: all 0.15s; white-space: nowrap;
+  }
+  .suggestion-chip:hover { background: var(--bg-overlay-hover); border-color: var(--border-mint); color: var(--mint); }
+
+  #chatForm {
+    display: flex; gap: 8px; padding: 12px 16px;
+    border-top: 1px solid var(--border); flex-shrink: 0; background: var(--bg-elev);
+  }
+  #chatInput {
+    flex: 1; background: var(--bg-overlay); border: 1px solid var(--border);
+    border-radius: 980px; color: var(--text); font-family: var(--sans);
+    font-size: 0.875rem; padding: 9px 16px; outline: none;
+    transition: border-color 0.2s;
+  }
+  #chatInput:focus { border-color: var(--border-mint); }
+  #chatInput::placeholder { color: var(--text-faint); }
+  #chatForm button[type="submit"] {
+    width: 36px; height: 36px; border-radius: 50%; flex-shrink: 0;
+    background: var(--mint); border: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.2s var(--ease);
+  }
+  #chatForm button[type="submit"]:hover { background: var(--mint-bright); transform: scale(1.05); }
+  #chatForm button[type="submit"] svg { width: 16px; height: 16px; color: #0A1A14; }
+
+  /* Scroll nav border */
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s var(--ease), transform 0.6s var(--ease); }
+    .reveal.visible { opacity: 1; transform: none; }
+  }
 </style>
 </head>
 <body>
@@ -523,20 +653,269 @@
   </div>
 </footer>
 
+
+<!-- CHATBOT PANEL -->
+<button id="chatLauncher" aria-label="Book a call">
+  <svg class="icon-chat" viewBox="0 0 24 24" fill="none"><path d="M8 10h8M8 14h5M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <svg class="icon-close" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
+
+<div id="chatPanel" role="dialog" aria-label="Book a Strategy Call">
+  <div class="chat-header">
+    <div class="chat-avatar"></div>
+    <div class="chat-header-info">
+      <div class="chat-header-name">Oranga AI</div>
+      <div class="chat-header-status">Ready to book</div>
+    </div>
+    <button id="chatClose" aria-label="Close chat">
+      <svg viewBox="0 0 16 16" fill="none"><path d="M12 4L4 12M4 4l8 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+  <div id="chatMessages"></div>
+  <div id="chatSuggestions"></div>
+  <form id="chatForm" autocomplete="off">
+    <input id="chatInput" type="text" placeholder="Type your message…" autocomplete="off" />
+    <button type="submit" aria-label="Send">
+      <svg viewBox="0 0 16 16" fill="none"><path d="M14 8H2M14 8L9 3M14 8L9 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </form>
+</div>
+
+
 <script>
+  // Nav scroll border
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 10);
   }, { passive: true });
 
+  // Reveal on scroll
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
-    });
-  }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
   reveals.forEach(el => observer.observe(el));
+
+  // Chat DOM refs
+  const panel = document.getElementById('chatPanel');
+  const launcher = document.getElementById('chatLauncher');
+  const closeBtn = document.getElementById('chatClose');
+  const messagesEl = document.getElementById('chatMessages');
+  const suggestionsEl = document.getElementById('chatSuggestions');
+  const formEl = document.getElementById('chatForm');
+  const inputEl = document.getElementById('chatInput');
+
+  // ── Knowledge Base ────────────────────────────────────────────────────────
+  const KB = [
+    {
+      keywords: ['hi', 'hello', 'hey', 'howdy', 'greetings', 'kia ora', 'sup', 'yo', 'g day', 'good morning', 'good afternoon', 'good evening'],
+      answer: "Kia ora — I'm Oranga AI's assistant. Ask me about our services, packages, pricing, timelines, or book a free 30-minute strategy call."
+    },
+    {
+      keywords: ['what is oranga', 'who are you', 'what do you do', 'about oranga ai', 'about you', 'what is this', 'tell me about', 'explain what', 'describe what', 'overview', 'summary', 'info', 'information', 'how does oranga', 'what exactly'],
+      answer: "Oranga AI builds and manages AI systems for service businesses. We place dedicated AI employees inside your business to handle leads, follow-ups, and admin around the clock. One live dashboard so you can see everything working. We build it, we run it — you just do the work you're good at."
+    },
+    {
+      keywords: ['oranga', 'maori', 'name mean', 'meaning', 'wellbeing', 'thriving'],
+      answer: "<strong>Oranga</strong> is a Māori word meaning <em>wellbeing</em> and <em>thriving</em>. That's exactly what we build — AI systems that let your business thrive without you burning out running it."
+    },
+    {
+      keywords: ['service', 'services', 'offer', 'what do you build', 'what can you build', 'what do you offer', 'what can you do', 'capabilities', 'build for me', 'help with', 'employees', 'ai employees', 'dedicated', 'workers', 'what would you do', 'what would you build', 'provide'],
+      answer: "We place dedicated AI employees inside your business — they handle lead follow-up, enquiry responses, scheduling, and admin around the clock. You also get a live dashboard showing everything in real time.<br><br>Three monthly plans: Foundation ($2k), Growth ($4.5k), Full Stack ($7.5k). One-time setup of $1,500–$3,000. We confirm the setup cost on your strategy call."
+    },
+    {
+      keywords: ['package', 'packages', 'foundation', 'full stack', 'tier', 'plan', 'plans', 'monthly plan', 'which plan', 'options', 'compare', 'included', 'subscription', 'retainer', 'monthly fee', 'per month'],
+      answer: "Three monthly plans:<br><br><strong>Foundation — $2,000/month.</strong> 1–2 dedicated AI employees, live dashboard, lead follow-up and enquiry automation, monthly check-in.<br><strong>Growth — $4,500/month</strong> (recommended). 3–5 employees, full dashboard with reporting, all handled, monthly strategy call.<br><strong>Full Stack — $7,500/month.</strong> Unlimited employees, custom dashboard, everything handled, priority support.<br><br>All plans include a one-time setup fee of $1,500–$3,000."
+    },
+    {
+      keywords: ['process', 'how do you work', 'how does it work', 'steps', 'how it works', 'onboard', 'onboarding', 'what happens', 'what happens next', 'after i sign up'],
+      answer: "Three steps:<br><br><strong>01 · Audit</strong> — we map your ops and find where leads, time, and revenue are leaking.<br><strong>02 · Build</strong> — we create the systems for the way you actually work.<br><strong>03 · Automate &amp; Optimise</strong> — we connect everything and keep improving until it pays for itself."
+    },
+    {
+      keywords: ['how long', 'timeline', 'how many weeks', 'duration', 'time to build', 'how soon', 'how fast', 'speed', 'delivery'],
+      answer: "Timelines depend on scope, but we move in weeks not months. We share a concrete timeline after the strategy call once we've mapped what you actually need."
+    },
+    {
+      keywords: ['price', 'pricing', 'cost', 'how much', 'rate', 'fee', 'budget', 'monthly', 'pay', 'payment', 'charge', 'invest', 'investment', 'affordable', 'worth it', 'total', 'setup fee'],
+      answer: "Monthly retainer plans:<br><br>• <strong>Foundation — $2,000/month</strong> (1–2 AI employees)<br>• <strong>Growth — $4,500/month</strong> (3–5 AI employees, recommended)<br>• <strong>Full Stack — $7,500/month</strong> (unlimited employees)<br><br>All plans include a one-time setup fee of $1,500–$3,000. Exact quote confirmed on your free strategy call."
+    },
+    {
+      keywords: ['contract', 'lock', 'locked in', 'cancel', 'cancellation', 'commitment', 'exit', 'stop', 'flexible', 'lock-in', 'no contract'],
+      answer: "No lock-in contracts. Month to month. If it's not working, we'd rather know and fix it."
+    },
+    {
+      keywords: ['who is this for', 'right fit', 'industry', 'clients', 'who do you work with', 'tradie', 'tradies', 'dental', 'cleaning', 'small business', 'for me', 'my business', 'business type'],
+      answer: "We work with tradespeople, dental clinics, cleaning businesses, coaches, consultants, and service operators. Best fit: owner-operators who are great at their work but stretched thin on admin and lead follow-up."
+    },
+    {
+      keywords: ['book', 'call', 'meeting', 'consultation', 'demo', 'schedule', 'speak to', 'talk', 'get started', 'start today', 'sign up', 'join', 'ready', 'interested', 'strategy call', 'keen'],
+      answer: "Book a free 30-minute strategy call — we go through your business, find the biggest gaps, and show you exactly what we'd build.<br><br><button type='button' onclick='if(window.startBookingFlow)window.startBookingFlow()' style='background:#5DDBA9;color:#000;border:none;padding:8px 18px;border-radius:20px;font-weight:700;cursor:pointer;font-size:14px;'>📅 Pick a time</button>"
+    },
+    {
+      keywords: ['contact', 'email', 'reach', 'get in touch', 'support'],
+      answer: "Book a free strategy call via the chat, or email <a href='mailto:support@orangaai.com'>support@orangaai.com</a>."
+    },
+    {
+      keywords: ['voice', 'receptionist', 'phone', 'call answer', 'answering', '24 7', 'ai phone', 'ai voice', 'missed calls', 'pick up'],
+      answer: "Phone answering, call handling, and booking is part of what our AI employees do — 24/7, in your business name, qualifying leads and getting them into your calendar."
+    },
+    {
+      keywords: ['why oranga', 'why you', 'different', 'unique', 'competitors', 'better than', 'stand out'],
+      answer: "(1) We don't sell software — we <em>build and manage</em> the systems.<br>(2) We measure success in revenue earned and hours saved.<br>(3) No tech skills required on your end."
+    },
+    {
+      keywords: ['result', 'outcome', 'roi', 'guarantee', 'success', 'proof', 'case study', 'worked', 'saved', 'earned', 'revenue'],
+      answer: "Every system is built to increase revenue or reduce manual work. The strategy call is where we show you the gap in your business and what fixing it is worth."
+    },
+    {
+      keywords: ['ai', 'artificial intelligence', 'llm', 'gpt', 'claude', 'technology', 'tech', 'model', 'chatgpt'],
+      answer: "AI is the core of what we do — voice agents, dashboard agents, follow-up automation, all powered by current-generation models. The goal is never AI for its own sake — it's your business running as a system."
+    }
+  ];
+
+  const SUGGESTIONS = [
+    "What services do you offer?",
+    "How does your process work?",
+    "How much does it cost?",
+    "Book a call"
+  ];
+
+  // ── Q&A helpers ───────────────────────────────────────────────────────────
+  function addMessage(text, who, opts = {}) {
+    const msg = document.createElement('div');
+    msg.className = 'msg ' + who;
+    if (opts.html) msg.innerHTML = text;
+    else msg.textContent = text;
+    messagesEl.appendChild(msg);
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+    return msg;
+  }
+
+  function showTyping() {
+    const t = document.createElement('div');
+    t.className = 'msg bot typing';
+    t.innerHTML = '<span></span><span></span><span></span>';
+    messagesEl.appendChild(t);
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+    return t;
+  }
+
+  function renderSuggestions(list) {
+    suggestionsEl.innerHTML = '';
+    list.forEach((q) => {
+      const chip = document.createElement('button');
+      chip.className = 'suggestion-chip';
+      chip.type = 'button';
+      chip.textContent = q;
+      chip.addEventListener('click', () => {
+        if (q === 'Book a call' && typeof window.startBookingFlow === 'function') {
+          suggestionsEl.innerHTML = '';
+          window.startBookingFlow();
+          return;
+        }
+        handleUserMessage(q);
+        suggestionsEl.innerHTML = '';
+      });
+      suggestionsEl.appendChild(chip);
+    });
+  }
+
+  function findAnswer(query) {
+    const q = ' ' + query.toLowerCase().replace(/[^\w\s]/g, ' ').replace(/\s+/g, ' ').trim() + ' ';
+    let best = null, bestScore = 0;
+    KB.forEach((entry) => {
+      let score = 0;
+      entry.keywords.forEach((kw) => {
+        const k = kw.toLowerCase();
+        if (q.includes(' ' + k + ' ')) score += 10 + k.length * 0.5;
+        else if (q.includes(k)) score += 4 + k.length * 0.2;
+      });
+      if (score > bestScore) { bestScore = score; best = entry; }
+    });
+    return bestScore >= 3 ? best.answer : null;
+  }
+
+  function handleUserMessage(text) {
+    const trimmed = text.trim();
+    if (!trimmed) return;
+    addMessage(trimmed, 'user');
+    inputEl.value = '';
+    const typing = showTyping();
+    const delay = 400 + Math.min(800, trimmed.length * 12);
+    setTimeout(() => {
+      typing.remove();
+      const answer = findAnswer(trimmed);
+      if (answer) {
+        addMessage(answer, 'bot', { html: true });
+      } else {
+        addMessage(
+          "I don't have a clean answer for that one — but our team will. Book a call or email <a href='mailto:support@orangaai.com'>support@orangaai.com</a>. Or try one of these:",
+          'bot', { html: true }
+        );
+        renderSuggestions(SUGGESTIONS);
+      }
+    }, delay);
+  }
+
+  // ── Chat panel controls ───────────────────────────────────────────────────
+  function openChat() {
+    panel.classList.add('open');
+    launcher.classList.add('open');
+    inputEl.focus();
+    if (!messagesEl.dataset.greeted) {
+      messagesEl.dataset.greeted = '1';
+      setTimeout(() => {
+        addMessage(
+          "Kia ora — I'm Oranga AI's assistant. Ask me anything, or book your free 30-minute strategy call.",
+          'bot', { html: true }
+        );
+        renderSuggestions(SUGGESTIONS);
+      }, 240);
+    }
+  }
+
+  function closeChat() {
+    panel.classList.remove('open');
+    launcher.classList.remove('open');
+  }
+
+  // CTA button — opens chat and goes straight to booking
+  function openBookingChat() {
+    openChat();
+    setTimeout(function() {
+      if (typeof window.startBookingFlow === 'function') {
+        // Clear any greeting and jump straight to booking
+        messagesEl.innerHTML = '';
+        messagesEl.dataset.greeted = '1';
+        suggestionsEl.innerHTML = '';
+        window.startBookingFlow();
+      }
+    }, 120);
+  }
+
+  // ── Form submit — Q&A handler (booking-chatbot.js intercepts booking steps) ─
+  formEl.addEventListener('submit', function(e) {
+    // booking-chatbot.js uses capture-phase, so it fires first and
+    // stopPropagates when in an active booking flow.
+    // This handler only runs when the booking chatbot lets it through.
+    const text = inputEl.value.trim();
+    if (!text) return;
+    e.preventDefault();
+    handleUserMessage(text);
+  });
+
+  launcher.addEventListener('click', () => {
+    if (panel.classList.contains('open')) closeChat();
+    else openChat();
+  });
+  closeBtn.addEventListener('click', closeChat);
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && panel.classList.contains('open')) closeChat();
+  });
 </script>
+
+<script src="/booking-chatbot.js" defer></script>
+
 
 </body>
 </html>
