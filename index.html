@@ -1555,10 +1555,10 @@
       <span class="logo-mark"></span>
       <span>Oranga AI</span>
     </a>
-    <button onclick="openChat()" class="btn btn-primary">
+    <a href="/strategy-call" class="btn btn-primary">
       Book a Call
       <svg class="arrow" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </button>
+    </a>
   </div>
 </nav>
 
@@ -1974,6 +1974,11 @@
       chip.type = 'button';
       chip.textContent = q;
       chip.addEventListener('click', () => {
+        if (q === 'Book a call' && typeof window.startBookingFlow === 'function') {
+          suggestionsEl.innerHTML = '';
+          window.startBookingFlow();
+          return;
+        }
         handleUserMessage(q);
         suggestionsEl.innerHTML = '';
       });
