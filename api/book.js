@@ -1,5 +1,5 @@
 // api/book.js
-// Creates a Google Calendar event with a Meet link.
+// Creates a Google Calendar event with a Meet link + sends pre-call prep email.
 // POST /api/book  { startISO, endISO, name, email, phone? }
 
 const { google } = require('googleapis');
@@ -18,6 +18,13 @@ function localToUtc(isoDate, hour, min = 0) {
     ...isoDate.split('-').map((v, i) => i === 1 ? Number(v) - 1 : Number(v)),
     hour - 10, min
   ));
+}
+
+function formatCallTime(isoStr) {
+  const d = new Date(isoStr);
+  const date = d.toLocaleDateString('en-AU', { timeZone: TZ, weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+  const time = d.toLocaleTimeString('en-AU', { timeZone: TZ, hour: 'numeric', minute: '2-digit', hour12: true }).toUpperCase();
+  return { date, time };
 }
 
 const SLOT_MIN   = 30;
@@ -59,12 +66,65 @@ function computeSlots(isoDate, busy) {
   return slots;
 }
 
-function getCalendarClient() {
+function getGoogleAuth() {
   const { GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, GOOGLE_REFRESH_TOKEN } = process.env;
   if (!GOOGLE_CLIENT_ID || !GOOGLE_CLIENT_SECRET || !GOOGLE_REFRESH_TOKEN) return null;
   const auth = new google.auth.OAuth2(GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET);
   auth.setCredentials({ refresh_token: GOOGLE_REFRESH_TOKEN });
+  return auth;
+}
+
+function getCalendarClient(auth) {
   return google.calendar({ version: 'v3', auth });
+}
+
+// Send pre-call prep email via Gmail API (non-blocking — failure does not affect booking)
+async function sendPrepEmail(auth, { toName, toEmail, callDate, callTime, meetLink }) {
+  try {
+    const gmail = google.gmail({ version: 'v1', auth });
+    const fromEmail = process.env.HOST_EMAIL || 'eruosborne@orangaai.com';
+    const fromName  = process.env.HOST_NAME  || 'Eru Osborne';
+
+    const subject = `Your Oranga AI strategy call is booked`;
+    const body = [
+      `Hey ${toName.split(' ')[0]},`,
+      ``,
+      `Your 30-minute strategy call with Eru is booked for ${callDate} at ${callTime} AEST.`,
+      ``,
+      meetLink ? `Google Meet link: ${meetLink}` : `A Google Meet link is in your calendar invite.`,
+      ``,
+      `Before the call, it would help to have a rough answer to these three things:`,
+      ``,
+      `1. Where are most of your leads coming from right now? (phone, website, Instagram, referrals, etc.)`,
+      `2. What is your current response time — how quickly do leads typically hear from you?`,
+      `3. What is the biggest admin or follow-up task that eats into your time each week?`,
+      ``,
+      `You do not need to prepare a presentation or bring anything formal. These questions just help me get straight to the useful parts.`,
+      ``,
+      `See you on ${callDate.split(',')[0]}.`,
+      ``,
+      `Eru Osborne`,
+      `Founder, Oranga AI`,
+      `eruosborne@orangaai.com`,
+      `orangaai.com`,
+    ].join('\n');
+
+    const message = [
+      `From: "${fromName}" <${fromEmail}>`,
+      `To: "${toName}" <${toEmail}>`,
+      `Subject: ${subject}`,
+      `Content-Type: text/plain; charset=utf-8`,
+      ``,
+      body,
+    ].join('\n');
+
+    const encoded = Buffer.from(message).toString('base64').replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+    await gmail.users.messages.send({ userId: 'me', requestBody: { raw: encoded } });
+    console.log('[book.js] Prep email sent to', toEmail);
+  } catch (err) {
+    // Non-blocking: log but do not fail the booking
+    console.error('[book.js] Prep email failed (non-fatal):', err.message);
+  }
 }
 
 async function parseBody(req) {
@@ -95,8 +155,9 @@ module.exports = async function handler(req, res) {
   const dateErr = validateDate(isoDate);
   if (dateErr) return res.status(400).json({ error: dateErr });
 
-  const cal = getCalendarClient();
-  if (!cal) return res.status(503).json({ error: 'Booking is not configured yet. Check back soon.' });
+  const auth = getGoogleAuth();
+  if (!auth) return res.status(503).json({ error: 'Booking is not configured yet. Check back soon.' });
+  const cal = getCalendarClient(auth);
 
   // Race-safe: re-check slot is still open.
   let busy = [];
@@ -120,7 +181,7 @@ module.exports = async function handler(req, res) {
 
   // Create the event.
   const description = [
-    'Intro call booked via Oranga AI website.',
+    'Strategy call booked via Oranga AI website.',
     '',
     `Name: ${name.trim()}`,
     `Email: ${email.trim()}`,
@@ -133,7 +194,7 @@ module.exports = async function handler(req, res) {
       conferenceDataVersion: 1,
       sendUpdates: 'all',
       requestBody: {
-        summary: `Intro call: ${name.trim()}`,
+        summary: `Strategy call: ${name.trim()}`,
         description,
         start: { dateTime: startISO, timeZone: TZ },
         end:   { dateTime: endISO,   timeZone: TZ },
@@ -155,6 +216,11 @@ module.exports = async function handler(req, res) {
     });
 
     const meetLink = event.data.conferenceData?.entryPoints?.find(e => e.entryPointType === 'video')?.uri ?? null;
+
+    // Fire prep email — non-blocking, does not affect the booking response
+    const { date: callDate, time: callTime } = formatCallTime(startISO);
+    sendPrepEmail(auth, { toName: name.trim(), toEmail: email.trim(), callDate, callTime, meetLink });
+
     return res.status(200).json({ ok: true, meetLink, eventLink: event.data.htmlLink });
   } catch (e) {
     console.error('event insert error', e.message);
