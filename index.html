@@ -3,1561 +3,67 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Oranga AI — The operating system for your business</title>
-<meta name="description" content="Oranga AI builds the operating system for your business, dedicated employees and a live dashboard, set up and managed for you.">
+<title>Oranga Core — the AI operating system behind your business | Oranga AI</title>
+<meta name="description" content="Oranga Core is an AI operating system for small service businesses. It knows your business, does the routine work every day, and never acts alone on anything that matters. Built and installed by Oranga AI.">
+<link rel="canonical" href="https://orangaai.com/">
+
+<!-- Open Graph / Twitter -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Oranga AI">
+<meta property="og:title" content="Oranga Core — the AI operating system behind your business">
+<meta property="og:description" content="It knows your business, does the routine work, and never acts alone on anything that matters. Built, installed and tuned for you.">
+<meta property="og:url" content="https://orangaai.com/">
+<meta property="og:image" content="https://orangaai.com/images/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Oranga Core — the AI operating system behind your business">
+<meta name="twitter:description" content="It knows your business, does the routine work, and never acts alone on anything that matters.">
+<meta name="twitter:image" content="https://orangaai.com/images/og.png">
+
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
 <link rel="icon" type="image/jpeg" href="/images/o_mark.jpg">
+<meta name="theme-color" content="#F7F5F0">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;450;500;600;700;800&display=swap" rel="stylesheet">
-<style>
-  :root {
-    /* Dark palette */
-    --bg: #0A0B0E;
-    --bg-elev: #131419;
-    --bg-overlay: rgba(255, 255, 255, 0.03);
-    --bg-overlay-hover: rgba(255, 255, 255, 0.06);
-    --border: rgba(255, 255, 255, 0.08);
-    --border-strong: rgba(255, 255, 255, 0.14);
-    --border-mint: rgba(93, 219, 169, 0.22);
-    --text: #F5F5F7;
-    --text-muted: #86868B;
-    --text-faint: #5A5A60;
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
 
-    /* Light section palette */
-    --bg-light: #F5F5F7;
-    --bg-light-elev: #FFFFFF;
-    --border-light: rgba(0, 0, 0, 0.08);
-    --border-light-strong: rgba(0, 0, 0, 0.14);
-    --text-on-light: #1D1D1F;
-    --text-on-light-muted: #6E6E73;
-    --text-on-light-faint: #86868B;
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Oranga AI",
+  "description": "Oranga AI installs Oranga Core, an AI operating system for small owner-operated service businesses.",
+  "url": "https://orangaai.com/",
+  "email": "support@orangaai.com",
+  "areaServed": "AU",
+  "address": { "@type": "PostalAddress", "addressRegion": "Queensland", "addressLocality": "Gold Coast", "addressCountry": "AU" },
+  "founder": { "@type": "Person", "name": "Eru Osborne" }
+}
+</script>
 
-    /* Accent — pulled from logo's organic glow */
-    --mint: #5DDBA9;
-    --mint-bright: #7CE9C0;
-    --mint-deep: #2BA787;
-    --mint-glow: rgba(93, 219, 169, 0.16);
-    --mint-glow-strong: rgba(93, 219, 169, 0.28);
-
-    /* Layout */
-    --max-w: 1280px;
-    --pad-x: clamp(20px, 5vw, 64px);
-    --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
-    --ease: cubic-bezier(0.22, 1, 0.36, 1);
-    --ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
-
-    /* Logo URLs */
-    --o-mark: url("/images/o_mark.jpg");
-  }
-
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--sans);
-    font-size: 16px;
-    line-height: 1.5;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    overflow-x: hidden;
-    font-feature-settings: "cv11", "ss01", "ss03";
-    letter-spacing: -0.01em;
-  }
-  ::selection { background: var(--mint); color: #0A1A14; }
-  a { color: inherit; text-decoration: none; }
-  img { display: block; max-width: 100%; }
-
-  /* Ambient backdrop on dark sections */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background:
-      radial-gradient(ellipse 70% 50% at 50% 0%, rgba(93, 219, 169, 0.06), transparent 60%),
-      radial-gradient(ellipse 50% 40% at 100% 100%, rgba(93, 219, 169, 0.04), transparent 60%);
-    pointer-events: none;
-    z-index: 0;
-  }
-  body::after {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' /%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
-    opacity: 0.025;
-    pointer-events: none;
-    z-index: 0;
-    mix-blend-mode: overlay;
-  }
-  main, nav, footer { position: relative; z-index: 1; }
-
-  .container {
-    max-width: var(--max-w);
-    margin: 0 auto;
-    padding: 0 var(--pad-x);
-  }
-
-  /* Display type — Apple style: very tight tracking, weight 600 */
-  .display {
-    font-weight: 600;
-    letter-spacing: -0.04em;
-    line-height: 1.04;
-  }
-
-  .eyebrow {
-    font-size: 0.75rem;
-    font-weight: 500;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--mint);
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .eyebrow::before {
-    content: '';
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--mint);
-    box-shadow: 0 0 12px var(--mint);
-  }
-
-  /* Light section eyebrow */
-  .light .eyebrow { color: var(--mint-deep); }
-  .light .eyebrow::before { background: var(--mint-deep); box-shadow: 0 0 8px rgba(43, 167, 135, 0.3); }
-
-  /* ===== NAV ===== */
-  nav.site-nav {
-    position: sticky;
-    top: 0;
-    z-index: 50;
-    background: rgba(10, 11, 14, 0.72);
-    backdrop-filter: blur(24px) saturate(140%);
-    -webkit-backdrop-filter: blur(24px) saturate(140%);
-    border-bottom: 1px solid transparent;
-    transition: border-color 0.3s var(--ease);
-  }
-  nav.site-nav.scrolled {
-    border-bottom-color: var(--border);
-  }
-  .nav-inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 64px;
-  }
-  .logo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-weight: 500;
-    font-size: 1rem;
-    letter-spacing: -0.01em;
-  }
-  .logo-mark {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background-image: var(--o-mark);
-    background-size: cover;
-    background-position: center;
-    flex-shrink: 0;
-    box-shadow: 0 0 20px rgba(93, 219, 169, 0.18), inset 0 0 0 1px rgba(255,255,255,0.04);
-  }
-  .nav-links {
-    display: flex;
-    gap: 36px;
-    list-style: none;
-  }
-  .nav-links a {
-    font-size: 0.875rem;
-    color: var(--text-muted);
-    transition: color 0.2s var(--ease);
-    font-weight: 400;
-  }
-  .nav-links a:hover { color: var(--text); }
-
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    padding: 10px 20px;
-    border-radius: 100px;
-    font-family: var(--sans);
-    font-weight: 500;
-    font-size: 0.875rem;
-    letter-spacing: -0.005em;
-    cursor: pointer;
-    transition: all 0.25s var(--ease);
-    border: 1px solid transparent;
-    white-space: nowrap;
-  }
-  .btn-primary {
-    background: var(--mint);
-    color: #07120D;
-    border-color: var(--mint);
-  }
-  .btn-primary:hover {
-    background: var(--mint-bright);
-    transform: translateY(-1px);
-    box-shadow: 0 6px 24px var(--mint-glow), 0 0 0 4px rgba(93, 219, 169, 0.10);
-  }
-  .btn-ghost {
-    background: transparent;
-    color: var(--text);
-    border-color: var(--border-strong);
-  }
-  .btn-ghost:hover {
-    border-color: var(--mint);
-    color: var(--mint);
-  }
-  .light .btn-ghost {
-    color: var(--text-on-light);
-    border-color: var(--border-light-strong);
-  }
-  .light .btn-ghost:hover {
-    border-color: var(--mint-deep);
-    color: var(--mint-deep);
-  }
-  .btn-large {
-    padding: 14px 28px;
-    font-size: 0.95rem;
-  }
-  .btn .arrow {
-    width: 14px;
-    height: 14px;
-    transition: transform 0.25s var(--ease);
-  }
-  .btn:hover .arrow { transform: translateX(3px); }
-
-  @media (max-width: 720px) {
-    .nav-links { display: none; }
-  }
-
-  /* ===== HERO ===== */
-  .hero {
-    padding: clamp(64px, 10vh, 96px) 0 clamp(80px, 12vh, 130px);
-    text-align: center;
-    position: relative;
-  }
-  .hero-logo {
-    width: clamp(160px, 22vw, 260px);
-    height: clamp(160px, 22vw, 260px);
-    margin: 0 auto 40px;
-    background-image: var(--o-mark);
-    background-size: cover;
-    background-position: center;
-    -webkit-mask-image: radial-gradient(circle, black 50%, transparent 75%);
-    mask-image: radial-gradient(circle, black 50%, transparent 75%);
-    filter: drop-shadow(0 0 60px rgba(93, 219, 169, 0.3));
-    animation: heroFloat 8s ease-in-out infinite;
-  }
-  @keyframes heroFloat {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-8px); }
-  }
-  .hero .eyebrow { margin-bottom: 24px; }
-  .hero h1 {
-    font-size: clamp(2.5rem, 7vw, 6rem);
-    margin: 0 auto 24px;
-    max-width: 18ch;
-  }
-  .hero h1 .accent {
-    background: linear-gradient(180deg, var(--mint-bright), var(--mint));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
-  .hero-sub {
-    font-size: clamp(1.1rem, 1.5vw, 1.375rem);
-    color: var(--text-muted);
-    max-width: 56ch;
-    line-height: 1.45;
-    margin: 0 auto 40px;
-    font-weight: 380;
-  }
-  .hero-cta-row {
-    display: flex;
-    gap: 12px;
-    align-items: center;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  .hero-meta {
-    margin-top: 28px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    color: var(--text-faint);
-    font-size: 0.825rem;
-  }
-  .hero-meta-dot {
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background: var(--mint);
-    box-shadow: 0 0 8px var(--mint);
-    animation: pulse 2.4s ease-in-out infinite;
-  }
-  @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.4; }
-  }
-
-  /* ===== SECTIONS ===== */
-  section {
-    padding: clamp(80px, 12vh, 140px) 0;
-    position: relative;
-  }
-  section.light {
-    background: var(--bg-light);
-    color: var(--text-on-light);
-  }
-  .section-head {
-    margin-bottom: 72px;
-    max-width: 920px;
-  }
-  .section-head.center {
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .section-head .eyebrow { margin-bottom: 24px; }
-  .section-head h2 {
-    font-size: clamp(2rem, 5.5vw, 4.5rem);
-    margin-bottom: 22px;
-    max-width: 18ch;
-  }
-  .section-head.center h2 { margin-left: auto; margin-right: auto; }
-  .section-head p {
-    font-size: clamp(1.05rem, 1.4vw, 1.25rem);
-    color: var(--text-muted);
-    max-width: 60ch;
-    line-height: 1.55;
-    font-weight: 400;
-  }
-  .section-head.center p { margin-left: auto; margin-right: auto; }
-  .light .section-head p { color: var(--text-on-light-muted); }
-
-  .accent-mint {
-    background: linear-gradient(180deg, var(--mint-bright), var(--mint));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
-  .light .accent-mint {
-    background: linear-gradient(180deg, var(--mint-deep), #1A8868);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
-
-  /* ===== PROBLEM ===== */
-  .problem-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
-    border-radius: 24px;
-    overflow: hidden;
-  }
-  .problem-item {
-    background: var(--bg);
-    padding: 40px 28px;
-    display: flex;
-    flex-direction: column;
-    gap: 22px;
-    transition: background 0.3s var(--ease);
-  }
-  .problem-item:hover { background: var(--bg-elev); }
-  .problem-num {
-    font-weight: 500;
-    font-size: 0.8rem;
-    letter-spacing: 0.16em;
-    color: var(--mint);
-  }
-  .problem-text {
-    font-size: 1.15rem;
-    font-weight: 450;
-    line-height: 1.3;
-    letter-spacing: -0.015em;
-  }
-  @media (max-width: 1000px) {
-    .problem-grid { grid-template-columns: repeat(2, 1fr); }
-  }
-  @media (max-width: 600px) {
-    .problem-grid { grid-template-columns: 1fr; }
-  }
-
-  /* ===== SERVICES (LIGHT SECTION) ===== */
-  .services-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-  }
-  .service-card {
-    background: var(--bg-light-elev);
-    border: 1px solid var(--border-light);
-    border-radius: 28px;
-    padding: 40px 36px;
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    transition: all 0.4s var(--ease);
-    position: relative;
-    overflow: hidden;
-  }
-  .service-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80%;
-    height: 1px;
-    background: linear-gradient(to right, transparent, var(--mint), transparent);
-    opacity: 0;
-    transition: opacity 0.4s var(--ease);
-  }
-  .service-card:hover {
-    border-color: rgba(43, 167, 135, 0.3);
-    transform: translateY(-4px);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(43, 167, 135, 0.05);
-  }
-  .service-card:hover::before { opacity: 1; }
-
-  .service-icon {
-    width: 56px;
-    height: 56px;
-    border-radius: 16px;
-    background: linear-gradient(180deg, rgba(93, 219, 169, 0.18), rgba(93, 219, 169, 0.06));
-    border: 1px solid rgba(43, 167, 135, 0.22);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--mint-deep);
-  }
-  .service-tag {
-    font-size: 0.72rem;
-    font-weight: 500;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--text-on-light-faint);
-  }
-  .service-title {
-    font-size: 1.65rem;
-    font-weight: 600;
-    line-height: 1.15;
-    letter-spacing: -0.025em;
-  }
-  .service-desc {
-    color: var(--text-on-light-muted);
-    font-size: 1rem;
-    line-height: 1.55;
-    flex-grow: 1;
-    font-weight: 400;
-  }
-  .service-for {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    font-size: 0.875rem;
-    color: var(--text-on-light-faint);
-    padding-top: 20px;
-    border-top: 1px solid var(--border-light);
-    line-height: 1.45;
-  }
-  .service-for strong {
-    color: var(--text-on-light-muted);
-    font-weight: 500;
-  }
-  @media (max-width: 960px) {
-    .services-grid { grid-template-columns: 1fr; }
-  }
-
-  /* ===== PROCESS ===== */
-  .process-steps {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
-    border-radius: 28px;
-    overflow: hidden;
-  }
-  .process-step {
-    background: var(--bg);
-    padding: 56px 44px;
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-    transition: background 0.3s var(--ease);
-    position: relative;
-  }
-  .process-step:hover { background: var(--bg-elev); }
-  .process-num {
-    font-size: clamp(3.5rem, 6vw, 5rem);
-    font-weight: 600;
-    line-height: 1;
-    letter-spacing: -0.05em;
-    background: linear-gradient(180deg, var(--mint-bright), var(--mint-deep));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    margin-bottom: 12px;
-  }
-  .process-step h3 {
-    font-size: 1.65rem;
-    font-weight: 600;
-    line-height: 1.15;
-    letter-spacing: -0.025em;
-    margin-bottom: 6px;
-  }
-  .process-step p {
-    color: var(--text-muted);
-    font-size: 1rem;
-    line-height: 1.55;
-    font-weight: 400;
-  }
-  @media (max-width: 800px) {
-    .process-steps { grid-template-columns: 1fr; }
-  }
-
-  /* ===== OUTCOMES ===== */
-  .outcomes-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 16px;
-  }
-  .outcome-card {
-    border: 1px solid var(--border);
-    border-radius: 22px;
-    padding: 32px 24px;
-    background: var(--bg-overlay);
-    display: flex;
-    flex-direction: column;
-    gap: 22px;
-    transition: all 0.3s var(--ease);
-    min-height: 200px;
-  }
-  .outcome-card:hover {
-    border-color: var(--border-mint);
-    background: var(--bg-overlay-hover);
-    transform: translateY(-2px);
-  }
-  .outcome-check {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background: rgba(93, 219, 169, 0.12);
-    border: 1px solid var(--border-mint);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--mint);
-  }
-  .outcome-text {
-    font-size: 1.2rem;
-    font-weight: 500;
-    line-height: 1.25;
-    letter-spacing: -0.025em;
-    margin-top: auto;
-  }
-  @media (max-width: 1080px) {
-    .outcomes-grid { grid-template-columns: repeat(2, 1fr); }
-  }
-  @media (max-width: 540px) {
-    .outcomes-grid { grid-template-columns: 1fr; }
-  }
-
-  /* ===== POSITIONING (LIGHT SECTION) ===== */
-  .positioning {
-    text-align: center;
-    padding: clamp(120px, 18vh, 200px) 0;
-  }
-  .positioning .eyebrow {
-    margin: 0 auto 32px;
-  }
-  .positioning h2 {
-    font-size: clamp(2.5rem, 7vw, 5.5rem);
-    line-height: 1.04;
-    max-width: 16ch;
-    margin: 0 auto 32px;
-    letter-spacing: -0.04em;
-    font-weight: 600;
-  }
-  .positioning > .container > p {
-    font-size: clamp(1.1rem, 1.5vw, 1.3rem);
-    color: var(--text-on-light-muted);
-    max-width: 60ch;
-    margin: 0 auto;
-    line-height: 1.5;
-    font-weight: 400;
-  }
-
-  .wordmark-card {
-    margin: 88px auto 0;
-    max-width: 720px;
-    border-radius: 32px;
-    overflow: hidden;
-    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.04);
-    background: #0A0B0E;
-    position: relative;
-  }
-  .wordmark-card img {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-  .wordmark-card::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse 60% 80% at 50% 50%, transparent 60%, rgba(0,0,0,0.3));
-    pointer-events: none;
-  }
-
-  .translation-card {
-    margin: 56px auto 0;
-    max-width: 480px;
-    padding: 22px 28px;
-    border: 1px solid var(--border-light);
-    border-radius: 18px;
-    background: var(--bg-light-elev);
-    display: flex;
-    align-items: center;
-    gap: 22px;
-    text-align: left;
-  }
-  .translation-mark {
-    flex-shrink: 0;
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background-image: var(--o-mark);
-    background-size: cover;
-    background-position: center;
-    box-shadow: 0 0 16px rgba(93, 219, 169, 0.2);
-  }
-  .translation-card .label {
-    font-size: 0.7rem;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--text-on-light-faint);
-    margin-bottom: 4px;
-    font-weight: 500;
-  }
-  .translation-card .meaning {
-    font-size: 1.05rem;
-    color: var(--text-on-light);
-    font-weight: 500;
-    line-height: 1.3;
-    letter-spacing: -0.02em;
-  }
-  .translation-card .meaning span {
-    color: var(--mint-deep);
-  }
-
-  /* ===== CTA ===== */
-  .cta-section {
-    padding: clamp(80px, 14vh, 140px) 0;
-  }
-  .cta-card {
-    border: 1px solid var(--border);
-    border-radius: 32px;
-    padding: clamp(56px, 10vw, 96px) clamp(32px, 6vw, 72px);
-    background:
-      radial-gradient(ellipse 80% 100% at 50% 0%, rgba(93, 219, 169, 0.14), transparent 60%),
-      linear-gradient(180deg, rgba(93, 219, 169, 0.04), rgba(255,255,255,0));
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-  .cta-card::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(93, 219, 169, 0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(93, 219, 169, 0.03) 1px, transparent 1px);
-    background-size: 56px 56px;
-    mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black, transparent);
-    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black, transparent);
-    pointer-events: none;
-  }
-  .cta-card > * { position: relative; z-index: 1; }
-  .cta-card h2 {
-    font-size: clamp(2.25rem, 5.5vw, 4.5rem);
-    line-height: 1.04;
-    max-width: 14ch;
-    margin: 0 auto 24px;
-    letter-spacing: -0.04em;
-    font-weight: 600;
-  }
-  .cta-card p {
-    color: var(--text-muted);
-    font-size: 1.1rem;
-    max-width: 56ch;
-    margin: 0 auto 44px;
-    line-height: 1.5;
-  }
-  .cta-buttons {
-    display: flex;
-    gap: 12px;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
-  /* ===== FOOTER ===== */
-  footer {
-    padding: 56px 0 48px;
-    border-top: 1px solid var(--border);
-  }
-  .footer-inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 24px;
-    flex-wrap: wrap;
-  }
-  .footer-meta {
-    display: flex;
-    align-items: center;
-    gap: 24px;
-    color: var(--text-faint);
-    font-size: 0.875rem;
-  }
-  .footer-meta a:hover { color: var(--mint); }
-
-  /* ===== CHATBOT ===== */
-  .chat-launcher {
-    position: fixed;
-    bottom: 24px;
-    right: 24px;
-    z-index: 100;
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    border: none;
-    background: linear-gradient(135deg, var(--mint-bright), var(--mint-deep));
-    cursor: pointer;
-    box-shadow: 0 8px 32px rgba(93, 219, 169, 0.3), 0 0 0 0 rgba(93, 219, 169, 0.4);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #07120D;
-    transition: transform 0.3s var(--ease);
-    animation: launcherPulse 2.6s ease-in-out infinite;
-  }
-  @keyframes launcherPulse {
-    0%, 100% { box-shadow: 0 8px 32px rgba(93, 219, 169, 0.3), 0 0 0 0 rgba(93, 219, 169, 0.4); }
-    50% { box-shadow: 0 8px 32px rgba(93, 219, 169, 0.4), 0 0 0 14px rgba(93, 219, 169, 0); }
-  }
-  .chat-launcher:hover { transform: scale(1.08); }
-  .chat-launcher.open .icon-chat { display: none; }
-  .chat-launcher:not(.open) .icon-close { display: none; }
-
-  .chat-panel {
-    position: fixed;
-    bottom: 96px;
-    right: 24px;
-    z-index: 99;
-    width: 384px;
-    height: min(620px, calc(100vh - 130px));
-    background: rgba(19, 20, 25, 0.92);
-    backdrop-filter: blur(28px) saturate(160%);
-    -webkit-backdrop-filter: blur(28px) saturate(160%);
-    border: 1px solid var(--border-mint);
-    border-radius: 24px;
-    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(93, 219, 169, 0.05);
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    opacity: 0;
-    transform: translateY(12px) scale(0.96);
-    pointer-events: none;
-    transition: opacity 0.3s var(--ease), transform 0.3s var(--ease);
-  }
-  .chat-panel.open {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-    pointer-events: auto;
-  }
-  @media (max-width: 480px) {
-    .chat-panel {
-      width: calc(100vw - 24px);
-      right: 12px;
-      bottom: 92px;
-      height: calc(100vh - 116px);
-    }
-    .chat-launcher { right: 16px; bottom: 16px; }
-  }
-
-  .chat-header {
-    padding: 16px 20px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    border-bottom: 1px solid var(--border);
-  }
-  .chat-avatar {
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    background-image: var(--o-mark);
-    background-size: cover;
-    background-position: center;
-    flex-shrink: 0;
-    box-shadow: 0 0 16px rgba(93, 219, 169, 0.25), inset 0 0 0 1px rgba(255,255,255,0.06);
-    position: relative;
-  }
-  .chat-avatar::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: var(--mint);
-    border: 2px solid #131419;
-  }
-  .chat-title { flex-grow: 1; }
-  .chat-title .name {
-    font-size: 0.95rem;
-    font-weight: 600;
-    line-height: 1.1;
-    margin-bottom: 2px;
-    letter-spacing: -0.015em;
-  }
-  .chat-title .status {
-    font-size: 0.72rem;
-    color: var(--text-faint);
-    display: flex;
-    align-items: center;
-    gap: 5px;
-  }
-  .chat-title .status::before {
-    content: '';
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background: var(--mint);
-    box-shadow: 0 0 6px var(--mint);
-  }
-  .chat-close {
-    background: transparent;
-    border: 1px solid var(--border);
-    width: 30px;
-    height: 30px;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-muted);
-    cursor: pointer;
-    transition: all 0.2s var(--ease);
-  }
-  .chat-close:hover {
-    border-color: var(--border-strong);
-    color: var(--text);
-  }
-  .chat-messages {
-    flex-grow: 1;
-    overflow-y: auto;
-    padding: 22px;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    scroll-behavior: smooth;
-  }
-  .chat-messages::-webkit-scrollbar { width: 6px; }
-  .chat-messages::-webkit-scrollbar-track { background: transparent; }
-  .chat-messages::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 3px; }
-
-  .msg {
-    max-width: 86%;
-    padding: 12px 16px;
-    border-radius: 16px;
-    font-size: 0.92rem;
-    line-height: 1.5;
-    animation: msgIn 0.4s var(--ease);
-  }
-  @keyframes msgIn {
-    from { opacity: 0; transform: translateY(6px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  .msg.bot {
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid var(--border);
-    color: var(--text);
-    align-self: flex-start;
-    border-bottom-left-radius: 6px;
-  }
-  .msg.user {
-    background: linear-gradient(180deg, var(--mint), var(--mint-deep));
-    color: #07120D;
-    align-self: flex-end;
-    border-bottom-right-radius: 6px;
-    font-weight: 500;
-  }
-  .msg a {
-    color: var(--mint);
-    text-decoration: underline;
-    text-decoration-color: rgba(93, 219, 169, 0.4);
-    text-underline-offset: 2px;
-  }
-  .msg.user a { color: #07120D; text-decoration-color: rgba(7,18,13,0.5); }
-  .msg.typing {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    padding: 14px 16px;
-  }
-  .msg.typing span {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--text-muted);
-    animation: typing 1.2s infinite;
-  }
-  .msg.typing span:nth-child(2) { animation-delay: 0.15s; }
-  .msg.typing span:nth-child(3) { animation-delay: 0.3s; }
-  @keyframes typing {
-    0%, 60%, 100% { opacity: 0.3; transform: translateY(0); }
-    30% { opacity: 1; transform: translateY(-3px); }
-  }
-
-  .chat-suggestions {
-    padding: 0 22px 16px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-  .suggestion-chip {
-    background: rgba(93, 219, 169, 0.08);
-    color: var(--mint);
-    border: 1px solid var(--border-mint);
-    padding: 8px 14px;
-    border-radius: 100px;
-    font-size: 0.82rem;
-    font-family: var(--sans);
-    cursor: pointer;
-    transition: all 0.2s var(--ease);
-  }
-  .suggestion-chip:hover {
-    background: rgba(93, 219, 169, 0.16);
-    border-color: var(--mint);
-  }
-  .chat-input-wrap {
-    padding: 14px 18px 18px;
-    border-top: 1px solid var(--border);
-    display: flex;
-    gap: 10px;
-    align-items: center;
-  }
-  .chat-input {
-    flex-grow: 1;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 12px 14px;
-    color: var(--text);
-    font-family: var(--sans);
-    font-size: 0.9rem;
-    outline: none;
-    transition: border-color 0.2s var(--ease);
-  }
-  .chat-input:focus { border-color: var(--border-mint); }
-  .chat-input::placeholder { color: var(--text-faint); }
-  .chat-send {
-    width: 40px;
-    height: 40px;
-    border-radius: 12px;
-    border: none;
-    background: var(--mint);
-    color: #07120D;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background 0.2s var(--ease);
-    flex-shrink: 0;
-  }
-  .chat-send:hover { background: var(--mint-bright); }
-
-  /* ===== PACKAGES ===== */
-  .packages-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-  }
-  .package-card {
-    border: 1px solid var(--border);
-    border-radius: 28px;
-    padding: 40px 32px;
-    background: var(--bg-overlay);
-    display: flex;
-    flex-direction: column;
-    gap: 28px;
-    position: relative;
-    transition: all 0.3s var(--ease);
-  }
-  .package-card:hover {
-    background: var(--bg-overlay-hover);
-    transform: translateY(-2px);
-  }
-  .package-card.featured {
-    border-color: var(--border-mint);
-    background: linear-gradient(180deg, rgba(93, 219, 169, 0.06), rgba(93, 219, 169, 0.01));
-    box-shadow: 0 0 0 1px rgba(93, 219, 169, 0.05), 0 30px 80px rgba(0, 0, 0, 0.3);
-  }
-  .package-badge {
-    position: absolute;
-    top: -12px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--mint);
-    color: #07120D;
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    padding: 6px 14px;
-    border-radius: 100px;
-    white-space: nowrap;
-  }
-  .package-name {
-    font-size: 0.875rem;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .package-card.featured .package-name { color: var(--mint); }
-  .package-price {
-    display: flex;
-    align-items: baseline;
-    gap: 6px;
-    font-weight: 600;
-    line-height: 1;
-    letter-spacing: -0.04em;
-  }
-  .package-price .currency {
-    font-size: 1.5rem;
-    color: var(--text-muted);
-    font-weight: 500;
-  }
-  .package-price .amount {
-    font-size: 3.25rem;
-    color: var(--text);
-  }
-  .package-price .suffix {
-    font-size: 1rem;
-    color: var(--text-muted);
-    font-weight: 400;
-    margin-left: 4px;
-  }
-  .package-features {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    flex-grow: 1;
-  }
-  .package-features li {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    color: var(--text-muted);
-    font-size: 0.95rem;
-    line-height: 1.4;
-  }
-  .package-features li::before {
-    content: '';
-    flex-shrink: 0;
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    background: rgba(93, 219, 169, 0.12);
-    border: 1px solid var(--border-mint);
-    margin-top: 2px;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 16 16' fill='none' stroke='%235DDBA9' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='3 8 7 12 13 4'/%3E%3C/svg%3E");
-    background-position: center;
-    background-repeat: no-repeat;
-  }
-  .package-card.featured .package-features li {
-    color: var(--text);
-  }
-  .package-cta {
-    margin-top: 8px;
-  }
-  .package-leadwith {
-    margin-top: 6px;
-    padding-top: 18px;
-    border-top: 1px solid var(--border);
-    font-size: 0.85rem;
-    color: var(--text-faint);
-    font-style: italic;
-    line-height: 1.45;
-  }
-  @media (max-width: 960px) {
-    .packages-grid { grid-template-columns: 1fr; }
-  }
-
-  /* Service price chip */
-  .service-price {
-    display: inline-flex;
-    align-items: baseline;
-    gap: 4px;
-    padding: 4px 10px;
-    border-radius: 100px;
-    background: rgba(43, 167, 135, 0.10);
-    border: 1px solid rgba(43, 167, 135, 0.22);
-    color: var(--mint-deep);
-    font-size: 0.78rem;
-    font-weight: 500;
-    letter-spacing: -0.005em;
-    align-self: flex-start;
-  }
-
-  /* "Who we build for" list */
-  .audience-list {
-    list-style: none;
-    padding: 0;
-    margin: 36px 0 0;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 14px 36px;
-    text-align: left;
-    max-width: 720px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .audience-list li {
-    display: flex;
-    align-items: flex-start;
-    gap: 14px;
-    color: var(--text-on-light-muted);
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.4;
-  }
-  .audience-list li::before {
-    content: '';
-    flex-shrink: 0;
-    width: 22px;
-    height: 22px;
-    border-radius: 50%;
-    background: linear-gradient(180deg, rgba(93, 219, 169, 0.18), rgba(93, 219, 169, 0.06));
-    border: 1px solid rgba(43, 167, 135, 0.25);
-    margin-top: 1px;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 16 16' fill='none' stroke='%232BA787' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='3 8 7 12 13 4'/%3E%3C/svg%3E");
-    background-position: center;
-    background-repeat: no-repeat;
-  }
-  @media (max-width: 600px) {
-    .audience-list { grid-template-columns: 1fr; }
-  }
-
-  /* ===== SERVICE LEARN MORE LINK ===== */
-  .service-learnmore {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 0.875rem;
-    font-weight: 500;
-    color: var(--mint-deep);
-    margin-top: -8px;
-    align-self: flex-start;
-    transition: gap 0.25s var(--ease);
-  }
-  .service-learnmore:hover { gap: 10px; }
-  .service-learnmore svg { transition: transform 0.25s var(--ease); }
-  .service-card:hover .service-learnmore svg { transform: translateX(2px); }
-
-  /* ===== ABOUT US — MANIFESTO + PROBLEM CHIPS + SOLUTIONS ===== */
-  .about-lead {
-    font-size: clamp(1.15rem, 1.6vw, 1.4rem);
-    color: var(--text-on-light-muted);
-    max-width: 64ch;
-    margin: 0 auto;
-    line-height: 1.55;
-    font-weight: 400;
-  }
-  .manifesto {
-    margin: 72px auto 0;
-    max-width: 760px;
-    padding: 44px 48px;
-    border-radius: 28px;
-    background: var(--bg-light-elev);
-    border: 1px solid var(--border-light);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(0, 0, 0, 0.03);
-    text-align: center;
-  }
-  .manifesto p {
-    font-size: clamp(1.4rem, 2.4vw, 1.875rem);
-    font-weight: 500;
-    line-height: 1.25;
-    letter-spacing: -0.025em;
-    color: var(--text-on-light);
-  }
-  .manifesto p + p {
-    margin-top: 6px;
-    font-style: italic;
-    font-weight: 400;
-  }
-  .manifesto p .accent {
-    background: linear-gradient(180deg, var(--mint-deep), #1A8868);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    font-style: normal;
-    font-weight: 600;
-  }
-  .problem-chips {
-    margin: 32px auto 0;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-    max-width: 720px;
-  }
-  .problem-chip {
-    padding: 10px 20px;
-    border-radius: 100px;
-    background: rgba(0, 0, 0, 0.04);
-    border: 1px solid var(--border-light);
-    font-size: 0.95rem;
-    color: var(--text-on-light);
-    font-weight: 500;
-    letter-spacing: -0.005em;
-  }
-  .solutions-intro {
-    margin: 80px auto 0;
-    font-size: 1.1rem;
-    color: var(--text-on-light-muted);
-    font-weight: 500;
-    text-align: center;
-  }
-  .closing-text {
-    margin: 32px auto 0;
-    max-width: 64ch;
-    font-size: clamp(1.05rem, 1.4vw, 1.2rem);
-    color: var(--text-on-light-muted);
-    line-height: 1.55;
-    font-weight: 400;
-  }
-  .closing-text strong {
-    color: var(--text-on-light);
-    font-weight: 600;
-  }
-
-  /* ===== TESTIMONIAL ===== */
-  .testimonial-wrap {
-    max-width: 880px;
-    margin: 0 auto;
-    text-align: center;
-  }
-  .testimonial-quote-mark {
-    font-size: 4rem;
-    line-height: 1;
-    color: var(--mint);
-    font-family: Georgia, serif;
-    font-weight: 600;
-    margin-bottom: 24px;
-    opacity: 0.6;
-  }
-  .testimonial-text {
-    font-size: clamp(1.4rem, 3vw, 2rem);
-    font-weight: 500;
-    letter-spacing: -0.025em;
-    line-height: 1.3;
-    margin-bottom: 32px;
-    color: var(--text);
-  }
-  .testimonial-attribution {
-    font-size: 0.95rem;
-    color: var(--text-muted);
-    font-weight: 500;
-  }
-  .testimonial-attribution strong {
-    color: var(--text);
-    font-weight: 600;
-  }
-  .testimonial-tags {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 56px;
-  }
-  .testimonial-tag {
-    padding: 8px 16px;
-    border-radius: 100px;
-    background: var(--bg-overlay);
-    border: 1px solid var(--border);
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    font-weight: 400;
-  }
-
-  /* Reveal */
-  .reveal {
-    opacity: 0;
-    transform: translateY(16px);
-    transition: opacity 1.1s var(--ease-soft), transform 1.1s var(--ease-soft);
-  }
-  .reveal.in {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
-      animation-duration: 0.01ms !important;
-      transition-duration: 0.01ms !important;
-    }
-    .reveal { opacity: 1; transform: none; }
-  }
-
-  /* ===== SERVICE-PAGE SPECIFIC ===== */
-  .hero-pricerow {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin: 32px auto 0;
-    max-width: 600px;
-  }
-  .hero-pricerow .price-chip {
-    padding: 10px 18px;
-    border-radius: 100px;
-    font-size: 0.9rem;
-    font-weight: 500;
-    letter-spacing: -0.005em;
-    border: 1px solid var(--border);
-    background: var(--bg-overlay);
-    color: var(--text);
-  }
-  .hero-pricerow .price-chip.featured {
-    background: rgba(93, 219, 169, 0.10);
-    border-color: var(--border-mint);
-    color: var(--mint);
-  }
-  .hero-pricerow .price-chip.alt {
-    color: var(--text-muted);
-    text-decoration: line-through;
-    text-decoration-color: rgba(244, 95, 95, 0.45);
-    text-decoration-thickness: 2px;
-  }
-
-  /* Deliverable list (light section) */
-  .deliver-grid {
-    margin-top: 56px;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-  }
-  .deliver-item {
-    background: var(--bg-light-elev);
-    border: 1px solid var(--border-light);
-    border-radius: 18px;
-    padding: 28px;
-    display: flex;
-    align-items: flex-start;
-    gap: 16px;
-    transition: all 0.3s var(--ease);
-  }
-  .deliver-item:hover {
-    border-color: rgba(43, 167, 135, 0.25);
-    transform: translateY(-2px);
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.04);
-  }
-  .deliver-icon {
-    flex-shrink: 0;
-    width: 36px;
-    height: 36px;
-    border-radius: 10px;
-    background: linear-gradient(180deg, rgba(93, 219, 169, 0.18), rgba(93, 219, 169, 0.06));
-    border: 1px solid rgba(43, 167, 135, 0.22);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--mint-deep);
-  }
-  .deliver-text {
-    font-size: 1rem;
-    line-height: 1.45;
-    color: var(--text-on-light);
-    font-weight: 450;
-  }
-  @media (max-width: 720px) {
-    .deliver-grid { grid-template-columns: 1fr; }
-  }
-
-  /* FAQ accordion */
-  .faq-list {
-    max-width: 880px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-  details.faq-item {
-    background: var(--bg-overlay);
-    border: 1px solid var(--border);
-    border-radius: 18px;
-    padding: 0;
-    overflow: hidden;
-    transition: border-color 0.2s var(--ease), background 0.2s var(--ease);
-  }
-  details.faq-item[open] {
-    border-color: var(--border-mint);
-    background: var(--bg-overlay-hover);
-  }
-  details.faq-item summary {
-    list-style: none;
-    cursor: pointer;
-    padding: 24px 28px;
-    font-size: 1.1rem;
-    font-weight: 500;
-    letter-spacing: -0.015em;
-    color: var(--text);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 16px;
-    user-select: none;
-  }
-  details.faq-item summary::-webkit-details-marker { display: none; }
-  details.faq-item summary::after {
-    content: '';
-    flex-shrink: 0;
-    width: 22px;
-    height: 22px;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 24 24' fill='none' stroke='%2386868B' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='12' y1='5' x2='12' y2='19'/%3E%3Cline x1='5' y1='12' x2='19' y2='12'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: center;
-    transition: transform 0.3s var(--ease);
-  }
-  details.faq-item[open] summary::after {
-    transform: rotate(45deg);
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 24 24' fill='none' stroke='%235DDBA9' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='12' y1='5' x2='12' y2='19'/%3E%3Cline x1='5' y1='12' x2='19' y2='12'/%3E%3C/svg%3E");
-  }
-  details.faq-item summary:hover { color: var(--mint); }
-  .faq-answer {
-    padding: 0 28px 26px;
-    color: var(--text-muted);
-    font-size: 1rem;
-    line-height: 1.6;
-  }
-  .faq-answer strong { color: var(--text); }
-
-  /* Service nav active state */
-  .nav-links a.active {
-    color: var(--mint);
-  }
-
-  /* Back link */
-  .back-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    color: var(--text-muted);
-    font-size: 0.85rem;
-    margin-bottom: 24px;
-    transition: color 0.2s var(--ease);
-  }
-  .back-link:hover { color: var(--mint); }
-  .back-link svg { transition: transform 0.2s var(--ease); }
-  .back-link:hover svg { transform: translateX(-3px); }
-
-  /* Service hero compact (smaller than homepage hero) */
-  .hero-service {
-    padding: clamp(48px, 8vh, 80px) 0 clamp(56px, 10vh, 96px);
-  }
-  .hero-service .hero-logo {
-    width: clamp(120px, 16vw, 180px);
-    height: clamp(120px, 16vw, 180px);
-    margin: 0 auto 32px;
-  }
-  .hero-service h1 {
-    max-width: 22ch;
-  }
-
-  /* Two-column "vs alternatives" feature */
-  .versus {
-    margin-top: 80px;
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    gap: 36px;
-    align-items: center;
-    max-width: 880px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .versus-side {
-    padding: 32px;
-    border-radius: 22px;
-    border: 1px solid var(--border);
-    background: var(--bg-overlay);
-  }
-  .versus-side.highlight {
-    border-color: var(--border-mint);
-    background: linear-gradient(180deg, rgba(93, 219, 169, 0.06), rgba(93, 219, 169, 0.01));
-  }
-  .versus-side .label {
-    font-size: 0.72rem;
-    font-weight: 500;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--text-faint);
-    margin-bottom: 12px;
-  }
-  .versus-side.highlight .label { color: var(--mint); }
-  .versus-side .price {
-    font-size: 2rem;
-    font-weight: 600;
-    letter-spacing: -0.03em;
-    line-height: 1.05;
-    color: var(--text);
-  }
-  .versus-side .sub {
-    font-size: 0.9rem;
-    color: var(--text-muted);
-    margin-top: 8px;
-  }
-  .versus-divider {
-    color: var(--text-faint);
-    font-size: 0.875rem;
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-  }
-  @media (max-width: 720px) {
-    .versus { grid-template-columns: 1fr; gap: 12px; }
-    .versus-divider { text-align: center; padding: 8px 0; }
-  }
-
-</style>
+<!-- ⚠️ TODO: swap G-XXXXXXXXXX for the real GA4 Measurement ID (analytics.google.com → Admin → Data Streams → your web stream) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
 </head>
 <body>
 
+<a href="#top" class="skip-link">Skip to content</a>
+
 <nav class="site-nav" id="nav">
   <div class="container nav-inner">
-    <a href="#top" class="logo">
-      <span class="logo-mark"></span>
+    <a href="#top" class="logo" aria-label="Oranga AI home">
+      <span class="logo-mark" aria-hidden="true"></span>
       <span>Oranga AI</span>
     </a>
     <a href="/strategy-call" class="btn btn-primary">
-      Book a Call
-      <svg class="arrow" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Book a free strategy call
+      <svg class="arrow" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </a>
   </div>
 </nav>
@@ -1566,15 +72,42 @@
 
   <!-- HERO -->
   <section class="hero">
-    <div class="container">
-      <div class="hero-logo reveal" aria-label="Oranga"></div>
-      <h1 class="display reveal">For service business owners who lose jobs because <span class="accent">they didn't reply fast enough.</span></h1>
-      <p class="hero-sub reveal">We install AI employees that answer every lead, follow up until they book, and handle the admin so nothing slips through.</p>
-      <div class="hero-cta-row reveal">
-        <a href="/strategy-call" class="btn btn-primary btn-large">
-          Book a Free Strategy Call
-          <svg class="arrow" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <span class="eyebrow reveal">Meet Oranga Core</span>
+        <h1 class="reveal">The operating system <em class="accent">behind</em> your business.</h1>
+        <p class="hero-sub reveal">It knows how your business works, does the routine work every day, and never acts alone on anything that matters. We build it, install it, and stand behind it.</p>
+        <div class="hero-cta-row reveal">
+          <a href="/strategy-call" class="btn btn-primary btn-large">
+            Book a free strategy call
+            <svg class="arrow" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+        <p class="hero-note reveal">Free · 30 minutes · no pitch</p>
+      </div>
+
+      <div class="hero-scene reveal" aria-hidden="true">
+        <div class="scene-chaos-wrap">
+          <span class="scene-caption scene-caption-before">Before</span>
+          <div class="scene-chaos">
+            <div class="chaos-card cc1"><span class="cc-dot"></span>14 unread enquiries</div>
+            <div class="chaos-card cc2"><span class="cc-dot"></span>Quote follow-up — overdue</div>
+            <div class="chaos-card cc3"><span class="cc-dot"></span>Missed call, 8:42pm</div>
+            <div class="chaos-card cc4"><span class="cc-dot"></span>6 bookings unconfirmed</div>
+            <div class="chaos-card cc5"><span class="cc-dot"></span>"Are you still open Sat?"</div>
+          </div>
+        </div>
+        <div class="scene-arrow" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M4 12h16M14 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="scene-calm">
+          <span class="scene-caption scene-caption-after">After — the dawn run</span>
+          <div class="calm-card">
+            <span class="calm-eyebrow">Dawn run · 6:12am</span>
+            <div class="calm-stats"><strong>14</strong> done <span class="sep">·</span> <strong>2</strong> need you <span class="sep">·</span> <strong>0</strong> couldn't move</div>
+            <div class="calm-note">→ Quote follow-up: Sarah T. hasn't replied in 4 days</div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -1583,160 +116,285 @@
   <section>
     <div class="container">
       <div class="section-head reveal">
-        <h2 class="display">Sound familiar?</h2>
+        <span class="eyebrow">The real cost</span>
+        <h2>Most AI never learns your business. So the admin keeps eating your week.</h2>
+        <p>You end up re-explaining yourself to a chatbot every conversation, with nothing carried forward — while the work between the real work quietly piles up.</p>
       </div>
       <div class="problem-grid reveal">
-        <div class="problem-item">
-          <span class="problem-num">01</span>
-          <p class="problem-text">A lead came in at 6pm Friday. Your competitor replied within minutes. You followed up Monday morning.</p>
+
+        <div class="pain-card">
+          <span class="pain-label">Every new chat</span>
+          <div class="pain-visual">
+            <div class="repeat-stack">
+              <div class="repeat-chip r3">"Hi, quick background on our business first..."</div>
+              <div class="repeat-chip r2">"Hi, quick background on our business first..."</div>
+              <div class="repeat-chip r1">"Hi, quick background on our business first..."<span class="repeat-badge">×3 this week</span></div>
+            </div>
+          </div>
+          <p class="pain-caption">You explain the same context over and over — it never remembers who you are.</p>
         </div>
-        <div class="problem-item">
-          <span class="problem-num">02</span>
-          <p class="problem-text">You're growing. Your operations look exactly the same as they did two years ago.</p>
+
+        <div class="pain-card">
+          <span class="pain-label">Tonight</span>
+          <div class="pain-visual">
+            <div class="pain-time">9:47<span class="pain-time-sm">pm</span></div>
+            <ul class="pain-list">
+              <li>Send booking confirmation</li>
+              <li>Reply to quote request</li>
+              <li>Chase unpaid invoice</li>
+            </ul>
+          </div>
+          <p class="pain-caption">The admin between jobs — inbox, follow-ups, scheduling — lands on you, every evening.</p>
         </div>
-        <div class="problem-item">
-          <span class="problem-num">03</span>
-          <p class="problem-text">You're still doing tasks that should have been automated two years ago — because there was never time to fix it.</p>
+
+        <div class="pain-card">
+          <span class="pain-label">Only you know...</span>
+          <div class="pain-visual">
+            <span class="hub-center">YOU</span>
+            <div class="hub-tags">
+              <span class="hub-tag">Who's booked Friday</span>
+              <span class="hub-tag">What Sarah quoted</span>
+              <span class="hub-tag">Best supplier price</span>
+              <span class="hub-tag">Who still owes</span>
+            </div>
+          </div>
+          <p class="pain-caption">The whole business lives in your head. Nothing runs unless you're the one running it.</p>
         </div>
-        <div class="problem-item">
-          <span class="problem-num">04</span>
-          <p class="problem-text">Leads are going cold, follow-ups aren't happening, admin is piling up. You know it. You just can't see exactly where.</p>
+
+        <div class="pain-card">
+          <span class="pain-label">AI drafts a reply</span>
+          <div class="pain-visual">
+            <div class="compose-mock">
+              <div class="compose-row">To: sarah.t@email.com</div>
+              <div class="compose-row">Re: Your quote — confirmed for Friday</div>
+            </div>
+            <span class="compose-send"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="3.5" y="7" width="9" height="6.5" rx="1.5" stroke="currentColor" stroke-width="1.3"/><path d="M5.5 7V5a2.5 2.5 0 015 0v2" stroke="currentColor" stroke-width="1.3"/></svg>Blocked — needs you</span>
+          </div>
+          <p class="pain-caption">You'd try more AI — but you can't have it emailing a client or moving money on its own.</p>
         </div>
+
       </div>
     </div>
   </section>
 
-  <!-- THE OFFER (LIGHT) -->
-  <section class="light">
+  <!-- FOUR LAYERS -->
+  <section id="how">
     <div class="container">
       <div class="section-head reveal">
-        <h2 class="display">One system. Built for your business. <span class="accent-mint">Managed for you.</span></h2>
+        <span class="eyebrow">What Oranga Core is</span>
+        <h2>One workspace, built on four layers.</h2>
+        <p>Your business is written down once — then Oranga Core runs on that knowledge every single day.</p>
       </div>
-      <p class="about-lead reveal">We place dedicated employees inside your business. Not software you have to figure out. Not a tool you have to maintain. Real workers, running in the background every hour of every day. Following up leads. Responding to enquiries. Scheduling meetings and keeping your pipeline moving. Keeping your records clean.</p>
-      <p class="about-lead reveal" style="margin-top: 28px;">The dashboard is how you see all of it. One screen. Your whole business. Live. So you're never guessing. You're always in control.</p>
-      <p class="about-lead reveal" style="margin-top: 28px; font-weight: 500; color: var(--text-on-light);">We build it. We run it. You just do the work you're actually good at.</p>
+      <div class="layers-grid">
+        <article class="layer-card reveal">
+          <span class="layer-num">01</span>
+          <h3 class="layer-name">Knowledge</h3>
+          <div class="layer-visual">
+            <div class="file-mock">
+              <div class="file-mock-name">business.md</div>
+              <div class="file-row"><span class="file-check">✓</span>What we do</div>
+              <div class="file-row"><span class="file-check">✓</span>Who we serve</div>
+              <div class="file-row"><span class="file-check">✓</span>How we write</div>
+            </div>
+          </div>
+          <p class="layer-desc">Your business written down once — what it does, who it serves, how it writes. Loaded before every session, so it <strong>never needs re-briefing</strong>.</p>
+        </article>
+        <article class="layer-card reveal">
+          <span class="layer-num">02</span>
+          <h3 class="layer-name">Playbooks</h3>
+          <div class="layer-visual">
+            <div class="playbook-row">
+              <span class="playbook-icon">✉</span>
+              <div><div class="playbook-name">The mailroom</div><div class="playbook-desc">Sorts inbox, drafts replies — never sends</div></div>
+            </div>
+            <div class="playbook-row">
+              <span class="playbook-icon">◎</span>
+              <div><div class="playbook-name">The strategist</div><div class="playbook-desc">Takes a goal, plans the route</div></div>
+            </div>
+          </div>
+          <p class="layer-desc">Repeatable jobs in plain instructions. <strong>The mailroom</strong> sorts your inbox and drafts replies in your voice — it never sends. <strong>The strategist</strong> takes a goal and runs the route.</p>
+        </article>
+        <article class="layer-card reveal">
+          <span class="layer-num">03</span>
+          <h3 class="layer-name">Scheduled work</h3>
+          <div class="layer-visual">
+            <div class="timeline-mini">
+              <div class="tl-track"></div>
+              <div class="tl-point tl-point-1"><span class="tl-dot"></span><span class="tl-label">6:12am<br><strong>Dawn run</strong></span></div>
+              <div class="tl-point tl-point-2"><span class="tl-dot"></span><span class="tl-label">9:00am<br><strong>You're online</strong></span></div>
+            </div>
+          </div>
+          <p class="layer-desc">The <strong>dawn run</strong> clears your list before you open your laptop, and leaves one note: <em>done · needs you · couldn't move</em>. If something breaks, it says so loudly.</p>
+        </article>
+        <article class="layer-card reveal">
+          <span class="layer-num">04</span>
+          <h3 class="layer-name">Guardrails</h3>
+          <div class="layer-visual">
+            <div class="guard-example">
+              <span class="guard-example-task">Send overdue invoice reminder</span>
+              <span class="guard-example-status"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="3.5" y="7" width="9" height="6.5" rx="1.5" stroke="currentColor" stroke-width="1.3"/><path d="M5.5 7V5a2.5 2.5 0 015 0v2" stroke="currentColor" stroke-width="1.3"/></svg>Waiting for your OK</span>
+            </div>
+          </div>
+          <p class="layer-desc">Six actions it <strong>never takes alone</strong>. It prepares everything right up to the line — then a person takes the final step, every time.</p>
+        </article>
+      </div>
     </div>
   </section>
 
-  <!-- PROCESS -->
+  <!-- COMPARISON -->
+  <section>
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">What makes it different</span>
+        <h2>Not a chatbot subscription.</h2>
+      </div>
+      <div class="compare reveal">
+        <div class="compare-row compare-head">
+          <div class="compare-cell generic">A generic chatbot</div>
+          <div class="compare-cell core">Oranga Core</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-cell generic">Starts from zero every conversation</div>
+          <div class="compare-cell core">Reads your real knowledge before every session</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-cell generic">Answers questions</div>
+          <div class="compare-cell core">Finishes the work — then hands the last step to a person</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-cell generic">No fixed limits on what it might attempt</div>
+          <div class="compare-cell core">Six locked actions it will never take alone</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-cell generic">Nothing runs while you're away</div>
+          <div class="compare-cell core">Scheduled work clears your list before you open your laptop</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-cell generic">Generic tone</div>
+          <div class="compare-cell core">Learns to write like you, from your own real mail</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GUARDRAILS (ink zone) -->
+  <section class="ink-zone">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Safe to leave running</span>
+      </div>
+      <p class="guard-lede reveal">It prepares everything right up to the line. A person takes the final step — every time.</p>
+      <div class="guard-list reveal">
+        <div class="guard-item"><span class="x" aria-hidden="true">✕</span><span><span class="guard-never">Never</span> contacts anyone outside the business</span></div>
+        <div class="guard-item"><span class="x" aria-hidden="true">✕</span><span><span class="guard-never">Never</span> moves money</span></div>
+        <div class="guard-item"><span class="x" aria-hidden="true">✕</span><span><span class="guard-never">Never</span> changes anyone's job</span></div>
+        <div class="guard-item"><span class="x" aria-hidden="true">✕</span><span><span class="guard-never">Never</span> takes an action that can't be undone</span></div>
+        <div class="guard-item"><span class="x" aria-hidden="true">✕</span><span><span class="guard-never">Never</span> signs or commits the business to anything</span></div>
+        <div class="guard-item"><span class="x" aria-hidden="true">✕</span><span><span class="guard-never">Never</span> weakens its own oversight</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSTALL PROCESS -->
   <section id="process">
     <div class="container">
       <div class="section-head reveal">
-        <h2 class="display">Simple. Fast. <span class="accent-mint">Straight to it.</span></h2>
+        <span class="eyebrow">How an install runs</span>
+        <h2>We install it, tune it to the real business, and stand behind it.</h2>
       </div>
       <div class="process-steps">
         <div class="process-step reveal">
           <div class="process-num">1</div>
-          <h3>Map</h3>
-          <p>We sit down with you, go through your business, and find exactly where time and money is leaking.</p>
+          <h3>Intake</h3>
+          <div class="process-visual">
+            <div class="hub-tags">
+              <span class="hub-tag">Tools</span>
+              <span class="hub-tag">Team</span>
+              <span class="hub-tag">Pinch points</span>
+            </div>
+          </div>
+          <p>Understanding your business, its tools, and its real pinch points — before a single file is written.</p>
         </div>
         <div class="process-step reveal">
           <div class="process-num">2</div>
           <h3>Build</h3>
-          <p>We build your employees and your dashboard around the way you actually work. Not a template. Yours.</p>
+          <div class="process-visual">
+            <div class="linked-chips">
+              <span class="linked-chip"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M13 4L6.5 10 4 7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Inbox linked</span>
+              <span class="linked-chip"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M13 4L6.5 10 4 7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Calendar linked</span>
+              <span class="linked-chip"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M13 4L6.5 10 4 7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Writing style captured</span>
+            </div>
+          </div>
+          <p>Your knowledge layer drafted from your own mail and documents; tools linked; your writing style captured.</p>
         </div>
         <div class="process-step reveal">
           <div class="process-num">3</div>
-          <h3>Run and improve</h3>
-          <p>We manage everything, watch the numbers, and keep improving the system until it's earning its keep.</p>
+          <h3>Test</h3>
+          <div class="process-visual">
+            <div class="alert-banner">
+              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 3l8 14H2L10 3z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M10 8.5v3.5M10 14.5v.1" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+              <div><div class="alert-title">Connection dropped</div><div class="alert-sub">Reported immediately — never assumed silent.</div></div>
+            </div>
+          </div>
+          <p>Proven on real, low-stakes work first — including a deliberate test that a broken connection fails loudly, not silently.</p>
+        </div>
+        <div class="process-step reveal">
+          <div class="process-num">4</div>
+          <h3>Handover</h3>
+          <div class="process-visual">
+            <ul class="check-list" style="gap:0;">
+              <li class="check-item" style="padding:6px 0;"><span class="check-icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M12 4L6.5 10 4 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>How to read the dawn run</span></li>
+              <li class="check-item" style="padding:6px 0;"><span class="check-icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M12 4L6.5 10 4 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>How to update the knowledge file</span></li>
+              <li class="check-item" style="padding:6px 0;"><span class="check-icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M12 4L6.5 10 4 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Who to call if something breaks</span></li>
+            </ul>
+          </div>
+          <p>You and your team know exactly how to run it, day to day.</p>
+        </div>
+        <div class="process-step reveal">
+          <div class="process-num">5</div>
+          <h3>30 days support</h3>
+          <div class="process-visual">
+            <div class="timeline-mini">
+              <div class="tl-track"></div>
+              <div class="tl-point tl-point-1"><span class="tl-dot"></span><span class="tl-label">Day 1<br><strong>Live</strong></span></div>
+              <div class="tl-point tl-point-2"><span class="tl-dot"></span><span class="tl-label">Day 30<br><strong>Tuned</strong></span></div>
+            </div>
+          </div>
+          <p>We're with you as it beds in — tuning the system against real work as it runs.</p>
+        </div>
+        <div class="process-step reveal">
+          <div class="process-num">6</div>
+          <h3>Ongoing retainer</h3>
+          <div class="process-visual">
+            <span class="cycle-badge"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M13.5 8a5.5 5.5 0 10-1.6 3.9M13.5 8V4.5M13.5 8H10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Tuned monthly, as the business changes</span>
+          </div>
+          <p>A system like this needs tending as the business changes — not a one-time delivery.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- PRICING -->
-  <section id="pricing">
+  <!-- FOUNDER CREDIBILITY (compact) -->
+  <section id="founder">
     <div class="container">
-      <div class="section-head reveal">
-        <h2 class="display">Simple, transparent pricing. <span class="accent-mint">No lock-in contracts.</span></h2>
-        <p>All plans include a one-time setup fee of $1,500 to $3,000. We'll confirm this on your strategy call.</p>
-      </div>
-      <div class="packages-grid">
-        <article class="package-card reveal">
-          <span class="package-name">Foundation</span>
-          <div class="package-price">
-            <span class="currency">$</span><span class="amount">2,000</span><span class="suffix">/month</span>
+      <div class="founder">
+        <div class="founder-aside reveal">
+          <div class="founder-monogram" aria-hidden="true">EO</div>
+          <div class="founder-stats">
+            <div class="stat"><span class="stat-num">15 yrs</span><span class="stat-label">Building systems in IT infrastructure</span></div>
+            <div class="stat"><span class="stat-num">Banks → trades</span><span class="stat-label">Enterprise-grade thinking, small-business scale</span></div>
+            <div class="stat"><span class="stat-num">Gold Coast</span><span class="stat-label">Built for businesses that run lean</span></div>
           </div>
-          <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.45; margin-bottom: 4px;">Your first AI employee answers every enquiry and follows up until they book. Stop losing jobs because you didn't reply fast enough.</p>
-          <ul class="package-features">
-            <li>1 to 2 dedicated employees set up and managed for you</li>
-            <li>Live business dashboard</li>
-            <li>Lead follow-up and enquiry automation</li>
-            <li>Monthly check-in</li>
-          </ul>
-          <button onclick="openChat()" class="btn btn-ghost package-cta">
-            Book a Call
-            <svg class="arrow" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-        </article>
-
-        <article class="package-card featured reveal">
-          <span class="package-badge">Recommended</span>
-          <span class="package-name">Growth</span>
-          <div class="package-price">
-            <span class="currency">$</span><span class="amount">4,500</span><span class="suffix">/month</span>
+        </div>
+        <div class="founder-main reveal">
+          <span class="eyebrow">Who builds it</span>
+          <p class="pull-quote">"The technology is rarely the problem. The problem is that nobody built systems around how the business actually works."</p>
+          <p class="founder-cred"><strong>Eru Osborne</strong> spent 15 years building systems for banks and enterprises — then started building them for the owner-operated businesses doing the selling, the delivery, and the admin themselves. Oranga Core is built the way it is because that's how real systems are meant to work: knowledge written down, limits set in writing, nothing left to chance.</p>
+          <div class="risk-strip">
+            <span class="risk-pill">No lock-in contracts</span>
+            <span class="risk-pill">A diagnosis, not a pitch</span>
+            <span class="risk-pill">We'll tell you if it's not a fit</span>
           </div>
-          <p style="font-size: 0.95rem; color: var(--text); line-height: 1.45; margin-bottom: 4px;">A full AI front-end for your business. Every lead answered, qualified, and booked before they call a competitor. No extra headcount needed.</p>
-          <ul class="package-features">
-            <li>3 to 5 dedicated employees set up and managed for you</li>
-            <li>Full business dashboard with reporting</li>
-            <li>Lead follow-up, enquiry, and admin — all handled</li>
-            <li>Monthly strategy and optimisation call</li>
-          </ul>
-          <button onclick="openChat()" class="btn btn-primary package-cta">
-            Book a Call
-            <svg class="arrow" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-        </article>
-
-        <article class="package-card reveal">
-          <span class="package-name">Full Stack</span>
-          <div class="package-price">
-            <span class="currency">$</span><span class="amount">7,500</span><span class="suffix">/month</span>
-          </div>
-          <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.45; margin-bottom: 4px;">Your entire client journey, automated. First enquiry to booked job to follow-up — all handled. You focus on the work, the AI handles everything around it.</p>
-          <ul class="package-features">
-            <li>Unlimited employees set up and managed for you</li>
-            <li>Custom dashboard built around your exact workflow</li>
-            <li>Everything handled — leads, jobs, admin, reporting</li>
-            <li>Priority support</li>
-          </ul>
-          <button onclick="openChat()" class="btn btn-ghost package-cta">
-            Book a Call
-            <svg class="arrow" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- BRAND PHILOSOPHY (LIGHT) -->
-  <section class="light positioning" id="about">
-    <div class="container">
-      <div class="reveal"><span class="eyebrow">Why we build what we build</span></div>
-      <h2 class="display reveal">Why we build <span class="accent-mint">what we build.</span></h2>
-
-      <p class="about-lead reveal">The word Oranga doesn't have a clean English translation. The closest is wellbeing, but it means more than that. It means flourishing. A life, a business, a community that's actually thriving.</p>
-
-      <div class="manifesto reveal">
-        <p>Most business owners don't fail because they lack drive or skill.</p>
-        <p>They fail because their <span class="accent">systems can't keep up with them.</span></p>
-      </div>
-
-      <p class="closing-text reveal">They're good at the work, but the work of running the business slowly takes over, until there's no energy left for anything else.</p>
-
-      <p class="closing-text reveal">We built Oranga AI because we believe a business that runs well gives back more than profit. It gives back time. Clarity. The ability to show up for your clients, your family, yourself.</p>
-
-      <p class="closing-text reveal"><strong>That's what we're building toward. Not just automation. Oranga.</strong></p>
-
-      <div class="wordmark-card reveal">
-        <img src="/images/wordmark.jpg" alt="Oranga AI">
-      </div>
-      <div class="translation-card reveal">
-        <div class="translation-mark"></div>
-        <div>
-          <div class="label">Oranga · Māori</div>
-          <div class="meaning">Wellbeing. <span>Thriving.</span></div>
         </div>
       </div>
     </div>
@@ -1746,14 +404,13 @@
   <section class="cta-section">
     <div class="container">
       <div class="cta-card reveal">
-        <h2 class="display">Let's map out <span class="accent-mint">your system.</span></h2>
-        <p>Book a free 30-minute strategy call. We'll go through your business, find the biggest gaps, and show you exactly what we'd build, and what it would cost. No hard sell. No wasting your time.</p>
-        <div class="cta-buttons">
-          <button onclick="openChat()" class="btn btn-primary btn-large">
-            Book a Free Strategy Call
-            <svg class="arrow" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-        </div>
+        <h2>Get three hours of a Tuesday back.</h2>
+        <p>Book a free 30-minute strategy call. We'll map where your time and leads are leaking, and show you exactly what Oranga Core would handle. No hard sell.</p>
+        <a href="/strategy-call" class="btn btn-primary btn-large">
+          Book a free strategy call
+          <svg class="arrow" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <p class="cta-note">Mon–Fri · 8am–6pm AEST · Google Meet</p>
       </div>
     </div>
   </section>
@@ -1763,10 +420,11 @@
 <footer>
   <div class="container footer-inner">
     <div class="logo">
-      <span class="logo-mark"></span>
+      <span class="logo-mark" aria-hidden="true"></span>
       <span>Oranga AI</span>
     </div>
     <div class="footer-meta">
+      <a href="/about">About</a>
       <a href="mailto:support@orangaai.com">support@orangaai.com</a>
     </div>
     <div class="footer-meta">
@@ -1777,290 +435,33 @@
 
 <!-- CHATBOT -->
 <button class="chat-launcher" id="chatLauncher" aria-label="Open chat">
-  <svg class="icon-chat" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-  <svg class="icon-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  <svg class="icon-chat" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+  <svg class="icon-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
 </button>
 
 <aside class="chat-panel" id="chatPanel" role="dialog" aria-label="Oranga AI chatbot">
   <header class="chat-header">
-    <div class="chat-avatar"></div>
+    <div class="chat-avatar" aria-hidden="true"></div>
     <div class="chat-title">
       <div class="name">Oranga AI</div>
       <div class="status">Online · Replies instantly</div>
     </div>
     <button class="chat-close" id="chatClose" aria-label="Close chat">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
     </button>
   </header>
   <div class="chat-messages" id="chatMessages"></div>
   <div class="chat-suggestions" id="chatSuggestions"></div>
   <form class="chat-input-wrap" id="chatForm">
-    <input type="text" class="chat-input" id="chatInput" placeholder="Ask anything about Oranga AI..." autocomplete="off">
+    <label for="chatInput" class="skip-link">Ask Oranga AI a question</label>
+    <input type="text" class="chat-input" id="chatInput" placeholder="Ask anything about Oranga Core..." autocomplete="off">
     <button type="submit" class="chat-send" aria-label="Send message">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
     </button>
   </form>
 </aside>
 
-<script>
-  const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 8);
-  });
-
-  const reveals = document.querySelectorAll('.reveal');
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach((e) => {
-      if (e.isIntersecting) {
-        e.target.classList.add('in');
-        io.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-  reveals.forEach((el) => io.observe(el));
-
-  // CHATBOT
-  const launcher = document.getElementById('chatLauncher');
-  const panel = document.getElementById('chatPanel');
-  const closeBtn = document.getElementById('chatClose');
-  const messagesEl = document.getElementById('chatMessages');
-  const suggestionsEl = document.getElementById('chatSuggestions');
-  const formEl = document.getElementById('chatForm');
-  const inputEl = document.getElementById('chatInput');
-
-  const KB = [
-    {
-      keywords: ['hi', 'hello', 'hey', 'howdy', 'greetings', 'kia ora', 'sup', 'yo', 'g day', 'good morning', 'good afternoon', 'good evening'],
-      answer: "Kia ora — I'm Oranga AI's assistant. Ask me about our services, packages, pricing, timelines, or how to book a free strategy call."
-    },
-    {
-      keywords: ['what is oranga', 'who are you', 'what do you do', 'about oranga ai', 'about you', 'what is this', 'tell me about', 'explain what', 'describe what', 'overview', 'summary', 'info', 'information', 'how does oranga', 'what exactly'],
-      answer: "Oranga AI builds and manages AI systems for service businesses. We place dedicated AI employees inside your business to handle leads, follow-ups, and admin around the clock. One live dashboard so you can see everything working. We build it, we run it — you just do the work you're good at."
-    },
-    {
-      keywords: ['oranga', 'maori', 'name mean', 'meaning', 'wellbeing', 'thriving'],
-      answer: "<strong>Oranga</strong> is a Māori word meaning <em>wellbeing</em> and <em>thriving</em>. That's exactly what we build — AI systems that let your business thrive without you burning out running it."
-    },
-    {
-      keywords: ['service', 'services', 'offer', 'what do you build', 'what can you build', 'what do you offer', 'what can you do', 'capabilities', 'build for me', 'help with', 'employees', 'ai employees', 'dedicated', 'workers', 'what would you do', 'what would you build', 'provide'],
-      answer: "We place dedicated AI employees inside your business — they handle lead follow-up, enquiry responses, scheduling, and admin around the clock. You also get a live dashboard showing everything in real time.<br><br>Three monthly plans: <a href='#pricing'>Foundation ($2k), Growth ($4.5k), Full Stack ($7.5k)</a>. One-time setup of $1,500–$3,000. We confirm the setup cost on your strategy call."
-    },
-    {
-      keywords: ['website', 'site', 'web design', 'web development', 'landing page', 'web build'],
-      answer: "Yes, websites are something we can discuss on your strategy call. We build conversion-focused sites — not just something that looks good, but one that's structured to turn visitors into booked calls. Pricing and scope get confirmed once we know what you actually need."
-    },
-    {
-      keywords: ['voice', 'receptionist', 'phone', 'call answer', 'answering', '24 7', 'ai phone', 'ai voice', 'missed calls', 'pick up', 'answer calls'],
-      answer: "Phone answering, call handling, and booking is part of what our AI employees do — 24/7, in your business name, qualifying leads and getting them into your calendar. It's included in our monthly plans. <a href='#pricing'>See the plans →</a>"
-    },
-    {
-      keywords: ['dashboard', 'agent', 'agents', 'automation', 'automate', 'operations', 'ops', 'workflow', 'reporting', 'reports', 'visibility', 'tracking', 'track', 'monitor', 'data', 'pipeline', 'live view'],
-      answer: "Every plan includes a live business dashboard — one screen showing your whole business in real time. Leads, jobs, follow-ups, all of it. The AI employees run in the background and the dashboard is how you see everything they're doing. Included across all monthly plans. <a href='#pricing'>See the plans →</a>"
-    },
-    {
-      keywords: ['package', 'packages', 'foundation', 'full stack', 'tier', 'bundle', 'plan', 'plans', 'monthly plan', 'which plan', 'what plan', 'options', 'option', 'compare', 'comparison', 'included', 'what is included', 'subscription', 'retainer', 'monthly fee', 'per month'],
-      answer: "Three monthly plans:<br><br><strong>Foundation — $2,000/month.</strong> 1–2 dedicated AI employees, live dashboard, lead follow-up and enquiry automation, monthly check-in.<br><strong>Growth — $4,500/month</strong> (recommended). 3–5 employees, full dashboard with reporting, leads/enquiries/admin all handled, monthly strategy call.<br><strong>Full Stack — $7,500/month.</strong> Unlimited employees, custom dashboard built around your workflow, everything handled, priority support.<br><br>All plans have a one-time setup fee of $1,500–$3,000. We confirm the exact amount on your strategy call."
-    },
-    {
-      keywords: ['process', 'how do you work', 'how does it work', 'steps', 'workflow do you', 'methodology', 'how it works', 'next steps', 'onboard', 'onboarding', 'what happens', 'what happens next', 'after i sign up', 'after signing up'],
-      answer: "Three steps:<br><br><strong>01 · Audit</strong> — we map your ops and find where leads, time, and revenue are leaking.<br><strong>02 · Build</strong> — we create the systems for the way you actually work.<br><strong>03 · Automate &amp; Optimise</strong> — we connect everything and improve until it's earning its keep."
-    },
-    {
-      keywords: ['audit', 'discovery', 'first step', 'strategy call', 'free call', 'free consultation', 'discovery call', 'start with', 'begin with'],
-      answer: "Start with a free 30-minute strategy call. We map exactly where your business is leaking and what it would cost to fix. No pitch, no pressure. Click <strong>Book a Call</strong> in the chat below to pick a time."
-    },
-    {
-      keywords: ['how long', 'timeline', 'how many weeks', 'duration', 'time to build', 'how soon', 'when will', 'how fast', 'quick', 'speed', 'delivery'],
-      answer: "Timelines depend on scope, but we move in weeks, not quarters. We share a concrete timeline after the strategy call once we've mapped what you actually need."
-    },
-    {
-      keywords: ['price', 'pricing', 'cost', 'how much', 'rate', 'fee', 'budget', 'monthly', 'pay', 'payment', 'charge', 'invest', 'investment', 'affordable', 'afford', 'worth it', 'total', 'setup fee', 'setup cost'],
-      answer: "Monthly retainer plans:<br><br>• <strong>Foundation — $2,000/month</strong> (1–2 AI employees)<br>• <strong>Growth — $4,500/month</strong> (3–5 AI employees, recommended)<br>• <strong>Full Stack — $7,500/month</strong> (unlimited employees)<br><br>All plans include a one-time setup fee of $1,500–$3,000. See the full breakdown at <a href='#pricing'>Pricing</a>. Exact quote confirmed on your free strategy call."
-    },
-    {
-      keywords: ['contract', 'lock', 'locked in', 'cancel', 'cancellation', 'commitment', 'tied', 'exit', 'stop', 'quit', 'flexible', 'lock-in', 'no contract'],
-      answer: "No lock-in contracts. You're not tied in. If it's not working for you, we'd rather know and fix it. Our goal is for the system to pay for itself — if it doesn't, that's a conversation worth having."
-    },
-    {
-      keywords: ['cheap', 'expensive', 'wix', 'squarespace', 'template', 'diy', 'do it myself', 'do it yourself'],
-      answer: "You could use a template, but it won't be structured for your specific customers, won't have the right copy, and won't be connected to your systems. Our builds are designed to work — not just exist. Worth it if you're serious about growth."
-    },
-    {
-      keywords: ['who is this for', 'right fit', 'do you work with', 'industry', 'target', 'clients', 'who do you work with', 'tradie', 'tradies', 'dental', 'cleaning', 'small business', 'right for me', 'suited', 'for me', 'my business', 'business type'],
-      answer: "We're built for <strong>tradespeople and service businesses</strong> — tradies, dental clinics, cleaning businesses, and service operators. Best fit: owners doing <strong>$500k+ revenue</strong>, great at the work but stretched thin on admin."
-    },
-    {
-      keywords: ['book', 'meeting', 'consultation', 'demo', 'schedule', 'speak to', 'talk', 'get started', 'start today', 'sign up', 'join', 'ready', 'interested', 'learn more', 'find out more', 'want to know', 'keen', 'tell me more'],
-      answer: "Easy. Book a free 30-minute strategy call — we go through your business, find the biggest gaps, and show you exactly what we'd build.<br><br><button type='button' onclick='if(window.startBookingFlow)window.startBookingFlow()' style='background:#5DDBA9;color:#000;border:none;padding:8px 18px;border-radius:20px;font-weight:700;cursor:pointer;font-size:14px;display:inline-flex;align-items:center;gap:6px;'>📅 Book a call</button>"
-    },
-    {
-      keywords: ['contact', 'email', 'reach', 'get in touch', 'support'],
-      answer: "Two ways: book a free strategy call via the chat for the fastest answer, or email <a href='mailto:support@orangaai.com'>support@orangaai.com</a>."
-    },
-    {
-      keywords: ['founder', 'team', 'who runs', 'who built', 'who made', 'background', 'experience', 'credentials', 'about the team'],
-      answer: "Oranga AI is a small team of operators and builders. We've shipped real systems for real businesses. Specifics about the team get covered on the strategy call."
-    },
-    {
-      keywords: ['why oranga', 'why you', 'different', 'unique', 'competitors', 'why hire', 'why should i', 'convince me', 'what makes you', 'better than', 'vs', 'versus', 'alternative', 'stand out'],
-      answer: "(1) We don't sell software — we <em>build and manage</em> the systems, then hand you the keys.<br>(2) We measure success in revenue earned and hours saved, not features delivered.<br>(3) We're not selling AI as a trend — we solve real problems: missed calls, manual work, disconnected tools, websites that don't convert.<br><br>Straight to the point. No overcomplication. No tech skills required on your end."
-    },
-    {
-      keywords: ['result', 'outcome', 'roi', 'guarantee', 'expect', 'success', 'proof', 'case study', 'examples', 'testimonial', 'review', 'worked', 'helped', 'saved', 'earned', 'revenue', 'return'],
-      answer: "Every system is built to do at least one of: increase revenue or reduce manual work. More leads captured, more calls booked, less manual work, faster ops, clearer visibility. The strategy call is where we show you the gap in your business and what fixing it is worth."
-    },
-    {
-      keywords: ['location', 'where are you', 'remote', 'based', 'country', 'in person', 'gold coast', 'australia', 'new zealand', 'nz', 'overseas', 'offshore', 'local'],
-      answer: "We work fully remote with clients globally. Discovery, builds, and ongoing support happen over video and async — no travel needed."
-    },
-    {
-      keywords: ['integration', 'tools', 'crm', 'stack', 'connect', 'works with', 'whatsapp', 'spreadsheet', 'existing tools', 'compatible', 'systems'],
-      answer: "We connect to whatever stack you already run — CRMs, calendars, phones, email, even WhatsApp threads and spreadsheets. The dashboard ties them together. If you're not sure your stack will play nicely, that's exactly what the strategy call is for."
-    },
-    {
-      keywords: ['support', 'after launch', 'maintenance', 'ongoing', 'changes', 'cms', 'after we start', 'long term', 'ongoing help'],
-      answer: "We manage the system ongoing — it's not a handoff and goodbye. You get monthly check-ins (or strategy calls on Growth and above), and we keep optimising until it's earning its keep."
-    },
-    {
-      keywords: ['caller', 'will callers know', 'is it ai', 'sound real', 'natural', 'script', 'conversation', 'replies', 'respond'],
-      answer: "Some callers will notice it's AI, some won't. What they'll know: someone picked up, was helpful, and got them booked. That's what matters — and that's what your competitors aren't doing."
-    },
-    {
-      keywords: ['complex', 'complicated', 'specific', 'edge case', 'flagged', 'escalate', 'tricky'],
-      answer: "The voice agent handles FAQs and bookings. Anything complex gets flagged and escalated to you with a full transcript — so you call back already up to speed."
-    },
-    {
-      keywords: ['uptime', 'downtime', 'reliability', 'goes down', 'breaks', 'reliable', 'always on'],
-      answer: "We monitor uptime and have fallback routing. Your calls never go unanswered. The dashboard has built-in alerts so you know if anything needs attention."
-    },
-    {
-      keywords: ['ai', 'artificial intelligence', 'llm', 'gpt', 'claude', 'technology', 'tech', 'model', 'language model', 'chatgpt'],
-      answer: "AI is the core of what we do — voice agent, dashboard agents, follow-up automation, all powered by current-generation models. But the goal is never AI for its own sake. It's <em>your business running as a system</em>."
-    }
-  ];
-
-  const SUGGESTIONS = [
-    "What services do you offer?",
-    "How does your process work?",
-    "How much does it cost?",
-    "What does Oranga mean?",
-    "Book a call"
-  ];
-
-  function addMessage(text, who, opts = {}) {
-    const msg = document.createElement('div');
-    msg.className = 'msg ' + who;
-    if (opts.html) msg.innerHTML = text;
-    else msg.textContent = text;
-    messagesEl.appendChild(msg);
-    messagesEl.scrollTop = messagesEl.scrollHeight;
-    return msg;
-  }
-
-  function showTyping() {
-    const t = document.createElement('div');
-    t.className = 'msg bot typing';
-    t.innerHTML = '<span></span><span></span><span></span>';
-    messagesEl.appendChild(t);
-    messagesEl.scrollTop = messagesEl.scrollHeight;
-    return t;
-  }
-
-  function renderSuggestions(list) {
-    suggestionsEl.innerHTML = '';
-    list.forEach((q) => {
-      const chip = document.createElement('button');
-      chip.className = 'suggestion-chip';
-      chip.type = 'button';
-      chip.textContent = q;
-      chip.addEventListener('click', () => {
-        if (q === 'Book a call' && typeof window.startBookingFlow === 'function') {
-          suggestionsEl.innerHTML = '';
-          window.startBookingFlow();
-          return;
-        }
-        handleUserMessage(q);
-        suggestionsEl.innerHTML = '';
-      });
-      suggestionsEl.appendChild(chip);
-    });
-  }
-
-  function findAnswer(query) {
-    const q = ' ' + query.toLowerCase().replace(/[^\\w\\s]/g, ' ').replace(/\\s+/g, ' ').trim() + ' ';
-    let best = null;
-    let bestScore = 0;
-    KB.forEach((entry) => {
-      let score = 0;
-      entry.keywords.forEach((kw) => {
-        const k = kw.toLowerCase();
-        if (q.includes(' ' + k + ' ')) score += 10 + k.length * 0.5;
-        else if (q.includes(k)) score += 4 + k.length * 0.2;
-      });
-      if (score > bestScore) { bestScore = score; best = entry; }
-    });
-    if (bestScore >= 3) return best.answer;
-    return null;
-  }
-
-  function handleUserMessage(text) {
-    const trimmed = text.trim();
-    if (!trimmed) return;
-    addMessage(trimmed, 'user');
-    inputEl.value = '';
-    const typing = showTyping();
-    const delay = 400 + Math.min(800, trimmed.length * 12);
-    setTimeout(() => {
-      typing.remove();
-      const answer = findAnswer(trimmed);
-      if (answer) {
-        addMessage(answer, 'bot', { html: true });
-      } else {
-        addMessage(
-          "I don't have a clean answer for that one — but our team will. The fastest way is to book a call via the chat or email <a href='mailto:support@orangaai.com'>support@orangaai.com</a>. Or try one of these:",
-          'bot',
-          { html: true }
-        );
-        renderSuggestions(SUGGESTIONS.slice(0, 4));
-      }
-    }, delay);
-  }
-
-  function openChat() {
-    panel.classList.add('open');
-    launcher.classList.add('open');
-    inputEl.focus();
-    if (!messagesEl.dataset.greeted) {
-      messagesEl.dataset.greeted = '1';
-      setTimeout(() => {
-        addMessage(
-          "Kia ora — I'm Oranga AI's assistant. Ask me anything about our services, process, or how to book a call.",
-          'bot',
-          { html: true }
-        );
-        renderSuggestions(SUGGESTIONS);
-      }, 240);
-    }
-  }
-  function closeChat() {
-    panel.classList.remove('open');
-    launcher.classList.remove('open');
-  }
-
-  launcher.addEventListener('click', () => {
-    if (panel.classList.contains('open')) closeChat();
-    else openChat();
-  });
-  closeBtn.addEventListener('click', closeChat);
-  formEl.addEventListener('submit', (e) => {
-    e.preventDefault();
-    handleUserMessage(inputEl.value);
-  });
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && panel.classList.contains('open')) closeChat();
-  });
-</script>
-
+<script src="/app.js" defer></script>
 <script src="/booking-chatbot.js" defer></script>
 
 </body>

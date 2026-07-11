@@ -2,6 +2,10 @@
   "name": "orangaai-website",
   "version": "1.0.0",
   "private": true,
+  "scripts": {
+    "dev": "vercel dev",
+    "start": "vercel dev"
+  },
   "dependencies": {
     "googleapis": "^144.0.0",
     "date-fns": "^4.1.0",

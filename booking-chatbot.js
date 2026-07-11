@@ -288,6 +288,14 @@
           );
           setSuggestions([{ label: '🏠 Back to website', value: '__home__' }]);
 
+          // Conversion event — provider-agnostic, so whichever analytics tool
+          // is installed (Plausible, GA4, etc.) can listen for it.
+          try {
+            document.dispatchEvent(new CustomEvent('oranga:booking_confirmed'));
+            if (typeof window.plausible === 'function') window.plausible('Booking Confirmed');
+            if (typeof window.gtag === 'function') window.gtag('event', 'booking_confirmed');
+          } catch (e) {}
+
         } else if (data.slotTaken) {
           addMsg("That slot was just taken 😅 — let's pick another time.", 'bot');
           resetState();
