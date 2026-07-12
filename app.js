@@ -105,7 +105,7 @@
     },
     {
       keywords: ['founder', 'team', 'who runs', 'who built', 'who made', 'eru', 'osborne', 'background', 'experience', 'credentials', 'about the team'],
-      answer: "Oranga AI is founded by <strong>Eru Osborne</strong> — 15 years building systems for banks and enterprises before building them for owner-operated businesses. Oranga Core is built the way it is (knowledge written down, hard guardrails) because that's how real systems are meant to work."
+      answer: "Oranga AI is founded by <strong>Eru Osborne</strong> — 15 years building IT systems for a university, from help desk to senior systems engineer, before building them for owner-operated businesses. Oranga Core is built the way it is (knowledge written down, hard guardrails) because that's how real systems are meant to work."
     },
     {
       keywords: ['different', 'unique', 'competitors', 'why hire', 'why should i', 'convince me', 'what makes you', 'better than', 'vs', 'versus', 'alternative', 'chatbot', 'chatgpt subscription', 'stand out', 'why oranga'],

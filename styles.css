@@ -133,6 +133,21 @@ nav.site-nav.scrolled { border-bottom-color: var(--zone-line); }
 .site-nav .nav-back:hover { color: var(--zone-text); }
 .site-nav .btn-ghost { color: var(--zone-text); border-color: var(--zone-line); }
 .site-nav .btn-ghost:hover { border-color: var(--zone-text); }
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  margin-left: auto;
+  margin-right: 32px;
+}
+.nav-links a {
+  color: var(--zone-muted);
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: color 0.2s var(--ease);
+}
+.nav-links a:hover,
+.nav-links a.active { color: var(--zone-text); }
 .logo-mark {
   width: 96px;
   height: 96px;
