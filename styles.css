@@ -826,6 +826,24 @@ section { padding: clamp(76px, 11vh, 132px) 0; position: relative; }
 .cta-card p { color: var(--ink-muted); font-size: 1.15rem; line-height: 1.5; max-width: 50ch; }
 .cta-note { font-size: 0.85rem; color: var(--ink-faint); }
 
+.subscribe-inline { margin-top: 16px; padding-top: 32px; border-top: 1px solid var(--line); display: flex; flex-direction: column; align-items: center; gap: 14px; }
+.subscribe-label { font-size: 0.9rem; color: var(--ink-faint); max-width: 40ch; }
+.subscribe-form { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+.subscribe-form input[type="email"] {
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  color: var(--ink);
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--line-strong);
+  padding: 10px 4px;
+  min-width: 240px;
+  transition: border-color 0.2s var(--ease);
+}
+.subscribe-form input[type="email"]::placeholder { color: var(--ink-faint); }
+.subscribe-form input[type="email"]:focus { outline: none; border-color: var(--accent); }
+.subscribe-status { font-size: 0.85rem; color: var(--ink-faint); min-height: 1.2em; }
+
 /* ============================================================
    TRUST STRIP (secondary pages)
    ============================================================ */

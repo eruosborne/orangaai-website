@@ -434,6 +434,15 @@
           <svg class="arrow" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
         <p class="cta-note">Mon–Fri · 8am–6pm AEST · Google Meet</p>
+
+        <div class="subscribe-inline">
+          <p class="subscribe-label">Not ready for a call? Leave your email and we'll send you the setup guide.</p>
+          <form id="subscribeForm" class="subscribe-form" novalidate>
+            <input type="email" id="subscribeEmail" name="email" placeholder="you@business.com" autocomplete="email" required>
+            <button type="submit" class="btn btn-ghost">Notify me</button>
+          </form>
+          <p class="subscribe-status" id="subscribeStatus" role="status" aria-live="polite"></p>
+        </div>
       </div>
     </div>
   </section>
@@ -486,6 +495,43 @@
 
 <script src="/app.js" defer></script>
 <script src="/booking-chatbot.js" defer></script>
+<script>
+(function () {
+  var form = document.getElementById('subscribeForm');
+  if (!form) return;
+  var emailEl = document.getElementById('subscribeEmail');
+  var statusEl = document.getElementById('subscribeStatus');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var email = emailEl.value.trim();
+    if (!/\S+@\S+\.\S+/.test(email)) {
+      statusEl.textContent = "That doesn't look like a valid email.";
+      return;
+    }
+    var btn = form.querySelector('button');
+    btn.disabled = true;
+    statusEl.textContent = '';
+    fetch('/api/subscribe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: email }),
+    })
+      .then(function (res) { return res.json().then(function (data) { return { ok: res.ok, data: data }; }); })
+      .then(function (result) {
+        if (result.ok) {
+          statusEl.textContent = "Thanks — we'll be in touch.";
+          form.reset();
+        } else {
+          statusEl.textContent = result.data.error || 'Something went wrong — please try again.';
+        }
+      })
+      .catch(function () {
+        statusEl.textContent = 'Something went wrong — please try again.';
+      })
+      .finally(function () { btn.disabled = false; });
+  });
+})();
+</script>
 
 </body>
 </html>
