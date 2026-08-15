@@ -145,7 +145,7 @@
         removeTyping();
         if (!data.slots || data.slots.length === 0) {
           addMsg(
-            "No slots are available on <strong>" + state.displayDate + "</strong> — please pick another date.",
+            "No slots are available on <strong>" + state.displayDate + "</strong>, please pick another date.",
             'bot'
           );
           state.step = 'day_select';
@@ -168,7 +168,7 @@
       })
       .catch(function () {
         removeTyping();
-        addMsg("Couldn't load availability right now — please try again.", 'bot');
+        addMsg("Couldn't load availability right now, please try again.", 'bot');
         state.step = 'day_select';
         var days = getNextWeekdays(10);
         setSuggestions(days.map(function (iso) {
@@ -187,7 +187,7 @@
 
     state.step = 'collect_name';
     return botReply(
-      "Perfect — <strong>" + state.displayTime + "</strong> on <strong>" + state.displayDate + "</strong>.<br>" +
+      "Perfect, <strong>" + state.displayTime + "</strong> on <strong>" + state.displayDate + "</strong>.<br>" +
       "What's your full name?"
     ).then(function () {
       $input.placeholder = 'Your full name…';
@@ -209,14 +209,14 @@
     var email = text.trim();
     if (!/\S+@\S+\.\S+/.test(email)) {
       addMsg(text, 'user');
-      return botReply("That doesn't look quite right — could you double-check your email?");
+      return botReply("That doesn't look quite right, could you double-check your email?");
     }
     state.email = email;
     addMsg(text, 'user');
     state.step = 'collect_phone';
     return botReply(
-      "Got it! One last thing — what's your phone number?<br>" +
-      "<small style='color:#86868B'>(Optional — type <em>skip</em> to leave it out)</small>"
+      "Got it! One last thing, what's your phone number?<br>" +
+      "<small style='color:#86868B'>(Optional, type <em>skip</em> to leave it out)</small>"
     ).then(function () {
       $input.placeholder = 'Phone number, or type skip…';
     });
@@ -288,7 +288,7 @@
           );
           setSuggestions([{ label: '🏠 Back to website', value: '__home__' }]);
 
-          // Conversion event — provider-agnostic, so whichever analytics tool
+          // Conversion event, provider-agnostic, so whichever analytics tool
           // is installed (Plausible, GA4, etc.) can listen for it.
           try {
             document.dispatchEvent(new CustomEvent('oranga:booking_confirmed'));
@@ -297,7 +297,7 @@
           } catch (e) {}
 
         } else if (data.slotTaken) {
-          addMsg("That slot was just taken 😅 — let's pick another time.", 'bot');
+          addMsg("That slot was just taken 😅, let's pick another time.", 'bot');
           resetState();
           startBookingFlow();
 
@@ -309,7 +309,7 @@
       })
       .catch(function () {
         removeTyping();
-        addMsg("Couldn't complete the booking — please try again.", 'bot');
+        addMsg("Couldn't complete the booking, please try again.", 'bot');
         state.step = 'idle';
         setSuggestions([{ label: '🔄 Try again', value: '__book__' }]);
       });
@@ -339,17 +339,17 @@
       resetState();
       clearSuggestions();
       $messages.innerHTML = '';
-      // Let KB chatbot show its own greeting — do not call greet() here
+      // Let KB chatbot show its own greeting, do not call greet() here
       return;
     }
 
     switch (state.step) {
 
       case 'idle':
-        // FIXED: Don't intercept when idle — let KB chatbot handle all Q&A.
+        // FIXED: Don't intercept when idle, let KB chatbot handle all Q&A.
         // Only start booking flow if user explicitly asks to book via chip (__book__).
         // Returning here means the capture-phase listener already blocked the
-        // KB chatbot's listener from seeing this message — so we must not return
+        // KB chatbot's listener from seeing this message, so we must not return
         // silently. We should NOT be in this branch for normal messages because
         // the capture-phase listener only fires dispatch() when step !== 'idle'.
         // This case is here only as a safety fallback.
@@ -401,7 +401,7 @@
         } else if (/no|cancel|restart|start over|change/i.test(lower)) {
           resetState();
           $messages.innerHTML = '';
-          // Let KB chatbot handle — don't call greet()
+          // Let KB chatbot handle, don't call greet()
         } else {
           addMsg(text, 'user');
           botReply("Please tap <strong>✅ Confirm booking</strong> or <strong>✖️ Start over</strong> above.");
@@ -426,7 +426,7 @@
     $suggestions = document.getElementById('chatSuggestions');
 
     if (!$messages || !$form || !$input || !$suggestions) {
-      console.warn('[booking-chatbot] Chat widget DOM elements not found — check IDs.');
+      console.warn('[booking-chatbot] Chat widget DOM elements not found, check IDs.');
       return;
     }
 
@@ -440,7 +440,7 @@
     }
     var launcher = document.getElementById('chatLauncher');
     if (launcher) {
-      // Black circle with the logo centred — looks clean on both dark and light
+      // Black circle with the logo centred, looks clean on both dark and light
       // page backgrounds as the user scrolls.
       launcher.style.backgroundColor    = '#000000';
       launcher.style.backgroundImage    = 'url("/images/oranga-logo-transparent.png")';
@@ -469,11 +469,11 @@
           addMsg(text, 'user');
           startBookingFlow();
         }
-        // Otherwise fall through — KB chatbot handles it
+        // Otherwise fall through, KB chatbot handles it
         return;
       }
 
-      // Active booking flow — take over completely
+      // Active booking flow, take over completely
       e.preventDefault();
       e.stopPropagation();
       $input.value = '';
