@@ -67,6 +67,7 @@
       <span class="eyebrow reveal">Oranga AI · Giveaway</span>
       <h1 class="reveal">Win a free AI brain install, worth <em>$5,000</em></h1>
       <p class="giveaway-sub reveal">One Gold Coast trade business gets a full Oranga Core install, done for you. Admin sorted, free. Two minutes to enter.</p>
+      <p class="giveaway-closes reveal">Entries close Sunday, 23 August. Winner drawn and emailed that day.</p>
     </div>
   </section>
 
@@ -144,7 +145,7 @@
           <svg class="arrow" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
         <p class="giveaway-status" id="giveawayStatus" role="status" aria-live="polite"></p>
-        <p class="gf-fine-print">One entry per business. Winner picked and contacted by email. By entering you'll also receive occasional updates and offers from Oranga AI — unsubscribe any time. See our <a href="/privacy">privacy policy</a>.</p>
+        <p class="gf-fine-print">One entry per business. Entries close Sunday, 23 August — winner drawn and emailed that day. By entering you'll also receive occasional updates and offers from Oranga AI — unsubscribe any time. See our <a href="/privacy">privacy policy</a>.</p>
       </form>
     </div>
   </section>
@@ -210,7 +211,7 @@
       .then(function (res) { return res.json().then(function (body) { return { ok: res.ok, body: body }; }); })
       .then(function (result) {
         if (result.ok) {
-          form.innerHTML = '<p class="giveaway-done">You\'re entered. Winner picked and emailed soon — keep an eye on your inbox.</p>';
+          form.innerHTML = '<p class="giveaway-done">You\'re entered. Winner drawn and emailed Sunday, 23 August — keep an eye on your inbox.</p>';
         } else {
           statusEl.textContent = result.body.error || 'Something went wrong, please try again.';
         }
