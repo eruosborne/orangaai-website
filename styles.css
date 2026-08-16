@@ -1323,3 +1323,104 @@ footer {
   display: grid; place-items: center;
 }
 .chat-send:hover { background: var(--accent-ink); }
+
+/* ============================================================
+   GIVEAWAY LANDING PAGE
+   ============================================================ */
+.giveaway-sub {
+  margin-top: 20px;
+  font-size: clamp(1.05rem, 2.2vw, 1.3rem);
+  color: var(--ink-muted);
+  max-width: 56ch;
+  line-height: 1.5;
+}
+
+.giveaway-form-section { padding: clamp(48px, 8vh, 96px) 0 clamp(72px, 12vh, 128px); }
+.giveaway-form-h2 {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(1.6rem, 3.6vw, 2.4rem);
+  margin: 10px 0 32px;
+}
+
+.giveaway-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 52ch;
+}
+
+.gf-row {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.gf-row label,
+.gf-row legend {
+  font-family: var(--sans);
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--ink);
+  padding: 0;
+}
+
+.gf-optional { color: var(--ink-faint); font-weight: 400; }
+
+.gf-row input[type="text"],
+.gf-row input[type="email"] {
+  font-family: var(--sans);
+  font-size: 1rem;
+  color: var(--ink);
+  background: var(--surface);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  padding: 12px 14px;
+  transition: border-color 0.2s var(--ease);
+}
+.gf-row input[type="text"]:focus,
+.gf-row input[type="email"]:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.gf-pills { display: flex; flex-wrap: wrap; gap: 10px; }
+.gf-pill {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  font-weight: 400 !important;
+}
+.gf-pill input { position: absolute; opacity: 0; width: 0; height: 0; }
+.gf-pill span {
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  color: var(--ink-muted);
+  background: var(--surface);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  padding: 9px 16px;
+  cursor: pointer;
+  transition: border-color 0.2s var(--ease), color 0.2s var(--ease);
+}
+.gf-pill input:checked + span {
+  color: var(--zone-text);
+  background: var(--accent);
+  border-color: var(--accent);
+}
+.gf-pill input:focus-visible + span { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.gf-submit { margin-top: 8px; align-self: flex-start; }
+.giveaway-status { font-size: 0.85rem; color: var(--ink-faint); min-height: 1.2em; }
+.gf-fine-print { font-size: 0.78rem; color: var(--ink-faint); line-height: 1.5; max-width: 52ch; }
+.gf-fine-print a { color: var(--ink-muted); }
+.giveaway-done {
+  font-family: var(--display);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--ink);
+  padding: 24px 0;
+}
