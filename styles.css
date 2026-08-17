@@ -838,16 +838,11 @@ section:nth-of-type(odd) { padding-block: clamp(72px, 11vh, 128px); }
   align-items: center;
 }
 .founder-aside { display: flex; flex-direction: column; gap: 28px; }
-.founder-monogram {
-  width: 84px; height: 84px;
+.founder-photo {
+  width: 168px; height: 168px;
   border-radius: var(--radius-lg);
-  background: var(--ink);
-  color: var(--bg);
-  display: grid; place-items: center;
-  font-family: var(--mono);
-  font-size: 1.9rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
+  object-fit: cover;
+  display: block;
 }
 .founder-stats { display: flex; flex-direction: column; gap: 22px; }
 .stat { display: flex; flex-direction: column; gap: 3px; }
