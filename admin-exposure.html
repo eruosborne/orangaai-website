@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Exposure Score | Oranga AI</title>
+<meta name="description" content="A 2-minute self-assessment. Six questions about how your business actually handles admin, and a straight answer on how exposed you are to it.">
+<link rel="canonical" href="https://orangaai.com/admin-exposure">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Oranga AI">
+<meta property="og:title" content="Admin Exposure Score | Oranga AI">
+<meta property="og:description" content="Six questions. Two minutes. A straight answer on how exposed your business is to admin risk.">
+<meta property="og:url" content="https://orangaai.com/admin-exposure">
+<meta property="og:image" content="https://orangaai.com/images/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Admin Exposure Score | Oranga AI">
+<meta name="twitter:description" content="Six questions. Two minutes. A straight answer on how exposed your business is to admin risk.">
+<meta name="twitter:image" content="https://orangaai.com/images/og.png">
+
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+<meta name="theme-color" content="#0F1113">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+Condensed:wght@600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZXS09113QF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-ZXS09113QF');
+</script>
+
+<style>
+  /* Admin Exposure quiz — scoped additions, reusing existing tokens */
+  .quiz-wrap { max-width: 680px; margin: 0 auto; }
+  .quiz-progress { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 8px; }
+  .quiz-q { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px 22px 18px; margin-bottom: 16px; }
+  .quiz-q-title { font-weight: 600; font-size: 1.02rem; margin-bottom: 14px; line-height: 1.4; }
+  .quiz-opts { display: flex; flex-direction: column; gap: 8px; }
+  .quiz-opt { display: flex; align-items: flex-start; gap: 12px; padding: 12px 14px; border: 1px solid var(--line); border-radius: var(--radius); cursor: pointer; transition: border-color 0.15s, background 0.15s; }
+  .quiz-opt:hover { border-color: var(--line-strong); }
+  .quiz-opt input { margin-top: 3px; accent-color: var(--accent); flex-shrink: 0; }
+  .quiz-opt span { font-size: 0.94rem; color: var(--ink-muted); line-height: 1.45; }
+  .quiz-opt.checked { border-color: var(--accent); background: var(--accent-soft); }
+  .quiz-opt.checked span { color: var(--ink); }
+  .quiz-submit-row { text-align: center; margin: 28px 0 8px; }
+  .quiz-error { color: var(--accent); font-size: 0.88rem; text-align: center; margin-top: 10px; min-height: 1.2em; }
+
+  .quiz-result { display: none; }
+  .quiz-result.show { display: block; }
+  .result-band { text-align: center; padding: 28px 20px 24px; background: var(--surface); border: 1px solid var(--line); border-left: 3px solid var(--signal); border-radius: var(--radius); margin-bottom: 20px; }
+  .result-band.band-high { border-left-color: var(--accent); }
+  .result-band-label { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 10px; }
+  .result-band-title { font-family: var(--display); font-size: 1.6rem; font-weight: 700; margin-bottom: 10px; }
+  .result-band-sub { color: var(--ink-muted); font-size: 0.98rem; max-width: 480px; margin: 0 auto; line-height: 1.5; }
+
+  .unlock-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px 22px; text-align: center; }
+  .unlock-card p { color: var(--ink-muted); font-size: 0.94rem; margin-bottom: 16px; }
+  .unlock-form { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+  .unlock-form input[type="email"] {
+    flex: 1; min-width: 220px; max-width: 320px;
+    background: var(--bg-sunk); border: 1px solid var(--line-strong); border-radius: var(--radius);
+    padding: 12px 14px; color: var(--ink); font-family: var(--sans); font-size: 0.94rem;
+  }
+  .unlock-form input[type="email"]::placeholder { color: var(--ink-faint); }
+  .unlock-form input[type="email"]:focus { outline: none; border-color: var(--accent); }
+
+  .breakdown { display: none; }
+  .breakdown.show { display: block; }
+  .breakdown-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px 22px; margin-top: 20px; }
+  .breakdown-card p { color: var(--ink-muted); line-height: 1.6; margin-bottom: 14px; }
+  .breakdown-card p:last-child { margin-bottom: 0; }
+  .breakdown-cta { text-align: center; margin-top: 22px; }
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to content</a>
+
+<nav class="site-nav" id="nav">
+  <div class="container nav-inner">
+    <a href="/" class="logo" aria-label="Oranga AI home">
+      <span class="logo-mark" aria-hidden="true"></span>
+      <span>Oranga AI</span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="/about">About</a>
+      <a href="/#how">How it works</a>
+      <a href="/#proof">Results</a>
+      <a href="/" class="nav-back">Back to orangaai.com</a>
+    </div>
+    <a href="/" class="nav-back">
+      <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Back to orangaai.com
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<main id="main">
+
+  <section class="hero-simple">
+    <div class="container content">
+      <span class="eyebrow reveal">Free · 2 minutes · no obligation</span>
+      <h1 class="reveal">What's your <em>Admin Exposure Score</em>?</h1>
+      <p class="hero-sub reveal">Six honest questions about how your business actually handles admin right now. No pitch first, just a straight read on how exposed you are.</p>
+    </div>
+  </section>
+
+  <div class="trust-strip">
+    <div class="trust-item reveal"><span class="tick" aria-hidden="true">✓</span>Takes about 2 minutes.</div>
+    <div class="trust-item reveal"><span class="tick" aria-hidden="true">✓</span>Your score shows up straight away, no email needed.</div>
+    <div class="trust-item reveal"><span class="tick" aria-hidden="true">✓</span>If you're not exposed, we'll say so.</div>
+  </div>
+
+  <section>
+    <div class="container">
+      <div class="quiz-wrap">
+
+        <form id="quizForm" novalidate>
+          <div class="quiz-progress" id="quizProgress">0 of 6 answered</div>
+
+          <div class="quiz-q" data-q="0">
+            <div class="quiz-q-title">1. Where does most of your admin actually happen?</div>
+            <div class="quiz-opts">
+              <label class="quiz-opt"><input type="radio" name="q0" value="0"><span>During normal work hours, it's handled fine</span></label>
+              <label class="quiz-opt"><input type="radio" name="q0" value="2"><span>Evenings, after the day's done</span></label>
+              <label class="quiz-opt"><input type="radio" name="q0" value="3"><span>Weekends too, on top of evenings</span></label>
+              <label class="quiz-opt"><input type="radio" name="q0" value="3"><span>Honestly, whenever I can grab a minute — no consistent time</span></label>
+            </div>
+          </div>
+
+          <div class="quiz-q" data-q="1">
+            <div class="quiz-q-title">2. If something slipped through the cracks this week, would it cost you a job or a client?</div>
+            <div class="quiz-opts">
+              <label class="quiz-opt"><input type="radio" name="q1" value="0"><span>No, nothing that critical is riding on it</span></label>
+              <label class="quiz-opt"><input type="radio" name="q1" value="2"><span>Maybe, depends what it was</span></label>
+              <label class="quiz-opt"><input type="radio" name="q1" value="3"><span>Yes — that's already happened before</span></label>
+            </div>
+          </div>
+
+          <div class="quiz-q" data-q="2">
+            <div class="quiz-q-title">3. Is your business knowledge (pricing, past jobs, client details) written down, or mostly in your head?</div>
+            <div class="quiz-opts">
+              <label class="quiz-opt"><input type="radio" name="q2" value="0"><span>Written down somewhere the whole team can access</span></label>
+              <label class="quiz-opt"><input type="radio" name="q2" value="2"><span>Some of it — scattered across notes, texts, spreadsheets</span></label>
+              <label class="quiz-opt"><input type="radio" name="q2" value="3"><span>Mostly in my head</span></label>
+            </div>
+          </div>
+
+          <div class="quiz-q" data-q="3">
+            <div class="quiz-q-title">4. Have you tried ChatGPT or Claude for any of this already?</div>
+            <div class="quiz-opts">
+              <label class="quiz-opt"><input type="radio" name="q3" value="1"><span>Haven't tried it</span></label>
+              <label class="quiz-opt"><input type="radio" name="q3" value="3"><span>Tried it, but I have to re-explain everything each time</span></label>
+              <label class="quiz-opt"><input type="radio" name="q3" value="2"><span>Tried it, didn't stick, went back to doing it myself</span></label>
+              <label class="quiz-opt"><input type="radio" name="q3" value="0"><span>Yes, and it's actually working well for this</span></label>
+            </div>
+          </div>
+
+          <div class="quiz-q" data-q="4">
+            <div class="quiz-q-title">5. If you got a few hours back this week, is there something specific you'd actually do with them?</div>
+            <div class="quiz-opts">
+              <label class="quiz-opt"><input type="radio" name="q4" value="0"><span>Not really — I'd probably just find more admin to do</span></label>
+              <label class="quiz-opt"><input type="radio" name="q4" value="2"><span>Yes — something specific, family, the tools, growing the business</span></label>
+            </div>
+          </div>
+
+          <div class="quiz-q" data-q="5">
+            <div class="quiz-q-title">6. Could you take on more work tomorrow without anything breaking, or without working more hours?</div>
+            <div class="quiz-opts">
+              <label class="quiz-opt"><input type="radio" name="q5" value="0"><span>Yes, easily</span></label>
+              <label class="quiz-opt"><input type="radio" name="q5" value="2"><span>Probably, but it'd be tight</span></label>
+              <label class="quiz-opt"><input type="radio" name="q5" value="3"><span>No — we're already stretched</span></label>
+            </div>
+          </div>
+
+          <div class="quiz-submit-row">
+            <button type="submit" class="btn btn-primary btn-large" id="quizSubmit">
+              See your score
+              <svg class="arrow" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="quiz-error" id="quizError"></div>
+          </div>
+        </form>
+
+        <div class="quiz-result" id="quizResult">
+          <div class="result-band" id="resultBand">
+            <div class="result-band-label" id="resultLabel">Your admin exposure score</div>
+            <div class="result-band-title" id="resultTitle"></div>
+            <div class="result-band-sub" id="resultSub"></div>
+          </div>
+
+          <div class="unlock-card" id="unlockCard">
+            <p>Want the full breakdown — which specific answers drove your score, and what it typically ends up costing a business like yours?</p>
+            <form class="unlock-form" id="unlockForm" novalidate>
+              <input type="email" id="unlockEmail" placeholder="you@business.com" autocomplete="email" required>
+              <button type="submit" class="btn btn-ghost">Get my full breakdown</button>
+            </form>
+            <div class="quiz-error" id="unlockError"></div>
+          </div>
+
+          <div class="breakdown" id="breakdown">
+            <div class="breakdown-card">
+              <p id="breakdownText"></p>
+              <p>One recent example: Oranga Core found a payment condition buried in a 30-page contract one client didn't know existed, guided them through it, and they recovered $20,000 they otherwise wouldn't have chased down.</p>
+              <div class="breakdown-cta">
+                <a href="/strategy-call" class="btn btn-primary btn-large">
+                  Book a free strategy call
+                  <svg class="arrow" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <div class="logo">
+      <span class="logo-mark" aria-hidden="true"></span>
+      <span>Oranga AI</span>
+    </div>
+    <div class="footer-meta">
+      <a href="/">Home</a>
+      <a href="/about">About</a>
+      <a href="mailto:support@orangaai.com">support@orangaai.com</a>
+    </div>
+    <div class="footer-meta">
+      <span>© 2026 Oranga AI</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/app.js" defer></script>
+<script>
+(function () {
+  var form = document.getElementById('quizForm');
+  var progressEl = document.getElementById('quizProgress');
+  var errorEl = document.getElementById('quizError');
+  var resultEl = document.getElementById('quizResult');
+  var bandEl = document.getElementById('resultBand');
+  var titleEl = document.getElementById('resultTitle');
+  var subEl = document.getElementById('resultSub');
+  var unlockForm = document.getElementById('unlockForm');
+  var unlockError = document.getElementById('unlockError');
+  var unlockCard = document.getElementById('unlockCard');
+  var breakdownEl = document.getElementById('breakdown');
+  var breakdownText = document.getElementById('breakdownText');
+
+  var QUESTION_LABELS = [
+    'admin bleeding into evenings and weekends',
+    'a real risk of losing a job or client to something slipping through',
+    'business knowledge that only lives in your head',
+    'having to re-explain your business to AI every time you use it',
+    'time you’d actually put to good use if you had it back',
+    'a business that’s already stretched, with no room to take on more'
+  ];
+
+  function updateProgress() {
+    var answered = form.querySelectorAll('input[type="radio"]:checked').length;
+    progressEl.textContent = answered + ' of 6 answered';
+  }
+
+  form.addEventListener('change', function (e) {
+    if (e.target.type !== 'radio') return;
+    var opts = e.target.closest('.quiz-opts').querySelectorAll('.quiz-opt');
+    opts.forEach(function (o) { o.classList.remove('checked'); });
+    e.target.closest('.quiz-opt').classList.add('checked');
+    updateProgress();
+  });
+
+  var lastAnswers = null;
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var answers = [];
+    for (var i = 0; i < 6; i++) {
+      var checked = form.querySelector('input[name="q' + i + '"]:checked');
+      if (!checked) {
+        errorEl.textContent = 'Please answer all 6 questions.';
+        return;
+      }
+      answers.push(parseInt(checked.value, 10));
+    }
+    errorEl.textContent = '';
+    lastAnswers = answers;
+
+    var score = answers.reduce(function (a, b) { return a + b; }, 0);
+    var band, title, sub;
+    if (score <= 5) {
+      band = 'low';
+      title = 'Low exposure';
+      sub = 'Your admin’s mostly under control. Worth keeping an eye on as you grow, but nothing urgent right now.';
+    } else if (score <= 11) {
+      band = 'moderate';
+      title = 'Moderate exposure';
+      sub = 'There’s a real gap here — it’s not costing you yet, but it’s worth understanding before it does.';
+    } else {
+      band = 'high';
+      title = 'High exposure';
+      sub = 'This is very likely already costing you jobs, clients, or personal time — not hypothetically, right now.';
+    }
+
+    bandEl.className = 'result-band band-' + band;
+    titleEl.textContent = title;
+    subEl.textContent = sub;
+    resultEl.classList.add('show');
+    unlockCard.style.display = '';
+    breakdownEl.classList.remove('show');
+    form.querySelector('#quizSubmit').scrollIntoView; // no-op guard
+    resultEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
+  unlockForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var email = document.getElementById('unlockEmail').value.trim();
+    if (!/\S+@\S+\.\S+/.test(email)) {
+      unlockError.textContent = "That doesn't look like a valid email.";
+      return;
+    }
+    if (!lastAnswers) return;
+
+    var btn = unlockForm.querySelector('button');
+    btn.disabled = true;
+    unlockError.textContent = '';
+
+    var score = lastAnswers.reduce(function (a, b) { return a + b; }, 0);
+    var topIndex = 0;
+    for (var i = 1; i < lastAnswers.length; i++) {
+      if (lastAnswers[i] > lastAnswers[topIndex]) topIndex = i;
+    }
+
+    fetch('/api/admin-exposure', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: email, score: score, answers: lastAnswers }),
+    })
+      .then(function (res) { return res.json().then(function (data) { return { ok: res.ok, data: data }; }); })
+      .then(function (result) {
+        if (result.ok) {
+          breakdownText.textContent = 'Your answers point most strongly to ' + QUESTION_LABELS[topIndex] + '. That’s exactly the kind of gap Oranga Core is built to close — it prepares the admin work, and you approve anything before it goes out.';
+          unlockCard.style.display = 'none';
+          breakdownEl.classList.add('show');
+        } else {
+          unlockError.textContent = result.data.error || 'Something went wrong, please try again.';
+        }
+      })
+      .catch(function () {
+        unlockError.textContent = 'Something went wrong, please try again.';
+      })
+      .finally(function () { btn.disabled = false; });
+  });
+})();
+</script>
+
+</body>
+</html>
