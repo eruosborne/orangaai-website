@@ -121,7 +121,7 @@
   function startBookingFlow() {
     state.step = 'day_select';
     return botReply(
-      "Great! Let's get you booked in. 📅<br>Which day works best for you?"
+      "Let's get you booked in.<br>Which day works best for you?"
     ).then(function () {
       var days = getNextWeekdays(10);
       setSuggestions(days.map(function (iso) {
@@ -199,7 +199,7 @@
     addMsg(text, 'user');
     state.step = 'collect_email';
     return botReply(
-      "Nice to meet you, " + state.name + "! 🤝<br>What's your email address?"
+      "Nice to meet you, " + state.name + ".<br>What's your email address?"
     ).then(function () {
       $input.placeholder = 'your@email.com';
     });
@@ -215,8 +215,8 @@
     addMsg(text, 'user');
     state.step = 'collect_phone';
     return botReply(
-      "Got it! One last thing, what's your phone number?<br>" +
-      "<small style='color:#86868B'>(Optional, type <em>skip</em> to leave it out)</small>"
+      "Got it. One last thing, what's your phone number?<br>" +
+      "<small style='color:#766858'>(Optional, type <em>skip</em> to leave it out)</small>"
     ).then(function () {
       $input.placeholder = 'Phone number, or type skip…';
     });
@@ -242,8 +242,8 @@
     ).then(function () {
       $input.placeholder = 'Type your message…';
       setSuggestions([
-        { label: '✅ Confirm booking', value: '__confirm__' },
-        { label: '✖️ Start over',      value: '__restart__' },
+        { label: 'Confirm booking', value: '__confirm__' },
+        { label: 'Start over',      value: '__restart__' },
       ]);
     });
   }
@@ -276,17 +276,17 @@
 
         if (result.ok && data.ok) {
           var meetPart = data.meetLink
-            ? '<br><br>📹 <a href="' + data.meetLink + '" target="_blank" ' +
-              'style="color:#5DDBA9;font-weight:600">Join Google Meet</a>'
+            ? '<br><br><a href="' + data.meetLink + '" target="_blank" ' +
+              'style="color:#6B7A4F;font-weight:600">Join Google Meet</a>'
             : '';
           addMsg(
-            '🎉 You\'re booked!<br>' +
+            'You\'re booked.<br>' +
             'A calendar invite has been sent to <strong>' + state.email + '</strong>.' +
             meetPart +
-            '<br><br>We look forward to speaking with you!',
+            '<br><br>We look forward to speaking with you.',
             'bot'
           );
-          setSuggestions([{ label: '🏠 Back to website', value: '__home__' }]);
+          setSuggestions([{ label: 'Back to website', value: '__home__' }]);
 
           // Conversion event, provider-agnostic, so whichever analytics tool
           // is installed (Plausible, GA4, etc.) can listen for it.
@@ -297,21 +297,21 @@
           } catch (e) {}
 
         } else if (data.slotTaken) {
-          addMsg("That slot was just taken 😅, let's pick another time.", 'bot');
+          addMsg("That slot was just taken, let's pick another time.", 'bot');
           resetState();
           startBookingFlow();
 
         } else {
           addMsg('Something went wrong: ' + (data.error || 'Please try again.'), 'bot');
           state.step = 'idle';
-          setSuggestions([{ label: '🔄 Try again', value: '__book__' }]);
+          setSuggestions([{ label: 'Try again', value: '__book__' }]);
         }
       })
       .catch(function () {
         removeTyping();
         addMsg("Couldn't complete the booking, please try again.", 'bot');
         state.step = 'idle';
-        setSuggestions([{ label: '🔄 Try again', value: '__book__' }]);
+        setSuggestions([{ label: 'Try again', value: '__book__' }]);
       });
   }
 
@@ -360,7 +360,7 @@
           handleDaySelect(text);
         } else {
           addMsg(text, 'user');
-          botReply("Please choose one of the available dates above. 👆");
+          botReply("Please choose one of the available dates above.");
         }
         break;
 
@@ -374,7 +374,7 @@
           }
         } catch (e) {
           addMsg(text, 'user');
-          botReply("Please choose one of the available time slots above. 👆");
+          botReply("Please choose one of the available time slots above.");
         }
         break;
 
@@ -404,13 +404,13 @@
           // Let KB chatbot handle, don't call greet()
         } else {
           addMsg(text, 'user');
-          botReply("Please tap <strong>✅ Confirm booking</strong> or <strong>✖️ Start over</strong> above.");
+          botReply("Please choose <strong>Confirm booking</strong> or <strong>Start over</strong> above.");
         }
         break;
 
       case 'done':
         addMsg(text, 'user');
-        botReply("Your booking is all set! Is there anything else I can help you with?");
+        botReply("Your booking is all set. Is there anything else I can help you with?");
         break;
 
       default:
@@ -440,9 +440,9 @@
     }
     var launcher = document.getElementById('chatLauncher');
     if (launcher) {
-      // Black circle with the logo centred, looks clean on both dark and light
+      // Ink circle with the logo centred, looks clean on both dark and light
       // page backgrounds as the user scrolls.
-      launcher.style.backgroundColor    = '#000000';
+      launcher.style.backgroundColor    = '#2A2521';
       launcher.style.backgroundImage    = 'url("/images/oranga-logo-transparent.png")';
       launcher.style.backgroundSize     = '90% 90%';
       launcher.style.backgroundPosition = 'center';

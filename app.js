@@ -62,7 +62,7 @@
   // No chatbot markup on this page, nothing more to wire up.
   if (!panel || !messagesEl || !formEl || !inputEl) return;
 
-  var BOOK_BTN = "<button type='button' onclick='if(window.startBookingFlow)window.startBookingFlow()' style='background:#3B5BDB;color:#fff;border:none;padding:8px 18px;border-radius:20px;font-weight:600;cursor:pointer;font-size:14px;display:inline-flex;align-items:center;gap:6px;margin-top:6px;'>📅 Book a call</button>";
+  var BOOK_BTN = "<button type='button' class='btn btn-primary' onclick='if(window.startBookingFlow)window.startBookingFlow()' style='margin-top:6px;'>Book a call</button>";
 
   var KB = [
     {
