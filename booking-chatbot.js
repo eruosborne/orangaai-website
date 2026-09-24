@@ -294,6 +294,7 @@
             document.dispatchEvent(new CustomEvent('oranga:booking_confirmed'));
             if (typeof window.plausible === 'function') window.plausible('Booking Confirmed');
             if (typeof window.gtag === 'function') window.gtag('event', 'booking_confirmed');
+            if (typeof window.fbq === 'function') window.fbq('track', 'Schedule');
           } catch (e) {}
 
         } else if (data.slotTaken) {

@@ -76,6 +76,24 @@
   .breakdown-card p:last-child { margin-bottom: 0; }
   .breakdown-cta { text-align: center; margin-top: 22px; }
 </style>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1601510988349512');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1601510988349512&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+<script>fbq('track', 'ViewContent', { content_name: 'Admin Exposure Score quiz' });</script>
 </head>
 <body>
 
@@ -350,6 +368,7 @@
       .then(function (res) { return res.json().then(function (data) { return { ok: res.ok, data: data }; }); })
       .then(function (result) {
         if (result.ok) {
+          if (typeof fbq === 'function') fbq('track', 'Lead', { content_name: 'Admin Exposure Score' });
           breakdownText.textContent = 'Your answers point most strongly to ' + QUESTION_LABELS[topIndex] + '. That’s exactly the kind of gap Oranga Core is built to close — it prepares the admin work, and you approve anything before it goes out.';
           unlockCard.style.display = 'none';
           breakdownEl.classList.add('show');
