@@ -71,47 +71,59 @@
     },
     {
       keywords: ['what is oranga', 'who are you', 'what do you do', 'about oranga', 'about you', 'what is this', 'tell me about', 'explain what', 'describe what', 'overview', 'summary', 'what is oranga core', 'what exactly', 'what is core'],
-      answer: "Oranga AI installs <strong>Oranga Core</strong>, an AI system built for trade businesses. It's one workspace that knows your business, does the routine work, and never acts alone on anything that matters. We build it, install it, tune it to how you actually run, and stand behind it."
+      answer: "<strong>Oranga Core</strong> is an AI system that runs on your laptop and does the admin between jobs: inbox, follow-ups, scheduling and quoting. It's built around your business and how you write, and it prepares everything but never sends, spends or signs anything without your approval. We build it, install it and walk you through it."
     },
     {
       keywords: ['oranga', 'maori', 'name mean', 'meaning', 'wellbeing', 'thriving'],
-      answer: "<strong>Oranga</strong> is a Māori word meaning <em>wellbeing</em> and <em>thriving</em>. Built on the Gold Coast, for businesses that run lean and move fast."
+      answer: "<strong>Oranga</strong> is a Māori word meaning <em>wellbeing</em> and <em>thriving</em>. Built on the Gold Coast, for owners who want their evenings back."
     },
     {
       keywords: ['layers', 'four layers', 'how does it work', 'how it works', 'what does it do', 'parts', 'components', 'capabilities', 'what can it do', 'features'],
-      answer: "Oranga Core is built around four layers:<br><br><strong>1. Knowledge:</strong> your business written down once, read before every session, so it never needs re-briefing.<br><strong>2. Playbooks:</strong> repeatable jobs it runs on request (the <em>mailroom</em> and the <em>strategist</em> ship built).<br><strong>3. Scheduled work:</strong> the <em>dawn run</em> clears your list before you open your laptop.<br><strong>4. Guardrails:</strong> six actions it never takes without a person."
+      answer: "Oranga Core has four parts:<br><br><strong>1. Knowledge:</strong> your business written down once (what you sell, who you sell to, how you write). It reads this before every job, so you never re-explain yourself.<br><strong>2. Playbooks:</strong> repeatable jobs written as plain steps, like sorting your inbox or building a quote. It follows them the same way every time.<br><strong>3. Scheduled work:</strong> the <em>dawn run</em> clears what it safely can before you open your laptop.<br><strong>4. Guardrails:</strong> six actions it never takes without you."
     },
     {
       keywords: ['knowledge', 'knows the business', 'brief', 'briefing', 're-explain', 'context', 'remember'],
-      answer: "The knowledge layer is your business written down once: what you do, who you serve, how you write, who's on the team. Oranga Core reads it before every session, so you never explain yourself to a chatbot from scratch again."
+      answer: "The knowledge part is your business written down once: what you do, who you serve, your prices, how you write, who's on the team. Oranga Core reads it before every job, so it starts with your business in mind instead of from scratch."
     },
     {
-      keywords: ['playbook', 'playbooks', 'mailroom', 'strategist', 'inbox', 'email', 'drafts', 'jobs', 'tasks'],
-      answer: "Playbooks are repeatable jobs written as plain instructions. Two ship built:<br><br><strong>The mailroom:</strong> sorts your inbox, runs small errands, and drafts replies in your own voice. It never sends; a person always does.<br><strong>The strategist:</strong> takes a goal (not a task), works out the real problem, and runs your other playbooks to get there.<br><br>New playbooks get added as your repeated work becomes clear."
+      keywords: ['playbook', 'playbooks', 'mailroom', 'strategist', 'inbox', 'drafts', 'jobs', 'tasks', 'quote', 'quoting', 'build a playbook', 'new playbook'],
+      answer: "A playbook is a repeatable job written as plain steps. For quoting it might be: read the enquiry, check my rates, write the quote. It follows those steps the same way every time.<br><br>You don't code it. You describe how you do the job, it asks you questions, and it writes the playbook for you.<br><br>Two ship built:<br><strong>The mailroom:</strong> sorts your inbox, runs small errands, and drafts replies in your own voice. It never sends; you do.<br><strong>The strategist:</strong> takes a goal, works out the real problem, and runs your other playbooks to get there."
     },
     {
       keywords: ['dawn run', 'scheduled', 'schedule', 'overnight', 'morning', 'before i start', 'while away', 'automatic', 'timer', 'runs on its own'],
-      answer: "The <strong>dawn run</strong> is scheduled work: before you open your laptop, it works through what's outstanding, finishes what it safely can, and leaves one short note: <em>done, needs you, couldn't move</em>. And if something breaks, it says so loudly, it never mistakes an error for “nothing to do.”"
+      answer: "The <strong>dawn run</strong> is scheduled work: before you open your laptop, it works through what's outstanding, finishes what it safely can, and leaves one short note: <em>done, needs you, couldn't move</em>. If something breaks, it says so loudly. It never mistakes an error for “nothing to do.”"
     },
     {
-      keywords: ['guardrail', 'guardrails', 'safe', 'safety', 'rogue', 'never', 'control', 'mistake', 'wrong', 'trust', 'risk', 'acts alone', 'send', 'oversight', 'permission'],
-      answer: "Oranga Core prepares everything right up to the line, then a person takes the final step, every time. There are <strong>six actions it never takes alone</strong>: contact anyone outside the business, move money, change anyone's job, do anything that can't be undone, sign or commit the business to anything, or weaken its own oversight."
+      keywords: ['guardrail', 'guardrails', 'safe', 'safety', 'rogue', 'never', 'control', 'mistake', 'wrong', 'trust', 'risk', 'acts alone', 'send', 'oversight', 'permission', 'without asking', 'approve'],
+      answer: "Oranga Core prepares everything right up to the line, then you take the final step, every time. Replies sit as drafts until you send them. There are <strong>six actions it never takes alone</strong>: contact anyone outside the business, move money, change anyone's job, do anything that can't be undone, sign or commit the business to anything, or weaken its own oversight."
     },
     {
-      keywords: ['who is this for', 'right fit', 'do you work with', 'industry', 'target', 'clients', 'who do you work with', 'tradie', 'tradies', 'dental', 'allied health', 'real estate', 'cleaning', 'coaching', 'small business', 'right for me', 'suited', 'for me', 'my business', 'business type'],
-      answer: "Oranga Core is built first for trade business owners: electrical, plumbing, civil and construction, concrete, landscaping. Still on the tools, still running lean, with the admin between real jobs eating into the night. It suits other owner-operated service businesses too, if that's the shape of your problem."
+      keywords: ['who is this for', 'who is it for', 'who is it built for', 'who is core for', 'right fit', 'do you work with', 'industry', 'target', 'clients', 'who do you work with', 'tradie', 'tradies', 'trades', 'hospitality', 'consulting', 'services', 'small business', 'right for me', 'suited', 'for me', 'my business', 'business type', 'owner operator'],
+      answer: "Oranga Core is for owner-operators of established businesses who are still working in the business and doing the admin at night: trades, hospitality, consulting and other service businesses. If you're up late on quotes, follow-ups and replies after a full day, that's the shape of the problem it fixes."
     },
     {
-      keywords: ['process', 'how do you work', 'steps', 'install', 'installation', 'setup', 'set up', 'onboard', 'onboarding', 'what happens', 'next steps', 'after i sign up', 'get started how'],
-      answer: "An install runs in six steps:<br><br><strong>1. Intake:</strong> understanding your business, tools, and real pinch points.<br><strong>2. Build:</strong> your knowledge layer drafted from your own mail and documents; tools linked; your writing style captured.<br><strong>3. Test:</strong> proven on real low-stakes work first, including a deliberate test that a broken connection fails loudly.<br><strong>4. Handover:</strong> you and your team know how to run it.<br><strong>5. 30 days support:</strong> we tune it against real work as it beds in.<br><strong>6. After that:</strong> it's yours to run, no subscription."
+      keywords: ['not for', 'not a fit', 'startup', 'start up', 'just starting', 'too small', 'new business', 'who should not'],
+      answer: "It's not the right fit for startups, or for businesses that don't have admin piling up yet. It's also not the first step if you mainly want more leads: get the admin foundation sorted first, then growth work builds on top. We'll tell you straight on the call if it's not a fit."
+    },
+    {
+      keywords: ['process', 'how do you work', 'steps', 'install', 'installation', 'setup', 'set up', 'onboard', 'onboarding', 'what happens', 'next steps', 'after i sign up', 'get started how', 'how long'],
+      answer: "The install is done remotely, built around your actual business and walked through with you:<br><br><strong>1. Map your business:</strong> a guided interview builds the knowledge base.<br><strong>2. Connect your tools:</strong> mail, calendar and accounts, so it works on your real work.<br><strong>3. Switch on the mailroom:</strong> it sorts your inbox and prepares replies in your voice.<br><strong>4. Dawn run (optional):</strong> a timed job that clears what it safely can before you start.<br><strong>5. Guardrails and handover:</strong> you're walked through it, then it's yours to run.<br><br>Most installs take less than a working day, somewhere between about 3 and 8 hours depending on the tools you use. Anything beyond that, like more seats or a custom playbook, is scoped separately."
     },
     {
       keywords: ['price', 'pricing', 'cost', 'how much', 'rate', 'fee', 'budget', 'monthly', 'pay', 'payment', 'charge', 'invest', 'investment', 'afford', 'total', 'retainer', 'expensive', 'cheap', 'per month'],
-      answer: "Oranga Core is <strong>$5,000 AUD flat</strong>, installed, including 30 days of support while it beds in. No monthly retainer, no subscription. It's a one-off cost, cheaper than hiring an office admin, and you're not paying it again every year."
+      answer: "The install is a one-off flat fee, with one seat included, so you know the cost up front. There are two optional extras: always-on hosting with phone access, and ongoing maintenance if you'd like us to look after it (no lock-in). We go through the exact numbers on the free strategy call, once you've seen how it would fit your business." + "<br>" + BOOK_BTN
     },
     {
-      keywords: ['contract', 'lock', 'locked in', 'cancel', 'cancellation', 'commitment', 'tied', 'exit', 'quit', 'flexible', 'lock-in', 'no contract'],
-      answer: "No lock-in contracts. If it's not working for you, we'd rather know and fix it. The goal is for the system to earn its keep, if it isn't, that's a conversation worth having."
+      keywords: ['guarantee', 'refund', 'money back', 'money-back', 'risk free', 'risk-free', 'what if it doesn', 'not work for me'],
+      answer: "Yes. The install comes with a 30-day money-back guarantee: if it hasn't given you real time back or a noticeable productivity boost within 30 days of handover, you get a full refund."
+    },
+    {
+      keywords: ['contract', 'lock', 'locked in', 'cancel', 'cancellation', 'commitment', 'tied', 'exit', 'quit', 'flexible', 'lock-in', 'no contract', 'subscription'],
+      answer: "The install is a one-off, not a subscription. Ongoing maintenance is optional and has no lock-in. And the 30-day money-back guarantee means you're not stuck if it doesn't deliver."
+    },
+    {
+      keywords: ['hosting', 'remote access', 'phone', 'laptop off', 'laptop is off', 'always on', 'always-on', 'maintenance', 'extras', 'add on', 'add-on', 'custom', 'more seats', 'seats', 'extra'],
+      answer: "Beyond the standard install there are a few optional extras:<br><br><strong>Always-on hosting with phone access:</strong> so scheduled work runs even when your laptop is off, and you can check in from your phone.<br><strong>Ongoing maintenance:</strong> if you'd like us to look after it, no lock-in.<br><strong>Custom builds:</strong> more seats, or a bespoke playbook for a job unique to your business.<br><br>We scope and price these on the strategy call." + "<br>" + BOOK_BTN
     },
     {
       keywords: ['book', 'meeting', 'consultation', 'demo', 'call', 'strategy call', 'free call', 'schedule a call', 'speak to', 'talk', 'get started', 'sign up', 'ready', 'interested', 'keen', 'tell me more', 'want to know'],
@@ -126,20 +138,28 @@
       answer: "Oranga AI is founded by <strong>Eru Osborne</strong>: 15 years building IT systems for a university, from help desk to senior systems engineer, before building them for owner-operated businesses. Oranga Core is built the way it is (knowledge written down, hard guardrails) because that's how real systems are meant to work."
     },
     {
-      keywords: ['different', 'unique', 'competitors', 'why hire', 'why should i', 'convince me', 'what makes you', 'better than', 'vs', 'versus', 'alternative', 'chatbot', 'chatgpt subscription', 'stand out', 'why oranga'],
-      answer: "A generic chatbot starts from zero every conversation and just answers questions. Oranga Core reads your real knowledge before every session, <em>finishes</em> the work then hands the last step to a person, runs scheduled work while you're away, learns to write like you, and has six locked actions it will never take alone. It's a system we install and stand behind, not a subscription you're left to configure."
+      keywords: ['different', 'unique', 'competitors', 'why hire', 'why should i', 'convince me', 'what makes you', 'better than', 'vs', 'versus', 'alternative', 'chatbot', 'chatgpt', 'stand out', 'why oranga', 'tried ai', 'tried chatgpt'],
+      answer: "General AI tools are a blank box: you have to set them up around your business and your voice, and most owners don't have the time. Oranga Core is installed for you, built around your business, and it prepares the work while you approve anything that matters. Six actions are locked, so it can't send, spend or sign on its own."
     },
     {
-      keywords: ['result', 'outcome', 'roi', 'guarantee', 'expect', 'success', 'proof', 'worked', 'helped', 'saved', 'time back', 'hours'],
-      answer: "The goal isn't “digital transformation,” it's getting three hours of a Tuesday back. Every install is built to clear routine work off your plate and stop things slipping through the cracks. The strategy call is where we show you where your time and leads are leaking and what fixing it is worth."
+      keywords: ['result', 'outcome', 'roi', 'expect', 'success', 'proof', 'worked', 'helped', 'saved', 'time back', 'hours', 'evenings', 'case study', 'testimonial', 'clients so far'],
+      answer: "The goal is your evenings back: admin finished before you get home, and every enquiry answered fast, even on a 12-hour day. One civil construction business had Oranga Core find a payment condition buried in a 30-page contract, and recovered $20,000 they wouldn't otherwise have chased. The strategy call is where we work out what fixing your admin would be worth."
+    },
+    {
+      keywords: ['technical', 'tech savvy', 'ai savvy', 'not good with computers', 'learn', 'difficult', 'complicated', 'hard to use', 'non technical', 'non-technical', 'easy to use', 'i am not'],
+      answer: "You don't need to be technical. It's installed and walked through with you, and you talk to it in plain English, like a new hire in their first week. If it isn't sure what you mean, it asks."
+    },
+    {
+      keywords: ['quiz', 'admin exposure', 'score', 'assessment', 'how exposed'],
+      answer: "There's a free 6-question quiz that shows how exposed your admin is. <a href='/admin-exposure'>Take the quiz</a> and you'll get a score in about a minute."
     },
     {
       keywords: ['location', 'where are you', 'remote', 'based', 'country', 'gold coast', 'australia', 'new zealand', 'nz', 'local'],
-      answer: "Built on the Gold Coast, Australia. Discovery, builds, and ongoing support happen over video and async, no travel needed."
+      answer: "Built on the Gold Coast, Australia. The install happens over video and async, so we work with owners across Australia and New Zealand, no travel needed."
     },
     {
-      keywords: ['integration', 'tools', 'crm', 'stack', 'connect', 'works with', 'whatsapp', 'slack', 'teams', 'spreadsheet', 'calendar', 'existing tools', 'compatible', 'systems'],
-      answer: "Oranga Core links to the tools you already run: mail, calendars, CRMs, Slack or Teams, spreadsheets. Alerts land as a single clear message on your chosen channel; it never invents a second way of reaching anyone. Not sure your stack will play nicely? That's what the strategy call is for."
+      keywords: ['integration', 'tools', 'crm', 'stack', 'connect', 'works with', 'xero', 'gmail', 'google', 'calendar', 'existing tools', 'compatible', 'systems', 'accounts'],
+      answer: "Oranga Core connects to your mail, calendar and accounts, so it works on your real business, not a demo. Other tools depend on your setup, so we confirm what's possible on the strategy call."
     }
   ];
 
