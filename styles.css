@@ -624,6 +624,24 @@ main > section.hero-orb { padding: 0; }
   border-color: rgba(94, 242, 196, 0.45);
 }
 .glass-card-primary .glass-card-label { color: #BDF5E4; }
+/* Glass badges: drawn to match the photo and orb mark (same size, rim and glow) */
+.glass-card-badge {
+  width: 76px; height: 76px;
+  margin-bottom: auto;
+  display: block;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, rgba(94, 242, 196, 0.16), rgba(18, 26, 28, 0.9) 70%);
+  border: 1px solid rgba(94, 242, 196, 0.45);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), inset 0 -8px 18px rgba(94, 242, 196, 0.08), 0 0 18px rgba(94, 242, 196, 0.18);
+}
+.glass-card-badge svg { width: 100%; height: 100%; display: block; overflow: visible; }
+.badge-num { font-family: var(--display); font-weight: 700; font-size: 17px; letter-spacing: -0.02em; fill: var(--accent-glow); filter: drop-shadow(0 0 6px rgba(94, 242, 196, 0.55)); }
+.badge-track { fill: none; stroke: rgba(242, 235, 225, 0.12); stroke-width: 4; }
+.badge-arc { fill: none; stroke: var(--accent-glow); stroke-width: 4; stroke-linecap: round; filter: drop-shadow(0 0 4px rgba(94, 242, 196, 0.7)); }
+.badge-small-num { font-family: var(--display); font-weight: 700; font-size: 17px; fill: var(--zone-text); }
+.badge-unit { font-family: var(--mono); font-size: 7.5px; letter-spacing: 0.12em; fill: var(--zone-muted); }
+.badge-line { fill: none; stroke: var(--accent-glow); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; filter: drop-shadow(0 0 4px rgba(94, 242, 196, 0.6)); }
+.badge-check { stroke-width: 2.8; }
 /* Oranga mark on the How it works card, same slot as the founder photo */
 .glass-card-logo {
   width: 100px; height: auto;
@@ -662,7 +680,7 @@ main > section.hero-orb { padding: 0; }
   .glass-cards { margin-top: 8px; }
   .glass-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
   .glass-card { padding: 14px 36px 14px 14px; min-height: 120px; }
-  .glass-card-photo { width: 52px; height: 52px; }
+  .glass-card-photo, .glass-card-badge { width: 52px; height: 52px; }
   .glass-card-logo { width: 70px; margin: -9px 0 auto -9px; }
   /* five cards on a two-column grid: the booking card takes the full last row */
   .glass-card-primary { grid-column: 1 / -1; min-height: 0; }
