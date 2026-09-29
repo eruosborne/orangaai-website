@@ -508,7 +508,7 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 .hero-orb {
   --stage: #121517;
   position: relative;
-  min-height: max(820px, 100svh);
+  min-height: max(880px, 100svh);
   display: flex;
   background: var(--stage);
   color: var(--zone-text);
@@ -624,6 +624,24 @@ main > section.hero-orb { padding: 0; }
   border-color: rgba(94, 242, 196, 0.45);
 }
 .glass-card-primary .glass-card-label { color: #BDF5E4; }
+/* Homepage has no footer band: legal + contact sit in one small line at the bottom of the stage */
+.hero-orb-legal {
+  position: absolute;
+  left: 0; right: 0; bottom: 18px;
+  margin: 0;
+  text-align: center;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  color: var(--ink-faint);
+}
+.hero-orb-legal a { color: var(--ink-faint); text-decoration: underline; text-underline-offset: 3px; }
+.hero-orb-legal a:hover { color: var(--zone-text); }
+.hero-orb-legal span { margin: 0 6px; }
+@media (max-width: 767px) {
+  .hero-orb { flex-direction: column; }  /* legal line stacks under the content, not beside it */
+  .hero-orb-legal { position: static; padding: 28px var(--pad-x) 24px; }
+}
 /* One quiet line of proof under the cards */
 .hero-orb-proof {
   grid-column: 1 / -1;  /* sits inside the card grid, as its own full-width row */
@@ -639,11 +657,16 @@ main > section.hero-orb { padding: 0; }
 .hero-orb-proof .proof-dot { color: var(--accent-glow); margin: 0 6px; }
 /* Desktop: hang the line just under the cards so it doesn't push them up into the orb */
 @media (min-width: 768px) {
+  /* room under the cards for the proof line and the legal line */
+  .hero-orb-inner { padding-bottom: 104px; }
   .glass-cards { position: relative; }
   .hero-orb-proof { position: absolute; top: 100%; left: 0; right: 0; margin-top: 18px; }
 }
 @media (max-width: 767px) {
   .hero-orb-proof { font-size: 0.66rem; letter-spacing: 0.06em; line-height: 1.9; }
+  .hero-orb-proof .proof-item { white-space: normal; }
+  .hero-orb-proof .proof-dot { display: none; }
+  .hero-orb-proof .proof-item { display: block; }
 }
 /* Glass badges: drawn to match the photo and orb mark (same size, rim and glow) */
 .glass-card-badge {
