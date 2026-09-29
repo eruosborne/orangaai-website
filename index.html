@@ -97,50 +97,54 @@ src="https://www.facebook.com/tr?id=1601510988349512&ev=PageView&noscript=1"
 
 <main id="top">
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="container hero-grid">
-      <div class="hero-content">
-        <span class="eyebrow reveal">Meet Oranga Core</span>
-        <h1 class="reveal">You can't take on more work until the admin stops eating your <em class="accent">nights</em>.</h1>
-        <p class="hero-sub reveal">Oranga Core is an AI system built for trade businesses. It learns how yours runs, then handles the enquiries, follow-ups and quotes every day. It never contacts a customer or moves money on its own.</p>
-        <div class="hero-cta-row reveal">
-          <a href="/strategy-call" class="btn btn-primary btn-large">
-            Book a free strategy call
-            <svg class="arrow" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
-          <a href="/admin-exposure" class="btn btn-ghost btn-large">
-            Not sure yet? Take the 2-min quiz
-          </a>
-        </div>
-        <p class="hero-note reveal">Free · 30 minutes · no pitch</p>
+  <!-- HERO: the Oranga orb, connected to the tools a trade business already runs on.
+       3D scene is built in the oranga-orb-site project (npm run build:embed → /orb/). -->
+  <section class="hero-orb" aria-labelledby="hero-title">
+    <div class="container hero-orb-inner">
+      <div class="hero-orb-head">
+        <span class="eyebrow">Meet Oranga Core</span>
+        <h1 id="hero-title">You can't take on more work until the admin stops eating your <em class="accent">nights</em>.</h1>
+        <p class="hero-orb-sub">One AI workspace that connects the tools you already use, and never contacts a customer or moves money on its own.</p>
       </div>
 
-      <div class="hero-scene reveal" aria-hidden="true">
-        <div class="scene-chaos-wrap">
-          <span class="scene-caption scene-caption-before">Before</span>
-          <div class="scene-chaos">
-            <div class="chaos-card cc1"><span class="cc-dot"></span>14 unread enquiries</div>
-            <div class="chaos-card cc2"><span class="cc-dot"></span>Quote follow-up, overdue</div>
-            <div class="chaos-card cc3"><span class="cc-dot"></span>Missed call, 8:42pm</div>
-            <div class="chaos-card cc4"><span class="cc-dot"></span>6 bookings unconfirmed</div>
-            <div class="chaos-card cc5"><span class="cc-dot"></span>"Are you still open Sat?"</div>
-          </div>
-        </div>
-        <div class="scene-arrow" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none"><path d="M4 12h16M14 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-        <div class="scene-calm">
-          <span class="scene-caption scene-caption-after">After, the dawn run</span>
-          <div class="calm-card">
-            <span class="calm-eyebrow">Dawn run · 6:12am</span>
-            <div class="calm-stats"><strong>14</strong> done <span class="sep">·</span> <strong>2</strong> need you <span class="sep">·</span> <strong>0</strong> couldn't move</div>
-            <div class="calm-note">→ Quote follow-up: Sarah T. hasn't replied in 4 days</div>
-          </div>
-        </div>
+      <!-- Desktop: fills the whole stage behind the text. Phones: its own band between headline and cards. -->
+      <div class="orb-root" id="orb-root" aria-hidden="true">
+        <img class="orb-fallback" src="/images/orb-fallback.png" alt="" width="556" height="542">
       </div>
+
+      <nav class="glass-cards" aria-label="Start here">
+        <a href="/admin-exposure" class="glass-card" data-card="quiz">
+          <span class="glass-card-label">2 minutes</span>
+          <span class="glass-card-title">Take the admin quiz</span>
+          <svg class="arrow" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#how" class="glass-card" data-card="how">
+          <span class="glass-card-label">The workspace</span>
+          <span class="glass-card-title">How it works</span>
+          <svg class="arrow" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#proof" class="glass-card" data-card="results">
+          <span class="glass-card-label">Live builds</span>
+          <span class="glass-card-title">Real results</span>
+          <svg class="arrow" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="/strategy-call" class="glass-card glass-card-primary" data-card="book">
+          <span class="glass-card-label">Free · 30 min</span>
+          <span class="glass-card-title">Book a strategy call</span>
+          <svg class="arrow" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </nav>
     </div>
   </section>
+  <div class="hero-orb-fade" aria-hidden="true"></div>
+  <script type="module" src="/orb/orb.js"></script>
+  <script>
+    document.querySelectorAll('.glass-card').forEach(function (card) {
+      card.addEventListener('click', function () {
+        if (window.gtag) gtag('event', 'hero_card_click', { card: card.dataset.card });
+      });
+    });
+  </script>
 
   <!-- PROBLEM -->
   <section>
