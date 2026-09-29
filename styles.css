@@ -625,6 +625,15 @@ main > section.hero-orb { padding: 0; }
   .glass-card .arrow { right: 12px; bottom: 16px; }
   .hero-orb-sub { font-size: var(--type-body-size); }
 }
+/* Desktop screens tall enough to show the sub-line: drop the orb a touch so its glow clears the text */
+@media (min-width: 768px) and (min-height: 801px) {
+  .orb-root {
+    transform: translateY(36px);
+    /* feather the top edge so the shifted canvas doesn't leave a seam */
+    -webkit-mask-image: linear-gradient(transparent, #000 80px);
+            mask-image: linear-gradient(transparent, #000 80px);
+  }
+}
 /* Short screens: the sub-line would crowd the orb — the headline carries the message */
 @media (max-height: 800px) and (min-width: 768px) {
   .hero-orb-sub { display: none; }
