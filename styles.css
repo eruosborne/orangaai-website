@@ -466,7 +466,7 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 .hero-orb {
   --stage: #121517;
   position: relative;
-  min-height: max(640px, calc(100svh - 96px));
+  min-height: max(640px, 100svh);
   display: flex;
   background: var(--stage);
   color: var(--zone-text);
