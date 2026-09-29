@@ -500,6 +500,15 @@ main > section.hero-orb { padding: 0; }
 }
 .hero-orb-head { max-width: 44rem; margin-inline: auto; text-align: center; }
 .hero-orb .eyebrow { color: var(--zone-muted); margin-bottom: 18px; }
+/* Wordmark: the homepage has no nav, so the brand sits at the top of the hero */
+.hero-orb-brand {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
+  letter-spacing: -0.01em;
+  color: var(--zone-text);
+  margin: 0 0 14px;
+}
 .hero-orb h1 {
   font-size: clamp(1.9rem, 3.6vw, 3rem);
   font-weight: var(--type-display-weight);
