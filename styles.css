@@ -6,43 +6,38 @@
    ============================================================ */
 
 :root {
-  /* --- Palette: Teal Grounded (light-first / warm cream base) --- */
-  --bg:          #F2EBE1;   /* warm cream canvas — never pure white */
-  --bg-elev:     #FFFFFF;   /* raised surfaces: cards, nav, footer */
-  --bg-sunk:     #E8DFD1;   /* recessed surfaces: sunk panels, mockup chrome */
-  --surface:     #FFFFFF;   /* card fill */
-  --ink:         #2A2521;   /* primary text — safe at every size */
-  --ink-muted:   #675D54;   /* secondary text — de-emphasized copy, subheads */
-  --ink-faint:   #766858;   /* tertiary text — labels, captions, metadata */
-  --line:        rgba(42, 37, 33, 0.10);
-  --line-strong: rgba(42, 37, 33, 0.22);
+  color-scheme: dark;  /* native controls (radios, inputs, scrollbars) match the dark site */
+  /* --- Palette: Orb Dark (every page sits on the orb stage) --- */
+  --bg:          #121517;   /* the orb stage — the whole site's canvas */
+  --bg-elev:     #1B2124;   /* raised surfaces: cards, top bar */
+  --bg-sunk:     #0D1012;   /* recessed surfaces: footer, sunk panels, mockup chrome */
+  --surface:     #1B2124;   /* card fill */
+  --ink:         #F2EBE1;   /* primary text — 15.5:1 on bg */
+  --ink-muted:   #B9AFA3;   /* secondary text — 8.5:1 */
+  --ink-faint:   #9A9085;   /* tertiary text — labels, captions, metadata (5.9:1) */
+  --line:        rgba(242, 235, 225, 0.10);
+  --line-strong: rgba(242, 235, 225, 0.22);
 
-  /* Teal: the one accent (the Oranga orb's colour). Large text/icons only at
-     full strength — 3.56:1 on cream fails AA at small sizes. --accent-deep is
-     the same hue darkened for small text and button fills, where AA at 15px
-     is required. --accent-glow is for dark surfaces only (the orb hero). */
-  --accent:      #258A78;
-  --accent-deep: #1B6B5E;   /* 5.36:1 on cream, 6.34:1 on white — button fill/text, small teal text */
-  --accent-soft: rgba(37, 138, 120, 0.12);
-  --accent-glow: #5EF2C4;   /* 13:1 on the orb stage — never use on cream (1.2:1) */
-  --success:     #6B7A4F;   /* confirmed states — large text/icons only */
-  --success-soft: rgba(107, 122, 79, 0.12);
-  --alert:       #9C3B26;   /* needs-attention — safe at body-text size */
-  --tag:         #3F5652;   /* category tags/labels — safe at body-text size */
+  /* Teal. --accent: text, icons, borders (8:1 on bg). --accent-deep: button
+     fills only, with --on-accent text (5.4:1). --accent-text: small teal text
+     that has to pop (11:1). --accent-glow: the orb's own glow, hero only. */
+  --accent:      #3DBF9F;
+  --accent-deep: #1B6B5E;
+  --accent-text: #6FDCC0;
+  --on-accent:   #F2EBE1;
+  --accent-soft: rgba(94, 242, 196, 0.10);
+  --accent-glow: #5EF2C4;
+  --success:     #A3B585;   /* 8.3:1 */
+  --success-soft: rgba(163, 181, 133, 0.12);
+  --alert:       #E8866E;   /* 7:1 */
+  --tag:         #9DC4BC;   /* 9.7:1 */
 
-  /* Zone: the one DARK section (guardrails) — the spotlight on an
-     otherwise cream site. Inverted from the old light-zone-on-dark-site
-     concept, same "one deliberate break in the pattern" intent. */
-  --zone-bg:     #2A2521;
-  --zone-elev:   #35302B;
+  /* Zone: the one deeper panel (guardrails), a notch darker than the page */
+  --zone-bg:     #0B0E0F;
+  --zone-elev:   #1B2124;
   --zone-text:   #F2EBE1;
-  --zone-muted:  #B9AFA3;   /* ~8.5:1 on zone-bg */
+  --zone-muted:  #B9AFA3;
   --zone-line:   rgba(242, 235, 225, 0.14);
-
-  /* CAUTION: --accent is legible as large text/icons on both --bg and
-     --zone-bg, but fails AA as small text on either — use --accent-deep
-     for small teal text, and reach for --tag/--alert for small
-     colored text instead of stretching --accent past its role. */
 
   /* --- Type: Bricolage Grotesque / Karla / IBM Plex Mono --- */
   --display: 'Bricolage Grotesque', system-ui, sans-serif;
@@ -154,6 +149,53 @@ nav.site-nav.scrolled { border-bottom-color: var(--line); }
   letter-spacing: 0.01em;
   color: var(--ink);
 }
+/* --- Page bar: logo + Book on inner pages (no menu — the homepage cards are the menu) --- */
+.page-bar { background: var(--bg); border-bottom: 1px solid var(--line); }
+.page-bar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  height: 88px;
+}
+/* room for the fixed back button, which sits in this row at the top of the page */
+.page-bar .logo { margin-left: 58px; }
+.page-bar .logo-mark { width: 52px; height: 52px; }
+/* Back to the homepage: pinned in place while the page scrolls */
+.back-home {
+  position: fixed;
+  z-index: 60;
+  top: 22px;
+  /* line up with the container's left edge */
+  left: max(var(--pad-x), calc((100vw - var(--max-w)) / 2 + var(--pad-x)));
+  width: 44px; height: 44px;
+  display: grid; place-items: center;
+  border-radius: 50%;
+  background: rgba(18, 26, 28, 0.72);
+  border: 1px solid rgba(94, 242, 196, 0.35);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 8px 24px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(12px) saturate(140%);
+  -webkit-backdrop-filter: blur(12px) saturate(140%);
+  color: var(--accent-glow);
+  transition: border-color 0.25s var(--ease), transform 0.25s var(--ease);
+}
+.back-home:hover, .back-home:focus-visible { border-color: rgba(94, 242, 196, 0.7); transform: translateX(-2px); }
+.back-home svg { width: 18px; height: 18px; }
+.page-bar .btn-short { display: none; }
+@media (max-width: 767px) {
+  .page-bar-inner { height: 72px; }
+  .back-home { top: 14px; width: 44px; height: 44px; }
+  .page-bar .logo { margin-left: 54px; gap: 10px; }
+  .page-bar .logo-mark { width: 40px; height: 40px; }
+  /* short label so logo + button fit a phone row */
+  .page-bar .btn-long { display: none; }
+  .page-bar .btn-short { display: inline; }
+}
+/* Wide screens: the back button lives in the empty margin left of the content, so it never covers text */
+@media (min-width: 1360px) {
+  .back-home { left: calc((100vw - var(--max-w)) / 2 - 4px); }
+  .page-bar .logo { margin-left: 0; }
+}
 .site-nav .nav-back { color: var(--ink-muted); }
 .site-nav .nav-back:hover { color: var(--ink); }
 .site-nav .btn-ghost { color: var(--ink); border-color: var(--line-strong); }
@@ -172,7 +214,7 @@ nav.site-nav.scrolled { border-bottom-color: var(--line); }
   transition: color 0.2s var(--ease);
 }
 .nav-links a:hover,
-.nav-links a.active { color: var(--accent-deep); }
+.nav-links a.active { color: var(--accent-text); }
 .nav-links .btn { display: none; } /* the in-dropdown CTA — desktop uses the standalone one instead */
 .logo-mark {
   width: 68px;
@@ -238,8 +280,8 @@ nav.site-nav.scrolled { border-bottom-color: var(--line); }
 }
 .btn-primary {
   background: var(--accent-deep);
-  color: var(--bg);
-  border-color: var(--accent-deep);
+  color: var(--on-accent);
+  border-color: var(--accent-text);
 }
 .btn-primary:hover { opacity: 0.85; }
 .btn-ghost {
@@ -247,7 +289,7 @@ nav.site-nav.scrolled { border-bottom-color: var(--line); }
   color: var(--ink);
   border-color: var(--ink);
 }
-.btn-ghost:hover { border-color: var(--accent-deep); color: var(--accent-deep); }
+.btn-ghost:hover { border-color: var(--accent-text); color: var(--accent-text); }
 .btn-large { padding: 16px 32px; font-size: 1rem; }
 .btn .arrow { width: 14px; height: 14px; }
 
@@ -262,7 +304,7 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   left: -9999px;
   top: 8px;
   background: var(--accent-deep);
-  color: var(--bg);
+  color: var(--on-accent);
   padding: 10px 16px;
   border-radius: var(--radius);
   z-index: 100;
@@ -718,7 +760,7 @@ section:nth-of-type(odd) { padding-block: clamp(96px, 14vh, calc(var(--space-3xl
 .repeat-badge {
   position: absolute; top: 8px; right: 10px;
   font-family: var(--mono);
-  font-size: 0.6rem; font-weight: 600; color: var(--accent-deep);
+  font-size: 0.6rem; font-weight: 600; color: var(--accent-text);
   background: var(--accent-soft); border: 1px solid var(--accent); border-radius: var(--radius); padding: 2px 7px;
 }
 
@@ -781,7 +823,7 @@ section:nth-of-type(odd) { padding-block: clamp(96px, 14vh, calc(var(--space-3xl
   font-family: var(--mono);
   font-size: var(--type-data-size);
   line-height: 1;
-  color: var(--accent-deep);
+  color: var(--accent-text);
   font-weight: var(--type-data-weight);
 }
 .layer-name { font-family: var(--display); font-weight: var(--type-heading-weight); font-size: var(--type-heading-size); letter-spacing: var(--type-heading-tracking); line-height: 1.1; }
@@ -886,7 +928,7 @@ section:nth-of-type(odd) { padding-block: clamp(96px, 14vh, calc(var(--space-3xl
   font-weight: 500;
   background: var(--bg-sunk);
 }
-.compare-head .compare-cell.core { color: var(--accent-deep); }
+.compare-head .compare-cell.core { color: var(--accent-text); }
 @media (max-width: 600px) {
   .compare-cell { padding: 16px 20px; }
 }
@@ -969,7 +1011,7 @@ section:nth-of-type(odd) { padding-block: clamp(96px, 14vh, calc(var(--space-3xl
   font-family: var(--mono);
   font-size: var(--type-data-size);
   line-height: 1;
-  color: var(--accent-deep);
+  color: var(--accent-text);
   margin-bottom: var(--space-xs);
 }
 .process-step h3 { font-family: var(--display); font-weight: var(--type-heading-weight); font-size: 1.25rem; letter-spacing: var(--type-heading-tracking); }
@@ -1209,7 +1251,7 @@ section:nth-of-type(odd) { padding-block: clamp(96px, 14vh, calc(var(--space-3xl
   flex-shrink: 0; position: relative; z-index: 1;
   font-family: var(--mono); font-size: 0.72rem; font-weight: 600; color: var(--ink-faint);
 }
-.tl-item .tl-dot.active { background: var(--accent-soft); border-color: var(--accent); color: var(--accent-deep); }
+.tl-item .tl-dot.active { background: var(--accent-soft); border-color: var(--accent); color: var(--accent-text); }
 .tl-content { padding-top: 3px; }
 .tl-item .tl-label { font-family: var(--mono); font-size: 0.74rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 4px; }
 .tl-text { font-size: 0.96rem; color: var(--ink-muted); line-height: 1.55; }
@@ -1239,7 +1281,7 @@ section:nth-of-type(odd) { padding-block: clamp(96px, 14vh, calc(var(--space-3xl
 /* --- industries / tags --- */
 .industries { display: flex; flex-wrap: wrap; gap: 1px; margin: 20px 0; background: var(--line); border: 1px solid var(--line); width: fit-content; }
 .industry-tag { background: var(--bg); padding: 8px 15px; font-family: var(--mono); font-size: 0.78rem; color: var(--ink-muted); transition: color 0.2s var(--ease), background 0.2s var(--ease); }
-.industry-tag:hover { color: var(--accent-deep); background: var(--surface); }
+.industry-tag:hover { color: var(--accent-text); background: var(--surface); }
 
 /* --- examples list --- */
 .examples-list { list-style: none; margin: 24px 0; display: flex; flex-direction: column; gap: 1px; background: var(--line); border: 1px solid var(--line); }
@@ -1280,7 +1322,7 @@ section:nth-of-type(odd) { padding-block: clamp(96px, 14vh, calc(var(--space-3xl
   display: inline-flex; align-items: center; justify-content: center;
   width: 20px; height: 20px;
   background: var(--accent-soft); border: 1px solid var(--accent);
-  color: var(--accent-deep); font-family: var(--mono); font-size: 0.7rem; font-weight: 700;
+  color: var(--accent-text); font-family: var(--mono); font-size: 0.7rem; font-weight: 700;
   flex-shrink: 0; margin-top: 1px;
 }
 .objection-q { display: flex; gap: 10px; align-items: flex-start; font-weight: 600; margin-bottom: 12px; }
@@ -1325,7 +1367,7 @@ footer {
 .footer-inner .logo-mark { width: 44px; height: 44px; }
 .footer-meta { display: flex; gap: 22px; align-items: center; font-family: var(--mono); font-size: 0.85rem; color: var(--ink-faint); }
 .footer-meta a { color: var(--ink-faint); transition: color 0.2s var(--ease); }
-.footer-meta a:hover { color: var(--accent-deep); }
+.footer-meta a:hover { color: var(--accent-text); }
 
 /* ============================================================
    REVEAL ANIMATION
@@ -1349,7 +1391,7 @@ footer {
   border: 1px solid var(--line-strong);
   border-radius: var(--radius-lg);
   padding: 14px 30px 14px 16px;
-  box-shadow: 0 1px 3px rgba(42, 37, 33, 0.12);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
   z-index: 59;
   opacity: 0;
   transform: translateY(8px) scale(0.98);
@@ -1402,7 +1444,7 @@ footer {
   cursor: pointer;
   z-index: 60;
   display: grid; place-items: center;
-  box-shadow: 0 1px 3px rgba(42, 37, 33, 0.14);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
   transition: background 0.2s var(--ease);
   background-size: cover;
   background-position: center;
@@ -1428,7 +1470,7 @@ footer {
   transform: translateY(12px) scale(0.98);
   pointer-events: none;
   transition: opacity 0.25s var(--ease), transform 0.25s var(--ease);
-  box-shadow: 0 2px 8px rgba(42, 37, 33, 0.16);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
 }
 .chat-panel.open { opacity: 1; transform: none; pointer-events: auto; }
 .chat-header {
@@ -1461,9 +1503,9 @@ footer {
   line-height: 1.45;
 }
 .msg.bot { background: var(--bg-sunk); color: var(--ink); border: 1px solid var(--line); align-self: flex-start; }
-.msg.user { background: var(--accent-deep); color: var(--bg); align-self: flex-end; }
-.msg a { color: var(--accent-deep); text-decoration: underline; }
-.msg.user a { color: var(--bg); }
+.msg.user { background: var(--accent-deep); color: var(--on-accent); align-self: flex-end; }
+.msg a { color: var(--accent-text); text-decoration: underline; }
+.msg.user a { color: var(--on-accent); }
 .msg.typing { display: flex; gap: 5px; }
 .msg.typing span { width: 6px; height: 6px; border-radius: 50%; background: var(--ink-faint); animation: blink 1.2s infinite; }
 .msg.typing span:nth-child(2) { animation-delay: 0.2s; }
@@ -1482,7 +1524,7 @@ footer {
   cursor: pointer;
   transition: border-color 0.2s var(--ease), color 0.2s var(--ease);
 }
-.suggestion-chip:hover { border-color: var(--accent); color: var(--accent-deep); }
+.suggestion-chip:hover { border-color: var(--accent); color: var(--accent-text); }
 .chat-input-wrap {
   display: flex; gap: 8px; align-items: center;
   padding: 14px 16px;
@@ -1501,7 +1543,7 @@ footer {
   background: var(--accent); color: var(--bg);
   display: grid; place-items: center;
 }
-.chat-send:hover { background: var(--accent-deep); }
+.chat-send:hover { background: var(--accent-deep); color: var(--on-accent); }
 
 /* ============================================================
    GIVEAWAY LANDING PAGE

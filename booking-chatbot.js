@@ -216,7 +216,7 @@
     state.step = 'collect_phone';
     return botReply(
       "Got it. One last thing, what's your phone number?<br>" +
-      "<small style='color:#766858'>(Optional, type <em>skip</em> to leave it out)</small>"
+      "<small style='color:#9A9085'>(Optional, type <em>skip</em> to leave it out)</small>"
     ).then(function () {
       $input.placeholder = 'Phone number, or type skip…';
     });
@@ -277,7 +277,7 @@
         if (result.ok && data.ok) {
           var meetPart = data.meetLink
             ? '<br><br><a href="' + data.meetLink + '" target="_blank" ' +
-              'style="color:#6B7A4F;font-weight:600">Join Google Meet</a>'
+              'style="color:#A3B585;font-weight:600">Join Google Meet</a>'
             : '';
           addMsg(
             'You\'re booked.<br>' +
@@ -443,7 +443,7 @@
     if (launcher) {
       // Ink circle with the logo centred, looks clean on both dark and light
       // page backgrounds as the user scrolls.
-      launcher.style.backgroundColor    = '#2A2521';
+      launcher.style.backgroundColor    = '#1B2124';
       launcher.style.backgroundImage    = 'url("/images/oranga-logo-transparent.png")';
       launcher.style.backgroundSize     = '90% 90%';
       launcher.style.backgroundPosition = 'center';
