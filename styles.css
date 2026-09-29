@@ -734,13 +734,13 @@ main > section.hero-orb { padding: 0; }
   .glass-card .arrow { right: 12px; bottom: 16px; }
   .hero-orb-sub { font-size: var(--type-body-size); }
 }
-/* Desktop: drop the orb a touch so its glow clears the sub-line */
+/* Desktop: lift the orb toward the sub-line so it clears the glass cards */
 @media (min-width: 768px) {
   .orb-root {
-    transform: translateY(36px);
-    /* feather the top edge so the shifted canvas doesn't leave a seam */
-    -webkit-mask-image: linear-gradient(transparent, #000 80px);
-            mask-image: linear-gradient(transparent, #000 80px);
+    transform: translateY(-20px);
+    /* feather the bottom edge so the shifted canvas doesn't leave a seam */
+    -webkit-mask-image: linear-gradient(#000 calc(100% - 80px), transparent);
+            mask-image: linear-gradient(#000 calc(100% - 80px), transparent);
   }
 }
 @media (prefers-reduced-motion: reduce) {
