@@ -529,9 +529,9 @@ main > section.hero-orb { padding: 0; }
 /* --- Glass cards: the ways into the site --- */
 .glass-cards {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 14px;
-  max-width: 980px;
+  max-width: 1120px;
   width: 100%;
   margin-inline: auto;
   perspective: 900px;
@@ -539,8 +539,11 @@ main > section.hero-orb { padding: 0; }
 .glass-card {
   pointer-events: auto;
   position: relative;
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
   gap: 6px;
+  min-height: 168px;
   padding: 18px 44px 18px 20px;
   border-radius: var(--radius-lg);
   background: rgba(18, 26, 28, 0.55);
@@ -578,6 +581,16 @@ main > section.hero-orb { padding: 0; }
   border-color: rgba(94, 242, 196, 0.45);
 }
 .glass-card-primary .glass-card-label { color: #BDF5E4; }
+/* About: the founder's photo sits at the top, text stays on the shared baseline */
+.glass-card-photo {
+  width: 76px; height: 76px;
+  margin-bottom: auto;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: 50% 20%;
+  border: 1px solid rgba(94, 242, 196, 0.45);
+  box-shadow: 0 0 18px rgba(94, 242, 196, 0.18);
+}
 
 /* Dark stage → cream page */
 .hero-orb-fade {
@@ -604,7 +617,10 @@ main > section.hero-orb { padding: 0; }
   .orb-fallback { width: min(52vw, 240px); }
   .glass-cards { margin-top: 8px; }
   .glass-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
-  .glass-card { padding: 14px 36px 14px 14px; }
+  .glass-card { padding: 14px 36px 14px 14px; min-height: 120px; }
+  .glass-card-photo { width: 52px; height: 52px; }
+  /* five cards on a two-column grid: the booking card takes the full last row */
+  .glass-card-primary { grid-column: 1 / -1; min-height: 0; }
   .glass-card-title { font-size: 1rem; }
   .glass-card .arrow { right: 12px; bottom: 16px; }
   .hero-orb-sub { font-size: var(--type-body-size); }
