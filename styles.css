@@ -600,13 +600,6 @@ main > section.hero-orb { padding: 0; }
   box-shadow: 0 0 18px rgba(94, 242, 196, 0.18);
 }
 
-/* Dark stage → cream page */
-.hero-orb-fade {
-  height: 160px;
-  /* eased stops so the dark→cream blend doesn't pass through a flat grey band */
-  background: linear-gradient(#121517 0%, #1d2224 18%, #3b3b38 40%, #8b857c 68%, #d6cec3 88%, var(--bg) 100%);
-}
-
 @media (max-width: 767px) {
   .hero-orb { min-height: 0; }
   .hero-orb-inner { justify-content: flex-start; gap: 0; }
