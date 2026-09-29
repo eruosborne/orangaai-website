@@ -299,6 +299,10 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   outline-offset: 3px;
   border-radius: var(--radius);
 }
+/* Name + role under the founder photo on the About page */
+.founder-caption { margin: 14px 0 6px; display: grid; gap: 2px; }
+.founder-name { font-family: var(--display); font-weight: 600; font-size: 1.25rem; color: var(--ink); }
+.founder-role { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-faint); }
 /* Visible to screen readers and search engines only */
 .sr-only {
   position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
