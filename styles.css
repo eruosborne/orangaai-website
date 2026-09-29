@@ -624,6 +624,27 @@ main > section.hero-orb { padding: 0; }
   border-color: rgba(94, 242, 196, 0.45);
 }
 .glass-card-primary .glass-card-label { color: #BDF5E4; }
+/* One quiet line of proof under the cards */
+.hero-orb-proof {
+  grid-column: 1 / -1;  /* sits inside the card grid, as its own full-width row */
+  margin: 4px 0 0;
+  text-align: center;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--zone-muted);
+}
+.hero-orb-proof .proof-item { white-space: nowrap; }
+.hero-orb-proof .proof-dot { color: var(--accent-glow); margin: 0 6px; }
+/* Desktop: hang the line just under the cards so it doesn't push them up into the orb */
+@media (min-width: 768px) {
+  .glass-cards { position: relative; }
+  .hero-orb-proof { position: absolute; top: 100%; left: 0; right: 0; margin-top: 18px; }
+}
+@media (max-width: 767px) {
+  .hero-orb-proof { font-size: 0.66rem; letter-spacing: 0.06em; line-height: 1.9; }
+}
 /* Glass badges: drawn to match the photo and orb mark (same size, rim and glow) */
 .glass-card-badge {
   width: 76px; height: 76px;
@@ -750,7 +771,7 @@ section:nth-of-type(odd) { padding-block: clamp(96px, 14vh, calc(var(--space-3xl
   align-items: stretch;
 }
 .pain-card {
-  background: transparent;
+  background: var(--bg);  /* solid, so the grid's 1px line colour only shows in the gaps */
   padding: var(--space-lg) 0 0;
   display: flex;
   flex-direction: column;
@@ -1309,6 +1330,7 @@ section:nth-of-type(odd) { padding-block: clamp(96px, 14vh, calc(var(--space-3xl
 /* ============================================================
    GENERIC CARD GRIDS (strategy-call: leak points, objections)
    ============================================================ */
+.grid-3 > .pain-card { padding: var(--space-lg); }
 .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
 .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
 @media (max-width: 900px) { .grid-3 { grid-template-columns: 1fr; } }
@@ -1323,6 +1345,7 @@ section:nth-of-type(odd) { padding-block: clamp(96px, 14vh, calc(var(--space-3xl
 .info-card:hover { border-top-color: var(--accent); background: var(--surface); }
 .info-card-title { font-family: var(--display); font-weight: 700; font-size: 1.05rem; margin-bottom: 10px; letter-spacing: -0.005em; }
 .info-card-body { color: var(--ink-muted); font-size: 0.96rem; line-height: 1.55; }
+.info-card-body a { color: var(--accent-text); text-decoration: underline; text-underline-offset: 3px; }
 
 .feature-icon {
   width: 38px; height: 38px;

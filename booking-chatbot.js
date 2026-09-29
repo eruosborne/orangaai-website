@@ -18,6 +18,7 @@
     name: null,
     email: null,
     phone: null,
+    focus: null,
   };
 
   // ─── DOM references (populated in init) ─────────────────────────────────────
@@ -227,6 +228,20 @@
     state.phone = (val.toLowerCase() === 'skip' || val === '') ? null : val;
     addMsg(text, 'user');
 
+    state.step = 'collect_focus';
+    return botReply(
+      "Thanks. What's the one bit of admin you'd most like off your plate?<br>" +
+      "<small style='color:#9A9085'>(Optional, type <em>skip</em> to leave it out)</small>"
+    ).then(function () {
+      $input.placeholder = 'e.g. quotes, invoices, the inbox… or skip';
+    });
+  }
+
+  function handleFocusInput(text) {
+    var val = text.trim();
+    state.focus = (val.toLowerCase() === 'skip' || val === '') ? null : val.slice(0, 500);
+    addMsg(text, 'user');
+
     state.step = 'confirm';
     var lines = [
       '<strong>' + state.displayDate + '</strong> at <strong>' + state.displayTime + '</strong>',
@@ -263,6 +278,7 @@
         name:     state.name,
         email:    state.email,
         phone:    state.phone,
+        focus:    state.focus,
       }),
     })
       .then(function (res) {
@@ -326,6 +342,7 @@
     state.name = null;
     state.email = null;
     state.phone = null;
+    state.focus = null;
   }
 
   // ─── Central dispatcher ──────────────────────────────────────────────────────
@@ -394,6 +411,10 @@
 
       case 'collect_phone':
         handlePhoneInput(text);
+        break;
+
+      case 'collect_focus':
+        handleFocusInput(text);
         break;
 
       case 'confirm':

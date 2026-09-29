@@ -1,6 +1,6 @@
 // api/book.js
 // Creates a Google Calendar event with a Meet link + sends pre-call prep email.
-// POST /api/book  { startISO, endISO, name, email, phone? }
+// POST /api/book  { startISO, endISO, name, email, phone?, focus? }
 
 const { google } = require('googleapis');
 
@@ -95,8 +95,8 @@ async function sendPrepEmail(auth, { toName, toEmail, callDate, callTime, meetLi
       ``,
       `Before the call, it would help to have a rough answer to these three things:`,
       ``,
-      `1. Where are most of your leads coming from right now? (phone, website, Instagram, referrals, etc.)`,
-      `2. What is your current response time — how quickly do leads typically hear from you?`,
+      `1. When does most of your admin happen right now? (during the day, evenings, weekends)`,
+      `2. Which tools does the business run on? (email, calendar, accounting, booking system, etc.)`,
       `3. What is the biggest admin or follow-up task that eats into your time each week?`,
       ``,
       `You do not need to prepare a presentation or bring anything formal. These questions just help me get straight to the useful parts.`,
@@ -145,7 +145,7 @@ module.exports = async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
   const body = await parseBody(req);
-  const { startISO, endISO, name, email, phone } = body;
+  const { startISO, endISO, name, email, phone, focus } = body;
 
   if (!startISO || !endISO) return res.status(400).json({ error: 'startISO and endISO are required.' });
   if (!name || !name.trim()) return res.status(400).json({ error: 'Name is required.' });
@@ -186,6 +186,7 @@ module.exports = async function handler(req, res) {
     `Name: ${name.trim()}`,
     `Email: ${email.trim()}`,
     phone ? `Phone: ${phone.trim()}` : null,
+    typeof focus === 'string' && focus.trim() ? `Wants off their plate: ${focus.trim().slice(0, 500)}` : null,
   ].filter(Boolean).join('\n');
 
   try {

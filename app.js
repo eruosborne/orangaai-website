@@ -107,7 +107,7 @@
     },
     {
       keywords: ['process', 'how do you work', 'steps', 'install', 'installation', 'setup', 'set up', 'onboard', 'onboarding', 'what happens', 'next steps', 'after i sign up', 'get started how', 'how long'],
-      answer: "The install is done remotely, built around your actual business and walked through with you:<br><br><strong>1. Map your business:</strong> a guided interview builds the knowledge base.<br><strong>2. Connect your tools:</strong> mail, calendar and accounts, so it works on your real work.<br><strong>3. Switch on the mailroom:</strong> it sorts your inbox and prepares replies in your voice.<br><strong>4. Dawn run (optional):</strong> a timed job that clears what it safely can before you start.<br><strong>5. Guardrails and handover:</strong> you're walked through it, then it's yours to run.<br><br>Most installs take less than a working day, somewhere between about 3 and 8 hours depending on the tools you use. Anything beyond that, like more seats or a custom playbook, is scoped separately."
+      answer: "The install is done remotely, built around your actual business and walked through with you:<br><br><strong>1. Map your business:</strong> a guided interview builds the knowledge base.<br><strong>2. Connect your tools:</strong> mail, calendar and accounts, so it works on your real work.<br><strong>3. Switch on the mailroom:</strong> it sorts your inbox and prepares replies in your voice.<br><strong>4. Dawn run (optional):</strong> a timed job that clears what it safely can before you start.<br><strong>5. Guardrails and handover:</strong> you're walked through it, then it's yours to run.<br><br>Most installs take less than a working day, somewhere between about 3 and 8 hours depending on the tools you use. We then stay with you for 30 days while it beds in, and the 30-day money-back guarantee covers the result. Anything beyond that, like more seats or a custom playbook, is scoped separately."
     },
     {
       keywords: ['price', 'pricing', 'cost', 'how much', 'rate', 'fee', 'budget', 'monthly', 'pay', 'payment', 'charge', 'invest', 'investment', 'afford', 'total', 'retainer', 'expensive', 'cheap', 'per month'],
@@ -127,7 +127,7 @@
     },
     {
       keywords: ['book', 'meeting', 'consultation', 'demo', 'call', 'strategy call', 'free call', 'schedule a call', 'speak to', 'talk', 'get started', 'sign up', 'ready', 'interested', 'keen', 'tell me more', 'want to know'],
-      answer: "Easy, book a free 30-minute strategy call. We go through your business, find where time and leads are leaking, and show you exactly what Oranga Core would handle. No pitch, no pressure." + "<br>" + BOOK_BTN
+      answer: "Easy, book a free 30-minute strategy call. We go through your business, find where your admin time is going, and show you exactly what Oranga Core would take off your plate. No pitch, no pressure." + "<br>" + BOOK_BTN
     },
     {
       keywords: ['contact', 'email', 'reach', 'get in touch', 'support'],
