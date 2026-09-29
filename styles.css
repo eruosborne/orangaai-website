@@ -636,6 +636,8 @@ main > section.hero-orb { padding: 0; }
 }
 .glass-card-badge svg { width: 100%; height: 100%; display: block; overflow: visible; }
 .badge-num { font-family: var(--display); font-weight: 700; font-size: 17px; letter-spacing: -0.02em; fill: var(--accent-glow); filter: drop-shadow(0 0 6px rgba(94, 242, 196, 0.55)); }
+.badge-was { font-family: var(--mono); font-size: 8.5px; letter-spacing: 0.12em; fill: var(--zone-muted); }
+.badge-strike { stroke: rgba(242, 235, 225, 0.55); stroke-width: 1.2; }
 .badge-track { fill: none; stroke: rgba(242, 235, 225, 0.12); stroke-width: 4; }
 .badge-arc { fill: none; stroke: var(--accent-glow); stroke-width: 4; stroke-linecap: round; filter: drop-shadow(0 0 4px rgba(94, 242, 196, 0.7)); }
 .badge-small-num { font-family: var(--display); font-weight: 700; font-size: 17px; fill: var(--zone-text); }
