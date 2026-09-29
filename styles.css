@@ -581,6 +581,14 @@ main > section.hero-orb { padding: 0; }
   border-color: rgba(94, 242, 196, 0.45);
 }
 .glass-card-primary .glass-card-label { color: #BDF5E4; }
+/* Oranga mark on the How it works card, same slot as the founder photo */
+.glass-card-logo {
+  width: 100px; height: auto;
+  /* the artwork has glow padding: pull it out so the sphere lines up with the photo */
+  margin: -12px 0 auto -12px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 14px rgba(94, 242, 196, 0.22));
+}
 /* About: the founder's photo sits at the top, text stays on the shared baseline */
 .glass-card-photo {
   width: 76px; height: 76px;
@@ -619,6 +627,7 @@ main > section.hero-orb { padding: 0; }
   .glass-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
   .glass-card { padding: 14px 36px 14px 14px; min-height: 120px; }
   .glass-card-photo { width: 52px; height: 52px; }
+  .glass-card-logo { width: 70px; margin: -9px 0 auto -9px; }
   /* five cards on a two-column grid: the booking card takes the full last row */
   .glass-card-primary { grid-column: 1 / -1; min-height: 0; }
   .glass-card-title { font-size: 1rem; }
