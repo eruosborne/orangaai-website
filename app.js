@@ -107,7 +107,7 @@
     },
     {
       keywords: ['process', 'how do you work', 'steps', 'install', 'installation', 'setup', 'set up', 'onboard', 'onboarding', 'what happens', 'next steps', 'after i sign up', 'get started how', 'how long'],
-      answer: "The install is done remotely, built around your actual business and walked through with you:<br><br><strong>1. Map your business:</strong> a guided interview builds the knowledge base.<br><strong>2. Connect your tools:</strong> mail, calendar and accounts, so it works on your real work.<br><strong>3. Switch on the mailroom:</strong> it sorts your inbox and prepares replies in your voice.<br><strong>4. Dawn run (optional):</strong> a timed job that clears what it safely can before you start.<br><strong>5. Guardrails and handover:</strong> you're walked through it, then it's yours to run.<br><br>Most installs take less than a working day, somewhere between about 3 and 8 hours depending on the tools you use. We then stay with you for 30 days while it beds in, and the 30-day money-back guarantee covers the result. Anything beyond that, like more seats or a custom playbook, is scoped separately."
+      answer: "The install is done remotely, built around your actual business and walked through with you:<br><br><strong>1. Map your business:</strong> a guided interview builds the knowledge base.<br><strong>2. Connect your tools:</strong> mail, calendar and accounts, so it works on your real work.<br><strong>3. Switch on the mailroom:</strong> it sorts your inbox and prepares replies in your voice.<br><strong>4. Dawn run (optional):</strong> a timed job that clears what it safely can before you start.<br><strong>5. Guardrails and handover:</strong> you're walked through it, then it's yours to run.<br><br>Most installs take less than a working day, somewhere between about 3 and 8 hours depending on the tools you use. We then stay with you for 30 days while it beds in, and the 7-day money-back guarantee covers the result. Anything beyond that, like more seats or a custom playbook, is scoped separately."
     },
     {
       keywords: ['price', 'pricing', 'cost', 'how much', 'rate', 'fee', 'budget', 'monthly', 'pay', 'payment', 'charge', 'invest', 'investment', 'afford', 'total', 'retainer', 'expensive', 'cheap', 'per month'],
@@ -115,11 +115,11 @@
     },
     {
       keywords: ['guarantee', 'refund', 'money back', 'money-back', 'risk free', 'risk-free', 'what if it doesn', 'not work for me'],
-      answer: "Yes. The install comes with a 30-day money-back guarantee: if it hasn't given you real time back or a noticeable productivity boost within 30 days of handover, you get a full refund."
+      answer: "Yes. The install comes with a 7-day money-back guarantee: if it hasn't given you real time back or a noticeable productivity boost within 7 days of handover, you get a full refund."
     },
     {
       keywords: ['contract', 'lock', 'locked in', 'cancel', 'cancellation', 'commitment', 'tied', 'exit', 'quit', 'flexible', 'lock-in', 'no contract', 'subscription'],
-      answer: "The install is a one-off, not a subscription. Ongoing maintenance is optional and has no lock-in. And the 30-day money-back guarantee means you're not stuck if it doesn't deliver."
+      answer: "The install is a one-off, not a subscription. Ongoing maintenance is optional and has no lock-in. And the 7-day money-back guarantee means you're not stuck if it doesn't deliver."
     },
     {
       keywords: ['hosting', 'remote access', 'phone', 'laptop off', 'laptop is off', 'always on', 'always-on', 'maintenance', 'extras', 'add on', 'add-on', 'custom', 'more seats', 'seats', 'extra'],
@@ -293,14 +293,18 @@
   if (teaser) {
     var TEASER_KEY = 'orangaChatTeaserSeen';
     var teaserTimer = null;
-    if (!sessionStorage.getItem(TEASER_KEY)) {
+    // Not on the homepage: there it sat on top of the 'Book a strategy call' card
+    var onHome = !!document.querySelector('.hero-orb');
+    var seen = false;
+    try { seen = !!sessionStorage.getItem(TEASER_KEY); } catch (e) {}
+    if (!onHome && !seen) {
       teaserTimer = setTimeout(function () {
         teaser.classList.add('show');
       }, 6000);
     }
     function dismissTeaser() {
       teaser.classList.remove('show');
-      sessionStorage.setItem(TEASER_KEY, '1');
+      try { sessionStorage.setItem(TEASER_KEY, '1'); } catch (e) {}
       if (teaserTimer) clearTimeout(teaserTimer);
     }
     teaser.addEventListener('click', function () {
