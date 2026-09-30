@@ -527,7 +527,7 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 /* beat the global `section:nth-of-type(odd)` padding — the stage runs edge to edge */
 main > section.hero-orb { padding: 0; }
 .orb-root { position: absolute; inset: 0; z-index: -1; }
-.orb-stage { position: absolute; inset: 0; opacity: 0; transition: opacity 1.2s var(--ease); }
+.orb-stage { position: absolute; inset: 0; opacity: 0; transition: opacity 0.5s var(--ease); }
 .orb-root.orb-ready .orb-stage { opacity: 1; }
 /* Static orb: shown while the 3D scene loads, and kept if WebGL / motion is off */
 .orb-fallback {
@@ -536,9 +536,18 @@ main > section.hero-orb { padding: 0; }
   width: min(34vh, 60vw);
   height: auto;
   transform: translate(-50%, -50%);
-  transition: opacity 1.2s var(--ease);
+  transition: opacity 0.5s var(--ease);
+  /* breathe while the 3D scene loads, so the wait doesn't read as a frozen page */
+  animation: orb-breathe 2.4s ease-in-out infinite;
 }
-.orb-root.orb-ready .orb-fallback { opacity: 0; }
+.orb-root.orb-ready .orb-fallback { opacity: 0; animation: none; }
+@keyframes orb-breathe {
+  0%, 100% { filter: brightness(1) drop-shadow(0 0 0 rgba(94, 242, 196, 0)); }
+  50%      { filter: brightness(1.12) drop-shadow(0 0 26px rgba(94, 242, 196, 0.35)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .orb-fallback { animation: none; }
+}
 
 .hero-orb-inner {
   flex: 1;
