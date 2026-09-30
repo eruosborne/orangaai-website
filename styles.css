@@ -529,6 +529,13 @@ main > section.hero-orb { padding: 0; }
 .orb-root { position: absolute; inset: 0; z-index: -1; }
 .orb-stage { position: absolute; inset: 0; opacity: 0; transition: opacity 0.5s var(--ease); }
 .orb-root.orb-ready .orb-stage { opacity: 1; }
+/* Homepage intro: a black screen that fades out once the 3D orb is ready (see index.html) */
+.intro-veil {
+  position: fixed; inset: 0; z-index: 1000;
+  background: #000;
+  transition: opacity 0.6s var(--ease);
+}
+.intro-veil.gone { opacity: 0; pointer-events: none; }
 /* Static orb: shown while the 3D scene loads, and kept if WebGL / motion is off */
 .orb-fallback {
   position: absolute;

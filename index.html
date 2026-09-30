@@ -67,6 +67,37 @@ src="https://www.facebook.com/tr?id=1601510988349512&ev=PageView&noscript=1"
 <!-- End Meta Pixel Code -->
 </head>
 <body>
+<script>
+  // Black intro veil: hides the orb's loading moment, then fades out once the 3D orb is ready
+  // (capped at 2.5s). Built in JS so visitors without JS never get a blank page, and skipped
+  // when the orb won't start anyway (reduced motion, or no WebGL).
+  (function () {
+    var noMotion = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var gl = false;
+    try { var c = document.createElement('canvas'); gl = !!(c.getContext('webgl2') || c.getContext('webgl')); } catch (e) {}
+    if (noMotion || !gl) return;
+    var veil = document.createElement('div');
+    veil.className = 'intro-veil';
+    veil.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(veil);
+    var done = false;
+    function lift() {
+      if (done) return; done = true;
+      veil.classList.add('gone');
+      setTimeout(function () { veil.remove(); }, 700);
+    }
+    setTimeout(lift, 2500);
+    document.addEventListener('DOMContentLoaded', function () {
+      var root = document.getElementById('orb-root');
+      if (!root) return lift();
+      if (root.classList.contains('orb-ready')) return setTimeout(lift, 450);
+      new MutationObserver(function (_, obs) {
+        // wait out the orb's own 0.5s crossfade so the veil reveals the live orb, not the still image
+        if (root.classList.contains('orb-ready')) { obs.disconnect(); setTimeout(lift, 450); }
+      }).observe(root, { attributes: true, attributeFilter: ['class'] });
+    });
+  })();
+</script>
 
 <a href="#top" class="skip-link">Skip to content</a>
 
