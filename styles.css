@@ -531,16 +531,17 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 /* beat the global `section:nth-of-type(odd)` padding — the stage runs edge to edge */
 main > section.hero-orb { padding: 0; }
 .orb-root { position: absolute; inset: 0; z-index: -1; }
-.orb-stage { position: absolute; inset: 0; opacity: 0; transition: opacity 0.5s var(--ease); }
-.orb-root.orb-ready .orb-stage { opacity: 1; }
-/* Homepage intro: a black screen that fades out once the 3D orb is ready (see index.html) */
-.intro-veil {
-  position: fixed; inset: 0; z-index: 1000;
-  background: #000;
-  transition: opacity 0.6s var(--ease);
+/* The live orb fades in (and settles from a touch closer) once its first frames are drawn. The
+   canvas paints the stage colour and the overscale is clipped by the hero, so there is no seam. */
+.orb-stage {
+  position: absolute; inset: 0;
+  opacity: 0; transform: scale(1.03);
+  transition: opacity 0.8s var(--ease), transform 1.1s var(--ease);
 }
-.intro-veil.gone { opacity: 0; pointer-events: none; }
-/* Static orb: shown while the 3D scene loads, and kept if WebGL / motion is off */
+.orb-root.orb-ready .orb-stage { opacity: 1; transform: none; }
+/* Static orb: for visitors without WebGL, JS or motion. While the 3D orb is loading
+   (html.orb-loading, set in index.html <head>) it stays hidden, so the stage is just
+   dark until the live orb fades in. */
 .orb-fallback {
   position: absolute;
   top: 50%; left: 50%;
@@ -548,17 +549,9 @@ main > section.hero-orb { padding: 0; }
   height: auto;
   transform: translate(-50%, -50%);
   transition: opacity 0.5s var(--ease);
-  /* breathe while the 3D scene loads, so the wait doesn't read as a frozen page */
-  animation: orb-breathe 2.4s ease-in-out infinite;
 }
-.orb-root.orb-ready .orb-fallback { opacity: 0; animation: none; }
-@keyframes orb-breathe {
-  0%, 100% { filter: brightness(1) drop-shadow(0 0 0 rgba(94, 242, 196, 0)); }
-  50%      { filter: brightness(1.12) drop-shadow(0 0 26px rgba(94, 242, 196, 0.35)); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .orb-fallback { animation: none; }
-}
+.orb-loading .orb-fallback { opacity: 0; transition: none; }
+.orb-root.orb-ready .orb-fallback { opacity: 0; }
 
 .hero-orb-inner {
   flex: 1;
