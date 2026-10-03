@@ -35,7 +35,7 @@
 </script>
 
 <style>
-  /* Admin Exposure quiz — scoped additions, reusing existing tokens */
+  /* Admin Exposure quiz: scoped additions, reusing existing tokens */
   .quiz-wrap { max-width: 680px; margin: 0 auto; }
   .quiz-progress { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 8px; }
   .quiz-q { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px 22px 18px; margin-bottom: 16px; }
@@ -144,7 +144,7 @@ src="https://www.facebook.com/tr?id=1601510988349512&ev=PageView&noscript=1"
               <label class="quiz-opt"><input type="radio" name="q0" value="0"><span>During normal work hours, it's handled fine</span></label>
               <label class="quiz-opt"><input type="radio" name="q0" value="2"><span>Evenings, after the day's done</span></label>
               <label class="quiz-opt"><input type="radio" name="q0" value="3"><span>Weekends too, on top of evenings</span></label>
-              <label class="quiz-opt"><input type="radio" name="q0" value="3"><span>Honestly, whenever I can grab a minute — no consistent time</span></label>
+              <label class="quiz-opt"><input type="radio" name="q0" value="3"><span>Honestly, whenever I can grab a minute, no consistent time</span></label>
             </div>
           </div>
 
@@ -153,7 +153,7 @@ src="https://www.facebook.com/tr?id=1601510988349512&ev=PageView&noscript=1"
             <div class="quiz-opts">
               <label class="quiz-opt"><input type="radio" name="q1" value="0"><span>No, nothing that critical is riding on it</span></label>
               <label class="quiz-opt"><input type="radio" name="q1" value="2"><span>Maybe, depends what it was</span></label>
-              <label class="quiz-opt"><input type="radio" name="q1" value="3"><span>Yes — that's already happened before</span></label>
+              <label class="quiz-opt"><input type="radio" name="q1" value="3"><span>Yes, that's already happened before</span></label>
             </div>
           </div>
 
@@ -161,7 +161,7 @@ src="https://www.facebook.com/tr?id=1601510988349512&ev=PageView&noscript=1"
             <div class="quiz-q-title">3. Is your business knowledge (pricing, past jobs, client details) written down, or mostly in your head?</div>
             <div class="quiz-opts">
               <label class="quiz-opt"><input type="radio" name="q2" value="0"><span>Written down somewhere the whole team can access</span></label>
-              <label class="quiz-opt"><input type="radio" name="q2" value="2"><span>Some of it — scattered across notes, texts, spreadsheets</span></label>
+              <label class="quiz-opt"><input type="radio" name="q2" value="2"><span>Some of it, scattered across notes, texts, spreadsheets</span></label>
               <label class="quiz-opt"><input type="radio" name="q2" value="3"><span>Mostly in my head</span></label>
             </div>
           </div>
@@ -179,8 +179,8 @@ src="https://www.facebook.com/tr?id=1601510988349512&ev=PageView&noscript=1"
           <div class="quiz-q" data-q="4">
             <div class="quiz-q-title">5. If you got a few hours back this week, is there something specific you'd actually do with them?</div>
             <div class="quiz-opts">
-              <label class="quiz-opt"><input type="radio" name="q4" value="0"><span>Not really — I'd probably just find more admin to do</span></label>
-              <label class="quiz-opt"><input type="radio" name="q4" value="2"><span>Yes — something specific, family, the tools, growing the business</span></label>
+              <label class="quiz-opt"><input type="radio" name="q4" value="0"><span>Not really, I'd probably just find more admin to do</span></label>
+              <label class="quiz-opt"><input type="radio" name="q4" value="2"><span>Yes, something specific: family, the tools, growing the business</span></label>
             </div>
           </div>
 
@@ -189,7 +189,7 @@ src="https://www.facebook.com/tr?id=1601510988349512&ev=PageView&noscript=1"
             <div class="quiz-opts">
               <label class="quiz-opt"><input type="radio" name="q5" value="0"><span>Yes, easily</span></label>
               <label class="quiz-opt"><input type="radio" name="q5" value="2"><span>Probably, but it'd be tight</span></label>
-              <label class="quiz-opt"><input type="radio" name="q5" value="3"><span>No — we're already stretched</span></label>
+              <label class="quiz-opt"><input type="radio" name="q5" value="3"><span>No, we're already stretched</span></label>
             </div>
           </div>
 
@@ -210,7 +210,7 @@ src="https://www.facebook.com/tr?id=1601510988349512&ev=PageView&noscript=1"
           </div>
 
           <div class="unlock-card" id="unlockCard">
-            <p>Want the full breakdown — which specific answers drove your score, and what it typically ends up costing a business like yours?</p>
+            <p>Want the full breakdown: which specific answers drove your score, and what it typically ends up costing a business like yours?</p>
             <form class="unlock-form" id="unlockForm" novalidate>
               <input type="email" id="unlockEmail" placeholder="you@business.com" autocomplete="email" required>
               <button type="submit" class="btn btn-ghost">Get my full breakdown</button>
@@ -319,11 +319,11 @@ src="https://www.facebook.com/tr?id=1601510988349512&ev=PageView&noscript=1"
     } else if (score <= 11) {
       band = 'moderate';
       title = 'Moderate exposure';
-      sub = 'There’s a real gap here — it’s not costing you yet, but it’s worth understanding before it does.';
+      sub = 'There’s a real gap here. It’s not costing you yet, but it’s worth understanding before it does.';
     } else {
       band = 'high';
       title = 'High exposure';
-      sub = 'This is very likely already costing you jobs, clients, or personal time — not hypothetically, right now.';
+      sub = 'This is very likely already costing you jobs, clients, or personal time. Not hypothetically, right now.';
     }
 
     bandEl.className = 'result-band band-' + band;
@@ -364,7 +364,7 @@ src="https://www.facebook.com/tr?id=1601510988349512&ev=PageView&noscript=1"
       .then(function (result) {
         if (result.ok) {
           if (typeof fbq === 'function') fbq('track', 'Lead', { content_name: 'Admin Exposure Score' });
-          breakdownText.textContent = 'Your answers point most strongly to ' + QUESTION_LABELS[topIndex] + '. That’s exactly the kind of gap Oranga Core is built to close — it prepares the admin work, and you approve anything before it goes out.';
+          breakdownText.textContent = 'Your answers point most strongly to ' + QUESTION_LABELS[topIndex] + '. That’s exactly the kind of gap Oranga Core is built to close. It prepares the admin work, and you approve anything before it goes out.';
           unlockCard.style.display = 'none';
           breakdownEl.classList.add('show');
         } else {

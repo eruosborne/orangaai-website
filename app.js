@@ -139,7 +139,7 @@
     },
     {
       keywords: ['different', 'unique', 'competitors', 'why hire', 'why should i', 'convince me', 'what makes you', 'better than', 'vs', 'versus', 'alternative', 'chatbot', 'chatgpt', 'stand out', 'why oranga', 'tried ai', 'tried chatgpt'],
-      answer: "General AI tools are a blank box: you have to set them up around your business and your voice, and most owners don't have the time. Oranga Core is installed for you, built around your business, and it prepares the work while you approve anything that matters. Six actions are locked, so it can't send, spend or sign on its own."
+      answer: "Oranga Core is installed for you, built around your business, and it prepares the work while you approve anything that matters. Six actions are locked, so it can't send, spend or sign on its own."
     },
     {
       keywords: ['result', 'outcome', 'roi', 'expect', 'success', 'proof', 'worked', 'helped', 'saved', 'time back', 'hours', 'evenings', 'case study', 'testimonial', 'clients so far'],
