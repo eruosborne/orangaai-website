@@ -1741,3 +1741,9 @@ footer {
   color: var(--ink);
   padding: 24px 0;
 }
+
+/* Homepage audience line under the wordmark: tighter spacing so the sub-line still clears the orb */
+.hero-orb-brand { margin-bottom: 8px; }
+.hero-orb .hero-orb-head .eyebrow { margin-bottom: 12px; }
+@media (min-width: 768px) { .hero-orb-inner { padding-top: clamp(24px, 4vh, 48px); } }
+@media (max-width: 767px) { .hero-orb-head .eyebrow::before { display: none; } }
