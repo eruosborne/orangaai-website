@@ -2,7 +2,8 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
-    { "source": "/for-tradies", "destination": "/", "permanent": true }
+    { "source": "/for-tradies", "destination": "/", "permanent": true },
+    { "source": "/strategy-call", "destination": "/admin-audit", "permanent": true }
   ],
   "headers": [
     {

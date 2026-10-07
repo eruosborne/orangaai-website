@@ -1453,7 +1453,7 @@ footer {
   flex-wrap: wrap;
 }
 .footer-inner .logo-mark { width: 44px; height: 44px; }
-.footer-meta { display: flex; gap: 22px; align-items: center; font-family: var(--mono); font-size: 0.85rem; color: var(--ink-faint); }
+.footer-meta { display: flex; flex-wrap: wrap; gap: 10px 22px; align-items: center; font-family: var(--mono); font-size: 0.85rem; color: var(--ink-faint); }
 .footer-meta a { color: var(--ink-faint); transition: color 0.2s var(--ease); }
 .footer-meta a:hover { color: var(--accent-text); }
 
@@ -1747,3 +1747,83 @@ footer {
 .hero-orb .hero-orb-head .eyebrow { margin-bottom: 12px; }
 @media (min-width: 768px) { .hero-orb-inner { padding-top: clamp(24px, 4vh, 48px); } }
 @media (max-width: 767px) { .hero-orb-head .eyebrow::before { display: none; } }
+
+/* ============================================================
+   FUNNEL (2026-10-07): Admin Audit booking, /oranga-core, /booked
+   ============================================================ */
+.book-section { padding: clamp(48px, 8vh, 96px) 0; scroll-margin-top: 72px; }
+.book-card {
+  max-width: 760px; margin: 0 auto;
+  background: var(--bg-elev); border: 1px solid var(--line-strong); border-radius: var(--radius-lg);
+  padding: clamp(20px, 4vw, 40px);
+}
+.book-head { border-bottom: 1px solid var(--line); padding-bottom: var(--space-lg); margin-bottom: var(--space-lg); }
+.book-title { font-family: var(--display); font-size: var(--type-heading-size); font-weight: 600; margin: 12px 0 6px; }
+.book-preview { font-family: var(--mono); font-size: 0.95rem; color: var(--accent-text); min-height: 1.4em; }
+.book-tz { margin-top: 12px; font-size: 0.9rem; color: var(--ink-muted); line-height: 1.5; }
+.book-tz select { margin-left: 4px; }
+.book-step { margin-bottom: var(--space-lg); }
+.book-step h3, .book-form h3 { font-family: var(--display); font-size: 1.05rem; font-weight: 600; margin-bottom: 12px; }
+.book-days, .book-slots { display: flex; flex-wrap: wrap; gap: 8px; }
+.book-chip {
+  font-family: var(--sans); font-size: 0.95rem; color: var(--ink);
+  background: var(--bg-sunk); border: 1px solid var(--line-strong); border-radius: var(--radius);
+  padding: 10px 14px; cursor: pointer; min-width: 92px; text-align: center;
+  transition: border-color 0.15s var(--ease), background 0.15s var(--ease);
+}
+.book-chip:hover { border-color: var(--accent-text); }
+.book-chip[aria-pressed="true"] { background: var(--accent-deep); border-color: var(--accent-text); color: var(--on-accent); }
+.book-chip small { display: block; font-size: 0.75rem; color: var(--ink-faint); margin-top: 2px; }
+.book-chip[aria-pressed="true"] small { color: var(--on-accent); }
+.book-hint { font-size: 0.9rem; color: var(--ink-faint); }
+.book-form { border-top: 1px solid var(--line); padding-top: var(--space-lg); }
+.book-form[hidden] { display: none; }
+.book-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: var(--space-lg); }
+.book-field { display: flex; flex-direction: column; gap: 6px; }
+.book-field.wide { grid-column: 1 / -1; }
+.book-field label { font-size: 0.88rem; color: var(--ink-muted); }
+.book-field label .opt { color: var(--ink-faint); }
+.book-field input, .book-field select, .book-field textarea, .book-tz select {
+  font-family: var(--sans); font-size: 1rem; color: var(--ink);
+  background: var(--bg-sunk); border: 1px solid var(--line-strong); border-radius: var(--radius);
+  padding: 11px 12px; width: 100%;
+}
+.book-tz select { width: auto; padding: 6px 8px; font-size: 0.9rem; }
+.book-field textarea { min-height: 84px; resize: vertical; }
+.book-field input:focus, .book-field select:focus, .book-field textarea:focus, .book-tz select:focus { outline: none; border-color: var(--accent-text); }
+.book-submit { width: 100%; }
+.book-error { color: var(--alert); font-size: 0.92rem; margin-top: 12px; min-height: 1.2em; }
+@media (max-width: 600px) {
+  .book-fields { grid-template-columns: 1fr; }
+  .book-chip { flex: 1 1 calc(33% - 8px); min-width: 0; padding: 10px 6px; }
+}
+
+.walk-away { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; max-width: 760px; margin: 0 auto; }
+.walk-away > div { border: 1px solid var(--line); border-radius: var(--radius-lg); padding: var(--space-lg); background: var(--bg-elev); }
+.walk-away strong { display: block; font-family: var(--display); font-size: 1.1rem; margin-bottom: 6px; }
+.walk-away p { color: var(--ink-muted); font-size: 0.96rem; line-height: 1.55; }
+@media (max-width: 600px) { .walk-away { grid-template-columns: 1fr; } }
+
+.video-slot {
+  max-width: 820px; margin: 0 auto; aspect-ratio: 16 / 9;
+  border: 1px dashed var(--line-strong); border-radius: var(--radius-lg); background: var(--bg-sunk);
+  display: flex; align-items: center; justify-content: center; text-align: center; padding: 24px;
+  color: var(--ink-faint); font-size: 0.95rem; overflow: hidden;
+}
+.video-slot iframe { width: 100%; height: 100%; border: 0; }
+.video-slot.has-video { border-style: solid; padding: 0; }
+
+.faq-list { max-width: 760px; margin: 0 auto; border-top: 1px solid var(--line); }
+.faq-list details { border-bottom: 1px solid var(--line); padding: 18px 4px; }
+.faq-list summary { cursor: pointer; font-family: var(--display); font-weight: 600; font-size: 1.05rem; list-style: none; display: flex; justify-content: space-between; gap: 16px; }
+.faq-list summary::-webkit-details-marker { display: none; }
+.faq-list summary::after { content: '+'; font-family: var(--mono); color: var(--accent-text); }
+.faq-list details[open] summary::after { content: '−'; }
+.faq-list details p { color: var(--ink-muted); line-height: 1.6; margin-top: 10px; }
+
+.get-list { display: grid; grid-template-columns: 1fr 1fr; gap: 0 32px; max-width: 900px; margin: 0 auto; }
+@media (max-width: 767px) { .get-list { grid-template-columns: 1fr; } }
+.center-cta { text-align: center; margin-top: var(--space-xl); }
+.process-steps.four { grid-template-columns: repeat(4, 1fr); }
+@media (max-width: 900px) { .process-steps.four { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .process-steps.four { grid-template-columns: 1fr; } }

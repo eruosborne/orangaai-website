@@ -62,12 +62,12 @@
   // No chatbot markup on this page, nothing more to wire up.
   if (!panel || !messagesEl || !formEl || !inputEl) return;
 
-  var BOOK_BTN = "<button type='button' class='btn btn-primary' onclick='if(window.startBookingFlow)window.startBookingFlow()' style='margin-top:6px;'>Book a call</button>";
+  var BOOK_BTN = "<button type='button' class='btn btn-primary' onclick='if(window.startBookingFlow)window.startBookingFlow()' style='margin-top:6px;'>Book your Admin Audit</button>";
 
   var KB = [
     {
       keywords: ['hi', 'hello', 'hey', 'howdy', 'greetings', 'kia ora', 'sup', 'yo', 'g day', 'good morning', 'good afternoon', 'good evening'],
-      answer: "Kia ora, I'm Oranga AI's assistant. Ask me about Oranga Core, how it works, whether it's a fit for your business, or how to book a free strategy call."
+      answer: "Kia ora, I'm Oranga AI's assistant. Ask me about Oranga Core, how it works, whether it's a fit for your business, or how to book a free Admin Audit."
     },
     {
       keywords: ['what is oranga', 'who are you', 'what do you do', 'about oranga', 'about you', 'what is this', 'tell me about', 'explain what', 'describe what', 'overview', 'summary', 'what is oranga core', 'what exactly', 'what is core'],
@@ -107,11 +107,11 @@
     },
     {
       keywords: ['process', 'how do you work', 'steps', 'install', 'installation', 'setup', 'set up', 'onboard', 'onboarding', 'what happens', 'next steps', 'after i sign up', 'get started how', 'how long'],
-      answer: "The install is done remotely, built around your actual business and walked through with you:<br><br><strong>1. Map your business:</strong> a guided interview builds the knowledge base.<br><strong>2. Connect your tools:</strong> mail, calendar and accounts, so it works on your real work.<br><strong>3. Switch on the mailroom:</strong> it sorts your inbox and prepares replies in your voice.<br><strong>4. Dawn run (optional):</strong> a timed job that clears what it safely can before you start.<br><strong>5. Guardrails and handover:</strong> you're walked through it, then it's yours to run.<br><br>Most installs take less than a working day, somewhere between about 3 and 8 hours depending on the tools you use. We then stay with you for 30 days while it beds in, and the 7-day money-back guarantee covers the result. Anything beyond that, like more seats or a custom playbook, is scoped separately."
+      answer: "The install is done remotely, built around your actual business and walked through with you:<br><br><strong>1. Map your business:</strong> a guided interview builds the knowledge base.<br><strong>2. Connect your tools:</strong> mail, calendar and accounts, so it works on your real work.<br><strong>3. Switch on the mailroom:</strong> it sorts your inbox and prepares replies in your voice.<br><strong>4. Dawn run (optional):</strong> a timed job that clears what it safely can before you start.<br><strong>5. Guardrails and handover:</strong> you're walked through it, then it's yours to run.<br><br>Most installs take less than a working day, somewhere between about 3 and 8 hours depending on the tools you use. We then stay with you for 2 weeks while it beds in, and the 7-day money-back guarantee covers the result. Anything beyond that, like more seats or a custom playbook, is scoped separately."
     },
     {
       keywords: ['price', 'pricing', 'cost', 'how much', 'rate', 'fee', 'budget', 'monthly', 'pay', 'payment', 'charge', 'invest', 'investment', 'afford', 'total', 'retainer', 'expensive', 'cheap', 'per month'],
-      answer: "The install is a one-off flat fee, with one seat included, so you know the cost up front. There are two optional extras: always-on hosting with phone access, and ongoing maintenance if you'd like us to look after it (no lock-in). We go through the exact numbers on the free strategy call, once you've seen how it would fit your business." + "<br>" + BOOK_BTN
+      answer: "The install is a one-off flat fee, with one seat included, so you know the cost up front. There are two optional extras: always-on hosting with phone access, and ongoing maintenance if you'd like us to look after it (no lock-in). We go through the exact numbers on the free Admin Audit, once you've seen how it would fit your business." + "<br>" + BOOK_BTN
     },
     {
       keywords: ['guarantee', 'refund', 'money back', 'money-back', 'risk free', 'risk-free', 'what if it doesn', 'not work for me'],
@@ -123,15 +123,15 @@
     },
     {
       keywords: ['hosting', 'remote access', 'phone', 'laptop off', 'laptop is off', 'always on', 'always-on', 'maintenance', 'extras', 'add on', 'add-on', 'custom', 'more seats', 'seats', 'extra'],
-      answer: "Beyond the standard install there are a few optional extras:<br><br><strong>Always-on hosting with phone access:</strong> so scheduled work runs even when your laptop is off, and you can check in from your phone.<br><strong>Ongoing maintenance:</strong> if you'd like us to look after it, no lock-in.<br><strong>Custom builds:</strong> more seats, or a bespoke playbook for a job unique to your business.<br><br>We scope and price these on the strategy call." + "<br>" + BOOK_BTN
+      answer: "Beyond the standard install there are a few optional extras:<br><br><strong>Always-on hosting with phone access:</strong> so scheduled work runs even when your laptop is off, and you can check in from your phone.<br><strong>Ongoing maintenance:</strong> if you'd like us to look after it, no lock-in.<br><strong>Custom builds:</strong> more seats, or a bespoke playbook for a job unique to your business.<br><br>We scope and price these on the Admin Audit." + "<br>" + BOOK_BTN
     },
     {
-      keywords: ['book', 'meeting', 'consultation', 'demo', 'call', 'strategy call', 'free call', 'schedule a call', 'speak to', 'talk', 'get started', 'sign up', 'ready', 'interested', 'keen', 'tell me more', 'want to know'],
-      answer: "Easy, book a free 30-minute strategy call. We go through your business, find where your admin time is going, and show you exactly what Oranga Core would take off your plate. No pitch, no pressure." + "<br>" + BOOK_BTN
+      keywords: ['book', 'meeting', 'consultation', 'demo', 'call', 'strategy call', 'admin audit', 'audit', 'free call', 'schedule a call', 'speak to', 'talk', 'get started', 'sign up', 'ready', 'interested', 'keen', 'tell me more', 'want to know'],
+      answer: "Book a free 30-minute Admin Audit. We go through your business, find where your admin time is going, and show you exactly what Oranga Core would take off your plate. No pitch, no pressure. Bookings open for the next two business days." + "<br>" + BOOK_BTN
     },
     {
       keywords: ['contact', 'email', 'reach', 'get in touch', 'support'],
-      answer: "Two ways: book a free strategy call via the chat for the fastest answer, or email <a href='mailto:support@orangaai.com'>support@orangaai.com</a>."
+      answer: "Two ways: book a free <a href='/admin-audit#book'>Admin Audit</a> for the fastest answer, or email <a href='mailto:support@orangaai.com'>support@orangaai.com</a>."
     },
     {
       keywords: ['founder', 'team', 'who runs', 'who built', 'who made', 'eru', 'osborne', 'background', 'experience', 'credentials', 'about the team'],
@@ -143,7 +143,7 @@
     },
     {
       keywords: ['result', 'outcome', 'roi', 'expect', 'success', 'proof', 'worked', 'helped', 'saved', 'time back', 'hours', 'evenings', 'case study', 'testimonial', 'clients so far'],
-      answer: "The goal is your evenings back: admin finished before you get home, and every enquiry answered fast, even on a 12-hour day. One civil construction business had Oranga Core find a payment condition buried in a 30-page contract, and recovered $20,000 they wouldn't otherwise have chased. The strategy call is where we work out what fixing your admin would be worth."
+      answer: "The goal is your evenings back: admin finished before you get home, and every enquiry answered fast, even on a 12-hour day. One civil construction business had Oranga Core find a payment condition buried in a 30-page contract, and recovered $20,000 they wouldn't otherwise have chased. The Admin Audit is where we work out what fixing your admin would be worth."
     },
     {
       keywords: ['technical', 'tech savvy', 'ai savvy', 'not good with computers', 'learn', 'difficult', 'complicated', 'hard to use', 'non technical', 'non-technical', 'easy to use', 'i am not'],
@@ -159,7 +159,7 @@
     },
     {
       keywords: ['integration', 'tools', 'crm', 'stack', 'connect', 'works with', 'xero', 'gmail', 'google', 'calendar', 'existing tools', 'compatible', 'systems', 'accounts'],
-      answer: "Oranga Core connects to your mail, calendar and accounts, so it works on your real business, not a demo. Other tools depend on your setup, so we confirm what's possible on the strategy call."
+      answer: "Oranga Core connects to your mail, calendar and accounts, so it works on your real business, not a demo. Other tools depend on your setup, so we confirm what's possible on the Admin Audit."
     }
   ];
 
@@ -262,12 +262,10 @@
     panel.classList.remove('open');
     if (launcher) launcher.classList.remove('open');
   }
-  // Open the chat and jump straight into the booking flow (used by strategy-call CTAs).
+  // Booking lives on the Admin Audit page; this just sends people there.
   function openBookingChat() {
-    openChat();
-    if (typeof window.startBookingFlow === 'function') {
-      setTimeout(window.startBookingFlow, 280);
-    }
+    if (typeof window.startBookingFlow === 'function') window.startBookingFlow();
+    else window.location.href = '/admin-audit#book';
   }
   window.openChat = openChat;
   window.closeChat = closeChat;

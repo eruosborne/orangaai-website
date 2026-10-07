@@ -78,7 +78,7 @@ async function notifyHost(auth, entry) {
 }
 
 const MAX_SCORE = 17; // 3+3+3+3+2+3, matches the quiz page
-const BOOK_URL = 'https://www.orangaai.com/strategy-call';
+const BOOK_URL = 'https://www.orangaai.com/admin-audit';
 
 // Index matches QUESTION_LABELS on admin-exposure.html.
 const TOP_GAP = [
@@ -128,7 +128,7 @@ function buildEmail(answers) {
     '',
     PROOF,
     '',
-    "If you'd like to see how it would work in your business, book a free 30 minute strategy call and I'll show you: " + BOOK_URL,
+    "If you'd like to see how it would work in your business, book a free 30 minute Admin Audit and I'll show you: " + BOOK_URL,
     '',
     'Cheers,',
     SIGNATURE

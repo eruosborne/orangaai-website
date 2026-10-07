@@ -21,8 +21,18 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://orangaai.com/strategy-call</loc>
+    <loc>https://orangaai.com/oranga-core</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://orangaai.com/admin-audit</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://orangaai.com/terms</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
   </url>
 </urlset>
