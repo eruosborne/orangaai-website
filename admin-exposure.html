@@ -68,6 +68,11 @@
   }
   .unlock-form input[type="email"]::placeholder { color: var(--ink-faint); }
   .unlock-form input[type="email"]:focus { outline: none; border-color: var(--accent); }
+  .email-suggest {
+    display: block; margin: 6px auto 0; background: none; border: none; padding: 4px 8px;
+    color: var(--accent); font-family: var(--sans); font-size: 0.88rem; text-decoration: underline; cursor: pointer;
+  }
+  .email-suggest[hidden] { display: none; }
 
   .breakdown { display: none; }
   .breakdown.show { display: block; }
@@ -216,6 +221,7 @@ src="https://www.facebook.com/tr?id=1601510988349512&ev=PageView&noscript=1"
               <button type="submit" class="btn btn-ghost">Get my full breakdown</button>
             </form>
             <div class="quiz-error" id="unlockError"></div>
+            <button type="button" class="email-suggest" id="emailSuggest" hidden></button>
           </div>
 
           <div class="breakdown" id="breakdown">
@@ -268,6 +274,8 @@ src="https://www.facebook.com/tr?id=1601510988349512&ev=PageView&noscript=1"
   var subEl = document.getElementById('resultSub');
   var unlockForm = document.getElementById('unlockForm');
   var unlockError = document.getElementById('unlockError');
+  var emailInput = document.getElementById('unlockEmail');
+  var emailSuggest = document.getElementById('emailSuggest');
   var unlockCard = document.getElementById('unlockCard');
   var breakdownEl = document.getElementById('breakdown');
   var breakdownText = document.getElementById('breakdownText');
@@ -336,9 +344,19 @@ src="https://www.facebook.com/tr?id=1601510988349512&ev=PageView&noscript=1"
     resultEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 
+  // Server suggests a fix for known typos (gmial.com etc). Clicking it fills
+  // the field; the person still presses the button to send.
+  emailSuggest.addEventListener('click', function () {
+    emailInput.value = emailSuggest.dataset.email;
+    emailSuggest.hidden = true;
+    unlockError.textContent = '';
+    emailInput.focus();
+  });
+
   unlockForm.addEventListener('submit', function (e) {
     e.preventDefault();
-    var email = document.getElementById('unlockEmail').value.trim();
+    emailSuggest.hidden = true;
+    var email = emailInput.value.trim();
     if (!/\S+@\S+\.\S+/.test(email)) {
       unlockError.textContent = "That doesn't look like a valid email.";
       return;
@@ -369,6 +387,11 @@ src="https://www.facebook.com/tr?id=1601510988349512&ev=PageView&noscript=1"
           breakdownEl.classList.add('show');
         } else {
           unlockError.textContent = result.data.error || 'Something went wrong, please try again.';
+          if (result.data.suggestion) {
+            emailSuggest.dataset.email = result.data.suggestion;
+            emailSuggest.textContent = 'Use ' + result.data.suggestion;
+            emailSuggest.hidden = false;
+          }
         }
       })
       .catch(function () {

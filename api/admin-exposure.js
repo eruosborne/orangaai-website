@@ -7,6 +7,7 @@
 // POST /api/admin-exposure  { email, score, answers: number[6] }
 
 const { google } = require('googleapis');
+const { checkEmail } = require('./_email-check');
 
 function getGoogleAuth() {
   const { GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, GOOGLE_REFRESH_TOKEN } = process.env;
@@ -190,9 +191,13 @@ module.exports = async function handler(req, res) {
 
   const entry = await parseBody(req);
 
-  if (!entry.email || !/\S+@\S+\.\S+/.test(entry.email)) {
-    return res.status(400).json({ error: "That doesn't look like a valid email." });
+  // Rejects bad addresses before anything is saved, so the person can fix
+  // it on the page. suggestion is set for known typos (gmial.com etc).
+  const check = await checkEmail(entry.email);
+  if (!check.ok) {
+    return res.status(400).json({ error: check.error, suggestion: check.suggestion });
   }
+  entry.email = check.email;
   if (typeof entry.score !== 'number' || !Array.isArray(entry.answers) || entry.answers.length !== 6) {
     return res.status(400).json({ error: 'Missing quiz result — please retake the quiz.' });
   }
