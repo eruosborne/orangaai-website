@@ -8,7 +8,7 @@
 //
 // Subjects stay plain ASCII (smart quotes and dashes have garbled in Gmail before).
 // HOMEWORK_VIDEO_URL (Vercel env var) switches the homework from a written list
-// to the 4-minute video once Eru has recorded it.
+// to the homework video page (https://orangaai.com/homework).
 
 const SIGNATURE = [
   'Cheers,',
@@ -21,7 +21,7 @@ function homework() {
   const url = process.env.HOMEWORK_VIDEO_URL;
   if (url) {
     return [
-      'Before we talk, take 4 minutes to watch this short video. It covers how Oranga Core works and three things to have ready, so we can spend the call on your business, not the basics:',
+      'Before we talk, take 3 minutes to watch this short video. It covers how Oranga Core works and three things to have ready, so we can spend the call on your business, not the basics:',
       url,
     ];
   }
