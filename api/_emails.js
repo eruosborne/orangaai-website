@@ -8,7 +8,7 @@
 //
 // Subjects stay plain ASCII (smart quotes and dashes have garbled in Gmail before).
 // HOMEWORK_VIDEO_URL (Vercel env var) switches the homework from a written list
-// to the homework video page (https://orangaai.com/homework).
+// to the homework video at the top of /booked (https://orangaai.com/booked?from=email#homework).
 
 const SIGNATURE = [
   'Cheers,',

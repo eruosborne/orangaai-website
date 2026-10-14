@@ -88,7 +88,7 @@ src="https://www.facebook.com/tr?id=1601510988349512&ev=PageView&noscript=1"
         <h2>What you'll find below.</h2>
       </div>
       <ul class="check-list reveal">
-        <li class="check-item"><span class="check-icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M12 4L6.5 10 4 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>A quick message from me to start</span></li>
+        <li class="check-item"><span class="check-icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M12 4L6.5 10 4 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Your homework video, 3 minutes. Watch this first</span></li>
         <li class="check-item"><span class="check-icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M12 4L6.5 10 4 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Real results from live installs</span></li>
         <li class="check-item"><span class="check-icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M12 4L6.5 10 4 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>A short video answering the questions people ask before the call</span></li>
         <li class="check-item"><span class="check-icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M12 4L6.5 10 4 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>What the install involves, and who it's not for</span></li>
@@ -97,14 +97,29 @@ src="https://www.facebook.com/tr?id=1601510988349512&ev=PageView&noscript=1"
     </div>
   </section>
 
-  <!-- START HERE VIDEO -->
+  <!-- HOMEWORK VIDEO (start here) -->
+  <section id="homework">
+    <div class="container">
+      <div class="section-head center reveal">
+        <span class="eyebrow">Start here · your homework · 3 minutes</span>
+        <h2>Watch this before your Admin Audit.</h2>
+      </div>
+      <div class="video-slot reveal" data-video="homework">Video coming soon.</div>
+    </div>
+  </section>
+
+  <!-- THREE THINGS TO BRING -->
   <section>
     <div class="container">
       <div class="section-head center reveal">
-        <span class="eyebrow">Start here</span>
-        <h2>A quick message from Eru.</h2>
+        <span class="eyebrow">Before the call</span>
+        <h2>Bring these three things.</h2>
       </div>
-      <div class="video-slot reveal" data-video="start">Video coming soon.</div>
+      <ol class="check-list reveal" style="list-style:none; padding:0;">
+        <li class="check-item"><span class="process-num" style="min-width:28px;">1</span><span>Notice where your admin time goes this week. Days, evenings, weekends. Rough is fine.</span></li>
+        <li class="check-item"><span class="process-num" style="min-width:28px;">2</span><span>List the tools your business runs on. Your email, your calendar, your accounts, your booking system.</span></li>
+        <li class="check-item"><span class="process-num" style="min-width:28px;">3</span><span>Pick the one admin job you'd hand off first, if you could.</span></li>
+      </ol>
     </div>
   </section>
 
@@ -209,19 +224,29 @@ src="https://www.facebook.com/tr?id=1601510988349512&ev=PageView&noscript=1"
 
 <script>
 (function () {
-  // Recorded video links go here (Loom or YouTube embed URLs). Empty = placeholder.
-  var VIDEOS = { start: '', faq: '' };
+  // Video embed URLs. Empty = placeholder. YouTube must use youtube-nocookie.com (allowed by the CSP).
+  var VIDEOS = {
+    homework: 'https://www.youtube-nocookie.com/embed/OoCWLe83yhw?rel=0&modestbranding=1&playsinline=1',
+    faq: '',
+  };
   document.querySelectorAll('.video-slot[data-video]').forEach(function (el) {
     var url = VIDEOS[el.getAttribute('data-video')];
     if (!url) return;
     el.innerHTML = '';
     var f = document.createElement('iframe');
     f.src = url; f.title = 'Video from Eru'; f.loading = 'lazy';
-    f.allow = 'fullscreen; picture-in-picture'; f.allowFullscreen = true;
+    f.allow = 'accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen'; f.allowFullscreen = true;
     el.appendChild(f); el.classList.add('has-video');
   });
 
   var q = new URLSearchParams(location.search);
+  // Came back from one of the three emails: measure it, but never count it as a booking.
+  if (q.get('from') === 'email') {
+    try {
+      if (typeof window.gtag === 'function') window.gtag('event', 'email_return', { page: 'booked' });
+      if (typeof window.fbq === 'function') window.fbq('trackCustom', 'EmailReturn');
+    } catch (e) {}
+  }
   var start = q.get('start'), tz = q.get('tz') || 'Australia/Brisbane';
   if (!start || isNaN(new Date(start))) return;
   try {

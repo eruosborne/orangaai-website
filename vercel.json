@@ -3,7 +3,8 @@
   "trailingSlash": false,
   "redirects": [
     { "source": "/for-tradies", "destination": "/", "permanent": true },
-    { "source": "/strategy-call", "destination": "/admin-audit", "permanent": true }
+    { "source": "/strategy-call", "destination": "/admin-audit", "permanent": true },
+    { "source": "/homework", "destination": "/booked#homework", "permanent": false }
   ],
   "headers": [
     {
