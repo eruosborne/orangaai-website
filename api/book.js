@@ -1,141 +1,53 @@
 // api/book.js
-// Creates a Google Calendar event with a Meet link + sends pre-call prep email.
-// POST /api/book  { startISO, endISO, name, email, phone?, focus? }
+// Books an Admin Audit: creates the Google Calendar event with a Meet link,
+// sends confirmation email 1, and hands the two reminders to n8n for timing.
+// POST /api/book  { startISO, endISO, name, email, phone?, tz?, answers: { business, team, adminWhen, triedAi, focus } }
 
 const { google } = require('googleapis');
+const B = require('./_booking');
+const EMAILS = require('./_emails');
 
-const TZ     = process.env.BUSINESS_TIMEZONE || 'Australia/Brisbane';
-const CAL_ID = process.env.HOST_CALENDAR_ID  || 'primary';
+// The five qualifying questions (agency rule: five at most).
+const QUESTIONS = [
+  ['business',  'What the business does'],
+  ['team',      'Team size'],
+  ['adminWhen', 'When the admin gets done'],
+  ['triedAi',   'Tried AI yet'],
+  ['focus',     'Wants off their plate'],
+];
 
-function isoInTz(isoStr) {
-  return new Intl.DateTimeFormat('en-CA', {
-    timeZone: TZ, year: 'numeric', month: '2-digit', day: '2-digit',
-  }).format(new Date(isoStr));
+function clean(v, max) {
+  return typeof v === 'string' ? v.trim().slice(0, max) : '';
 }
 
-function localToUtc(isoDate, hour, min = 0) {
-  return new Date(Date.UTC(
-    ...isoDate.split('-').map((v, i) => i === 1 ? Number(v) - 1 : Number(v)),
-    hour - 10, min
-  ));
-}
-
-function formatCallTime(isoStr) {
-  const d = new Date(isoStr);
-  const date = d.toLocaleDateString('en-AU', { timeZone: TZ, weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
-  const time = d.toLocaleTimeString('en-AU', { timeZone: TZ, hour: 'numeric', minute: '2-digit', hour12: true }).toUpperCase();
-  return { date, time };
-}
-
-const SLOT_MIN   = 30;
-const BUFFER_MIN = 15;
-const START_HOUR = 8;
-const END_HOUR   = 18;
-const MIN_DAYS   = 1;
-const MAX_DAYS   = 14;
-
-function daysFromToday(isoDate) {
-  const today = new Intl.DateTimeFormat('en-CA', { timeZone: TZ, year:'numeric',month:'2-digit',day:'2-digit' }).format(new Date());
-  const [y1,m1,d1] = today.split('-').map(Number);
-  const [y2,m2,d2] = isoDate.split('-').map(Number);
-  return Math.round((Date.UTC(y2,m2-1,d2) - Date.UTC(y1,m1-1,d1)) / 86400000);
-}
-
-function validateDate(isoDate) {
-  const delta = daysFromToday(isoDate);
-  if (delta < MIN_DAYS) return 'Same-day bookings are not available.';
-  if (delta > MAX_DAYS) return `Bookings open ${MAX_DAYS} days in advance.`;
-  const dow = new Date(isoDate + 'T12:00:00Z').getUTCDay();
-  if (![1,2,3,4,5].includes(dow)) return 'That date falls on a weekend.';
-  return null;
-}
-
-function computeSlots(isoDate, busy) {
-  const blocked = busy.map(b => ({
-    start: new Date(b.start.getTime() - BUFFER_MIN * 60000),
-    end:   new Date(b.end.getTime()   + BUFFER_MIN * 60000),
-  }));
-  const slots = [];
-  for (let h = START_HOUR; h < END_HOUR; h += 0.5) {
-    const hour = Math.floor(h), min = h % 1 === 0 ? 0 : 30;
-    if (h + SLOT_MIN / 60 > END_HOUR) break;
-    const s = localToUtc(isoDate, hour, min);
-    const e = new Date(s.getTime() + SLOT_MIN * 60000);
-    if (!blocked.some(b => s < b.end && e > b.start)) slots.push({ s: s.toISOString(), e: e.toISOString() });
+// Hand the reminder schedule to n8n. Failure is logged loudly but never blocks the booking.
+async function scheduleReminders({ eventId, name, email, startISO, tz, meetLink, origin }) {
+  const hook = process.env.N8N_BOOKING_WEBHOOK;
+  const payload = JSON.stringify({ eventId, name, email, startISO, tz, meetLink, bookedAt: new Date().toISOString() });
+  const sig = B.sign(payload);
+  if (!hook || !sig) {
+    console.error('[book.js] REMINDERS NOT SCHEDULED: N8N_BOOKING_WEBHOOK or REMINDER_SECRET is not set.');
+    return false;
   }
-  return slots;
-}
-
-function getGoogleAuth() {
-  const { GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, GOOGLE_REFRESH_TOKEN } = process.env;
-  if (!GOOGLE_CLIENT_ID || !GOOGLE_CLIENT_SECRET || !GOOGLE_REFRESH_TOKEN) return null;
-  const auth = new google.auth.OAuth2(GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET);
-  auth.setCredentials({ refresh_token: GOOGLE_REFRESH_TOKEN });
-  return auth;
-}
-
-function getCalendarClient(auth) {
-  return google.calendar({ version: 'v3', auth });
-}
-
-// Send pre-call prep email via Gmail API (non-blocking — failure does not affect booking)
-async function sendPrepEmail(auth, { toName, toEmail, callDate, callTime, meetLink }) {
+  const start = new Date(startISO).getTime();
   try {
-    const gmail = google.gmail({ version: 'v1', auth });
-    const fromEmail = process.env.HOST_EMAIL || 'eruosborne@orangaai.com';
-    const fromName  = process.env.HOST_NAME  || 'Eru Osborne';
-
-    const subject = `Your Oranga AI strategy call is booked`;
-    const body = [
-      `Hey ${toName.split(' ')[0]},`,
-      ``,
-      `Your 30-minute strategy call with Eru is booked for ${callDate} at ${callTime} AEST.`,
-      ``,
-      meetLink ? `Google Meet link: ${meetLink}` : `A Google Meet link is in your calendar invite.`,
-      ``,
-      `Before the call, it would help to have a rough answer to these three things:`,
-      ``,
-      `1. When does most of your admin happen right now? (during the day, evenings, weekends)`,
-      `2. Which tools does the business run on? (email, calendar, accounting, booking system, etc.)`,
-      `3. What is the biggest admin or follow-up task that eats into your time each week?`,
-      ``,
-      `You do not need to prepare a presentation or bring anything formal. These questions just help me get straight to the useful parts.`,
-      ``,
-      `See you on ${callDate.split(',')[0]}.`,
-      ``,
-      `Eru Osborne`,
-      `Founder, Oranga AI`,
-      `eruosborne@orangaai.com`,
-      `orangaai.com`,
-    ].join('\n');
-
-    const message = [
-      `From: "${fromName}" <${fromEmail}>`,
-      `To: "${toName}" <${toEmail}>`,
-      `Subject: ${subject}`,
-      `Content-Type: text/plain; charset=utf-8`,
-      ``,
-      body,
-    ].join('\n');
-
-    const encoded = Buffer.from(message).toString('base64').replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
-    await gmail.users.messages.send({ userId: 'me', requestBody: { raw: encoded } });
-    console.log('[book.js] Prep email sent to', toEmail);
-  } catch (err) {
-    // Non-blocking: log but do not fail the booking
-    console.error('[book.js] Prep email failed (non-fatal):', err.message);
-  }
-}
-
-async function parseBody(req) {
-  return new Promise((resolve, reject) => {
-    let data = '';
-    req.on('data', chunk => { data += chunk; });
-    req.on('end', () => {
-      try { resolve(JSON.parse(data)); } catch { resolve({}); }
+    const r = await fetch(hook, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        payload, sig,
+        callbackUrl: `${origin}/api/reminder`,
+        remind12At: new Date(start - 12 * 3600000).toISOString(),
+        remind1At:  new Date(start - 1 * 3600000).toISOString(),
+      }),
+      signal: AbortSignal.timeout(5000),
     });
-    req.on('error', reject);
-  });
+    if (!r.ok) throw new Error(`n8n responded ${r.status}`);
+    return true;
+  } catch (e) {
+    console.error('[book.js] REMINDERS NOT SCHEDULED:', e.message);
+    return false;
+  }
 }
 
 module.exports = async function handler(req, res) {
@@ -144,64 +56,65 @@ module.exports = async function handler(req, res) {
   if (req.method === 'OPTIONS') return res.status(204).end();
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
-  const body = await parseBody(req);
-  const { startISO, endISO, name, email, phone, focus } = body;
+  const body = await B.parseBody(req);
+  const { startISO, endISO } = body;
+  const name  = clean(body.name, 120);
+  const email = clean(body.email, 200);
+  const phone = clean(body.phone, 40);
+  const tz    = B.safeTz(body.tz);
+  const answers = body.answers && typeof body.answers === 'object' ? body.answers : {};
 
-  if (!startISO || !endISO) return res.status(400).json({ error: 'startISO and endISO are required.' });
-  if (!name || !name.trim()) return res.status(400).json({ error: 'Name is required.' });
-  if (!email || !/\S+@\S+\.\S+/.test(email)) return res.status(400).json({ error: 'Valid email is required.' });
+  if (!startISO || !endISO) return res.status(400).json({ error: 'Please pick a time.' });
+  if (name.length < 2) return res.status(400).json({ error: 'Name is required.' });
+  if (!/^\S+@\S+\.\S+$/.test(email)) return res.status(400).json({ error: 'A valid email is required.' });
+  const qa = QUESTIONS.map(([key, label]) => [label, clean(answers[key], key === 'focus' || key === 'business' ? 500 : 60)]);
+  if (qa.some(([, v]) => !v)) return res.status(400).json({ error: 'Please answer all five questions.' });
 
-  const isoDate = isoInTz(startISO);
-  const dateErr = validateDate(isoDate);
+  const isoDate = new Intl.DateTimeFormat('en-CA', { timeZone: B.TZ, year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date(startISO));
+  const dateErr = B.validateDate(isoDate);
   if (dateErr) return res.status(400).json({ error: dateErr });
 
-  const auth = getGoogleAuth();
+  const auth = B.getGoogleAuth();
   if (!auth) return res.status(503).json({ error: 'Booking is not configured yet. Check back soon.' });
-  const cal = getCalendarClient(auth);
+  const cal = google.calendar({ version: 'v3', auth });
 
-  // Race-safe: re-check slot is still open.
-  let busy = [];
+  // Race-safe: re-check the slot is still open.
+  let busy;
   try {
-    const dayStart = localToUtc(isoDate, START_HOUR - 1);
-    const dayEnd   = localToUtc(isoDate, END_HOUR   + 1);
-    const fb = await cal.freebusy.query({
-      requestBody: { timeMin: dayStart.toISOString(), timeMax: dayEnd.toISOString(), timeZone: TZ, items: [{ id: CAL_ID }] },
-    });
-    const raw = fb.data.calendars?.[CAL_ID]?.busy ?? [];
-    busy = raw.map(b => ({ start: new Date(b.start), end: new Date(b.end) })).filter(b => !isNaN(b.start));
+    busy = await B.getBusy(cal, isoDate);
   } catch (e) {
     console.error('freebusy error', e.message);
-    return res.status(502).json({ error: 'Calendar check failed — please try again.' });
+    return res.status(502).json({ error: 'Calendar check failed. Please try again.' });
+  }
+  if (!B.computeSlots(isoDate, busy).some(s => s.startISO === startISO && s.endISO === endISO)) {
+    return res.status(409).json({ error: 'That time was just taken. Please pick another.', slotTaken: true });
   }
 
-  const stillOpen = computeSlots(isoDate, busy).some(s => s.s === startISO && s.e === endISO);
-  if (!stillOpen) {
-    return res.status(409).json({ error: 'That slot was just booked — please pick another time.', slotTaken: true });
-  }
-
-  // Create the event.
   const description = [
-    'Strategy call booked via Oranga AI website.',
+    `${B.CALL_NAME} booked via orangaai.com.`,
     '',
-    `Name: ${name.trim()}`,
-    `Email: ${email.trim()}`,
-    phone ? `Phone: ${phone.trim()}` : null,
-    typeof focus === 'string' && focus.trim() ? `Wants off their plate: ${focus.trim().slice(0, 500)}` : null,
-  ].filter(Boolean).join('\n');
+    `Name: ${name}`,
+    `Email: ${email}`,
+    phone ? `Phone: ${phone}` : null,
+    `Their timezone: ${tz}`,
+    '',
+    ...qa.map(([label, v]) => `${label}: ${v}`),
+  ].filter(l => l !== null).join('\n');
 
+  let event;
   try {
-    const event = await cal.events.insert({
-      calendarId: CAL_ID,
+    event = await cal.events.insert({
+      calendarId: B.CAL_ID,
       conferenceDataVersion: 1,
       sendUpdates: 'all',
       requestBody: {
-        summary: `Strategy call: ${name.trim()}`,
+        summary: `${B.CALL_NAME}: ${name}`,
         description,
-        start: { dateTime: startISO, timeZone: TZ },
-        end:   { dateTime: endISO,   timeZone: TZ },
+        start: { dateTime: startISO, timeZone: B.TZ },
+        end:   { dateTime: endISO,   timeZone: B.TZ },
         attendees: [
           { email: process.env.HOST_EMAIL || '', displayName: process.env.HOST_NAME || 'Host', organizer: true },
-          { email: email.trim(), displayName: name.trim() },
+          { email, displayName: name },
         ],
         conferenceData: {
           createRequest: {
@@ -209,22 +122,26 @@ module.exports = async function handler(req, res) {
             conferenceSolutionKey: { type: 'hangoutsMeet' },
           },
         },
-        reminders: {
-          useDefault: false,
-          overrides: [{ method: 'email', minutes: 1440 }, { method: 'popup', minutes: 15 }],
-        },
+        reminders: { useDefault: false, overrides: [{ method: 'popup', minutes: 15 }] },
       },
     });
-
-    const meetLink = event.data.conferenceData?.entryPoints?.find(e => e.entryPointType === 'video')?.uri ?? null;
-
-    // Fire prep email — non-blocking, does not affect the booking response
-    const { date: callDate, time: callTime } = formatCallTime(startISO);
-    sendPrepEmail(auth, { toName: name.trim(), toEmail: email.trim(), callDate, callTime, meetLink });
-
-    return res.status(200).json({ ok: true, meetLink, eventLink: event.data.htmlLink });
   } catch (e) {
     console.error('event insert error', e.message);
-    return res.status(500).json({ error: "We couldn't book that just now — please try again." });
+    return res.status(500).json({ error: "We couldn't book that just now. Please try again." });
   }
+
+  const meetLink = event.data.conferenceData?.entryPoints?.find(e => e.entryPointType === 'video')?.uri ?? null;
+  const firstName = name.split(/\s+/)[0];
+
+  // Email 1 and the reminder hand-off both finish before we respond,
+  // so the serverless function isn't frozen halfway through either.
+  const msg = EMAILS.confirmation({ firstName, meetLink, ...B.formatCallTime(startISO, tz) });
+  const origin = `https://${req.headers['x-forwarded-host'] || req.headers.host}`;
+  await Promise.all([
+    B.sendEmail(auth, { toName: name, toEmail: email, ...msg })
+      .catch(e => console.error('[book.js] CONFIRMATION EMAIL FAILED:', e.message)),
+    scheduleReminders({ eventId: event.data.id, name, email, startISO, tz, meetLink, origin }),
+  ]);
+
+  return res.status(200).json({ ok: true, startISO, meetLink });
 };
