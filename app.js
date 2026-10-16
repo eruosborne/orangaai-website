@@ -127,7 +127,7 @@
     },
     {
       keywords: ['book', 'meeting', 'consultation', 'demo', 'call', 'strategy call', 'admin audit', 'audit', 'free call', 'schedule a call', 'speak to', 'talk', 'get started', 'sign up', 'ready', 'interested', 'keen', 'tell me more', 'want to know'],
-      answer: "Book a free 30-minute Admin Audit. We go through your business, find where your admin time is going, and show you exactly what Oranga Core would take off your plate. No pitch, no pressure. Bookings open for the next two business days." + "<br>" + BOOK_BTN
+      answer: "Book a free 30-minute Admin Audit. We go through your business, find where your admin time is going, and show you exactly what Oranga Core would take off your plate. No pitch, no pressure. Bookings open for the next two days." + "<br>" + BOOK_BTN
     },
     {
       keywords: ['contact', 'email', 'reach', 'get in touch', 'support'],

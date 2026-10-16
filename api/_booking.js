@@ -3,8 +3,8 @@
 // Vercel does not expose files starting with "_" as routes.
 //
 // The window follows the agency funnel: bookings only in the next 48 hours
-// (boosts show-up). Weekends are closed, so the window is today plus the next
-// two business days, with at least LEAD_MIN notice.
+// (boosts show-up). Weekends are open, so the window is today plus the next
+// two days, with at least LEAD_MIN notice.
 
 const crypto = require('crypto');
 const { google } = require('googleapis');
@@ -16,7 +16,11 @@ const END_HOUR   = 18;   // 18:00 (last slot 17:30–18:00)
 const SLOT_MIN   = 30;
 const BUFFER_MIN = 15;   // around existing events
 const LEAD_MIN   = 120;  // minimum notice for a same-day booking
-const BUSINESS_DAYS_AHEAD = 2;
+const DAYS_AHEAD = 2;
+
+// Days closed to bookings (YYYY-MM-DD, Brisbane). Dropped from the day list,
+// so /api/availability and /api/book both refuse them.
+const BLOCKED_DATES = ['2026-10-27'];
 
 const CALL_NAME = 'Admin Audit';
 
@@ -32,33 +36,28 @@ function localToUtc(isoDate, hour, minute = 0) {
   return new Date(Date.UTC(y, m - 1, d, hour - 10, minute));
 }
 
-function isWeekday(isoDate) {
-  const dow = new Date(isoDate + 'T12:00:00Z').getUTCDay();
-  return dow >= 1 && dow <= 5;
-}
-
-// Today (if a weekday with slots left) plus the next BUSINESS_DAYS_AHEAD weekdays.
+// Today (if slots are left) plus the next DAYS_AHEAD days, weekends included.
 function bookableDates(now = new Date()) {
   const today = isoInTz(now);
   const [y, m, d] = today.split('-').map(Number);
   const cursor = new Date(Date.UTC(y, m - 1, d));
   const dates = [];
-  if (isWeekday(today) && now < new Date(localToUtc(today, END_HOUR).getTime() - (LEAD_MIN + SLOT_MIN) * 60000)) {
+  if (now < new Date(localToUtc(today, END_HOUR).getTime() - (LEAD_MIN + SLOT_MIN) * 60000)) {
     dates.push(today);
   }
   let ahead = 0;
-  while (ahead < BUSINESS_DAYS_AHEAD) {
+  while (ahead < DAYS_AHEAD) {
     cursor.setUTCDate(cursor.getUTCDate() + 1);
     const iso = cursor.toISOString().slice(0, 10);
-    if (isWeekday(iso)) { dates.push(iso); ahead++; }
+    dates.push(iso); ahead++;
   }
-  return dates;
+  return dates.filter(d => !BLOCKED_DATES.includes(d));
 }
 
 function validateDate(isoDate, now = new Date()) {
   if (!/^\d{4}-\d{2}-\d{2}$/.test(isoDate)) return 'Invalid date format.';
   if (!bookableDates(now).includes(isoDate)) {
-    return 'Admin Audits book in the next two business days. Please pick one of the days shown.';
+    return 'Admin Audits book in the next two days. Please pick one of the days shown.';
   }
   return null;
 }
