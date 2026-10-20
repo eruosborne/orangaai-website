@@ -3,7 +3,7 @@
 // (the persistent record), pings the host by email, and sends the person a
 // plain-text email from Eru with their score and what Oranga Core would do
 // about their biggest gap (both emails best-effort only — see appendToSheet
-// vs notifyHost, same pattern as api/giveaway.js).
+// vs notifyHost, same pattern as api/book.js).
 // POST /api/admin-exposure  { email, score, answers: number[6] }
 
 const { google } = require('googleapis');
