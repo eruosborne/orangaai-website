@@ -86,7 +86,7 @@
       answer: "The knowledge part is your business written down once: what you do, who you serve, your prices, how you write, who's on the team. Oranga Core reads it before every job, so it starts with your business in mind instead of from scratch."
     },
     {
-      keywords: ['playbook', 'playbooks', 'mailroom', 'strategist', 'inbox', 'drafts', 'jobs', 'tasks', 'quote', 'quoting', 'build a playbook', 'new playbook'],
+      keywords: ['playbook', 'playbooks', 'mailroom', 'strategist', 'inbox', 'drafts', 'jobs', 'tasks', 'build a playbook', 'new playbook'],
       answer: "A playbook is a repeatable job written as plain steps. For a follow-up it might be: find enquiries with no reply after two days, then draft a short check-in in your voice. It follows those steps the same way every time.<br><br>Two ship with every install:<br><strong>The mailroom:</strong> sorts your inbox, runs small errands, and drafts replies in your own voice. It never sends; you do.<br><strong>The strategist:</strong> takes a goal, works out the real problem, and runs your other playbooks to get there.<br><br>New playbooks for jobs unique to your business, like quoting, are scoped as a custom build on the Admin Audit."
     },
     {
@@ -148,6 +148,10 @@
     {
       keywords: ['technical', 'tech savvy', 'ai savvy', 'not good with computers', 'learn', 'difficult', 'complicated', 'hard to use', 'non technical', 'non-technical', 'easy to use', 'i am not'],
       answer: "You don't need to be technical. It's installed and walked through with you, and you talk to it in plain English, like a new hire in their first week. If it isn't sure what you mean, it asks."
+    },
+    {
+      keywords: ['quote', 'quotes', 'quoting', 'quote building', 'build quotes', 'estimates', 'estimate', 'pricing jobs'],
+      answer: "Quote building isn't part of the standard install. It's a custom build, made around how you price your jobs, and we scope it on the free Admin Audit." + "<br>" + BOOK_BTN
     },
     {
       keywords: ['video', 'videos', 'watch', 'watch how it works', 'show me', 'see it', 'see it working', 'demo video', 'example', 'walkthrough', 'faq video'],
