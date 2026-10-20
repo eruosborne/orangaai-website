@@ -74,6 +74,18 @@ src="https://www.facebook.com/tr?id=1601510988349512&ev=PageView&noscript=1"
 <main id="main">
   <h1 class="sr-only">How Oranga Core works</h1>
 
+  <!-- WATCH FIRST (the homework video, shown here as a walkthrough) -->
+  <section id="watch">
+    <div class="container">
+      <div class="section-head center reveal">
+        <span class="eyebrow">Watch first · 3 minutes</span>
+        <h2>See how it works in 3 minutes.</h2>
+        <p>This is the video everyone watches once they book. It walks through how Oranga Core works, and what we'll cover on the call.</p>
+      </div>
+      <div class="video-slot reveal" data-video="homework">Video coming soon.</div>
+    </div>
+  </section>
+
   <!-- PROBLEM -->
   <section>
     <div class="container">
@@ -345,6 +357,18 @@ src="https://www.facebook.com/tr?id=1601510988349512&ev=PageView&noscript=1"
     </div>
   </section>
 
+  <!-- FAQ VIDEO -->
+  <section id="faq-video">
+    <div class="container">
+      <div class="section-head center reveal">
+        <span class="eyebrow">Still deciding?</span>
+        <h2>The questions people ask before they book, answered.</h2>
+        <p>What it is, how it works, what's expected from you, and how the install works.</p>
+      </div>
+      <div class="video-slot reveal" data-video="faq">Video coming soon.</div>
+    </div>
+  </section>
+
   <!-- FINAL CTA -->
   <section class="cta-section">
     <div class="container">
@@ -373,6 +397,24 @@ src="https://www.facebook.com/tr?id=1601510988349512&ev=PageView&noscript=1"
   </section>
 
 </main>
+<script>
+(function () {
+  // Same two unlisted YouTube videos as /booked. youtube-nocookie.com is allowed by the CSP.
+  var VIDEOS = {
+    homework: 'https://www.youtube-nocookie.com/embed/OoCWLe83yhw?rel=0&modestbranding=1&playsinline=1',
+    faq: 'https://www.youtube-nocookie.com/embed/QrpDzS2Ll3s?rel=0&modestbranding=1&playsinline=1',
+  };
+  document.querySelectorAll('.video-slot[data-video]').forEach(function (el) {
+    var url = VIDEOS[el.getAttribute('data-video')];
+    if (!url) return;
+    el.innerHTML = '';
+    var f = document.createElement('iframe');
+    f.src = url; f.title = 'Video from Eru'; f.loading = 'lazy';
+    f.allow = 'accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen'; f.allowFullscreen = true;
+    el.appendChild(f); el.classList.add('has-video');
+  });
+})();
+</script>
 
 <footer>
   <div class="container footer-inner">
