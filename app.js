@@ -79,7 +79,7 @@
     },
     {
       keywords: ['layers', 'four layers', 'how does it work', 'how it works', 'what does it do', 'parts', 'components', 'capabilities', 'what can it do', 'features'],
-      answer: "Oranga Core has four parts:<br><br><strong>1. Knowledge:</strong> your business written down once (what you sell, who you sell to, how you write). It reads this before every job, so you never re-explain yourself.<br><strong>2. Playbooks:</strong> repeatable jobs written as plain steps, like sorting your inbox or building a quote. It follows them the same way every time.<br><strong>3. Scheduled work:</strong> the <em>dawn run</em> clears what it safely can before you open your laptop.<br><strong>4. Guardrails:</strong> six actions it never takes without you."
+      answer: "Oranga Core has four parts:<br><br><strong>1. Knowledge:</strong> your business written down once (what you sell, who you sell to, how you write). It reads this before every job, so you never re-explain yourself.<br><strong>2. Playbooks:</strong> repeatable jobs written as plain steps, like sorting your inbox or following up an enquiry. It follows them the same way every time.<br><strong>3. Scheduled work:</strong> the <em>dawn run</em> clears what it safely can before you open your laptop.<br><strong>4. Guardrails:</strong> six actions it never takes without you."
     },
     {
       keywords: ['knowledge', 'knows the business', 'brief', 'briefing', 're-explain', 'context', 'remember'],
@@ -87,7 +87,7 @@
     },
     {
       keywords: ['playbook', 'playbooks', 'mailroom', 'strategist', 'inbox', 'drafts', 'jobs', 'tasks', 'quote', 'quoting', 'build a playbook', 'new playbook'],
-      answer: "A playbook is a repeatable job written as plain steps. For quoting it might be: read the enquiry, check my rates, write the quote. It follows those steps the same way every time.<br><br>You don't code it. You describe how you do the job, it asks you questions, and it writes the playbook for you.<br><br>Two ship built:<br><strong>The mailroom:</strong> sorts your inbox, runs small errands, and drafts replies in your own voice. It never sends; you do.<br><strong>The strategist:</strong> takes a goal, works out the real problem, and runs your other playbooks to get there."
+      answer: "A playbook is a repeatable job written as plain steps. For a follow-up it might be: find enquiries with no reply after two days, then draft a short check-in in your voice. It follows those steps the same way every time.<br><br>Two ship with every install:<br><strong>The mailroom:</strong> sorts your inbox, runs small errands, and drafts replies in your own voice. It never sends; you do.<br><strong>The strategist:</strong> takes a goal, works out the real problem, and runs your other playbooks to get there.<br><br>New playbooks for jobs unique to your business, like quoting, are scoped as a custom build on the Admin Audit."
     },
     {
       keywords: ['dawn run', 'scheduled', 'schedule', 'overnight', 'morning', 'before i start', 'while away', 'automatic', 'timer', 'runs on its own'],
