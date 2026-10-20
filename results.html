@@ -124,15 +124,6 @@ src="https://www.facebook.com/tr?id=1601510988349512&ev=PageView&noscript=1"
         <a href="/admin-exposure" class="btn btn-ghost" style="margin-top:16px;">
           Not sure yet? Take the 2-minute Admin Exposure quiz
         </a>
-
-        <div class="subscribe-inline">
-          <p class="subscribe-label">Not ready for a call? Leave your email and we'll send you the setup guide.</p>
-          <form id="subscribeForm" class="subscribe-form" novalidate>
-            <input type="email" id="subscribeEmail" name="email" placeholder="you@business.com" autocomplete="email" required>
-            <button type="submit" class="btn btn-ghost">Notify me</button>
-          </form>
-          <p class="subscribe-status" id="subscribeStatus" role="status" aria-live="polite"></p>
-        </div>
       </div>
     </div>
   </section>
@@ -194,43 +185,6 @@ src="https://www.facebook.com/tr?id=1601510988349512&ev=PageView&noscript=1"
 <script src="/app.js" defer></script>
 <script src="/booking-chatbot.js" defer></script>
 
-<script>
-(function () {
-  var form = document.getElementById('subscribeForm');
-  if (!form) return;
-  var emailEl = document.getElementById('subscribeEmail');
-  var statusEl = document.getElementById('subscribeStatus');
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    var email = emailEl.value.trim();
-    if (!/\S+@\S+\.\S+/.test(email)) {
-      statusEl.textContent = "That doesn't look like a valid email.";
-      return;
-    }
-    var btn = form.querySelector('button');
-    btn.disabled = true;
-    statusEl.textContent = '';
-    fetch('/api/subscribe', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email: email }),
-    })
-      .then(function (res) { return res.json().then(function (data) { return { ok: res.ok, data: data }; }); })
-      .then(function (result) {
-        if (result.ok) {
-          statusEl.textContent = "Thanks, we'll be in touch.";
-          form.reset();
-        } else {
-          statusEl.textContent = result.data.error || 'Something went wrong, please try again.';
-        }
-      })
-      .catch(function () {
-        statusEl.textContent = 'Something went wrong, please try again.';
-      })
-      .finally(function () { btn.disabled = false; });
-  });
-})();
-</script>
 
 </body>
 </html>

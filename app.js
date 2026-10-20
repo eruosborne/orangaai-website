@@ -71,7 +71,7 @@
     },
     {
       keywords: ['what is oranga', 'who are you', 'what do you do', 'about oranga', 'about you', 'what is this', 'tell me about', 'explain what', 'describe what', 'overview', 'summary', 'what is oranga core', 'what exactly', 'what is core'],
-      answer: "<strong>Oranga Core</strong> is an AI system that runs on your laptop and does the admin between jobs: inbox, follow-ups, scheduling and quoting. It's built around your business and how you write, and it prepares everything but never sends, spends or signs anything without your approval. We build it, install it and walk you through it."
+      answer: "<strong>Oranga Core</strong> is a personal assistant installed in your business. It does the admin between jobs: it sorts the inbox, prepares the follow-ups and quotes, and clears your list before you start the day. It's built around your business and how you write, and it prepares everything but never sends, spends or signs anything without your approval. We build it, install it in less than a day and walk you through it. There's a 3-minute video on the <a href='/how-it-works'>How it works</a> page."
     },
     {
       keywords: ['oranga', 'maori', 'name mean', 'meaning', 'wellbeing', 'thriving'],
@@ -86,8 +86,8 @@
       answer: "The knowledge part is your business written down once: what you do, who you serve, your prices, how you write, who's on the team. Oranga Core reads it before every job, so it starts with your business in mind instead of from scratch."
     },
     {
-      keywords: ['playbook', 'playbooks', 'mailroom', 'strategist', 'inbox', 'drafts', 'jobs', 'tasks', 'quote', 'quoting', 'build a playbook', 'new playbook'],
-      answer: "A playbook is a repeatable job written as plain steps. For quoting it might be: read the enquiry, check my rates, write the quote. It follows those steps the same way every time.<br><br>You don't code it. You describe how you do the job, it asks you questions, and it writes the playbook for you.<br><br>Two ship built:<br><strong>The mailroom:</strong> sorts your inbox, runs small errands, and drafts replies in your own voice. It never sends; you do.<br><strong>The strategist:</strong> takes a goal, works out the real problem, and runs your other playbooks to get there."
+      keywords: ['playbook', 'playbooks', 'mailroom', 'strategist', 'inbox', 'drafts', 'jobs', 'tasks', 'build a playbook', 'new playbook'],
+      answer: "A playbook is a repeatable job written as plain steps. For a follow-up it might be: find enquiries with no reply after two days, then draft a short check-in in your voice. It follows those steps the same way every time.<br><br>Two ship with every install:<br><strong>The mailroom:</strong> sorts your inbox, runs small errands, and drafts replies in your own voice. It never sends; you do.<br><strong>The strategist:</strong> takes a goal, works out the real problem, and runs your other playbooks to get there.<br><br>New playbooks for jobs unique to your business, like tenders or proposals, are scoped as a custom build on the Admin Audit."
     },
     {
       keywords: ['dawn run', 'scheduled', 'schedule', 'overnight', 'morning', 'before i start', 'while away', 'automatic', 'timer', 'runs on its own'],
@@ -103,7 +103,7 @@
     },
     {
       keywords: ['not for', 'not a fit', 'startup', 'start up', 'just starting', 'too small', 'new business', 'who should not'],
-      answer: "It's not the right fit for startups, or for businesses that don't have admin piling up yet. It's also not the first step if you mainly want more leads: get the admin foundation sorted first, then growth work builds on top. We'll tell you straight on the call if it's not a fit."
+      answer: "It's built for businesses where the admin is already piling up and the owner is doing it at night. If you're not sure that's you, the free Admin Audit will tell you straight, and if it isn't the right fix yet we'll say so."
     },
     {
       keywords: ['process', 'how do you work', 'steps', 'install', 'installation', 'setup', 'set up', 'onboard', 'onboarding', 'what happens', 'next steps', 'after i sign up', 'get started how', 'how long'],
@@ -126,8 +126,8 @@
       answer: "Beyond the standard install there are a few optional extras:<br><br><strong>Always-on hosting with phone access:</strong> so scheduled work runs even when your laptop is off, and you can check in from your phone.<br><strong>Ongoing maintenance:</strong> if you'd like us to look after it, no lock-in.<br><strong>Custom builds:</strong> more seats, or a bespoke playbook for a job unique to your business.<br><br>We scope and price these on the Admin Audit." + "<br>" + BOOK_BTN
     },
     {
-      keywords: ['book', 'meeting', 'consultation', 'demo', 'call', 'strategy call', 'admin audit', 'audit', 'free call', 'schedule a call', 'speak to', 'talk', 'get started', 'sign up', 'ready', 'interested', 'keen', 'tell me more', 'want to know'],
-      answer: "Book a free 30-minute Admin Audit. We go through your business, find where your admin time is going, and show you exactly what Oranga Core would take off your plate. No pitch, no pressure. Bookings open for the next two days." + "<br>" + BOOK_BTN
+      keywords: ['book', 'meeting', 'consultation', 'demo', 'call', 'strategy call', 'admin audit', 'audit', 'free call', 'schedule a call', 'speak to', 'talk', 'get started', 'sign up', 'ready', 'interested', 'keen', 'tell me more', 'want to know', 'weekend', 'weekends', 'availability', 'available', 'what times', 'times'],
+      answer: "Book a free 30-minute Admin Audit. We go through your business, find where your admin time is going, and show you exactly what Oranga Core would take off your plate. No pitch, no pressure. You can book today or the next two days, weekends included, between 8am and 6pm Brisbane time, on Google Meet." + "<br>" + BOOK_BTN
     },
     {
       keywords: ['contact', 'email', 'reach', 'get in touch', 'support'],
@@ -143,11 +143,19 @@
     },
     {
       keywords: ['result', 'outcome', 'roi', 'expect', 'success', 'proof', 'worked', 'helped', 'saved', 'time back', 'hours', 'evenings', 'case study', 'testimonial', 'clients so far'],
-      answer: "The goal is your evenings back: admin finished before you get home, and every enquiry answered fast, even on a 12-hour day. One civil construction business had Oranga Core find a payment condition buried in a 30-page contract, and recovered $20,000 they wouldn't otherwise have chased. The Admin Audit is where we work out what fixing your admin would be worth."
+      answer: "The goal is your evenings back: admin finished before you get home, and every enquiry answered fast, even on a 12-hour day. Three real results so far:<br><br><strong>Civil construction:</strong> it found a payment condition buried in a 30-page contract, and they recovered $20,000.<br><strong>Hospitality lodge:</strong> a booking mess that took half a day by hand, sorted in 15 minutes.<br><strong>Business owner:</strong> \"20+ hours a week, easily. I don't need an admin at all now.\"<br><br>More on the <a href='/results'>Results</a> page. The Admin Audit is where we work out what fixing your admin would be worth."
     },
     {
       keywords: ['technical', 'tech savvy', 'ai savvy', 'not good with computers', 'learn', 'difficult', 'complicated', 'hard to use', 'non technical', 'non-technical', 'easy to use', 'i am not'],
       answer: "You don't need to be technical. It's installed and walked through with you, and you talk to it in plain English, like a new hire in their first week. If it isn't sure what you mean, it asks."
+    },
+    {
+      keywords: ['quote', 'quotes', 'quoting', 'quote building', 'build quotes', 'estimates', 'estimate', 'pricing jobs'],
+      answer: "Yes, quoting is part of the standard install. It reads the enquiry, checks your rates and how you price jobs from what it knows about your business, and drafts the quote. Nothing goes out until you've checked it and pressed send."
+    },
+    {
+      keywords: ['video', 'videos', 'watch', 'watch how it works', 'show me', 'see it', 'see it working', 'demo video', 'example', 'walkthrough', 'faq video'],
+      answer: "There are two short videos on the <a href='/how-it-works'>How it works</a> page: a 3-minute walkthrough of how Oranga Core works and what it's done in real businesses, and a video answering the questions owners ask before they book."
     },
     {
       keywords: ['quiz', 'admin exposure', 'score', 'assessment', 'how exposed'],
@@ -165,10 +173,10 @@
 
   var SUGGESTIONS = [
     "What is Oranga Core?",
-    "How does it work?",
+    "Watch how it works",
     "Is it safe?",
-    "Who is it for?",
-    "Book a call"
+    "What does it cost?",
+    "Book an Admin Audit"
   ];
 
   function addMessage(text, who, opts) {
@@ -199,7 +207,7 @@
       chip.type = 'button';
       chip.textContent = q;
       chip.addEventListener('click', function () {
-        if (q === 'Book a call' && typeof window.startBookingFlow === 'function') {
+        if (q === 'Book an Admin Audit' && typeof window.startBookingFlow === 'function') {
           suggestionsEl.innerHTML = '';
           window.startBookingFlow();
           return;
@@ -239,7 +247,7 @@
       if (answer) {
         addMessage(answer, 'bot', { html: true });
       } else {
-        addMessage("I don't have a clean answer for that one, but our team will. The fastest way is to book a call via the chat or email <a href='mailto:support@orangaai.com'>support@orangaai.com</a>. Or try one of these:", 'bot', { html: true });
+        addMessage("I don't have a clean answer for that one, but our team will. The fastest way is a free <a href='/admin-audit#book'>Admin Audit</a>, or email <a href='mailto:support@orangaai.com'>support@orangaai.com</a>. Or try one of these:", 'bot', { html: true });
         renderSuggestions(SUGGESTIONS.slice(0, 4));
       }
     }, delay);
@@ -253,7 +261,7 @@
     if (!messagesEl.dataset.greeted) {
       messagesEl.dataset.greeted = '1';
       setTimeout(function () {
-        addMessage("Kia ora, I'm Oranga AI's assistant. Ask me anything about Oranga Core, how it works, or how to book a call.", 'bot', { html: true });
+        addMessage("Kia ora, I'm Oranga AI's assistant. Ask me anything about Oranga Core, how it works, or how to book a free Admin Audit.", 'bot', { html: true });
         renderSuggestions(SUGGESTIONS);
       }, 240);
     }
