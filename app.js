@@ -115,7 +115,7 @@
     },
     {
       keywords: ['guarantee', 'refund', 'money back', 'money-back', 'risk free', 'risk-free', 'what if it doesn', 'not work for me'],
-      answer: "Yes. The install comes with a 7-day money-back guarantee: if it hasn't given you real time back or a noticeable productivity boost within 7 days of handover, you get a full refund."
+      answer: "Yes. The install comes with a 7-day money-back guarantee: if it doesn't save you time or increase your productivity within 7 days of handover, you get a full refund."
     },
     {
       keywords: ['contract', 'lock', 'locked in', 'cancel', 'cancellation', 'commitment', 'tied', 'exit', 'quit', 'flexible', 'lock-in', 'no contract', 'subscription'],
