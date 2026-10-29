@@ -22,7 +22,7 @@ const DAYS_AHEAD = 2;
 // so /api/availability and /api/book both refuse them.
 const BLOCKED_DATES = ['2026-10-27'];
 
-const CALL_NAME = 'Admin Audit';
+const CALL_NAME = 'Bottleneck Audit';
 
 function isoInTz(date, tz = TZ) {
   return new Intl.DateTimeFormat('en-CA', {
@@ -57,7 +57,7 @@ function bookableDates(now = new Date()) {
 function validateDate(isoDate, now = new Date()) {
   if (!/^\d{4}-\d{2}-\d{2}$/.test(isoDate)) return 'Invalid date format.';
   if (!bookableDates(now).includes(isoDate)) {
-    return 'Admin Audits book in the next two days. Please pick one of the days shown.';
+    return 'Bottleneck Audits book in the next two days. Please pick one of the days shown.';
   }
   return null;
 }

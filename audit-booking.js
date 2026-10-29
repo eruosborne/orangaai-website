@@ -181,7 +181,7 @@
           return;
         }
         $submit.disabled = false;
-        $submit.textContent = 'Book my Admin Audit';
+        $submit.textContent = 'Book my Bottleneck Audit';
         $error.textContent = res.d.error || 'Something went wrong. Please try again.';
         if (res.d.slotTaken && state.date) {
           var active = $days.querySelector('[aria-pressed="true"]');
@@ -190,7 +190,7 @@
       })
       .catch(function () {
         $submit.disabled = false;
-        $submit.textContent = 'Book my Admin Audit';
+        $submit.textContent = 'Book my Bottleneck Audit';
         $error.textContent = "Couldn't complete the booking. Please try again.";
       });
   });

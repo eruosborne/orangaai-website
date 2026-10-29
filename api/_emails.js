@@ -1,5 +1,5 @@
 // api/_emails.js
-// The three Admin Audit emails (the agency's "confirmation engine", email only).
+// The three Bottleneck Audit emails (the agency's "confirmation engine", email only).
 // Eru approves the exact wording here before it goes live.
 //
 //   1. confirmation: sent the moment someone books
@@ -40,11 +40,11 @@ function meetLine(meetLink) {
 
 function confirmation({ firstName, date, time, zone, meetLink }) {
   return {
-    subject: 'Your Admin Audit is confirmed',
+    subject: 'Your Bottleneck Audit is confirmed',
     body: [
       `Hey ${firstName},`,
       '',
-      `Thanks for booking your Admin Audit with Oranga AI. It's on ${date} at ${time} (${zone}), 30 minutes.`,
+      `Thanks for booking your Bottleneck Audit with Oranga AI. It's on ${date} at ${time} (${zone}), 30 minutes.`,
       '',
       ...homework(),
       '',
@@ -63,11 +63,11 @@ function confirmation({ firstName, date, time, zone, meetLink }) {
 
 function reminder12h({ firstName, date, time, zone, meetLink }) {
   return {
-    subject: 'Your Admin Audit is coming up',
+    subject: 'Your Bottleneck Audit is coming up',
     body: [
       `Hey ${firstName},`,
       '',
-      `Your Admin Audit is about 12 hours away: ${date} at ${time} (${zone}).`,
+      `Your Bottleneck Audit is about 12 hours away: ${date} at ${time} (${zone}).`,
       '',
       ...homework(),
       '',
@@ -84,11 +84,11 @@ function reminder12h({ firstName, date, time, zone, meetLink }) {
 
 function reminder1h({ firstName, time, zone, meetLink }) {
   return {
-    subject: 'Your Admin Audit starts in 1 hour',
+    subject: 'Your Bottleneck Audit starts in 1 hour',
     body: [
       `Hey ${firstName},`,
       '',
-      `Your Admin Audit starts in an hour, at ${time} (${zone}).`,
+      `Your Bottleneck Audit starts in an hour, at ${time} (${zone}).`,
       '',
       meetLine(meetLink),
       '',

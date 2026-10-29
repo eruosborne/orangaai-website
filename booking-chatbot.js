@@ -1,6 +1,6 @@
 // booking-chatbot.js
 // Chat widget extras: logo injection, and a hand-off from the chat to the
-// Admin Audit booking form. Booking itself happens on /admin-audit (the agency
+// Bottleneck Audit booking form. Booking itself happens on /admin-audit (the agency
 // funnel's calendar page), so there is one booking path with one set of questions.
 
 (function () {
@@ -56,7 +56,7 @@
       $messages.appendChild(you);
       var bot = document.createElement('div');
       bot.className = 'msg bot';
-      bot.innerHTML = "Taking you to the booking form. Pick a time for your free Admin Audit and answer five quick questions.";
+      bot.innerHTML = "Taking you to the booking form. Pick a time for your free Bottleneck Audit and answer five quick questions.";
       $messages.appendChild(bot);
       $messages.scrollTop = $messages.scrollHeight;
       setTimeout(goToBooking, 900);

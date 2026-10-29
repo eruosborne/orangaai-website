@@ -62,24 +62,24 @@
   // No chatbot markup on this page, nothing more to wire up.
   if (!panel || !messagesEl || !formEl || !inputEl) return;
 
-  var BOOK_BTN = "<button type='button' class='btn btn-primary' onclick='if(window.startBookingFlow)window.startBookingFlow()' style='margin-top:6px;'>Book your Admin Audit</button>";
+  var BOOK_BTN = "<button type='button' class='btn btn-primary' onclick='if(window.startBookingFlow)window.startBookingFlow()' style='margin-top:6px;'>Book your Bottleneck Audit</button>";
 
   var KB = [
     {
       keywords: ['hi', 'hello', 'hey', 'howdy', 'greetings', 'kia ora', 'sup', 'yo', 'g day', 'good morning', 'good afternoon', 'good evening'],
-      answer: "Kia ora, I'm Oranga AI's assistant. Ask me about Oranga Core, how it works, whether it's a fit for your business, or how to book a free Admin Audit."
+      answer: "Kia ora, I'm Oranga AI's assistant. Ask me about Oranga Core, how it works, whether it's a fit for your business, or how to book a free Bottleneck Audit."
     },
     {
       keywords: ['what is oranga', 'who are you', 'what do you do', 'about oranga', 'about you', 'what is this', 'tell me about', 'explain what', 'describe what', 'overview', 'summary', 'what is oranga core', 'what exactly', 'what is core'],
-      answer: "<strong>Oranga Core</strong> is a personal assistant installed in your business. It does the admin between jobs: it sorts the inbox, prepares the follow-ups and quotes, and clears your list before you start the day. It's built around your business and how you write, and it prepares everything but never sends, spends or signs anything without your approval. We build it, install it in less than a day and walk you through it. There's a 3-minute video on the <a href='/how-it-works'>How it works</a> page."
+      answer: "<strong>Oranga Core</strong> is an AI brain built around your business. It never sleeps: it reads every email, gets your replies, follow-ups and quotes ready, and works through the night so your list is cleared before you start. You make the decisions. It prepares everything but never sends, spends or signs anything without your approval. We build it, install it in a day and walk you through it. There's a 3-minute video on the <a href='/how-it-works'>How it works</a> page."
     },
     {
       keywords: ['oranga', 'maori', 'name mean', 'meaning', 'wellbeing', 'thriving'],
-      answer: "<strong>Oranga</strong> is a Māori word meaning <em>wellbeing</em> and <em>thriving</em>. Built on the Gold Coast, for owners who want their evenings back."
+      answer: "<strong>Oranga</strong> is a Māori word meaning <em>wellbeing</em> and <em>thriving</em>. Built on the Gold Coast, for owners who want to grow more and do less."
     },
     {
       keywords: ['layers', 'four layers', 'how does it work', 'how it works', 'what does it do', 'parts', 'components', 'capabilities', 'what can it do', 'features'],
-      answer: "Oranga Core has four parts:<br><br><strong>1. Knowledge:</strong> your business written down once (what you sell, who you sell to, how you write). It reads this before every job, so you never re-explain yourself.<br><strong>2. Playbooks:</strong> repeatable jobs written as plain steps, like sorting your inbox or building a quote. It follows them the same way every time.<br><strong>3. Scheduled work:</strong> the <em>dawn run</em> clears what it safely can before you open your laptop.<br><strong>4. Guardrails:</strong> six actions it never takes without you."
+      answer: "Oranga Core has four parts:<br><br><strong>1. Knowledge:</strong> your business written down once (what you sell, who you sell to, how you write). It reads this before every job, so you never re-explain yourself.<br><strong>2. Playbooks:</strong> repeatable jobs written as plain steps, like sorting your inbox or building a quote. It follows them the same way every time.<br><strong>3. Scheduled work:</strong> the <em>dawn run</em> works through the night, clearing what it safely can before you start.<br><strong>4. Guardrails:</strong> six actions it never takes without you."
     },
     {
       keywords: ['knowledge', 'knows the business', 'brief', 'briefing', 're-explain', 'context', 'remember'],
@@ -87,11 +87,11 @@
     },
     {
       keywords: ['playbook', 'playbooks', 'mailroom', 'strategist', 'inbox', 'drafts', 'jobs', 'tasks', 'build a playbook', 'new playbook'],
-      answer: "A playbook is a repeatable job written as plain steps. For a follow-up it might be: find enquiries with no reply after two days, then draft a short check-in in your voice. It follows those steps the same way every time.<br><br>Two ship with every install:<br><strong>The mailroom:</strong> sorts your inbox, runs small errands, and drafts replies in your own voice. It never sends; you do.<br><strong>The strategist:</strong> takes a goal, works out the real problem, and runs your other playbooks to get there.<br><br>New playbooks for jobs unique to your business, like tenders or proposals, are scoped as a custom build on the Admin Audit."
+      answer: "A playbook is a repeatable job written as plain steps. For a follow-up it might be: find enquiries with no reply after two days, then draft a short check-in in your voice. It follows those steps the same way every time.<br><br>Two ship with every install:<br><strong>The mailroom:</strong> sorts your inbox, runs small errands, and drafts replies in your own voice. It never sends; you do.<br><strong>The strategist:</strong> takes a goal, works out the real problem, and runs your other playbooks to get there.<br><br>New playbooks for jobs unique to your business, like tenders or proposals, are scoped as a custom build on the Bottleneck Audit."
     },
     {
       keywords: ['dawn run', 'scheduled', 'schedule', 'overnight', 'morning', 'before i start', 'while away', 'automatic', 'timer', 'runs on its own'],
-      answer: "The <strong>dawn run</strong> is scheduled work: before you open your laptop, it works through what's outstanding, finishes what it safely can, and leaves one short note: <em>done, needs you, couldn't move</em>. If something breaks, it says so loudly. It never mistakes an error for “nothing to do.”"
+      answer: "The <strong>dawn run</strong> works through the night: while you sleep, it works through what's outstanding, finishes what it safely can, and leaves one short note: <em>done, needs you, couldn't move</em>. If something breaks, it says so loudly. It never mistakes an error for “nothing to do.”"
     },
     {
       keywords: ['guardrail', 'guardrails', 'safe', 'safety', 'rogue', 'never', 'control', 'mistake', 'wrong', 'trust', 'risk', 'acts alone', 'send', 'oversight', 'permission', 'without asking', 'approve'],
@@ -99,39 +99,39 @@
     },
     {
       keywords: ['who is this for', 'who is it for', 'who is it built for', 'who is core for', 'right fit', 'do you work with', 'industry', 'target', 'clients', 'who do you work with', 'tradie', 'tradies', 'trades', 'hospitality', 'consulting', 'services', 'small business', 'right for me', 'suited', 'for me', 'my business', 'business type', 'owner operator'],
-      answer: "Oranga Core is for owner-operators of established businesses who are still working in the business and doing the admin at night: trades, hospitality, consulting and other service businesses. If you're up late on quotes, follow-ups and replies after a full day, that's the shape of the problem it fixes."
+      answer: "Oranga Core is for owner-operators of established businesses who want to grow the business and do less at the same time: trades, hospitality, consulting and other service businesses. If everything still runs through you and you can't switch off, that's the problem it fixes."
     },
     {
       keywords: ['not for', 'not a fit', 'startup', 'start up', 'just starting', 'too small', 'new business', 'who should not'],
-      answer: "It's built for businesses where the admin is already piling up and the owner is doing it at night. If you're not sure that's you, the free Admin Audit will tell you straight, and if it isn't the right fix yet we'll say so."
+      answer: "It's built for established businesses where everything runs through the owner. If you're not sure that's you, the free Bottleneck Audit will tell you straight, and if it isn't the right fix yet we'll say so."
     },
     {
       keywords: ['process', 'how do you work', 'steps', 'install', 'installation', 'setup', 'set up', 'onboard', 'onboarding', 'what happens', 'next steps', 'after i sign up', 'get started how', 'how long'],
-      answer: "The install is done remotely, built around your actual business and walked through with you:<br><br><strong>1. Map your business:</strong> a guided interview builds the knowledge base.<br><strong>2. Connect your tools:</strong> mail, calendar and accounts, so it works on your real work.<br><strong>3. Switch on the mailroom:</strong> it sorts your inbox and prepares replies in your voice.<br><strong>4. Dawn run (optional):</strong> a timed job that clears what it safely can before you start.<br><strong>5. Guardrails and handover:</strong> you're walked through it, then it's yours to run.<br><br>Most installs take less than a working day, somewhere between about 3 and 8 hours depending on the tools you use. We then stay with you for 30 days while it beds in, and the 7-day money-back guarantee covers the result. Anything beyond that, like more seats or a custom playbook, is scoped separately."
+      answer: "The install is done remotely, built around your actual business and walked through with you:<br><br><strong>1. Map your business:</strong> a guided interview builds the knowledge base.<br><strong>2. Connect your tools:</strong> mail, calendar and accounts, so it works on your real work.<br><strong>3. Switch on the mailroom:</strong> it sorts your inbox and prepares replies in your voice.<br><strong>4. Always on:</strong> set up to run around the clock, so the dawn run clears what it safely can overnight.<br><strong>5. Guardrails and handover:</strong> you're walked through it, then it's yours to run.<br><br>Most installs take a day, somewhere between about 3 and 8 hours depending on the tools you use. We then stay with you for 30 days while it beds in, and the 7-day money-back guarantee covers the result. Anything beyond that, like more seats or a custom playbook, is scoped separately."
     },
     {
       keywords: ['price', 'pricing', 'cost', 'how much', 'rate', 'fee', 'budget', 'monthly', 'pay', 'payment', 'charge', 'invest', 'investment', 'afford', 'total', 'retainer', 'expensive', 'cheap', 'per month'],
-      answer: "The install is a one-off flat fee, with one seat included, so you know the cost up front. There are two optional extras: always-on hosting with phone access, and ongoing maintenance if you'd like us to look after it (no lock-in). We go through the exact numbers on the free Admin Audit, once you've seen how it would fit your business." + "<br>" + BOOK_BTN
+      answer: "The install is a one-off flat fee, with one seat included, so you know the cost up front. It runs around the clock, on a computer you already leave on or on a server we set up. Ongoing maintenance is optional if you'd like us to look after it (no lock-in). We go through the exact numbers on the free Bottleneck Audit, once you've seen how it would fit your business." + "<br>" + BOOK_BTN
     },
     {
       keywords: ['guarantee', 'refund', 'money back', 'money-back', 'risk free', 'risk-free', 'what if it doesn', 'not work for me'],
-      answer: "Yes. The install comes with a 7-day money-back guarantee: if it doesn't save you time or increase your productivity within 7 days of handover, you get a full refund."
+      answer: "Yes. More done in 7 days, or your money back: if you're not getting more done within 7 days of handover, you get a full refund."
     },
     {
       keywords: ['contract', 'lock', 'locked in', 'cancel', 'cancellation', 'commitment', 'tied', 'exit', 'quit', 'flexible', 'lock-in', 'no contract', 'subscription'],
-      answer: "The install is a one-off, not a subscription. Ongoing maintenance is optional and has no lock-in. And the 7-day money-back guarantee means you're not stuck if it doesn't deliver."
+      answer: "The install is a one-off, not a subscription. Ongoing maintenance is optional and has no lock-in. And the guarantee, more done in 7 days or your money back, means you're not stuck if it doesn't deliver."
     },
     {
       keywords: ['hosting', 'remote access', 'phone', 'laptop off', 'laptop is off', 'always on', 'always-on', 'maintenance', 'extras', 'add on', 'add-on', 'custom', 'more seats', 'seats', 'extra'],
-      answer: "Beyond the standard install there are a few optional extras:<br><br><strong>Always-on hosting with phone access:</strong> so scheduled work runs even when your laptop is off, and you can check in from your phone.<br><strong>Ongoing maintenance:</strong> if you'd like us to look after it, no lock-in.<br><strong>Custom builds:</strong> more seats, or a bespoke playbook for a job unique to your business.<br><br>We scope and price these on the Admin Audit." + "<br>" + BOOK_BTN
+      answer: "Beyond the standard install there are a few extras:<br><br><strong>Always-on setup:</strong> Oranga Core runs around the clock. If you already have a computer that stays on, it runs there. If not, we set it up on a server, which also lets you check in from your phone.<br><strong>Ongoing maintenance:</strong> if you'd like us to look after it, no lock-in.<br><strong>Custom builds:</strong> more seats, or a bespoke playbook for a job unique to your business.<br><br>We scope and price these on the Bottleneck Audit." + "<br>" + BOOK_BTN
     },
     {
-      keywords: ['book', 'meeting', 'consultation', 'demo', 'call', 'strategy call', 'admin audit', 'audit', 'free call', 'schedule a call', 'speak to', 'talk', 'get started', 'sign up', 'ready', 'interested', 'keen', 'tell me more', 'want to know', 'weekend', 'weekends', 'availability', 'available', 'what times', 'times'],
-      answer: "Book a free 30-minute Admin Audit. We go through your business, find where your admin time is going, and show you exactly what Oranga Core would take off your plate. No pitch, no pressure. You can book today or the next two days, weekends included, between 8am and 6pm Brisbane time, on Google Meet." + "<br>" + BOOK_BTN
+      keywords: ['book', 'meeting', 'consultation', 'demo', 'call', 'strategy call', 'admin audit', 'bottleneck audit', 'audit', 'free call', 'schedule a call', 'speak to', 'talk', 'get started', 'sign up', 'ready', 'interested', 'keen', 'tell me more', 'want to know', 'weekend', 'weekends', 'availability', 'available', 'what times', 'times'],
+      answer: "Book a free 30-minute Bottleneck Audit. We go through your business, find where it's running through you, and show you exactly what Oranga Core would take off your plate. No pitch, no pressure. You can book today or the next two days, weekends included, between 8am and 6pm Brisbane time, on Google Meet." + "<br>" + BOOK_BTN
     },
     {
       keywords: ['contact', 'email', 'reach', 'get in touch', 'support'],
-      answer: "Two ways: book a free <a href='/admin-audit#book'>Admin Audit</a> for the fastest answer, or email <a href='mailto:support@orangaai.com'>support@orangaai.com</a>."
+      answer: "Two ways: book a free <a href='/admin-audit#book'>Bottleneck Audit</a> for the fastest answer, or email <a href='mailto:support@orangaai.com'>support@orangaai.com</a>."
     },
     {
       keywords: ['founder', 'team', 'who runs', 'who built', 'who made', 'eru', 'osborne', 'background', 'experience', 'credentials', 'about the team'],
@@ -143,7 +143,7 @@
     },
     {
       keywords: ['result', 'outcome', 'roi', 'expect', 'success', 'proof', 'worked', 'helped', 'saved', 'time back', 'hours', 'evenings', 'case study', 'testimonial', 'clients so far'],
-      answer: "The goal is your evenings back: admin finished before you get home, and every enquiry answered fast, even on a 12-hour day. Three real results so far:<br><br><strong>Civil construction:</strong> it found a payment condition buried in a 30-page contract, and they recovered $20,000.<br><strong>Hospitality lodge:</strong> a booking mess that took half a day by hand, sorted in 15 minutes.<br><strong>Business owner:</strong> \"20+ hours a week, easily. I don't need an admin at all now.\"<br><br>More on the <a href='/results'>Results</a> page. The Admin Audit is where we work out what fixing your admin would be worth."
+      answer: "The goal is a business that keeps growing without everything running through you. Three real results so far:<br><br><strong>More done:</strong> \"I don't need an admin at all now... triple the work done in the same hours.\" Chanse Perham, Private Lending.<br><strong>Speed:</strong> a hospitality lodge's booking mess that took half a day by hand, sorted in 15 minutes.<br><strong>Accuracy:</strong> it found a payment condition buried in a 30-page contract for a civil construction business, and they recovered $20,000.<br><br>More on the <a href='/results'>Results</a> page. The Bottleneck Audit is where we work out what it would be worth in your business."
     },
     {
       keywords: ['technical', 'tech savvy', 'ai savvy', 'not good with computers', 'learn', 'difficult', 'complicated', 'hard to use', 'non technical', 'non-technical', 'easy to use', 'i am not'],
@@ -158,8 +158,8 @@
       answer: "There are two short videos on the <a href='/how-it-works'>How it works</a> page: a 3-minute walkthrough of how Oranga Core works and what it's done in real businesses, and a video answering the questions owners ask before they book."
     },
     {
-      keywords: ['quiz', 'admin exposure', 'score', 'assessment', 'how exposed'],
-      answer: "There's a free 6-question quiz that shows how exposed your admin is. <a href='/admin-exposure'>Take the quiz</a> and you'll get a score in about a minute."
+      keywords: ['quiz', 'admin exposure', 'bottleneck', 'score', 'assessment', 'how exposed'],
+      answer: "There's a free 6-question quiz, the Bottleneck Score, that shows how much of your business runs through you. <a href='/admin-exposure'>Take the quiz</a> and you'll get a score in about a minute."
     },
     {
       keywords: ['location', 'where are you', 'remote', 'based', 'country', 'gold coast', 'australia', 'new zealand', 'nz', 'local'],
@@ -167,7 +167,7 @@
     },
     {
       keywords: ['integration', 'tools', 'crm', 'stack', 'connect', 'works with', 'xero', 'gmail', 'google', 'calendar', 'existing tools', 'compatible', 'systems', 'accounts'],
-      answer: "Oranga Core connects to your mail, calendar and accounts, so it works on your real business, not a demo. Other tools depend on your setup, so we confirm what's possible on the Admin Audit."
+      answer: "Oranga Core connects to your mail, calendar and accounts, so it works on your real business, not a demo. Other tools depend on your setup, so we confirm what's possible on the Bottleneck Audit."
     }
   ];
 
@@ -176,7 +176,7 @@
     "Watch how it works",
     "Is it safe?",
     "What does it cost?",
-    "Book an Admin Audit"
+    "Book an Bottleneck Audit"
   ];
 
   function addMessage(text, who, opts) {
@@ -207,7 +207,7 @@
       chip.type = 'button';
       chip.textContent = q;
       chip.addEventListener('click', function () {
-        if (q === 'Book an Admin Audit' && typeof window.startBookingFlow === 'function') {
+        if (q === 'Book an Bottleneck Audit' && typeof window.startBookingFlow === 'function') {
           suggestionsEl.innerHTML = '';
           window.startBookingFlow();
           return;
@@ -247,7 +247,7 @@
       if (answer) {
         addMessage(answer, 'bot', { html: true });
       } else {
-        addMessage("I don't have a clean answer for that one, but our team will. The fastest way is a free <a href='/admin-audit#book'>Admin Audit</a>, or email <a href='mailto:support@orangaai.com'>support@orangaai.com</a>. Or try one of these:", 'bot', { html: true });
+        addMessage("I don't have a clean answer for that one, but our team will. The fastest way is a free <a href='/admin-audit#book'>Bottleneck Audit</a>, or email <a href='mailto:support@orangaai.com'>support@orangaai.com</a>. Or try one of these:", 'bot', { html: true });
         renderSuggestions(SUGGESTIONS.slice(0, 4));
       }
     }, delay);
@@ -261,7 +261,7 @@
     if (!messagesEl.dataset.greeted) {
       messagesEl.dataset.greeted = '1';
       setTimeout(function () {
-        addMessage("Kia ora, I'm Oranga AI's assistant. Ask me anything about Oranga Core, how it works, or how to book a free Admin Audit.", 'bot', { html: true });
+        addMessage("Kia ora, I'm Oranga AI's assistant. Ask me anything about Oranga Core, how it works, or how to book a free Bottleneck Audit.", 'bot', { html: true });
         renderSuggestions(SUGGESTIONS);
       }, 240);
     }
@@ -270,7 +270,7 @@
     panel.classList.remove('open');
     if (launcher) launcher.classList.remove('open');
   }
-  // Booking lives on the Admin Audit page; this just sends people there.
+  // Booking lives on the Bottleneck Audit page; this just sends people there.
   function openBookingChat() {
     if (typeof window.startBookingFlow === 'function') window.startBookingFlow();
     else window.location.href = '/admin-audit#book';

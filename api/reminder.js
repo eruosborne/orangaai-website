@@ -1,5 +1,5 @@
 // api/reminder.js
-// Called by the n8n "Admin Audit reminders" workflow at -12h and -1h.
+// Called by the n8n "Bottleneck Audit reminders" workflow at -12h and -1h.
 // POST /api/reminder  { payload, sig, kind: '12h' | '1h' }
 // payload is the signed JSON string book.js created; nothing here trusts unsigned input.
 

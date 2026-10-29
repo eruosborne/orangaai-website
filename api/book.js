@@ -1,5 +1,5 @@
 // api/book.js
-// Books an Admin Audit: creates the Google Calendar event with a Meet link,
+// Books an Bottleneck Audit: creates the Google Calendar event with a Meet link,
 // sends confirmation email 1, and hands the two reminders to n8n for timing.
 // POST /api/book  { startISO, endISO, name, email, phone?, tz?, answers: { business, team, adminWhen, triedAi, focus } }
 
@@ -11,7 +11,7 @@ const EMAILS = require('./_emails');
 const QUESTIONS = [
   ['business',  'What the business does'],
   ['team',      'Team size'],
-  ['adminWhen', 'When the admin gets done'],
+  ['adminWhen', 'What happens when they step away for a day'],
   ['triedAi',   'Tried AI yet'],
   ['focus',     'Wants off their plate'],
 ];

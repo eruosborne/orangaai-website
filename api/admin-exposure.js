@@ -1,5 +1,5 @@
 // api/admin-exposure.js
-// Captures a completed Admin Exposure Score quiz: logs it to a Google Sheet
+// Captures a completed Bottleneck Score quiz: logs it to a Google Sheet
 // (the persistent record), pings the host by email, and sends the person a
 // plain-text email from Eru with their score and what Oranga Core would do
 // about their biggest gap (both emails best-effort only — see appendToSheet
@@ -57,7 +57,7 @@ async function notifyHost(auth, entry) {
   const fromName  = process.env.HOST_NAME  || 'Eru Osborne';
   const toEmail   = process.env.ADMIN_EXPOSURE_NOTIFY_EMAIL || process.env.HOST_EMAIL || 'eruosborne@orangaai.com';
 
-  const subject = 'New Admin Exposure Score result - ' + bandFor(entry.score) + ' (' + entry.score + ')';
+  const subject = 'New Bottleneck Score result - ' + bandFor(entry.score) + ' (' + entry.score + ')';
   const body = [
     'Email: ' + entry.email,
     'Score: ' + entry.score + ' (' + bandFor(entry.score) + ')',
@@ -83,26 +83,26 @@ const BOOK_URL = 'https://www.orangaai.com/admin-audit';
 
 // Index matches QUESTION_LABELS on admin-exposure.html.
 const TOP_GAP = [
-  { label: 'admin bleeding into your evenings and weekends',
-    fix: "Here's what Oranga Core would do about that. Before you sit down each morning, the dawn run has already cleared what it safely can, and leaves you one short note: done, needs you, couldn't move." },
-  { label: 'a real risk of losing a job or client to something slipping through',
-    fix: "Here's what Oranga Core would do about that. The mailroom sorts your inbox all day and drafts replies in your own voice, so enquiries and follow-ups don't sit waiting until you get to them." },
+  { label: 'a business that stalls when you step away',
+    fix: "Here's what Oranga Core would do about that. It never sleeps, so enquiries, follow-ups and quotes keep moving while you're away. You come back to one short note: done, needs you, couldn't move." },
+  { label: 'enquiries waiting on you, and going to whoever answers first',
+    fix: "Here's what Oranga Core would do about that. The mailroom reads every email as it comes in and gets the reply ready in your voice, so you can send it in one tap and be first to answer." },
   { label: 'business knowledge that only lives in your head',
     fix: "Here's what Oranga Core would do about that. It starts by getting your business written down once: your prices, your customers, how you work. After that it isn't only in your head." },
   { label: 'having to re-explain your business to AI every time you use it',
-    fix: "Here's what Oranga Core would do about that. Your business is written down once, and it reads that before every job, so you never start from scratch." },
-  { label: "time you'd actually put to good use if you had it back",
-    fix: "Here's what Oranga Core would do about that. The routine admin gets prepared for you, so it's finished by the time you get home." },
+    fix: "Here's what Oranga Core would do about that. It's an AI brain built around your business, and it reads that before every job, so you never start from scratch." },
+  { label: "growth you'd go after if you had the room",
+    fix: "Here's what Oranga Core would do about that. It takes the work that runs through you off your plate, so you have the room to go after it. You just make the decisions." },
   { label: "a business that's already stretched, with no room to take on more",
-    fix: "Here's what Oranga Core would do about that. It fixes the admin foundation first, so the business can take on more work without more dropped balls." },
+    fix: "Here's what Oranga Core would do about that. It never sleeps, so the business can take on more work without taking on more staff." },
 ];
 
-const HOW_IT_WORKS = "It runs on your laptop, reads your business written down (your prices, your customers, how you write), and follows playbooks for jobs like quoting and replying. It prepares the work and you approve it. It never sends, spends or signs anything on its own.";
-const PROOF = "One civil construction business had it find a payment condition buried in a 30-page contract. They recovered $20,000 they wouldn't have chased.";
+const HOW_IT_WORKS = "It's an AI brain built around your business (your prices, your customers, how you write). It runs around the clock and follows playbooks for jobs like quoting and replying. It prepares the work and you approve it. It never sends, spends or signs anything on its own.";
+const PROOF = "Chanse Perham, who works in private lending, installed it and says he's getting triple the work done in the same hours, and that he doesn't need an admin at all now.";
 const SIGNATURE = [
   'Eru Osborne',
   'FOUNDER · ORANGA AI',
-  '"We build the AI. You run the business."',
+  'Freedom of choice. Grow more. Do less.',
   '📞 0424 955 238',
   '🌐 www.orangaai.com',
   '📅 Book a time: ' + BOOK_URL,
@@ -119,7 +119,7 @@ function buildEmail(answers) {
   const lines = [
     'Hey,',
     '',
-    'Thanks for taking the quiz. You scored ' + score + ' out of ' + MAX_SCORE + ', which is ' + band + ' exposure.' +
+    'Thanks for taking the quiz. You scored ' + score + ' out of ' + MAX_SCORE + ', which puts you in the ' + band + ' band.' +
       (gap ? ' Your answers pointed most strongly to ' + gap.label + '.' : ''),
     '',
   ];
@@ -129,12 +129,12 @@ function buildEmail(answers) {
     '',
     PROOF,
     '',
-    "If you'd like to see how it would work in your business, book a free 30 minute Admin Audit and I'll show you: " + BOOK_URL,
+    "If you'd like to see how it would work in your business, book a free 30 minute Bottleneck Audit and I'll show you: " + BOOK_URL,
     '',
     'Cheers,',
     SIGNATURE
   );
-  return { subject: 'Your Admin Exposure Score: ' + score + ' out of ' + MAX_SCORE, body: lines.join('\n') };
+  return { subject: 'Your Bottleneck Score: ' + score + ' out of ' + MAX_SCORE, body: lines.join('\n') };
 }
 
 // Strict on purpose: this address goes into a To header, so no commas,
