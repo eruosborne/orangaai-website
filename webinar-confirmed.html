@@ -71,7 +71,7 @@ src="https://www.facebook.com/tr?id=1601510988349512&ev=PageView&noscript=1"
     <div class="container content">
       <span class="eyebrow reveal">You're in</span>
       <h1 class="reveal">You're registered for <em>Thursday</em>.</h1>
-      <p class="hero-sub reveal" id="confirmedWhen">Thursday 5 November at 7pm AEST. It runs for 30 to 40 minutes. A confirmation is on its way to your email.</p>
+      <p class="hero-sub reveal" id="confirmedWhen">Thursday 5 November at 7pm AEST. It runs for 30 to 40 minutes, questions included. A confirmation is on its way to your email.</p>
       <div class="hero-cta-row reveal">
         <a href="/api/webinar-ics" class="btn btn-primary btn-large">Add to calendar</a>
         <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=AI+Brain+and+Studio+Webinar&amp;dates=20261105T090000Z%2F20261105T100000Z&amp;details=Join+link+arrives+by+email+and+text+before+we+start.+Questions+in+the+chat+as+we+go.&amp;location=Online" class="btn btn-large" target="_blank" rel="noopener">Add to Google Calendar</a>
@@ -123,7 +123,7 @@ src="https://www.facebook.com/tr?id=1601510988349512&ev=PageView&noscript=1"
     if (tz && tz !== 'Australia/Brisbane') {
       var when = start.toLocaleString('en-AU', { timeZone: tz, weekday: 'long', day: 'numeric', month: 'long' }) + ' at ' +
         start.toLocaleString('en-AU', { timeZone: tz, hour: 'numeric', minute: '2-digit', hour12: true, timeZoneName: 'short' }).toLowerCase();
-      document.getElementById('confirmedWhen').textContent = when + ' (7pm AEST). It runs for 30 to 40 minutes. A confirmation is on its way to your email.';
+      document.getElementById('confirmedWhen').textContent = when + ' (7pm AEST). It runs for 30 to 40 minutes, questions included. A confirmation is on its way to your email.';
     }
   } catch (e) {}
   // Conversion: once per browser, even if this page is reloaded.

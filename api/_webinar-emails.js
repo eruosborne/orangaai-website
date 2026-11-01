@@ -25,7 +25,7 @@ function confirmation({ firstName, date, time, zone }) {
     body: [
       `Hey ${firstName},`,
       '',
-      `You're registered for the live AI Brain and Studio Webinar. It's on ${date} at ${time} (${zone}), and it runs for 30 to 40 minutes.`,
+      `You're registered for the live AI Brain and Studio Webinar. It's on ${date} at ${time} (${zone}), and it runs for 30 to 40 minutes, questions included.`,
       '',
       "Here's what I'll cover:",
       '- What AI is, and the difference between a chat and an AI brain',
@@ -55,7 +55,7 @@ function dayBefore({ firstName, time, zone }) {
     body: [
       `Hey ${firstName},`,
       '',
-      `A quick reminder that the AI Brain and Studio Webinar is tomorrow at ${time} (${zone}). It runs for 30 to 40 minutes.`,
+      `A quick reminder that the AI Brain and Studio Webinar is tomorrow at ${time} (${zone}). It runs for 30 to 40 minutes, questions included.`,
       '',
       "Bring one question about your own business. I'll answer as many as I can live.",
       '',
@@ -73,7 +73,7 @@ function oneHour({ firstName, time, zone }) {
     body: [
       `Hey ${firstName},`,
       '',
-      `We go live in an hour, at ${time} (${zone}). It runs for 30 to 40 minutes.`,
+      `We go live in an hour, at ${time} (${zone}). It runs for 30 to 40 minutes, questions included.`,
       '',
       linkLine(),
       '',
