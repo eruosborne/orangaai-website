@@ -1,0 +1,210 @@
+{
+  "name": "Webinar reminders",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "webinar-reminders",
+        "responseMode": "onReceived",
+        "options": {}
+      },
+      "id": "registration",
+      "name": "Registration",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        200
+      ],
+      "webhookId": "webinar-reminders"
+    },
+    {
+      "parameters": {
+        "resume": "specificTime",
+        "dateTime": "={{ $('Registration').item.json.body.dayBeforeAt }}"
+      },
+      "id": "wait-day-before",
+      "name": "Wait day before",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        260,
+        200
+      ],
+      "webhookId": "wait-day-before-hook"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Registration').item.json.body.callbackUrl }}",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ payload: $('Registration').item.json.body.payload, sig: $('Registration').item.json.body.sig, kind: 'dayBefore' }) }}",
+        "options": {
+          "timeout": 20000
+        }
+      },
+      "id": "send-day-before",
+      "name": "Send day before",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        520,
+        200
+      ],
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 30000,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "resume": "specificTime",
+        "dateTime": "={{ $('Registration').item.json.body.oneHourAt }}"
+      },
+      "id": "wait-one-hour",
+      "name": "Wait one hour",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        780,
+        200
+      ],
+      "webhookId": "wait-one-hour-hook"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Registration').item.json.body.callbackUrl }}",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ payload: $('Registration').item.json.body.payload, sig: $('Registration').item.json.body.sig, kind: '1h' }) }}",
+        "options": {
+          "timeout": 20000
+        }
+      },
+      "id": "send-one-hour",
+      "name": "Send one hour",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1040,
+        200
+      ],
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 30000,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "resume": "specificTime",
+        "dateTime": "={{ $('Registration').item.json.body.liveAt }}"
+      },
+      "id": "wait-live",
+      "name": "Wait live",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1300,
+        200
+      ],
+      "webhookId": "wait-live-hook"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Registration').item.json.body.callbackUrl }}",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ payload: $('Registration').item.json.body.payload, sig: $('Registration').item.json.body.sig, kind: 'live' }) }}",
+        "options": {
+          "timeout": 20000
+        }
+      },
+      "id": "send-live",
+      "name": "Send live",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1560,
+        200
+      ],
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 30000,
+      "onError": "continueRegularOutput"
+    }
+  ],
+  "connections": {
+    "Registration": {
+      "main": [
+        [
+          {
+            "node": "Wait day before",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait day before": {
+      "main": [
+        [
+          {
+            "node": "Send day before",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send day before": {
+      "main": [
+        [
+          {
+            "node": "Wait one hour",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait one hour": {
+      "main": [
+        [
+          {
+            "node": "Send one hour",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send one hour": {
+      "main": [
+        [
+          {
+            "node": "Wait live",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait live": {
+      "main": [
+        [
+          {
+            "node": "Send live",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}
