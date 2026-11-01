@@ -124,8 +124,8 @@ async function sendEmail(auth, { toName, toEmail, subject, body }) {
   const fromName  = process.env.HOST_NAME  || 'Eru Osborne';
   const message = [
     `From: "${fromName}" <${fromEmail}>`,
-    `To: "${toName.replace(/"/g, '')}" <${toEmail}>`,
-    `Subject: ${subject}`,
+    `To: "${toName.replace(/["\r\n]/g, '')}" <${toEmail}>`,
+    `Subject: ${subject.replace(/[\r\n]+/g, ' ')}`,
     `Content-Type: text/plain; charset=utf-8`,
     ``,
     body,

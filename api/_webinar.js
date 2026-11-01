@@ -101,7 +101,20 @@ async function appendRegistration(row) {
   });
 }
 
+// Workshop sign-ups, same sheet. Tab "Workshop", columns: registered_at, name, email, mobile, business, source.
+async function appendWorkshopSignup(row) {
+  const auth = getSheetsAuth();
+  if (!auth || !process.env.WEBINAR_SHEET_ID) throw new Error('WEBINAR_SHEET_ID or the Sheets credentials are not set');
+  await google.sheets({ version: 'v4', auth }).spreadsheets.values.append({
+    spreadsheetId: process.env.WEBINAR_SHEET_ID,
+    range: 'Workshop!A:F',
+    valueInputOption: 'RAW',
+    insertDataOption: 'INSERT_ROWS',
+    requestBody: { values: [row] },
+  });
+}
+
 module.exports = {
   TITLE, START, START_ISO, DURATION_MIN, DAY_BEFORE_AT, ONE_HOUR_AT, LIVE_AT,
-  joinLink, icsUrl, googleCalendarUrl, buildIcs, normalisePhone, appendRegistration,
+  joinLink, icsUrl, googleCalendarUrl, buildIcs, normalisePhone, appendRegistration, appendWorkshopSignup,
 };
