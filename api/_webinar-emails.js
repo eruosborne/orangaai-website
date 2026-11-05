@@ -33,7 +33,6 @@ function confirmation({ firstName, date, time, zone }) {
       '- How you keep building it yourself, without calling me',
       '- Oranga Studio live: a raw recording of me turned into a finished video',
       '- Real results from owners who have one installed',
-      '- A one-day workshop where I install an AI brain in your business and teach you to build your own playbooks. Limited spots.',
       '',
       'Ask your questions in the chat as we go and I will get to them.',
       '',
