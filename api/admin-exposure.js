@@ -79,7 +79,7 @@ async function notifyHost(auth, entry) {
 }
 
 const MAX_SCORE = 17; // 3+3+3+3+2+3, matches the quiz page
-const BOOK_URL = 'https://www.orangaai.com/admin-audit';
+const BOOK_URL = 'https://www.orangaai.com/bottleneck-audit';
 
 // Index matches QUESTION_LABELS on admin-exposure.html.
 const TOP_GAP = [

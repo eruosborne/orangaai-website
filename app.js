@@ -131,7 +131,7 @@
     },
     {
       keywords: ['contact', 'email', 'reach', 'get in touch', 'support'],
-      answer: "Two ways: book a free <a href='/admin-audit#book'>Bottleneck Audit</a> for the fastest answer, or email <a href='mailto:support@orangaai.com'>support@orangaai.com</a>."
+      answer: "Two ways: book a free <a href='/bottleneck-audit#book'>Bottleneck Audit</a> for the fastest answer, or email <a href='mailto:support@orangaai.com'>support@orangaai.com</a>."
     },
     {
       keywords: ['founder', 'team', 'who runs', 'who built', 'who made', 'eru', 'osborne', 'background', 'experience', 'credentials', 'about the team'],
@@ -247,7 +247,7 @@
       if (answer) {
         addMessage(answer, 'bot', { html: true });
       } else {
-        addMessage("I don't have a clean answer for that one, but our team will. The fastest way is a free <a href='/admin-audit#book'>Bottleneck Audit</a>, or email <a href='mailto:support@orangaai.com'>support@orangaai.com</a>. Or try one of these:", 'bot', { html: true });
+        addMessage("I don't have a clean answer for that one, but our team will. The fastest way is a free <a href='/bottleneck-audit#book'>Bottleneck Audit</a>, or email <a href='mailto:support@orangaai.com'>support@orangaai.com</a>. Or try one of these:", 'bot', { html: true });
         renderSuggestions(SUGGESTIONS.slice(0, 4));
       }
     }, delay);
@@ -273,7 +273,7 @@
   // Booking lives on the Bottleneck Audit page; this just sends people there.
   function openBookingChat() {
     if (typeof window.startBookingFlow === 'function') window.startBookingFlow();
-    else window.location.href = '/admin-audit#book';
+    else window.location.href = '/bottleneck-audit#book';
   }
   window.openChat = openChat;
   window.closeChat = closeChat;

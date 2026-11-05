@@ -1,5 +1,5 @@
 // audit-booking.js
-// Inline booking form on /admin-audit (the agency funnel's calendar page).
+// Inline booking form on /bottleneck-audit (the agency funnel's calendar page).
 // Day → time → details + five qualifying questions → /api/book → /booked.
 
 (function () {

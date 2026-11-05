@@ -1,12 +1,12 @@
 // booking-chatbot.js
 // Chat widget extras: logo injection, and a hand-off from the chat to the
-// Bottleneck Audit booking form. Booking itself happens on /admin-audit (the agency
+// Bottleneck Audit booking form. Booking itself happens on /bottleneck-audit (the agency
 // funnel's calendar page), so there is one booking path with one set of questions.
 
 (function () {
   'use strict';
 
-  var BOOK_URL = '/admin-audit#book';
+  var BOOK_URL = '/bottleneck-audit#book';
 
   // Close the chat and go to the booking form (scroll if it's already on this page).
   function goToBooking() {

@@ -9,7 +9,12 @@
     },
     {
       "source": "/strategy-call",
-      "destination": "/admin-audit",
+      "destination": "/bottleneck-audit",
+      "permanent": true
+    },
+    {
+      "source": "/admin-audit",
+      "destination": "/bottleneck-audit",
       "permanent": true
     },
     {
