@@ -2,9 +2,9 @@
 // Shared booking rules for /api/availability, /api/book and /api/reminder.
 // Vercel does not expose files starting with "_" as routes.
 //
-// The window follows the agency funnel: bookings only in the next 48 hours
-// (boosts show-up). Weekends are open, so the window is today plus the next
-// two days, with at least LEAD_MIN notice.
+// Bookings open for the next five days (was 48 hours per the agency funnel;
+// widened by Eru 2026-11-05). Weekends are open, so the window is today plus the next
+// five days, with at least LEAD_MIN notice.
 
 const crypto = require('crypto');
 const { google } = require('googleapis');
@@ -16,7 +16,7 @@ const END_HOUR   = 18;   // 18:00 (last slot 17:30–18:00)
 const SLOT_MIN   = 30;
 const BUFFER_MIN = 15;   // around existing events
 const LEAD_MIN   = 120;  // minimum notice for a same-day booking
-const DAYS_AHEAD = 2;
+const DAYS_AHEAD = 5;
 
 // Days closed to bookings (YYYY-MM-DD, Brisbane). Dropped from the day list,
 // so /api/availability and /api/book both refuse them.
@@ -57,7 +57,7 @@ function bookableDates(now = new Date()) {
 function validateDate(isoDate, now = new Date()) {
   if (!/^\d{4}-\d{2}-\d{2}$/.test(isoDate)) return 'Invalid date format.';
   if (!bookableDates(now).includes(isoDate)) {
-    return 'Bottleneck Audits book in the next two days. Please pick one of the days shown.';
+    return 'Bottleneck Audits book in the next five days. Please pick one of the days shown.';
   }
   return null;
 }
