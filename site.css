@@ -361,3 +361,7 @@ main > section.section.section--prose { height: auto; min-height: 0; padding-bot
 #ask .ask-cards, #ask .ask-learns { margin-top: var(--s-8, 48px); }
 #ask .ask-cards .panel { --p-h: 184px; }
 #ask .ask-cards .stage--fade-b { -webkit-mask: none; mask: none; }
+/* #ask holds two rows of cards: as tall as its content (at least a screen) so it never overlaps #parts */
+#ask { height: auto; min-height: 100vh; min-height: 100svh; }
+/* the FAQ grows on a short laptop screen (1280x720 ran 123px into the closing section) */
+#questions { height: auto; min-height: calc(var(--h, 1) * 100vh); min-height: calc(var(--h, 1) * 100svh); }
