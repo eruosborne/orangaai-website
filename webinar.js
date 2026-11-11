@@ -4,6 +4,12 @@
   if (!form) return;
   var err = document.getElementById('wbError');
   var btn = document.getElementById('wbSubmit');
+  // mark the field that needs fixing, move focus to it, clear the mark once it's edited
+  function bad(field, msg) {
+    err.textContent = msg;
+    if (field) { field.setAttribute('aria-invalid', 'true'); field.setAttribute('aria-describedby', err.id); field.focus(); }
+  }
+  form.addEventListener('input', function (e) { if (e.target.getAttribute('aria-invalid')) e.target.removeAttribute('aria-invalid'); });
   var tz = 'Australia/Brisbane';
   try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || tz; } catch (e) {}
 
@@ -24,9 +30,9 @@
       name: form.name.value, email: form.email.value, phone: form.phone.value, tz: tz,
       source: (new URLSearchParams(location.search)).get('utm_source') || ''
     };
-    if (data.name.trim().length < 2) { err.textContent = 'Please enter your name.'; return; }
-    if (!/^\S+@\S+\.\S+$/.test(data.email.trim())) { err.textContent = 'Please enter a valid email.'; return; }
-    if (data.phone.replace(/\D/g, '').length < 8) { err.textContent = 'Please enter your mobile number.'; return; }
+    if (data.name.trim().length < 2) { return bad(form.name, 'Please enter your name.'); }
+    if (!/^\S+@\S+\.\S+$/.test(data.email.trim())) { return bad(form.email, 'Please enter a valid email.'); }
+    if (data.phone.replace(/\D/g, '').length < 8) { return bad(form.phone, 'Please enter your mobile number.'); }
     btn.disabled = true; btn.textContent = 'Saving your seat...';
     fetch('/api/webinar-register', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) })
       .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
