@@ -265,3 +265,36 @@ main > section.section--live { height: auto; min-height: 100svh; }
 .video-stats { margin-top: var(--s-7); }
 #video .vframe { position: relative; padding: 0; }
 #video .vframe iframe { position: absolute; inset: 0; width: 100%; height: 100%; }
+
+/* ---------------- inner pages (restored 2026-11-11: this block was lost in the build) ---------------- */
+/* a drawn note in a window (morning note, the video poster) */
+.d-win .note__body { padding: 16px 20px 20px; display: grid; gap: 8px; font-size: 14px; line-height: 1.45; color: #d8d1c6; }
+.d-win .note__body p { margin: 0; padding-left: 14px; position: relative; }
+.d-win .note__body p::before { content: ""; position: absolute; left: 0; top: .6em; width: 6px; height: 6px; border-radius: 50%; background: #3dbf9f; opacity: .7; }
+.d-win .note__body .note__h { padding-left: 0; margin-top: 8px; font-weight: 500; color: #ece6dc; }
+.d-win .note__body .note__h::before { display: none; }
+.d-win .note__body .note__h:first-child { margin-top: 0; }
+
+/* the split hero holding a drawn window instead of a photograph */
+.hero__media--ui { position: relative; border-radius: var(--r-lg); overflow: hidden; min-height: 420px; }
+.hero__media--ui > .ly-piece { position: absolute; left: 32px; right: 32px; top: 32px; }
+.hero__media--ui > .ly-float { z-index: 2; }
+.hero__art.lit-teal, .hero__media.lit-teal { background:
+    radial-gradient(70% 60% at 50% 30%, rgb(61 191 159 / .45) 0%, rgb(27 107 94 / .35) 40%, transparent 85%), #0f1a19; }
+@media (max-width: 639px) { .hero__media--ui { min-height: 300px; } .hero__media--ui > .ly-piece { left: 16px; right: 16px; top: 16px; } }
+
+/* the watch hero's four points */
+.hero--statement .hero-points { margin: var(--s-6) 0 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-3) var(--s-6); max-width: 880px; color: var(--muted); }
+.hero--statement .hero-points li { padding-left: 22px; position: relative; }
+.hero--statement .hero-points li::before { content: ""; position: absolute; left: 0; top: .5em; width: 10px; height: 6px; border-left: 2px solid var(--accent); border-bottom: 2px solid var(--accent); transform: rotate(-45deg); }
+@media (max-width: 639px) { .hero--statement .hero-points { grid-template-columns: 1fr; } }
+.stats-row .stat { display: grid; gap: var(--s-2); align-content: start; }
+
+/* results hero: the four results as one card */
+.proof-card .proof-rows { list-style: none; margin: 0; padding: 8px var(--ly-cut-room, 48px) 12px 20px; display: grid; }
+.proof-card .proof-rows li { display: grid; grid-template-columns: 112px 1fr; gap: 2px 16px; padding: 14px 0; border-top: 1px solid rgb(242 235 225 / .08); }
+.proof-card .proof-rows li:first-child { border-top: 0; }
+.proof-card .proof-rows b { grid-row: span 2; font: 400 28px/1.1 var(--font-display); letter-spacing: -0.02em; color: #5ef2c4; }
+.proof-card .proof-rows span { color: #ece6dc; font-size: 15px; }
+.proof-card .proof-rows em { font-style: normal; color: #a39a8f; font-size: 13px; }
+@media (max-width: 639px) { .proof-card .proof-rows li { grid-template-columns: 84px 1fr; } .proof-card .proof-rows b { font-size: 22px; } }
