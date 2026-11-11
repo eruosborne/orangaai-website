@@ -16,6 +16,17 @@ colors:
   sage-success: "#A3B585"
   coral-alert: "#E8866E"
   tag-seafoam: "#9DC4BC"
+  demo-bg: "#161B1E"
+  demo-raised: "#22292D"
+  demo-dot: "#343B3F"
+  demo-ink: "#ECE6DC"
+  demo-body: "#D8D1C6"
+  demo-muted: "#A39A8F"
+  lit-1: "#63C0A9"
+  lit-2: "#56B49D"
+  lit-3: "#52AE97"
+  demo-avatar-tan: "#E0B884"
+  demo-avatar-rose: "#C9A7A0"
 typography:
   display:
     fontFamily: "Bricolage Grotesque, system-ui, sans-serif"
@@ -62,6 +73,11 @@ typography:
     fontSize: "0.72rem"
     fontWeight: 500
     letterSpacing: "0.14em"
+  small:
+    fontFamily: "Figtree, system-ui, sans-serif"
+    fontSize: "0.875rem"
+    fontWeight: 400
+    lineHeight: 1.45
 rounded:
   default: "6px"
   large: "10px"
@@ -146,6 +162,9 @@ A warm charcoal night lit by a single teal-to-mint glow, with warm paper-coloure
 - **Coral** (#E8866E): alerts only.
 - **Seafoam** (#9DC4BC): tags.
 
+### Demo windows
+The drawn product UI (inbox, chat, notes, panels) uses its own steps, one notch warmer and dimmer than the page, so a window reads as a screen and not as page text. Tokens live at the top of `site.css`: `--demo-bg` (#161B1E), `--demo-raised` (#22292D), `--demo-dot` (#343B3F), `--demo-ink` (#ECE6DC), `--demo-body` (#D8D1C6) and `--demo-muted` (#A39A8F, about 6:1 on demo-bg). The lit teal frames behind the windows use `--lit-gradient`, built from `--lit-1` to `--lit-3`. Inbox avatars use Teal, Seafoam and two demo tints (#E0B884, #C9A7A0) with charcoal initials. Every window carries the "Example" tag.
+
 ### Named Rules
 **The One Light Rule.** Teal and mint are the only light in the room. Any other hue appears only as a status colour, and the accent stays a small share of any screen.
 
@@ -156,8 +175,8 @@ A warm charcoal night lit by a single teal-to-mint glow, with warm paper-coloure
 ## Typography
 
 **Display Font:** Bricolage Grotesque (with system-ui)
-**Body Font:** Karla (with system-ui)
-**Label Font:** IBM Plex Mono (with ui-monospace)
+**Body Font:** Figtree (with system-ui)
+**Label Font:** DM Mono (with ui-monospace)
 
 **Character:** Bricolage gives headlines a confident grotesque with a little personality, Karla keeps long reading plain and friendly, and Plex Mono adds the readout feel to labels.
 
@@ -224,11 +243,11 @@ The signature component and the ways into the site.
 - **Focus:** the border turns Bright Teal Text, with no glow.
 
 ### Navigation
-- **Homepage:** no nav bar. The wordmark sits at the top of the hero and the glass cards are the menu.
-- **Inner pages:** a page bar on the stage colour with a bottom hairline, the logo with its orb mark (52px) and a Book button. A fixed 44px round glass back button sits at the container's left edge and nudges left on hover.
+- **Public pages:** the centred nav: orb and wordmark, four links (Product, Results, About, Quiz), a Book a call button and a menu toggle on phones.
+- **Landing and funnel pages** (watch, webinar, workshop, brain-booking, booked): the orb and wordmark with at most one button, pointing at that page's own action.
 
-### Eyebrow
-A Plex Mono uppercase label tracked at 0.14em in Warm Ink Faint, led by an 18px Working Teal hairline. It sits above every section heading.
+### Eyebrow (retired 2026-11-11)
+No small label above headings. A heading carries its own weight. Where a label held real information (a date, a time), it moves into the hero notice or the lead.
 
 ### FAQ
 A list of `details` rows separated by hairlines, each with a Bricolage question and a Plex Mono "+" in Bright Teal Text.

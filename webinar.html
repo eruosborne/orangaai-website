@@ -1,8 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" data-type="software" data-radius="soft" data-buttons="pill" data-motion>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" type="image/png" href="/images/orb-fallback.png">
 <title>AI Brain and Studio Webinar | Oranga AI</title>
 <meta name="description" content="The AI Brain and Studio Webinar: a free live session for owner-operators. See how an AI brain that never sleeps works, and watch a video edited live. Thursday 5 November, 7pm AEST.">
 <link rel="canonical" href="https://orangaai.com/webinar">
@@ -18,13 +19,31 @@
 <meta name="twitter:description" content="The AI Brain and Studio Webinar: a free live session for owner-operators. See how an AI brain that never sleeps works, and watch a video edited live. Thursday 5 November, 7pm AEST.">
 <meta name="twitter:image" content="https://orangaai.com/images/og.png">
 
-<link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
 <meta name="theme-color" content="#121517">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Karla:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..700&family=Figtree:wght@400..600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/kit.bundle.css">
+<style>
+:root {
+  --p-bg: #121517; --p-surface: #1b2124; --p-ink: #f2ebe1; --p-muted: #b9afa3;
+  --p-accent: #3dbf9f; --p-accent-ink: #121517; --p-action: #3dbf9f; --p-action-ink: #121517;
+  --p-inv-bg: #f2ebe1; --p-inv-surface: #e0dad1; --p-inv-ink: #121517; --p-inv-muted: #5d5d5b;
+  --p-inv-accent: #121517; --p-inv-accent-ink: #f2ebe1; --p-inv-action: #121517; --p-inv-action-ink: #f2ebe1;
+  --font-display: "Bricolage Grotesque", system-ui, sans-serif;
+  --font-text: "Figtree", system-ui, sans-serif;
+  --font-mono: "DM Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --display-weight: 400;
+  --display-tracking: -0.03em;
+  --display-tracking-xl: -0.04em;
+  --display-stretch: 96%;
+}
+</style>
+<link rel="stylesheet" href="/site.css">
+<script>document.documentElement.classList.add('m-enter');setTimeout(()=>document.documentElement.classList.add('m-enter-done'),700)</script>
+<script src="/assets/backgrounds/backgrounds.js"></script>
+<script>document.documentElement.classList.add('mo-js');setTimeout(()=>document.documentElement.classList.add('mo-safe'),2500)</script>
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZXS09113QF"></script>
 <script>
@@ -46,45 +65,39 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 fbq('init', '1601510988349512');
 fbq('track', 'PageView');
 </script>
-<noscript><img height="1" width="1" style="display:none"
+<noscript><img height="1" width="1" style="display:none" alt=""
 src="https://www.facebook.com/tr?id=1601510988349512&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
 </head>
 <body>
-
-<a href="#main" class="skip-link">Skip to content</a>
-
-<header class="page-bar">
-  <div class="container page-bar-inner">
-    <a href="/" class="logo" aria-label="Oranga AI home">
-      <span class="logo-mark" aria-hidden="true"></span>
-      <span>Oranga AI</span>
-    </a>
+<header class="nav nav--centre">
+  <div class="wrap nav__bar">
+    <a class="skip-link" href="#top">Skip to content</a>
+    <a class="nav__logo" href="/"><img class="logo-orb" src="/images/orb-fallback.png" alt="" width="28" height="28">Oranga AI</a>
+    <div class="nav__actions">
+      <a class="btn btn--primary" href="#register" data-track="nav">Save my seat</a>
+    </div>
   </div>
 </header>
 
-<main id="main">
-
-  <section class="hero-simple">
-    <div class="container content">
-      <span class="eyebrow reveal">AI Brain and Studio Webinar &middot; Thursday 5 November &middot; 7pm AEST</span>
-      <h1 class="reveal">An AI brain that <em>never sleeps</em>.</h1>
-      <p class="hero-sub reveal">Everything runs through you. It doesn't have to. Come and see how an AI brain works, and watch me edit a video live with Oranga Studio. It runs for 30 to 40 minutes, questions included.</p>
-      <p class="book-tz reveal" id="localTime" aria-live="polite"></p>
-      <div class="hero-cta-row reveal">
-        <a href="#register" class="btn btn-primary btn-large">Save my seat <svg class="arrow" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-      </div>
-    </div>
+<main id="top">
+  <section class="hero hero--statement" data-enter aria-labelledby="hero-h">
+    <div class="wrap"><div class="hero-text">
+      <p class="hero-notice">AI Brain and Studio Webinar. <strong>Thursday 5 November, 7pm AEST</strong></p>
+      <h1 id="hero-h">An AI brain that never sleeps.</h1>
+      <p class="hero__lead">Everything runs through you. It doesn&rsquo;t have to. Come and see how an AI brain works and watch me edit a video live with Oranga Studio. It runs for 30 to 40 minutes, questions included.</p>
+      <p class="book-tz" id="localTime" aria-live="polite"></p>
+      <div class="btn-row"><a class="btn btn--primary" href="#register">Save my seat<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a></div>
+    </div></div>
   </section>
-
-  <section id="register" class="book-section">
-    <div class="container">
+  <section class="section" id="register" aria-labelledby="register-title">
+    <div class="wrap">
       <div class="book-card">
         <div class="book-head">
-          <span class="eyebrow">Live on Thursday &middot; 7pm AEST &middot; 30 to 40 minutes &middot; free</span>
-          <h2 class="book-title">Save your seat</h2>
-          <p class="book-preview">We'll email you the details, plus reminders before we start. I may text you the link when we go live.</p>
+          <h2 class="book-title" id="register-title">Save your seat</h2>
+          <p class="book-preview">We&rsquo;ll email you the details, plus reminders before we start. I may text you the link when we go live.</p>
+          <p class="book-hint">Live on Thursday, 7pm AEST. 30 to 40 minutes. Free.</p>
         </div>
         <form class="book-form" id="webinarForm" novalidate>
           <div class="book-fields">
@@ -92,78 +105,65 @@ src="https://www.facebook.com/tr?id=1601510988349512&ev=PageView&noscript=1"
             <div class="book-field"><label for="wbEmail">Email</label><input id="wbEmail" name="email" type="email" autocomplete="email" required></div>
             <div class="book-field"><label for="wbPhone">Mobile</label><input id="wbPhone" name="phone" type="tel" autocomplete="tel" placeholder="0412 345 678" required></div>
           </div>
-          <button type="submit" class="btn btn-primary btn-large book-submit" id="wbSubmit">Save my seat</button>
+          <button type="submit" class="btn btn--primary book-submit" id="wbSubmit">Save my seat</button>
           <p class="book-error" id="wbError" role="alert"></p>
           <p class="book-hint">By registering you agree to get emails and texts about this webinar. See our <a href="/privacy">privacy policy</a>.</p>
         </form>
       </div>
     </div>
   </section>
-
-  <section>
-    <div class="container">
-      <div class="section-head center reveal">
-        <span class="eyebrow">What you'll see</span>
-        <h2>30 to 40 minutes, questions included.</h2>
+  <section class="section" id="see" aria-labelledby="see-h">
+    <div class="wrap">
+      <div class="grid grid--top">
+        <div class="section-head span-5"><h2 id="see-h">30 to 40 minutes, questions included.</h2><p class="muted">What you&rsquo;ll see.</p></div>
+        <div class="span-7 start-6 stack-5">
+          <ul class="checks"><li>What AI is and the difference between a chat and an AI brain</li><li>The four parts of an AI brain and how it works overnight so you wake up to a daily brief</li><li>How you keep building it yourself, without calling me</li><li>Oranga Studio live: a raw recording of me turned into a finished video</li><li>Real results from owners who have one installed</li></ul>
+        </div>
       </div>
-      <ul class="check-list reveal">
-        <li class="check-item"><span class="check-icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M12 4L6.5 10 4 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>What AI is, and the difference between a chat and an AI brain</span></li>
-        <li class="check-item"><span class="check-icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M12 4L6.5 10 4 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>The four parts of an AI brain, and how it works overnight so you wake up to a daily brief</span></li>
-        <li class="check-item"><span class="check-icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M12 4L6.5 10 4 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>How you keep building it yourself, without calling me</span></li>
-        <li class="check-item"><span class="check-icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M12 4L6.5 10 4 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Oranga Studio live: a raw recording of me turned into a finished video</span></li>
-        <li class="check-item"><span class="check-icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M12 4L6.5 10 4 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Real results from owners who have one installed</span></li>
-      </ul>
     </div>
   </section>
-
-  <section>
-    <div class="container">
-      <div class="section-head center reveal">
-        <span class="eyebrow">Is this for you?</span>
-        <h2>This is for you if you:</h2>
+  <section class="section" id="fit" aria-labelledby="fit-h">
+    <div class="wrap">
+      <div class="grid grid--top">
+        <div class="section-head span-5"><h2 id="fit-h">This is for you if you:</h2></div>
+        <div class="span-7 start-6 stack-5">
+          <ul class="checks"><li>Run your own established business and everything still runs through you</li><li>Want to grow the business and do less at the same time</li><li>Know AI matters, but haven&rsquo;t got it working the way you wanted</li></ul>
+          <div class="btn-row"><a class="btn btn--primary" href="#register">Save my seat<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a></div>
+        </div>
       </div>
-      <ul class="check-list reveal">
-        <li class="check-item"><span class="check-icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M12 4L6.5 10 4 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Run your own established business and everything still runs through you</span></li>
-        <li class="check-item"><span class="check-icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M12 4L6.5 10 4 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Want to grow the business and do less at the same time</span></li>
-        <li class="check-item"><span class="check-icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M12 4L6.5 10 4 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Know AI matters, but haven't got it working the way you wanted</span></li>
-      </ul>
-      <div class="center-cta reveal"><a href="#register" class="btn btn-primary btn-large">Save my seat <svg class="arrow" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
     </div>
   </section>
-
-  <section>
-    <div class="container">
-      <div class="section-head center reveal">
-        <span class="eyebrow">Your host</span>
-        <h2>Hi, I'm Eru.</h2>
+  <section class="section" id="host" aria-labelledby="host-h">
+    <div class="wrap">
+      <div class="grid grid--top">
+        <div class="section-head span-5"><h2 id="host-h">Hi, I&rsquo;m Eru.</h2></div>
+        <div class="span-7 start-6 stack-5">
+          <p class="t-lead">I&rsquo;ve spent about 15 years in IT, setting up systems for businesses. I build AI brains and put them into real businesses myself. On Thursday I&rsquo;ll show you how it works.</p>
+        </div>
       </div>
-      <p class="hero-sub reveal" style="max-width:640px;margin:0 auto;text-align:center">I've spent about 15 years in IT, setting up systems for businesses. I build AI brains and put them into real businesses myself. On Thursday I'll show you how it works.</p>
     </div>
   </section>
-
 </main>
 
-<footer>
-  <div class="container footer-inner">
-    <div class="logo">
-      <span class="logo-mark" aria-hidden="true"></span>
-      <span>Oranga AI</span>
-    </div>
-    <div class="footer-meta">
-      <a href="/">Home</a>
-      <a href="/about">About</a>
-      <a href="/privacy">Privacy</a>
-      <a href="/terms">Terms</a>
-      <a href="mailto:support@orangaai.com">support@orangaai.com</a>
-    </div>
-    <div class="footer-meta">
-      <span>&copy; 2026 Oranga AI</span>
+<footer class="footer closing" id="contact">
+  <div class="wrap">
+    <div class="closing__links">
+      <div class="footer__legal">
+        <span>&copy; 2026 Oranga AI</span>
+        <span><a href="/privacy">Privacy</a> &nbsp; <a href="/terms">Terms</a></span>
+      </div>
     </div>
   </div>
 </footer>
 
+<script type="module" src="/assets/system.js"></script>
+<script type="module" src="/assets/motion/motion.js"></script>
+<script type="module" src="/assets/layout/layout.js"></script>
+<script>
+  document.querySelectorAll('[data-track]').forEach(function (a) {
+    a.addEventListener('click', function () { if (window.gtag) gtag('event', 'book_call_click', { place: a.dataset.track, page: location.pathname }); });
+  });
+</script>
 <script src="/webinar.js" defer></script>
-<script src="/app.js" defer></script>
-
 </body>
 </html>

@@ -82,7 +82,7 @@
       ]
     },
     {
-      "source": "/(styles.css|app.js|booking-chatbot.js)",
+      "source": "/(site.css|assets/kit.bundle.css)",
       "headers": [
         {
           "key": "Cache-Control",

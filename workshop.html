@@ -1,8 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" data-type="software" data-radius="soft" data-buttons="pill" data-motion>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" type="image/png" href="/images/orb-fallback.png">
 <title>One-Day AI Brain Workshop | Oranga AI</title>
 <meta name="description" content="A one-day, in-person workshop for owner-operators. Your AI brain installed in your business, and you learn to keep building it yourself.">
 <link rel="canonical" href="https://orangaai.com/workshop">
@@ -18,13 +19,31 @@
 <meta name="twitter:description" content="A one-day, in-person workshop for owner-operators. Your AI brain installed in your business, and you learn to keep building it yourself.">
 <meta name="twitter:image" content="https://orangaai.com/images/og.png">
 
-<link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
 <meta name="theme-color" content="#121517">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Karla:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..700&family=Figtree:wght@400..600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/kit.bundle.css">
+<style>
+:root {
+  --p-bg: #121517; --p-surface: #1b2124; --p-ink: #f2ebe1; --p-muted: #b9afa3;
+  --p-accent: #3dbf9f; --p-accent-ink: #121517; --p-action: #3dbf9f; --p-action-ink: #121517;
+  --p-inv-bg: #f2ebe1; --p-inv-surface: #e0dad1; --p-inv-ink: #121517; --p-inv-muted: #5d5d5b;
+  --p-inv-accent: #121517; --p-inv-accent-ink: #f2ebe1; --p-inv-action: #121517; --p-inv-action-ink: #f2ebe1;
+  --font-display: "Bricolage Grotesque", system-ui, sans-serif;
+  --font-text: "Figtree", system-ui, sans-serif;
+  --font-mono: "DM Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --display-weight: 400;
+  --display-tracking: -0.03em;
+  --display-tracking-xl: -0.04em;
+  --display-stretch: 96%;
+}
+</style>
+<link rel="stylesheet" href="/site.css">
+<script>document.documentElement.classList.add('m-enter');setTimeout(()=>document.documentElement.classList.add('m-enter-done'),700)</script>
+<script src="/assets/backgrounds/backgrounds.js"></script>
+<script>document.documentElement.classList.add('mo-js');setTimeout(()=>document.documentElement.classList.add('mo-safe'),2500)</script>
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZXS09113QF"></script>
 <script>
@@ -46,46 +65,39 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 fbq('init', '1601510988349512');
 fbq('track', 'PageView');
 </script>
-<noscript><img height="1" width="1" style="display:none"
+<noscript><img height="1" width="1" style="display:none" alt=""
 src="https://www.facebook.com/tr?id=1601510988349512&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
 <style>#wkHead[hidden],#workshopForm[hidden],#wkDone[hidden]{display:none}</style>
 </head>
 <body>
-
-<a href="#main" class="skip-link">Skip to content</a>
-
-<header class="page-bar">
-  <div class="container page-bar-inner">
-    <a href="/" class="logo" aria-label="Oranga AI home">
-      <span class="logo-mark" aria-hidden="true"></span>
-      <span>Oranga AI</span>
-    </a>
+<header class="nav nav--centre">
+  <div class="wrap nav__bar">
+    <a class="skip-link" href="#top">Skip to content</a>
+    <a class="nav__logo" href="/"><img class="logo-orb" src="/images/orb-fallback.png" alt="" width="28" height="28">Oranga AI</a>
+    <div class="nav__actions">
+      <a class="btn btn--primary" href="#register" data-track="nav">Save my spot</a>
+    </div>
   </div>
 </header>
 
-<main id="main">
-
-  <section class="hero-simple">
-    <div class="container content">
-      <span class="eyebrow reveal">One-day workshop &middot; Limited spots</span>
-      <h1 class="reveal">You leave with a system <em>you keep building</em>.</h1>
-      <p class="hero-sub reveal">One day with me. I install an AI brain in your business and teach you how to keep building it yourself, so you never have to call me to change it.</p>
-      <p class="book-tz reveal" style="margin-bottom:24px">Thursday 12 November. In person, Brisbane or Gold Coast. Venue to be confirmed.</p>
-      <div class="hero-cta-row reveal">
-        <a href="#register" class="btn btn-primary btn-large">Save my spot <svg class="arrow" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-      </div>
-    </div>
+<main id="top">
+  <section class="hero hero--statement" data-enter aria-labelledby="hero-h">
+    <div class="wrap"><div class="hero-text">
+      <p class="hero-notice">One-day workshop. <strong>Limited spots</strong></p>
+      <h1 id="hero-h">You leave with a system you keep building.</h1>
+      <p class="hero__lead">One day with me. I install an AI brain in your business and teach you how to keep building it yourself, so you never have to call me to change it.</p>
+      <p class="book-tz">Thursday 12 November. In person, Brisbane or Gold Coast. Venue to be confirmed.</p>
+      <div class="btn-row"><a class="btn btn--primary" href="#register">Save my spot<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a></div>
+    </div></div>
   </section>
-
-  <section id="register" class="book-section">
-    <div class="container">
+  <section class="section" id="register" aria-labelledby="register-title">
+    <div class="wrap">
       <div class="book-card">
         <div class="book-head" id="wkHead">
-          <span class="eyebrow">Limited spots</span>
-          <h2 class="book-title">Save your spot</h2>
-          <p class="book-preview">Leave your details and I'll call you to talk it through and lock it in. No payment today.</p>
+          <h2 class="book-title" id="register-title">Save your spot</h2>
+          <p class="book-preview">Leave your details and I&rsquo;ll call you to talk it through and lock it in. No payment today.</p>
         </div>
         <form class="book-form" id="workshopForm" novalidate>
           <div class="book-fields">
@@ -94,60 +106,49 @@ src="https://www.facebook.com/tr?id=1601510988349512&ev=PageView&noscript=1"
             <div class="book-field"><label for="wkEmail">Email</label><input id="wkEmail" name="email" type="email" autocomplete="email" required></div>
             <div class="book-field"><label for="wkPhone">Mobile</label><input id="wkPhone" name="phone" type="tel" autocomplete="tel" placeholder="0412 345 678" required></div>
           </div>
-          <button type="submit" class="btn btn-primary btn-large book-submit" id="wkSubmit">Save my spot</button>
+          <button type="submit" class="btn btn--primary book-submit" id="wkSubmit">Save my spot</button>
           <p class="book-error" id="wkError" role="alert"></p>
           <p class="book-hint">By sending this you agree to get calls, texts and emails about the workshop. See our <a href="/privacy">privacy policy</a>.</p>
         </form>
         <div class="book-head" id="wkDone" hidden>
-          <span class="eyebrow">You're on the list</span>
-          <h2 class="book-title">Thanks. I'll call you.</h2>
-          <p class="book-preview">I'll call you to talk it through and lock in your spot. A confirmation is on its way to your email.</p>
+          <h2 class="book-title">Thanks. I&rsquo;ll call you.</h2>
+          <p class="book-preview">I&rsquo;ll call you to talk it through and lock in your spot. A confirmation is on its way to your email.</p>
         </div>
       </div>
     </div>
   </section>
-
-  <section>
-    <div class="container">
-      <div class="section-head center reveal">
-        <span class="eyebrow">The day</span>
-        <h2>What you get.</h2>
+  <section class="section" id="day" aria-labelledby="day-h">
+    <div class="wrap">
+      <div class="grid grid--top">
+        <div class="section-head span-5"><h2 id="day-h">What you get.</h2><p class="muted">The day.</p></div>
+        <div class="span-7 start-6 stack-5">
+          <ul class="checks"><li>Your AI brain, installed in your business</li><li>How AI works and how to get the best out of it</li><li>How to build your own playbooks</li><li>Your ads connected to it</li><li>Oranga Studio connected, with starter prompts</li><li>Bonus: the voice layer, plus 30 days of support</li></ul>
+          <div class="btn-row"><a class="btn btn--primary" href="#register">Save my spot<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a></div>
+        </div>
       </div>
-      <ul class="check-list reveal">
-        <li class="check-item"><span class="check-icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M12 4L6.5 10 4 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Your AI brain, installed in your business</span></li>
-        <li class="check-item"><span class="check-icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M12 4L6.5 10 4 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>How AI works, and how to get the best out of it</span></li>
-        <li class="check-item"><span class="check-icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M12 4L6.5 10 4 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>How to build your own playbooks</span></li>
-        <li class="check-item"><span class="check-icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M12 4L6.5 10 4 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Your ads connected to it</span></li>
-        <li class="check-item"><span class="check-icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M12 4L6.5 10 4 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Oranga Studio connected, with starter prompts</span></li>
-        <li class="check-item"><span class="check-icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M12 4L6.5 10 4 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Bonus: the voice layer, plus 30 days of support</span></li>
-      </ul>
-      <div class="center-cta reveal"><a href="#register" class="btn btn-primary btn-large">Save my spot <svg class="arrow" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
     </div>
   </section>
-
 </main>
 
-<footer>
-  <div class="container footer-inner">
-    <div class="logo">
-      <span class="logo-mark" aria-hidden="true"></span>
-      <span>Oranga AI</span>
-    </div>
-    <div class="footer-meta">
-      <a href="/">Home</a>
-      <a href="/about">About</a>
-      <a href="/privacy">Privacy</a>
-      <a href="/terms">Terms</a>
-      <a href="mailto:support@orangaai.com">support@orangaai.com</a>
-    </div>
-    <div class="footer-meta">
-      <span>&copy; 2026 Oranga AI</span>
+<footer class="footer closing" id="contact">
+  <div class="wrap">
+    <div class="closing__links">
+      <div class="footer__legal">
+        <span>&copy; 2026 Oranga AI</span>
+        <span><a href="/privacy">Privacy</a> &nbsp; <a href="/terms">Terms</a></span>
+      </div>
     </div>
   </div>
 </footer>
 
+<script type="module" src="/assets/system.js"></script>
+<script type="module" src="/assets/motion/motion.js"></script>
+<script type="module" src="/assets/layout/layout.js"></script>
+<script>
+  document.querySelectorAll('[data-track]').forEach(function (a) {
+    a.addEventListener('click', function () { if (window.gtag) gtag('event', 'book_call_click', { place: a.dataset.track, page: location.pathname }); });
+  });
+</script>
 <script src="/workshop.js" defer></script>
-<script src="/app.js" defer></script>
-
 </body>
 </html>

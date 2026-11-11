@@ -50,7 +50,9 @@ export const isStill = el => !!(el && el.closest && el.closest('[data-ui-still]'
 const css = new Map();
 function link(href) {
   if (!css.has(href)) {
-    const done = [...document.querySelectorAll('link[rel="stylesheet"]')].some(l => l.href === href);
+    // assets/kit.bundle.css (scripts/bundle-css.py) already carries base.css and every fragment's CSS
+    const bundled = !!document.querySelector('link[rel="stylesheet"][href$="kit.bundle.css"]');
+    const done = bundled || [...document.querySelectorAll('link[rel="stylesheet"]')].some(l => l.href === href);
     css.set(href, done ? Promise.resolve() : new Promise(res => {
       const l = document.createElement('link');
       l.rel = 'stylesheet';
