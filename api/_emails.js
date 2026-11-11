@@ -21,7 +21,7 @@ function homework() {
   const url = process.env.HOMEWORK_VIDEO_URL;
   if (url) {
     return [
-      'Before we talk, take 3 minutes to watch this short video. It covers how Oranga Core works and three things to have ready, so we can spend the call on your business, not the basics:',
+      'Before we talk, take 3 minutes to watch this short video. It covers how The Core works and three things to have ready, so we can spend the call on your business, not the basics:',
       url,
     ];
   }
@@ -71,7 +71,7 @@ function reminder12h({ firstName, date, time, zone, meetLink }) {
       '',
       ...homework(),
       '',
-      'Have a pen and paper ready. We will find where your admin time is going, and you will leave with a straight answer on whether Oranga Core is the right fix.',
+      'Have a pen and paper ready. We will find where your admin time is going, and you will leave with a straight answer on whether The Core is the right fix.',
       '',
       meetLine(meetLink),
       '',

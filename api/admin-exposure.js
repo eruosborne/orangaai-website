@@ -1,7 +1,7 @@
 // api/admin-exposure.js
 // Captures a completed Bottleneck Score quiz: logs it to a Google Sheet
 // (the persistent record), pings the host by email, and sends the person a
-// plain-text email from Eru with their score and what Oranga Core would do
+// plain-text email from Eru with their score and what The Core would do
 // about their biggest gap (both emails best-effort only — see appendToSheet
 // vs notifyHost, same pattern as api/book.js).
 // POST /api/admin-exposure  { email, score, answers: number[6] }
@@ -84,17 +84,17 @@ const BOOK_URL = 'https://www.orangaai.com/bottleneck-audit';
 // Index matches QUESTION_LABELS on admin-exposure.html.
 const TOP_GAP = [
   { label: 'a business that stalls when you step away',
-    fix: "Here's what Oranga Core would do about that. It never sleeps, so enquiries, follow-ups and quotes keep moving while you're away. You come back to one short note: done, needs you, couldn't move." },
+    fix: "Here's what The Core would do about that. It never sleeps, so enquiries, follow-ups and quotes keep moving while you're away. You come back to one short note: done, needs you, couldn't move." },
   { label: 'enquiries waiting on you, and going to whoever answers first',
-    fix: "Here's what Oranga Core would do about that. The mailroom reads every email as it comes in and gets the reply ready in your voice, so you can send it in one tap and be first to answer." },
+    fix: "Here's what The Core would do about that. The mailroom reads every email as it comes in and gets the reply ready in your voice, so you can send it in one tap and be first to answer." },
   { label: 'business knowledge that only lives in your head',
-    fix: "Here's what Oranga Core would do about that. It starts by getting your business written down once: your prices, your customers, how you work. After that it isn't only in your head." },
+    fix: "Here's what The Core would do about that. It starts by getting your business written down once: your prices, your customers, how you work. After that it isn't only in your head." },
   { label: 'having to re-explain your business to AI every time you use it',
-    fix: "Here's what Oranga Core would do about that. It's an AI brain built around your business, and it reads that before every job, so you never start from scratch." },
+    fix: "Here's what The Core would do about that. It's an AI brain built around your business, and it reads that before every job, so you never start from scratch." },
   { label: "growth you'd go after if you had the room",
-    fix: "Here's what Oranga Core would do about that. It takes the work that runs through you off your plate, so you have the room to go after it. You just make the decisions." },
+    fix: "Here's what The Core would do about that. It takes the work that runs through you off your plate, so you have the room to go after it. You just make the decisions." },
   { label: "a business that's already stretched, with no room to take on more",
-    fix: "Here's what Oranga Core would do about that. It never sleeps, so the business can take on more work without taking on more staff." },
+    fix: "Here's what The Core would do about that. It never sleeps, so the business can take on more work without taking on more staff." },
 ];
 
 const HOW_IT_WORKS = "It's an AI brain built around your business (your prices, your customers, how you write). It runs around the clock and follows playbooks for jobs like quoting and replying. It prepares the work and you approve it. It never sends, spends or signs anything on its own.";

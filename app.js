@@ -1,6 +1,6 @@
 /* ============================================================
    Oranga AI: shared site script
-   Nav state, scroll reveals, and the Oranga Core chatbot KB.
+   Nav state, scroll reveals, and The Core chatbot KB.
    Loaded once by every page (replaces the old inline duplicates).
    The booking flow lives in booking-chatbot.js and hooks #chatForm.
    ============================================================ */
@@ -67,11 +67,11 @@
   var KB = [
     {
       keywords: ['hi', 'hello', 'hey', 'howdy', 'greetings', 'kia ora', 'sup', 'yo', 'g day', 'good morning', 'good afternoon', 'good evening'],
-      answer: "Kia ora, I'm Oranga AI's assistant. Ask me about Oranga Core, how it works, whether it's a fit for your business, or how to book a free Bottleneck Audit."
+      answer: "Kia ora, I'm Oranga AI's assistant. Ask me about The Core, how it works, whether it's a fit for your business, or how to book a free Bottleneck Audit."
     },
     {
-      keywords: ['what is oranga', 'who are you', 'what do you do', 'about oranga', 'about you', 'what is this', 'tell me about', 'explain what', 'describe what', 'overview', 'summary', 'what is oranga core', 'what exactly', 'what is core'],
-      answer: "<strong>Oranga Core</strong> is an AI brain built around your business. It never sleeps: it reads every email, gets your replies, follow-ups and quotes ready, and works through the night so your list is cleared before you start. You make the decisions. It prepares everything but never sends, spends or signs anything without your approval. We build it, install it in a day and walk you through it. There's a 3-minute video on the <a href='/how-it-works'>How it works</a> page."
+      keywords: ['what is oranga', 'who are you', 'what do you do', 'about oranga', 'about you', 'what is this', 'tell me about', 'explain what', 'describe what', 'overview', 'summary', 'what is oranga core', 'what is the core', 'the core', 'what exactly', 'what is core'],
+      answer: "<strong>The Core</strong> is an AI brain built around your business. It never sleeps: it reads every email, gets your replies, follow-ups and quotes ready, and works through the night so your list is cleared before you start. You make the decisions. It prepares everything but never sends, spends or signs anything without your approval. We build it, install it in a day and walk you through it. There's a 3-minute video on the <a href='/how-it-works'>How it works</a> page."
     },
     {
       keywords: ['oranga', 'maori', 'name mean', 'meaning', 'wellbeing', 'thriving'],
@@ -79,11 +79,11 @@
     },
     {
       keywords: ['layers', 'four layers', 'how does it work', 'how it works', 'what does it do', 'parts', 'components', 'capabilities', 'what can it do', 'features'],
-      answer: "Oranga Core has four parts:<br><br><strong>1. Knowledge:</strong> your business written down once (what you sell, who you sell to, how you write). It reads this before every job, so you never re-explain yourself.<br><strong>2. Playbooks:</strong> repeatable jobs written as plain steps, like sorting your inbox or building a quote. It follows them the same way every time.<br><strong>3. Scheduled work:</strong> the <em>dawn run</em> works through the night, clearing what it safely can before you start.<br><strong>4. Guardrails:</strong> six actions it never takes without you."
+      answer: "The Core has four parts:<br><br><strong>1. Knowledge:</strong> your business written down once (what you sell, who you sell to, how you write). It reads this before every job, so you never re-explain yourself.<br><strong>2. Playbooks:</strong> repeatable jobs written as plain steps, like sorting your inbox or building a quote. It follows them the same way every time.<br><strong>3. Scheduled work:</strong> the <em>dawn run</em> works through the night, clearing what it safely can before you start.<br><strong>4. Guardrails:</strong> six actions it never takes without you."
     },
     {
       keywords: ['knowledge', 'knows the business', 'brief', 'briefing', 're-explain', 'context', 'remember'],
-      answer: "The knowledge part is your business written down once: what you do, who you serve, your prices, how you write, who's on the team. Oranga Core reads it before every job, so it starts with your business in mind instead of from scratch."
+      answer: "The knowledge part is your business written down once: what you do, who you serve, your prices, how you write, who's on the team. The Core reads it before every job, so it starts with your business in mind instead of from scratch."
     },
     {
       keywords: ['playbook', 'playbooks', 'mailroom', 'strategist', 'inbox', 'drafts', 'jobs', 'tasks', 'build a playbook', 'new playbook'],
@@ -95,11 +95,11 @@
     },
     {
       keywords: ['guardrail', 'guardrails', 'safe', 'safety', 'rogue', 'never', 'control', 'mistake', 'wrong', 'trust', 'risk', 'acts alone', 'send', 'oversight', 'permission', 'without asking', 'approve'],
-      answer: "Oranga Core prepares everything right up to the line, then you take the final step, every time. Replies sit as drafts until you send them. There are <strong>six actions it never takes alone</strong>: contact anyone outside the business, move money, change anyone's job, do anything that can't be undone, sign or commit the business to anything, or weaken its own oversight."
+      answer: "The Core prepares everything right up to the line, then you take the final step, every time. Replies sit as drafts until you send them. There are <strong>six actions it never takes alone</strong>: contact anyone outside the business, move money, change anyone's job, do anything that can't be undone, sign or commit the business to anything, or weaken its own oversight."
     },
     {
       keywords: ['who is this for', 'who is it for', 'who is it built for', 'who is core for', 'right fit', 'do you work with', 'industry', 'target', 'clients', 'who do you work with', 'tradie', 'tradies', 'trades', 'hospitality', 'consulting', 'services', 'small business', 'right for me', 'suited', 'for me', 'my business', 'business type', 'owner operator'],
-      answer: "Oranga Core is for owner-operators of established businesses who want to grow the business and do less at the same time: trades, hospitality, consulting and other service businesses. If everything still runs through you and you can't switch off, that's the problem it fixes."
+      answer: "The Core is for owner-operators of established businesses who want to grow the business and do less at the same time: trades, hospitality, consulting and other service businesses. If everything still runs through you and you can't switch off, that's the problem it fixes."
     },
     {
       keywords: ['not for', 'not a fit', 'startup', 'start up', 'just starting', 'too small', 'new business', 'who should not'],
@@ -123,11 +123,11 @@
     },
     {
       keywords: ['hosting', 'remote access', 'phone', 'laptop off', 'laptop is off', 'always on', 'always-on', 'maintenance', 'extras', 'add on', 'add-on', 'custom', 'more seats', 'seats', 'extra'],
-      answer: "Beyond the standard install there are a few extras:<br><br><strong>Always-on setup:</strong> Oranga Core runs around the clock. If you already have a computer that stays on, it runs there. If not, we set it up on a server, which also lets you check in from your phone.<br><strong>Ongoing maintenance:</strong> if you'd like us to look after it, no lock-in.<br><strong>Custom builds:</strong> more seats, or a bespoke playbook for a job unique to your business.<br><br>We scope and price these on the Bottleneck Audit." + "<br>" + BOOK_BTN
+      answer: "Beyond the standard install there are a few extras:<br><br><strong>Always-on setup:</strong> The Core runs around the clock. If you already have a computer that stays on, it runs there. If not, we set it up on a server, which also lets you check in from your phone.<br><strong>Ongoing maintenance:</strong> if you'd like us to look after it, no lock-in.<br><strong>Custom builds:</strong> more seats, or a bespoke playbook for a job unique to your business.<br><br>We scope and price these on the Bottleneck Audit." + "<br>" + BOOK_BTN
     },
     {
       keywords: ['book', 'meeting', 'consultation', 'demo', 'call', 'strategy call', 'admin audit', 'bottleneck audit', 'audit', 'free call', 'schedule a call', 'speak to', 'talk', 'get started', 'sign up', 'ready', 'interested', 'keen', 'tell me more', 'want to know', 'weekend', 'weekends', 'availability', 'available', 'what times', 'times'],
-      answer: "Book a free 30-minute Bottleneck Audit. We go through your business, find where it's running through you, and show you exactly what Oranga Core would take off your plate. No pitch, no pressure. You can book today or the next two days, weekends included, between 8am and 6pm Brisbane time, on Google Meet." + "<br>" + BOOK_BTN
+      answer: "Book a free 30-minute Bottleneck Audit. We go through your business, find where it's running through you, and show you exactly what The Core would take off your plate. No pitch, no pressure. You can book today or the next two days, weekends included, between 8am and 6pm Brisbane time, on Google Meet." + "<br>" + BOOK_BTN
     },
     {
       keywords: ['contact', 'email', 'reach', 'get in touch', 'support'],
@@ -135,11 +135,11 @@
     },
     {
       keywords: ['founder', 'team', 'who runs', 'who built', 'who made', 'eru', 'osborne', 'background', 'experience', 'credentials', 'about the team'],
-      answer: "Oranga AI is founded by <strong>Eru Osborne</strong>: 15 years building IT systems for a university, from help desk to senior systems engineer, before building them for owner-operated businesses. Oranga Core is built the way it is (knowledge written down, hard guardrails) because that's how real systems are meant to work."
+      answer: "Oranga AI is founded by <strong>Eru Osborne</strong>: 15 years building IT systems for a university, from help desk to senior systems engineer, before building them for owner-operated businesses. The Core is built the way it is (knowledge written down, hard guardrails) because that's how real systems are meant to work."
     },
     {
       keywords: ['different', 'unique', 'competitors', 'why hire', 'why should i', 'convince me', 'what makes you', 'better than', 'vs', 'versus', 'alternative', 'chatbot', 'chatgpt', 'stand out', 'why oranga', 'tried ai', 'tried chatgpt'],
-      answer: "Oranga Core is installed for you, built around your business, and it prepares the work while you approve anything that matters. Six actions are locked, so it can't send, spend or sign on its own."
+      answer: "The Core is installed for you, built around your business, and it prepares the work while you approve anything that matters. Six actions are locked, so it can't send, spend or sign on its own."
     },
     {
       keywords: ['result', 'outcome', 'roi', 'expect', 'success', 'proof', 'worked', 'helped', 'saved', 'time back', 'hours', 'evenings', 'case study', 'testimonial', 'clients so far'],
@@ -155,7 +155,7 @@
     },
     {
       keywords: ['video', 'videos', 'watch', 'watch how it works', 'show me', 'see it', 'see it working', 'demo video', 'example', 'walkthrough', 'faq video'],
-      answer: "There are two short videos on the <a href='/how-it-works'>How it works</a> page: a 3-minute walkthrough of how Oranga Core works and what it's done in real businesses, and a video answering the questions owners ask before they book."
+      answer: "There are two short videos on the <a href='/how-it-works'>How it works</a> page: a 3-minute walkthrough of how The Core works and what it's done in real businesses, and a video answering the questions owners ask before they book."
     },
     {
       keywords: ['quiz', 'admin exposure', 'bottleneck', 'score', 'assessment', 'how exposed'],
@@ -167,12 +167,12 @@
     },
     {
       keywords: ['integration', 'tools', 'crm', 'stack', 'connect', 'works with', 'xero', 'gmail', 'google', 'calendar', 'existing tools', 'compatible', 'systems', 'accounts'],
-      answer: "Oranga Core connects to your mail, calendar and accounts, so it works on your real business, not a demo. Other tools depend on your setup, so we confirm what's possible on the Bottleneck Audit."
+      answer: "The Core connects to your mail, calendar and accounts, so it works on your real business, not a demo. Other tools depend on your setup, so we confirm what's possible on the Bottleneck Audit."
     }
   ];
 
   var SUGGESTIONS = [
-    "What is Oranga Core?",
+    "What is The Core?",
     "Watch how it works",
     "Is it safe?",
     "What does it cost?",
@@ -261,7 +261,7 @@
     if (!messagesEl.dataset.greeted) {
       messagesEl.dataset.greeted = '1';
       setTimeout(function () {
-        addMessage("Kia ora, I'm Oranga AI's assistant. Ask me anything about Oranga Core, how it works, or how to book a free Bottleneck Audit.", 'bot', { html: true });
+        addMessage("Kia ora, I'm Oranga AI's assistant. Ask me anything about The Core, how it works, or how to book a free Bottleneck Audit.", 'bot', { html: true });
         renderSuggestions(SUGGESTIONS);
       }, 240);
     }
