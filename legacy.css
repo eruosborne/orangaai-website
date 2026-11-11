@@ -1,0 +1,18 @@
+/* Bridge for the pages still on styles.css (booked, terms, privacy, 404, webinar-confirmed):
+   the new type, buttons and labels from the redesign, without rebuilding their markup. */
+:root {
+  --display: "Bricolage Grotesque", system-ui, sans-serif;
+  --sans: "Figtree", system-ui, -apple-system, sans-serif;
+  --mono: "DM Mono", ui-monospace, "SF Mono", Consolas, monospace;
+  --radius: 999px;
+}
+h1, h2, h3, .section-head h2, .hero-simple h1 { font-weight: 400; letter-spacing: -0.03em; font-stretch: 96%; }
+h1 em, h2 em { font-style: normal; color: var(--accent); }
+.eyebrow { text-transform: none; letter-spacing: 0; font-size: 13px; color: var(--ink-muted); }
+.eyebrow::before { display: none; }
+.btn { border-radius: 999px; min-height: 44px; }
+.btn-primary { background: #3dbf9f; color: #121517; border-color: #3dbf9f; }
+.btn-primary:hover { opacity: 1; background: #5ef2c4; border-color: #5ef2c4; }
+.btn-ghost { border-color: rgb(242 235 225 / .3); }
+.btn-ghost:hover { border-color: #3dbf9f; color: #3dbf9f; }
+.chat-launcher, .chat-teaser, .chat-panel { display: none !important; }

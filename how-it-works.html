@@ -1,103 +1,72 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" data-type="software" data-radius="soft" data-buttons="pill" data-motion>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>How The Core works | Oranga AI</title>
-<meta name="description" content="The Core is an AI brain built around your business. It never sleeps, so the business keeps growing without everything running through you. Installed in a day. More done in 7 days, or your money back.">
+<meta name="description" content="How The Core, an AI admin system for owner-operators, reads your email, prepares replies and quotes overnight and leaves every decision with you.">
 <link rel="canonical" href="https://orangaai.com/how-it-works">
-
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Oranga AI">
 <meta property="og:title" content="How The Core works | Oranga AI">
-<meta property="og:description" content="The Core is an AI brain built around your business. It never sleeps, so the business keeps growing without everything running through you. Installed in a day. More done in 7 days, or your money back.">
+<meta property="og:description" content="Built around your business once, then working for you every hour after that. Installed in a day.">
 <meta property="og:url" content="https://orangaai.com/how-it-works">
 <meta property="og:image" content="https://orangaai.com/images/og.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="How The Core works | Oranga AI">
-<meta name="twitter:description" content="The Core is an AI brain built around your business. It never sleeps, so the business keeps growing without everything running through you. Installed in a day. More done in 7 days, or your money back.">
+<meta name="twitter:description" content="Built around your business once, then working for you every hour after that. Installed in a day.">
 <meta name="twitter:image" content="https://orangaai.com/images/og.png">
-
-<link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+<link rel="icon" type="image/png" href="images/orb-fallback.png">
 <meta name="theme-color" content="#121517">
+<meta name="site-kind" content="software">
+<meta name="page-type" content="software">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Karla:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/styles.css">
-
-<script type="application/ld+json">
-{
- "@context": "https://schema.org",
- "@type": "FAQPage",
- "mainEntity": [
-  {
-   "@type": "Question",
-   "name": "What does it cost?",
-   "acceptedAnswer": {
-    "@type": "Answer",
-    "text": "It's a one-off install, not a subscription. We'll give you the exact figure on the Bottleneck Audit, once we know what your business needs. And it's covered by our guarantee: more done in 7 days, or your money back."
-   }
-  },
-  {
-   "@type": "Question",
-   "name": "How long does it take to set up?",
-   "acceptedAnswer": {
-    "@type": "Answer",
-    "text": "The install takes less than a working day, about 3 to 8 hours depending on your tools. Then we stay with you for 30 days while it beds in, with a call about once a week."
-   }
-  },
-  {
-   "@type": "Question",
-   "name": "Will it send anything without asking me?",
-   "acceptedAnswer": {
-    "@type": "Answer",
-    "text": "No. It prepares the reply, the follow-up or the invoice reminder, and you press send. It can't contact a customer, move money or commit you to anything on its own."
-   }
-  },
-  {
-   "@type": "Question",
-   "name": "I've tried AI before. It didn't stick.",
-   "acceptedAnswer": {
-    "@type": "Answer",
-    "text": "Most owners we talk to have. The Core is set up around your business before it does anything: what you do, who you serve and how you write. It's installed for you and walked through with you, so you don't have to learn how to make it work."
-   }
-  },
-  {
-   "@type": "Question",
-   "name": "I'm not very technical. Will I manage?",
-   "acceptedAnswer": {
-    "@type": "Answer",
-    "text": "Yes. You talk to it in plain English, like a new hire in their first week. If it isn't sure what you mean, it asks."
-   }
-  },
-  {
-   "@type": "Question",
-   "name": "What if it doesn't work for me?",
-   "acceptedAnswer": {
-    "@type": "Answer",
-    "text": "If you're not getting more done within 7 days of handover, you get a full refund."
-   }
-  },
-  {
-   "@type": "Question",
-   "name": "Which tools does it work with?",
-   "acceptedAnswer": {
-    "@type": "Answer",
-    "text": "It connects to your mail, calendar and accounts, so it works on your real business, not a demo. Other tools depend on your setup, so we confirm what's possible on the Bottleneck Audit."
-   }
-  },
-  {
-   "@type": "Question",
-   "name": "Does my computer need to stay on?",
-   "acceptedAnswer": {
-    "@type": "Answer",
-    "text": "It runs around the clock. If you already have a computer that stays on all the time, like a Mac Studio, it runs there. If not, we set it up on a server, which costs about $10 a month, paid to the host directly."
-   }
-  }
- ]
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..700&family=Figtree:wght@400..600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/system.css">
+<link rel="stylesheet" href="assets/ui/cards.css">
+<link rel="stylesheet" href="assets/motion/motion.css">
+<link rel="stylesheet" href="assets/backgrounds/backgrounds.css">
+<link rel="stylesheet" href="assets/layout/layout.css">
+<link rel="stylesheet" href="assets/icons/icon.css">
+<style>
+:root {
+  --p-bg: #121517; --p-surface: #1b2124; --p-ink: #f2ebe1; --p-muted: #b9afa3;
+  --p-accent: #3dbf9f; --p-accent-ink: #121517; --p-action: #3dbf9f; --p-action-ink: #121517;
+  --p-inv-bg: #f2ebe1; --p-inv-surface: #e0dad1; --p-inv-ink: #121517; --p-inv-muted: #5d5d5b;
+  --p-inv-accent: #121517; --p-inv-accent-ink: #f2ebe1; --p-inv-action: #121517; --p-inv-action-ink: #f2ebe1;
+  --font-display: "Bricolage Grotesque", system-ui, sans-serif;
+  --font-text: "Figtree", system-ui, sans-serif;
+  --font-mono: "DM Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --display-weight: 400;
+  --display-tracking: -0.03em;
+  --display-tracking-xl: -0.04em;
+  --display-stretch: 96%;
 }
-</script>
+</style>
+<link rel="stylesheet" href="assets/ui/base.css">
+<link rel="stylesheet" href="assets/ui/notify/fragment.css">
+<link rel="stylesheet" href="assets/ui/toggles/fragment.css">
+<link rel="stylesheet" href="assets/ui/checklist/fragment.css">
+<link rel="stylesheet" href="assets/ui/integrations/fragment.css">
+<link rel="stylesheet" href="site.css">
+<script>document.documentElement.classList.add('m-enter');setTimeout(()=>document.documentElement.classList.add('m-enter-done'),700)</script>
+<script src="assets/backgrounds/backgrounds.js"></script>
+<script>document.documentElement.classList.add('mo-js');setTimeout(()=>document.documentElement.classList.add('mo-safe'),2500)</script>
+<link rel="modulepreload" href="assets/moments/moments.js">
+<link rel="modulepreload" href="assets/moments/lib.js">
+<link rel="modulepreload" href="assets/moments/liquid-type/moment.js">
+<style>
+  #parts .panel { --p-h: 210px; }
+  #process .panel { --p-h: 190px; }
+  #included .tools { --p-h: 460px; }
+  #questions .drafts { --p-h: 150px; }
+  @media (min-width: 640px) and (max-width: 1023px) { #questions .drafts { display: none; } #questions .faq--grid { margin-top: var(--s-5); } }
+  @media (max-width: 639px) { #process .panel { --p-h: 120px; } #included .tools { --p-h: 340px; } }
+  @media (min-width: 1024px) and (max-width: 1279px) { #parts .panel { --p-h: 190px; } }
+  @media (max-width: 639px) { #parts .panel { --p-h: 150px; } }
+</style>
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZXS09113QF"></script>
 <script>
@@ -121,449 +90,221 @@ fbq('init', '1601510988349512');
 fbq('track', 'PageView');
 fbq('track', 'ViewContent', { content_name: 'How it works landing page' });
 </script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1601510988349512&ev=PageView&noscript=1"
-/></noscript>
+<noscript><img height="1" width="1" style="display:none" alt=""
+src="https://www.facebook.com/tr?id=1601510988349512&ev=PageView&noscript=1"></noscript>
 <!-- End Meta Pixel Code -->
 </head>
 <body>
-
-<a href="#main" class="skip-link">Skip to content</a>
-
-<header class="page-bar">
-  <div class="container page-bar-inner">
-    <a href="/" class="logo" aria-label="Oranga AI home">
-      <span class="logo-mark" aria-hidden="true"></span>
-      <span>Oranga AI</span>
-    </a>
-    <a href="/bottleneck-audit#book" class="btn btn-primary">
-      <span class="btn-long">Book your free 30-minute audit</span><span class="btn-short">Book a call</span>
-      <svg class="arrow" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </a>
+<!-- type: software. deal: hero split, nav nav-centre, close close-word, footer footer-columns, rhythm space, buttons pill,
+     mark: the client's orb. moments: liquid-type on #control's heading (marquee-row dealt first: its full-bleed rail fails the edge checks, dealt again). -->
+<header class="nav nav--centre">
+  <div class="wrap nav__bar">
+    <a class="skip-link" href="#top">Skip to content</a>
+    <a class="nav__logo" href="/"><img class="logo-orb" src="images/orb-fallback.png" alt="" width="28" height="28">Oranga AI</a>
+    <nav class="nav__links" aria-label="Main">
+      <div class="nav__item"><a class="nav__link" href="how-it-works" aria-current="page">Product</a></div>
+      <div class="nav__item"><a class="nav__link" href="results">Results</a></div>
+      <div class="nav__item"><a class="nav__link" href="about">About</a></div>
+      <div class="nav__item"><a class="nav__link" href="admin-exposure">Quiz</a></div>
+    </nav>
+    <div class="nav__actions">
+      <a class="btn btn--primary" href="bottleneck-audit#book" data-track="nav">Book a call</a>
+    </div>
+    <button class="nav__toggle" type="button" aria-expanded="false" aria-label="Menu">
+      <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 5h14M2 13h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+    </button>
   </div>
 </header>
-<a href="/" class="back-home" aria-label="Back to the homepage">
-  <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M13 8H3M3 8L7 4M3 8L7 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-</a>
 
-<main id="main">
-
-  <!-- HERO -->
-  <section class="hero-simple">
-    <div class="container content">
-      <span class="eyebrow reveal">AI brain for businesses</span>
-      <h1 class="reveal">Everything runs through you. <em>It doesn't have to.</em></h1>
-      <p class="hero-sub reveal">I build an AI brain around your business. It reads every email, gets your replies and quotes ready, and keeps working through the night. You make the decisions. The business keeps growing, no matter where you are.</p>
-      <div class="hero-cta-row reveal">
-        <a href="/bottleneck-audit#book" class="btn btn-primary btn-large">Book your free 30-minute audit <svg class="arrow" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+<main id="top">
+  <section class="hero hero--split" data-enter aria-labelledby="hero-h">
+    <div class="wrap"><div class="hero-text grid hero__grid">
+      <div class="hero__text span-5">
+        <h1 id="hero-h">How the AI admin system works</h1>
+        <p class="hero__lead">I build an AI admin system around your business. It reads every email, gets your replies and quotes ready and keeps working through the night. You make the decisions, and the install takes 3 to 8 hours.</p>
+        <div class="btn-row"><a class="btn btn--primary" href="bottleneck-audit#book" data-track="hero">Book a call<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a><a class="btn btn--secondary" href="#included">See what's included</a></div>
       </div>
-      <p class="hero-note reveal">Free · 30 minutes · Google Meet</p>
-    </div>
+      <div class="hero__media hero__media--ui lit-teal span-6 start-7" role="img" aria-label="An example morning note from The Core: six replies drafted, one reminder waiting for the owner's OK and one job it couldn't do">
+        <div class="ly-piece d-win d-win--dark note" aria-hidden="true">
+          <div class="d-win__bar"><span class="d-win__dots"><i></i><i></i><i></i></span><span><b>Morning note</b> · 6:12am</span><span class="sp"></span><span class="tag-example">Example</span></div>
+          <div class="note__body">
+            <p class="note__h">Done</p>
+            <p>6 replies drafted and waiting in your drafts</p>
+            <p>Quote 1042 written from your price list</p>
+            <p>2 bookings added to your calendar</p>
+            <p class="note__h">Needs you</p>
+            <p>Send the overdue invoice reminder to Harbour Fencing</p>
+            <p class="note__h">Couldn't move</p>
+            <p>The bank statement needs a password</p>
+          </div>
+        </div>
+        <div class="ly-float">
+          <div class="ly-float__row"><span class="ly-live">Waiting for your OK</span></div>
+          <div class="ly-float__title">Send overdue invoice reminder</div>
+        </div>
+      </div>
+    </div></div>
   </section>
 
-  <!-- TRUST STRIP -->
-  <div class="trust-strip">
-    <div class="trust-item reveal"><span class="tick" aria-hidden="true">✓</span>Live in 5 businesses</div>
-    <div class="trust-item reveal"><span class="tick" aria-hidden="true">✓</span>Running in civil, cranes &amp; rigging, finance and hospitality</div>
-    <div class="trust-item reveal"><span class="tick" aria-hidden="true">✓</span>More done in 7 days, or your money back</div>
-  </div>
-
-  <!-- WATCH FIRST (short "how it works" cut of the homework video) -->
-  <section id="watch">
-    <div class="container">
-      <div class="section-head center reveal">
-        <span class="eyebrow">Watch first · 3 minutes</span>
-        <h2>See how it works in 3 minutes.</h2>
-        <p>The problem it fixes, how it works, what it's done in real businesses, and what you get.</p>
-      </div>
-      <div class="video-slot reveal" data-video="howitworks">Video coming soon.</div>
-    </div>
-  </section>
-
-  <!-- PROBLEM -->
-  <section>
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow">The real cost</span>
-        <h2>Right now, you're the bottleneck.</h2>
-        <p>Every email, quote and decision waits for you, so the business can only grow as fast as you can keep up.</p>
-      </div>
-      <div class="problem-grid reveal">
-
-        <div class="pain-card">
-          <span class="pain-label">While you were working</span>
-          <div class="pain-visual">
-            <div class="repeat-stack">
-              <div class="repeat-chip r3">Enquiry · 2:15pm · waiting</div>
-              <div class="repeat-chip r2">Quote request · 11:40am · waiting</div>
-              <div class="repeat-chip r1">Enquiry · 9:05am · waiting<span class="repeat-badge">×3 today</span></div>
-            </div>
-          </div>
-          <p class="pain-caption">Enquiries wait until you're off the job. By the time you reply, some have gone with whoever answered first.</p>
+  <section class="section" id="waiting" aria-labelledby="waiting-h">
+    <div class="wrap">
+      <div class="grid">
+        <div class="span-5 stack-5">
+          <h2 id="waiting-h">Why owner-operators need The Core</h2>
+          <p class="t-lead">Enquiries wait until you're off the job. Every email, quote and decision waits for you, so the business grows only as fast as you keep up.</p>
+          <p>By the time you reply, some enquiries have gone with whoever answered first. On a job, at dinner or away for the weekend, it all sits there until you're back.</p>
+          <a class="link" href="admin-exposure">Take the Bottleneck Score</a>
         </div>
-
-        <div class="pain-card">
-          <span class="pain-label">When you get back</span>
-          <div class="pain-visual">
-            <div class="pain-time">6<span class="pain-time-sm">pm</span></div>
-            <ul class="pain-list">
-              <li>Send booking confirmation</li>
-              <li>Reply to quote request</li>
-              <li>Chase unpaid invoice</li>
-            </ul>
-          </div>
-          <p class="pain-caption">On a job, at dinner or away for the weekend, the quotes, follow-ups and inbox all sit there until you're back.</p>
+        <div class="frame frame--split frame--lit span-6 start-7" role="img" aria-label="An example inbox with three enquiries still waiting at 6pm">
+          <div class="stage stage--fade-b"><div class="at-rise fit" style="--fit-max:440px;--ax:max(24px, 50% - 220px);--ay:56px;--ay-sm:24px" aria-hidden="true">
+            <div class="ui ui-panel mini" aria-hidden="true"><div class="mini__head"><b>While you were working</b><span class="ui-chip">6pm</span></div><div class="mini__row"><span>Enquiry · 2:15pm</span><b>Waiting</b></div><div class="mini__row"><span>Quote request · 11:40am</span><b>Waiting</b></div><div class="mini__row"><span>Enquiry · 9:05am</span><b>Waiting</b></div><div class="mini__row"><span>Unpaid invoice · 14 days</span><b>Waiting</b></div><div class="mini__row"><span>Booking confirmation</span><b>Waiting</b></div></div>
+          </div></div>
         </div>
-
-        <div class="pain-card">
-          <span class="pain-label">Only you know...</span>
-          <div class="pain-visual">
-            <span class="hub-center">YOU</span>
-            <div class="hub-tags">
-              <span class="hub-tag">Who's booked Friday</span>
-              <span class="hub-tag">What Sarah quoted</span>
-              <span class="hub-tag">Best supplier price</span>
-              <span class="hub-tag">Who still owes</span>
-            </div>
-          </div>
-          <p class="pain-caption">The whole business lives in your head. Nothing runs unless you're the one running it.</p>
-        </div>
-
-        <div class="pain-card">
-          <span class="pain-label">AI drafts a reply</span>
-          <div class="pain-visual">
-            <div class="compose-mock">
-              <div class="compose-row">To: sarah.t@email.com</div>
-              <div class="compose-row">Re: Your quote, confirmed for Friday</div>
-            </div>
-            <span class="compose-send"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="3.5" y="7" width="9" height="6.5" rx="1.5" stroke="currentColor" stroke-width="1.3"/><path d="M5.5 7V5a2.5 2.5 0 015 0v2" stroke="currentColor" stroke-width="1.3"/></svg>Blocked, needs you</span>
-          </div>
-          <p class="pain-caption">You'd try more AI, but you can't have it emailing a client or moving money on its own.</p>
-        </div>
-
       </div>
     </div>
   </section>
 
-  <!-- FOUR LAYERS -->
-  <section id="how">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow">What The Core is</span>
-        <h2>What it does for you.</h2>
-        <p>Built around your business once, then working for you every hour after that.</p>
+  <section class="section g2" id="parts" aria-labelledby="parts-h">
+    <div class="wrap">
+      <div class="group">
+        <div class="section-head"><h2 id="parts-h">The four parts of The Core. <span class="muted">Built around your business once, then working every hour after that.</span></h2></div>
+        <div class="grid">
+          <article class="card card--row span-6">
+            <h3>Learns your business</h3>
+            <p>What you sell, who you serve and how you write, learned from your own emails. It never needs explaining twice.</p>
+            <div class="panel panel--flush"><div class="stage stage--fade-b"><div class="at-rise fit" style="--fit-max:380px;--ax:max(24px, 50% - 190px);--ay:32px;--ay-sm:24px"><div class="ui ui-panel mini" aria-hidden="true"><div class="mini__head"><b>Your business</b><span class="ui-chip">Written down</span></div><div class="mini__row"><span>What you do</span><b>Learned</b></div><div class="mini__row"><span>Who you serve</span><b>Learned</b></div><div class="mini__row"><span>How you write</span><b>From your sent mail</b></div></div></div></div></div>
+          </article>
+          <article class="card card--row span-6">
+            <h3>Sorts the inbox and drafts replies</h3>
+            <p>The mailroom reads every email, sorts it and gets replies and quotes ready in your voice. You read it and tap send.</p>
+            <div class="panel panel--flush"><div class="stage stage--fade-b"><div class="at-rise fit" style="--fit-max:420px;--ax:max(24px, 50% - 210px);--ay:32px;--ay-sm:24px"><div class="ui ui-notify" data-ui="notify"><ul class="ui-notify__list" data-notify-list><li class="ui-note"><span class="ui-avatar ui-note__av" data-tone="1">SP</span><span class="ui-note__text"><span class="ui-note__title">Reply ready for Sam<time>now</time></span><span class="ui-note__body">Quote request, sorted as urgent</span></span><span class="ui-btn ui-btn--sm ui-note__btn">Open</span></li><li class="ui-note"><span class="ui-avatar ui-note__av" data-tone="3">LN</span><span class="ui-note__text"><span class="ui-note__title">Reply ready for Leah<time>4m</time></span><span class="ui-note__body">Booking question, sorted</span></span></li></ul></div></div></div></div>
+          </article>
+        </div>
       </div>
-      <div class="layers-grid">
-        <article class="layer-card reveal">
-          <span class="layer-num">01</span>
-          <div class="layer-content">
-            <h3 class="layer-name">It knows your business</h3>
-            <div class="layer-visual">
-              <div class="file-mock">
-                <div class="file-mock-name">Your business</div>
-                <div class="file-row"><span class="file-check">✓</span>What we do</div>
-                <div class="file-row"><span class="file-check">✓</span>Who we serve</div>
-                <div class="file-row"><span class="file-check">✓</span>How we write</div>
-              </div>
-            </div>
-            <p class="layer-desc">What you sell, who you serve and how you write, learned from your own emails. It <strong>never needs explaining twice</strong>.</p>
-          </div>
+      <div class="grid">
+        <article class="card card--row span-6">
+          <h3>Works through the night</h3>
+          <p>The dawn run clears what it safely can and leaves one note: done, needs you, couldn't move. If something breaks, it says so.</p>
+          <div class="panel panel--flush"><div class="stage stage--fade-b"><div class="at-rise fit" style="--fit-max:420px;--ax:max(24px, 50% - 210px);--ay:32px;--ay-sm:24px" data-ui-loop><div class="ui ui-panel ui-checks" data-ui="checklist"><div class="ui-checks__head"><div class="ui-title">Dawn run · 6:12am</div><span class="ui-spacer"></span><div class="ui-meta" data-checks-count>3 of 4</div></div><div class="ui-checks__bar"><i data-checks-bar style="--k:0.75"></i></div><ul class="ui-checks__list"><li class="ui-check is-done"><span class="ui-check__box"><svg viewBox="0 0 16 16"><path d="m4.5 8.2 2.3 2.3 4.7-5"/></svg></span><span class="ui-check__label">Inbox sorted</span></li><li class="ui-check is-done"><span class="ui-check__box"><svg viewBox="0 0 16 16"><path d="m4.5 8.2 2.3 2.3 4.7-5"/></svg></span><span class="ui-check__label">Replies drafted</span></li><li class="ui-check is-done"><span class="ui-check__box"><svg viewBox="0 0 16 16"><path d="m4.5 8.2 2.3 2.3 4.7-5"/></svg></span><span class="ui-check__label">Overdue invoices checked</span></li><li class="ui-check"><span class="ui-check__box"><svg viewBox="0 0 16 16"><path d="m4.5 8.2 2.3 2.3 4.7-5"/></svg></span><span class="ui-check__label">Note waiting for you</span></li></ul></div></div></div></div>
         </article>
-        <article class="layer-card reveal">
-          <span class="layer-num">02</span>
-          <div class="layer-content">
-            <h3 class="layer-name">Everything that needs you, in one place</h3>
-            <div class="layer-visual">
-              <div class="playbook-row">
-                <span class="playbook-icon">✉</span>
-                <div><div class="playbook-name">The mailroom</div><div class="playbook-desc">Sorts inbox, drafts replies, never sends</div></div>
-              </div>
-              <div class="playbook-row">
-                <span class="playbook-icon">◎</span>
-                <div><div class="playbook-name">The strategist</div><div class="playbook-desc">Takes a goal, plans the route</div></div>
-              </div>
-            </div>
-            <p class="layer-desc"><strong>The mailroom</strong> reads every email, sorts it, and gets your replies and quotes ready in your voice. You read it and tap send. <strong>The strategist</strong> takes a goal and sees it through.</p>
-          </div>
-        </article>
-        <article class="layer-card reveal">
-          <span class="layer-num">03</span>
-          <div class="layer-content">
-            <h3 class="layer-name">Working through the night</h3>
-            <div class="layer-visual">
-              <div class="timeline-mini">
-                <div class="tl-track"></div>
-                <div class="tl-point tl-point-1"><span class="tl-dot"></span><span class="tl-label">6:12am<br><strong>Dawn run</strong></span></div>
-                <div class="tl-point tl-point-2"><span class="tl-dot"></span><span class="tl-label">9:00am<br><strong>You're online</strong></span></div>
-              </div>
-            </div>
-            <p class="layer-desc">While you sleep, the <strong>dawn run</strong> clears what it safely can and leaves one note: <em>done, needs you, couldn't move</em>. If something breaks, it says so.</p>
-          </div>
-        </article>
-        <article class="layer-card reveal">
-          <span class="layer-num">04</span>
-          <div class="layer-content">
-            <h3 class="layer-name">You make the decisions</h3>
-            <div class="layer-visual">
-              <div class="guard-example">
-                <span class="guard-example-task">Send overdue invoice reminder</span>
-                <span class="guard-example-status"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="3.5" y="7" width="9" height="6.5" rx="1.5" stroke="currentColor" stroke-width="1.3"/><path d="M5.5 7V5a2.5 2.5 0 015 0v2" stroke="currentColor" stroke-width="1.3"/></svg>Waiting for your OK</span>
-              </div>
-            </div>
-            <p class="layer-desc">Six things it <strong>never does on its own</strong>. It prepares everything right up to the line, then you take the final step, every time.</p>
-          </div>
+        <article class="card card--row span-6">
+          <h3>Hands you every decision</h3>
+          <p>It prepares everything right up to the line. Then you take the final step, every time.</p>
+          <div class="panel panel--flush"><div class="stage stage--fade-b"><div class="at-rise fit" style="--fit-max:420px;--ax:max(24px, 50% - 210px);--ay:32px;--ay-sm:24px"><div class="ui ui-panel mini" aria-hidden="true"><div class="mini__head"><b>Send overdue invoice reminder</b><span class="ui-chip">Waiting for your OK</span></div><div class="acts"><span>Send</span><span>Edit</span></div><div class="mini__row"><span>To</span><b>Harbour Fencing</b></div><div class="mini__row"><span>Invoice</span><b>2214, 14 days overdue</b></div></div></div></div></div>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- GUARDRAILS (ink zone) -->
-  <section class="ink-zone">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow">Safe to leave running</span>
-        <h2>Six things it never does alone.</h2>
-      </div>
-      <p class="guard-lede reveal">It prepares everything right up to the line. A person takes the final step, every time.</p>
-      <div class="guard-list reveal">
-        <div class="guard-item"><span class="x" aria-hidden="true">✕</span><span><span class="guard-never">Never</span> contacts anyone outside the business</span></div>
-        <div class="guard-item"><span class="x" aria-hidden="true">✕</span><span><span class="guard-never">Never</span> moves money</span></div>
-        <div class="guard-item"><span class="x" aria-hidden="true">✕</span><span><span class="guard-never">Never</span> changes anyone's job</span></div>
-        <div class="guard-item"><span class="x" aria-hidden="true">✕</span><span><span class="guard-never">Never</span> takes an action that can't be undone</span></div>
-        <div class="guard-item"><span class="x" aria-hidden="true">✕</span><span><span class="guard-never">Never</span> signs or commits the business to anything</span></div>
-        <div class="guard-item"><span class="x" aria-hidden="true">✕</span><span><span class="guard-never">Never</span> weakens its own oversight</span></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- RESULTS -->
-  <section id="proof">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow">Success stories</span>
-        <h2>Real clients, real results.</h2>
-      </div>
-      <div class="proof-stats reveal">
-        <div class="stat"><span class="stat-num">3x</span><span class="stat-label">The work done in the same hours</span></div>
-        <div class="stat"><span class="stat-num">No hire</span><span class="stat-label">No admin needed</span></div>
-        <div class="stat"><span class="stat-num">20+ hrs</span><span class="stat-label">Of admin off his plate each week</span></div>
-      </div>
-      <div class="proof-quote-wrap reveal">
-        <p class="pull-quote">"20+ hours a week, easily. It's stopped me needing to hire one. I don't need an admin at all now. I still work late, but I'm getting triple the work done in the same hours."</p>
-        <cite>Chanse Perham, Private Lending</cite>
-      </div>
-      <div class="proof-stats reveal" style="margin-top:48px; padding-top:48px; border-top:1px solid var(--line);">
-        <div class="stat"><span class="stat-num">$20,000</span><span class="stat-label">Payment recovered from a contract clause they didn't know existed</span></div>
-        <div class="stat"><span class="stat-num">30 pages</span><span class="stat-label">Buried in an email thread since March</span></div>
-      </div>
-      <div class="proof-quote-wrap reveal">
-        <p class="pull-quote">"We didn't even know we had to give the other business a warranty before they'd pay us. It was buried in a thirty-page contract from months back. The Core found it, read through the whole thing, told us exactly what we needed to do, and helped us draft it. We got the $20,000."</p>
-        <cite>Civil construction, The Core install</cite>
-      </div>
-      <div class="proof-stats reveal" style="margin-top:48px; padding-top:48px; border-top:1px solid var(--line);">
-        <div class="stat"><span class="stat-num">2 years</span><span class="stat-label">Of tech catch-up, in 2 months</span></div>
-        <div class="stat"><span class="stat-num">14 hr days</span><span class="stat-label">And still learning at night</span></div>
-      </div>
-      <div class="proof-quote-wrap reveal">
-        <p class="pull-quote">"Straight up, I've been giving myself a crash course in tech for the last 2 months, since we got The Core. It's fast tracked me about 2 years in 2 months, I reckon."</p>
-        <cite>Civil construction, The Core install</cite>
-      </div>
-      <div class="proof-stats reveal" style="margin-top:48px; padding-top:48px; border-top:1px solid var(--line);">
-        <div class="stat"><span class="stat-num">15 min</span><span class="stat-label">For the full picture. By hand: half a day</span></div>
-        <div class="stat"><span class="stat-num">Out to 2028</span><span class="stat-label">Years of bookings, sorted in one pass</span></div>
-      </div>
-      <div class="proof-quote-wrap reveal">
-        <p class="pull-quote">Half a day to untangle one booking request by hand. Fifteen minutes for the whole picture with The Core.</p>
-        <cite>Hospitality lodge, first week of install</cite>
-      </div>
-      <div class="center-cta reveal"><a href="/bottleneck-audit#book" class="btn btn-primary btn-large">Book your free 30-minute audit <svg class="arrow" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
-    </div>
-  </section>
-
-  <!-- STEP BY STEP -->
-  <section id="process">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow">How it works</span>
-        <h2>From first call to running in your business.</h2>
-        <p>Here's the plan, from the Bottleneck Audit to your first morning with the list already cleared.</p>
-      </div>
-      <div class="process-steps four">
-        <div class="process-step reveal">
-          <div class="process-num">1</div>
-          <h3>Bottleneck Audit</h3>
-          <p>A free 30-minute call. We find where the business is running through you, and whether The Core is the right fix.</p>
+  <section class="section" id="control" aria-labelledby="control-h">
+    <div class="wrap">
+      <div data-moment="liquid-type" class="section-head control-head"><h2 class="mo-lt__type" id="control-h">You make every decision.</h2></div>
+      <div class="grid">
+        <div class="span-5 stack-5">
+          <p class="t-lead">Six things The Core never does alone. These limits sit in a file it can't edit.</p>
+          <p>It prepares everything right up to the line, then a person takes the final step. If something breaks, it tells you in plain words.</p>
         </div>
-        <div class="process-step reveal">
-          <div class="process-num">2</div>
-          <h3>Install day</h3>
-          <p>Done remotely, in a day. Your business written down once, your tools connected, your writing style captured, and set up to run around the clock.</p>
-        </div>
-        <div class="process-step reveal">
-          <div class="process-num">3</div>
-          <h3>30 days of support</h3>
-          <p>A call about once a week while it beds in, and your installation pack to keep.</p>
-        </div>
-        <div class="process-step reveal">
-          <div class="process-num">4</div>
-          <h3>Running</h3>
-          <p>It works through the night. Each morning there's one note waiting: done, needs you, couldn't move.</p>
+        <div class="frame frame--split frame--lit span-6 start-7" role="img" aria-label="The six locked actions, each switched off and locked">
+          <div class="stage stage--fade-b"><div class="at-rise fit" style="--fit-max:460px;--ax:max(24px, 50% - 230px);--ay:48px;--ay-sm:24px" aria-hidden="true">
+            <div class="ui ui-panel ui-toggles" data-ui="toggles"><div class="ui-head"><div class="ui-title">Locked in the charter</div><span class="ui-spacer"></span><div class="ui-meta" data-tg-count>0 of 6 on</div></div><ul class="ui-toggles__list"><li class="ui-tg"><span class="ui-tg__text"><span class="ui-tg__label">Contact anyone outside the business</span><span class="ui-tg__sub">You send every message</span></span><button class="ui-switch" type="button" role="switch" aria-checked="false" aria-label="Contact anyone outside the business"><i></i></button></li><li class="ui-tg"><span class="ui-tg__text"><span class="ui-tg__label">Move money</span><span class="ui-tg__sub">No payments or refunds</span></span><button class="ui-switch" type="button" role="switch" aria-checked="false" aria-label="Move money"><i></i></button></li><li class="ui-tg"><span class="ui-tg__text"><span class="ui-tg__label">Change anyone's job</span><span class="ui-tg__sub">Pay, role or access</span></span><button class="ui-switch" type="button" role="switch" aria-checked="false" aria-label="Change anyone's job"><i></i></button></li><li class="ui-tg"><span class="ui-tg__text"><span class="ui-tg__label">Do what can't be undone</span><span class="ui-tg__sub">Nothing deleted for good</span></span><button class="ui-switch" type="button" role="switch" aria-checked="false" aria-label="Do what can't be undone"><i></i></button></li><li class="ui-tg"><span class="ui-tg__text"><span class="ui-tg__label">Sign for the business</span><span class="ui-tg__sub">No contracts in your name</span></span><button class="ui-switch" type="button" role="switch" aria-checked="false" aria-label="Sign for the business"><i></i></button></li><li class="ui-tg"><span class="ui-tg__text"><span class="ui-tg__label">Weaken its own oversight</span><span class="ui-tg__sub">It can't edit this list</span></span><button class="ui-switch" type="button" role="switch" aria-checked="false" aria-label="Weaken its own oversight"><i></i></button></li></ul></div>
+          </div></div>
         </div>
       </div>
-      <p class="reveal" style="max-width:760px;margin:28px auto 0;text-align:center;color:var(--ink-muted);">More done in 7 days, or your money back. After the 30 days, the system is yours. New playbooks built later are quoted separately.</p>
-      <div class="center-cta reveal"><a href="/bottleneck-audit#book" class="btn btn-primary btn-large">Book your free 30-minute audit <svg class="arrow" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
     </div>
   </section>
 
-  <!-- WHAT YOU GET -->
-  <section>
-    <div class="container">
-      <div class="section-head center reveal">
-        <span class="eyebrow">What you get</span>
-        <h2>Inside every install of The Core.</h2>
-        <p>What makes it different: it's built around your business before it does anything, and it prepares the work but never sends it.</p>
-      </div>
-      <ul class="check-list get-list reveal">
-        <li class="check-item"><span class="check-icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M12 4L6.5 10 4 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>An AI brain built around your business, so it never needs explaining twice</span></li>
-        <li class="check-item"><span class="check-icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M12 4L6.5 10 4 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>The mailroom: every email read and sorted, replies and quotes ready in your voice</span></li>
-        <li class="check-item"><span class="check-icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M12 4L6.5 10 4 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>The strategist: hand it a goal, and it plans and runs the work</span></li>
-        <li class="check-item"><span class="check-icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M12 4L6.5 10 4 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>The dawn run: working through the night, so your list is cleared before you start</span></li>
-        <li class="check-item"><span class="check-icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M12 4L6.5 10 4 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Six guardrails: it never sends, spends or signs on its own</span></li>
-        <li class="check-item"><span class="check-icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M12 4L6.5 10 4 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Installed for you, remotely, in a day, and set up to run around the clock</span></li>
-        <li class="check-item"><span class="check-icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M12 4L6.5 10 4 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>One seat included, plus your installation pack</span></li>
-        <li class="check-item"><span class="check-icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M12 4L6.5 10 4 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>30 days of support, with a call about once a week</span></li>
-        <li class="check-item"><span class="check-icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M12 4L6.5 10 4 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>More done in 7 days, or your money back</span></li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- WHO IT'S FOR -->
-  <section>
-    <div class="container">
-      <div class="section-head center reveal">
-        <span class="eyebrow">Who it's for</span>
-        <h2>Are you the right fit?</h2>
-      </div>
-      <ul class="check-list reveal">
-        <li class="check-item"><span class="check-icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M12 4L6.5 10 4 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>You run an established business, and you're still working in it</span></li>
-        <li class="check-item"><span class="check-icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M12 4L6.5 10 4 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>You want to grow the business and do less at the same time</span></li>
-        <li class="check-item"><span class="check-icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M12 4L6.5 10 4 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Everything goes through you, and nothing moves unless you move it</span></li>
-        <li class="check-item"><span class="check-icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M12 4L6.5 10 4 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>You can't switch off, because nothing runs without you watching</span></li>
-        <li class="check-item"><span class="check-icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M12 4L6.5 10 4 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>You've tried AI, but couldn't get it working the way you wanted</span></li>
-      </ul>
-      <p class="center-cta reveal" style="color:var(--ink-faint); font-size:0.95rem;">Not sure it fits your business? We'll tell you straight on the call.</p>
-    </div>
-  </section>
-
-  <!-- FAQ VIDEO -->
-  <section id="faq-video">
-    <div class="container">
-      <div class="section-head center reveal">
-        <span class="eyebrow">Questions</span>
-        <h2>The questions people ask before they book, answered.</h2>
-        <p>Watch the short version, or read the answers below.</p>
-      </div>
-      <div class="video-slot reveal" data-video="faq">Video coming soon.</div>
-      <div class="faq-list" style="margin-top:40px;">
-        <details class="reveal"><summary>What does it cost?</summary><p>It's a one-off install, not a subscription. We'll give you the exact figure on the Bottleneck Audit, once we know what your business needs. And it's covered by our guarantee: more done in 7 days, or your money back.</p></details>
-        <details class="reveal"><summary>How long does it take to set up?</summary><p>The install takes less than a working day, about 3 to 8 hours depending on your tools. Then we stay with you for 30 days while it beds in, with a call about once a week.</p></details>
-        <details class="reveal"><summary>Will it send anything without asking me?</summary><p>No. It prepares the reply, the follow-up or the invoice reminder, and you press send. It can't contact a customer, move money or commit you to anything on its own.</p></details>
-        <details class="reveal"><summary>I've tried AI before. It didn't stick.</summary><p>Most owners we talk to have. The Core is set up around your business before it does anything: what you do, who you serve and how you write. It's installed for you and walked through with you, so you don't have to learn how to make it work.</p></details>
-        <details class="reveal"><summary>I'm not very technical. Will I manage?</summary><p>Yes. You talk to it in plain English, like a new hire in their first week. If it isn't sure what you mean, it asks.</p></details>
-        <details class="reveal"><summary>What if it doesn't work for me?</summary><p>If you're not getting more done within 7 days of handover, you get a full refund.</p></details>
-        <details class="reveal"><summary>Which tools does it work with?</summary><p>It connects to your mail, calendar and accounts, so it works on your real business, not a demo. Other tools depend on your setup, so we confirm what's possible on the Bottleneck Audit.</p></details>
-          <details class="reveal"><summary>Does my computer need to stay on?</summary><p>It runs around the clock. If you already have a computer that stays on all the time, like a Mac Studio, it runs there. If not, we set it up on a server, which costs about $10 a month, paid to the host directly.</p></details>
+  <section class="section" id="process" aria-labelledby="process-h" style="--hm: 2">
+    <div class="wrap">
+      <div class="section-head"><h2 id="process-h">From first call to The Core running</h2></div>
+      <div class="grid steps steps--4">
+        <article class="card card--row span-3">
+          <span class="step-num">1</span><h3>Bottleneck Audit</h3><p>A free 30-minute call to find where the business runs through you.</p>
+          <div class="panel panel--flush"><div class="stage stage--fade-b"><div class="at-rise fit" style="--fit-max:280px;--ax:max(24px, 50% - 140px);--ay:24px;--ay-sm:16px"><div class="ui ui-panel mini" aria-hidden="true"><div class="mini__head"><b>Bottleneck Audit</b><span class="ui-chip">Booked</span></div><div class="mini__row"><span>Length</span><b>30 minutes</b></div><div class="mini__row"><span>Cost</span><b>Free</b></div></div></div></div></div>
+        </article>
+        <article class="card card--row span-3">
+          <span class="step-num">2</span><h3>Install day</h3><p>Done remotely in a day, your tools connected and your writing style captured.</p>
+          <div class="panel panel--flush"><div class="stage stage--fade-b"><div class="at-rise fit" style="--fit-max:280px;--ax:max(24px, 50% - 140px);--ay:24px;--ay-sm:16px"><div class="ui ui-panel ui-checks" data-ui="checklist"><div class="ui-checks__head"><div class="ui-title">Install day</div><span class="ui-spacer"></span><div class="ui-meta" data-checks-count>3 of 3</div></div><div class="ui-checks__bar"><i data-checks-bar style="--k:1.00"></i></div><ul class="ui-checks__list"><li class="ui-check is-done"><span class="ui-check__box"><svg viewBox="0 0 16 16"><path d="m4.5 8.2 2.3 2.3 4.7-5"/></svg></span><span class="ui-check__label">Mailbox</span></li><li class="ui-check is-done"><span class="ui-check__box"><svg viewBox="0 0 16 16"><path d="m4.5 8.2 2.3 2.3 4.7-5"/></svg></span><span class="ui-check__label">Price list</span></li><li class="ui-check is-done"><span class="ui-check__box"><svg viewBox="0 0 16 16"><path d="m4.5 8.2 2.3 2.3 4.7-5"/></svg></span><span class="ui-check__label">Your writing</span></li></ul></div></div></div></div>
+        </article>
+        <article class="card card--row span-3">
+          <span class="step-num">3</span><h3>30 days of support</h3><p>A call about once a week while it beds in, plus your installation pack.</p>
+          <div class="panel panel--flush"><div class="stage stage--fade-b"><div class="at-rise fit" style="--fit-max:280px;--ax:max(24px, 50% - 140px);--ay:24px;--ay-sm:16px"><div class="ui ui-notify" data-ui="notify"><ul class="ui-notify__list"><li class="ui-note"><span class="ui-note__ico"><svg class="ui-icon" viewBox="0 0 16 16"><path d="m3.5 8.4 2.8 2.8 6.2-6.4"/></svg></span><span class="ui-note__text"><span class="ui-note__title">Weekly check-in<time>Tue</time></span><span class="ui-note__body">30 minutes with Eru</span></span></li></ul></div></div></div></div>
+        </article>
+        <article class="card card--row span-3">
+          <span class="step-num">4</span><h3>Running</h3><p>More done in 7 days, or your money back. After 30 days the system is yours.</p>
+          <div class="panel panel--flush"><div class="stage stage--fade-b"><div class="at-rise fit" style="--fit-max:280px;--ax:max(24px, 50% - 140px);--ay:24px;--ay-sm:16px"><div class="ui ui-panel mini" aria-hidden="true"><div class="mini__head"><b>Your first week</b><span class="ui-chip">Day 7</span></div><div class="mini__days"><i></i><i></i><i></i><i></i><i></i><i></i><i class="is-on"></i></div></div></div></div></div>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- FINAL CTA -->
-  <section class="cta-section">
-    <div class="container">
-      <div class="cta-card reveal">
-        <span class="eyebrow">Free · 30 minutes</span>
-        <h2>Your business keeps moving, no matter where you are.</h2>
-        <p>Book a free 30-minute Bottleneck Audit. We'll find where the business is running through you, and show you exactly what The Core would take off your plate. No hard sell. More done in 7 days, or your money back.</p>
-        <a href="/bottleneck-audit#book" class="btn btn-primary btn-large">Book your free 30-minute audit <svg class="arrow" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-        <p class="cta-note">Free · 30 minutes · Google Meet</p>
+  <section class="section" id="included" aria-labelledby="included-h" style="--hm: 2">
+    <div class="wrap">
+      <div class="section-head"><h2 id="included-h">Inside every install of The Core</h2></div>
+      <div class="grid">
+        <ul class="rows span-5">
+          <li><span class="rows__name">The mailroom</span><p>Every email read and sorted, replies and quotes ready in your voice.</p></li>
+          <li><span class="rows__name">The strategist</span><p>Hand it a goal and it plans and runs the work.</p></li>
+          <li><span class="rows__name">The dawn run</span><p>Working through the night, so your list is cleared before you start.</p></li>
+          <li><span class="rows__name">Six guardrails</span><p>It never sends, spends or signs on its own.</p></li>
+        </ul>
+        <div class="panel panel--flush tools span-6 start-7" role="img" aria-label="The Core connected to Gmail, Outlook, Google Calendar, Xero and Google Drive"><div class="stage stage--fade-b"><div class="at-rise fit" style="--fit-max:440px;--ax:max(24px, 50% - 220px);--ay:40px;--ay-sm:20px"><div class="ui ui-panel ui-apps" data-ui="integrations"><div class="ui-head"><div class="ui-title">Connected</div><span class="ui-spacer"></span><div class="ui-meta" data-apps-count>5 connected</div></div><ul class="ui-apps__list"><li class="ui-app is-on"><span class="ui-logo ui-logo--sm"><img src="assets/icons/gmail.svg" alt=""></span><span class="ui-app__text"><span class="ui-app__name">Gmail</span><span class="ui-app__sub">Reads mail, saves drafts</span></span><span class="ui-app__state"><span class="ui-chip ui-app__on">Connected</span></span></li><li class="ui-app is-on"><span class="ui-logo ui-logo--sm"><img src="assets/icons/outlook.svg" alt=""></span><span class="ui-app__text"><span class="ui-app__name">Outlook</span><span class="ui-app__sub">The same, on Microsoft 365</span></span><span class="ui-app__state"><span class="ui-chip ui-app__on">Connected</span></span></li><li class="ui-app is-on"><span class="ui-logo ui-logo--sm"><img src="assets/icons/google-calendar.svg" alt=""></span><span class="ui-app__text"><span class="ui-app__name">Google Calendar</span><span class="ui-app__sub">Checks when you're free</span></span><span class="ui-app__state"><span class="ui-chip ui-app__on">Connected</span></span></li><li class="ui-app is-on"><span class="ui-logo ui-logo--sm"><img src="assets/icons/xero.svg" alt=""></span><span class="ui-app__text"><span class="ui-app__name">Xero</span><span class="ui-app__sub">Looks up what's been paid</span></span><span class="ui-app__state"><span class="ui-chip ui-app__on">Connected</span></span></li><li class="ui-app is-on"><span class="ui-logo ui-logo--sm"><img src="assets/icons/google-drive.svg" alt=""></span><span class="ui-app__text"><span class="ui-app__name">Google Drive</span><span class="ui-app__sub">Reads your files and price lists</span></span><span class="ui-app__state"><span class="ui-chip ui-app__on">Connected</span></span></li></ul></div></div></div></div>
       </div>
     </div>
   </section>
-
+  <section class="section" id="questions" aria-labelledby="questions-h" style="--hm: 2">
+    <div class="wrap">
+      <div class="grid grid--top">
+        <div class="section-head span-5"><h2 id="questions-h">Questions about The Core</h2><p class="muted">Anything else, ask on the call.</p></div>
+        <div class="panel panel--flush drafts span-6 start-7" role="img" aria-label="An example: replies waiting in drafts, none sent by The Core"><div class="stage stage--fade-b"><div class="at-rise fit" style="--fit-max:380px;--ax:max(24px, 50% - 190px);--ay:20px;--ay-sm:16px"><div class="ui ui-panel mini" aria-hidden="true"><div class="mini__head"><b>Drafts</b><span class="ui-chip">Waiting for you</span></div><div class="mini__row"><span>Sam P.</span><b>Switchboard quote</b></div><div class="mini__row"><span>Sent by The Core</span><b>0</b></div></div></div></div></div>
+      </div>
+      <div class="faq faq--grid">
+          <div class="faq__item"><h3>Does The Core send emails on its own?</h3><p>No. It prepares replies and leaves them in your drafts. You read them, change what you like and send them yourself. That's how the system is built, not a setting.</p></div>
+          <div class="faq__item"><h3>Where does my business data live with The Core?</h3><p>On your own computer that stays on, or on a server set up for you that you pay the host for. You choose the host and the country it's in.</p></div>
+          <div class="faq__item"><h3>Does the AI behind The Core train on my data?</h3><p>The text The Core works on is sent to Claude, run by Anthropic. Whether Anthropic may use your chats to improve its models depends on your Claude plan and a setting in your own account. On a Pro plan the choice is yours.</p></div>
+          <div class="faq__item"><h3>Who can see my files once The Core is installed?</h3><p>During the install I can see what you see, including documents. I don't read them. Your files stay with you and Oranga AI keeps no copy.</p></div>
+          <div class="faq__item"><h3>Am I locked in to The Core?</h3><p>No. Your business data stays yours. So does everything built on top of it. Your knowledge base stays usable if the agreement ends. Once it's paid in full the licence is permanent.</p></div>
+          <div class="faq__item"><h3>What if The Core gets something wrong in front of a customer?</h3><p>It can't reach a customer on its own. Every reply waits in your drafts for you to read first, so a mistake stops with you.</p></div>
+      </div>
+    </div>
+  </section>
 </main>
-<script>
-(function () {
-  // Unlisted YouTube videos: a short cut of the homework video, and the FAQ video from /booked. youtube-nocookie.com is allowed by the CSP.
-  var VIDEOS = {
-    howitworks: 'https://www.youtube-nocookie.com/embed/WYDtoHJrCrI?rel=0&modestbranding=1&playsinline=1',
-    faq: 'https://www.youtube-nocookie.com/embed/QrpDzS2Ll3s?rel=0&modestbranding=1&playsinline=1',
-  };
-  document.querySelectorAll('.video-slot[data-video]').forEach(function (el) {
-    var url = VIDEOS[el.getAttribute('data-video')];
-    if (!url) return;
-    el.innerHTML = '';
-    var f = document.createElement('iframe');
-    f.src = url; f.title = 'Video from Eru'; f.loading = 'lazy';
-    f.allow = 'accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen'; f.allowFullscreen = true;
-    el.appendChild(f); el.classList.add('has-video');
-  });
-})();
-</script>
 
-<footer>
-  <div class="container footer-inner">
-    <div class="logo">
-      <span class="logo-mark" aria-hidden="true"></span>
-      <span>Oranga AI</span>
+<footer class="footer closing" id="contact" aria-labelledby="close-h">
+  <div class="wrap">
+    <div class="closing__cta close--word">
+      <div class="section-head--split">
+        <div><h2 id="close-h">Everything runs through you. It doesn't have to.</h2><p class="t-lead">Book a free 30-minute call. More done in 7 days, or your money back.</p></div>
+        <a class="btn btn--primary" href="bottleneck-audit#book" data-track="close">Book a call<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
+      </div>
+      <p class="close__word" aria-hidden="true">The Core</p>
     </div>
-    <div class="footer-meta">
-      <a href="/">Home</a>
-      <a href="/privacy">Privacy</a>
-      <a href="/terms">Terms</a>
-      <a href="mailto:support@orangaai.com">support@orangaai.com</a>
-    </div>
-    <div class="footer-meta">
-      <span>© 2026 Oranga AI</span>
+    <div class="closing__links">
+      <div class="grid">
+        <div class="span-4 stack-4">
+          <a class="nav__logo" href="/"><img class="logo-orb" src="images/orb-fallback.png" alt="" width="28" height="28">Oranga AI</a>
+          <p class="footer__lede">The Core, installed for owner-operators in Australia and New Zealand.</p>
+        </div>
+        <div class="span-2 footer__col"><h3>Product</h3><ul><li><a href="how-it-works">How it works</a></li><li><a href="results">Results</a></li></ul></div>
+        <div class="span-2 footer__col"><h3>Start</h3><ul><li><a href="admin-exposure">Bottleneck Score</a></li><li><a href="bottleneck-audit#book">Book a call</a></li></ul></div>
+        <div class="span-2 footer__col"><h3>Company</h3><ul><li><a href="about">About Eru</a></li><li><a href="mailto:support@orangaai.com">Email support</a></li></ul></div>
+        <div class="span-2 footer__col"><h3>Legal</h3><ul><li><a href="privacy">Privacy</a></li><li><a href="terms">Terms</a></li></ul></div>
+      </div>
+      <div class="footer__legal">
+        <span>&copy; 2026 Oranga AI</span>
+        <div class="socials"></div>
+      </div>
     </div>
   </div>
 </footer>
 
-<!-- CHATBOT -->
-<div class="chat-teaser" id="chatTeaser" role="status">
-  <button class="chat-teaser-close" id="chatTeaserClose" aria-label="Dismiss">
-    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-  </button>
-  <p>Got a question about The Core? I'm here if you need a hand.</p>
-</div>
-<button class="chat-launcher" id="chatLauncher" aria-label="Open chat">
-  <svg class="icon-chat" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-  <svg class="icon-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-</button>
-
-<aside class="chat-panel" id="chatPanel" role="dialog" aria-label="Oranga AI chatbot">
-  <header class="chat-header">
-    <div class="chat-avatar" aria-hidden="true"></div>
-    <div class="chat-title">
-      <div class="name">Oranga AI</div>
-      <div class="status">Online · Replies instantly</div>
-    </div>
-    <button class="chat-close" id="chatClose" aria-label="Close chat">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-    </button>
-  </header>
-  <div class="chat-messages" id="chatMessages"></div>
-  <div class="chat-suggestions" id="chatSuggestions"></div>
-  <form class="chat-input-wrap" id="chatForm">
-    <label for="chatInput" class="skip-link">Ask Oranga AI a question</label>
-    <input type="text" class="chat-input" id="chatInput" placeholder="Ask anything about The Core..." autocomplete="off">
-    <button type="submit" class="chat-send" aria-label="Send message">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-    </button>
-  </form>
-</aside>
-
-<script src="/app.js" defer></script>
-<script src="/booking-chatbot.js" defer></script>
+<script type="module" src="assets/system.js"></script>
+<script type="module" src="assets/motion/motion.js"></script>
+<script type="module" src="assets/layout/layout.js"></script>
+<script>
+  document.querySelectorAll('[data-track]').forEach(function (a) {
+    a.addEventListener('click', function () { if (window.gtag) gtag('event', 'book_call_click', { place: a.dataset.track, page: location.pathname }); });
+  });
+</script>
 
 </body>
 </html>

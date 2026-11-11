@@ -1,2 +1,7 @@
 .vercel
 node_modules
+
+# design-check output (taste skill)
+.taste-skill/
+shots/
+.DS_Store

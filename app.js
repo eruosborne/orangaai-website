@@ -71,7 +71,7 @@
     },
     {
       keywords: ['what is oranga', 'who are you', 'what do you do', 'about oranga', 'about you', 'what is this', 'tell me about', 'explain what', 'describe what', 'overview', 'summary', 'what is oranga core', 'what is the core', 'the core', 'what exactly', 'what is core'],
-      answer: "<strong>The Core</strong> is an AI brain built around your business. It never sleeps: it reads every email, gets your replies, follow-ups and quotes ready, and works through the night so your list is cleared before you start. You make the decisions. It prepares everything but never sends, spends or signs anything without your approval. We build it, install it in a day and walk you through it. There's a 3-minute video on the <a href='/how-it-works'>How it works</a> page."
+      answer: "<strong>The Core</strong> is an AI admin system built around your business. It never sleeps: it reads every email, gets your replies, follow-ups and quotes ready, and works through the night so your list is cleared before you start. You make the decisions. It prepares everything but never sends, spends or signs anything without your approval. We build it, install it in a day and walk you through it. There's a 3-minute video on the <a href='/how-it-works'>How it works</a> page."
     },
     {
       keywords: ['oranga', 'maori', 'name mean', 'meaning', 'wellbeing', 'thriving'],

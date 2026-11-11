@@ -1,56 +1,79 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" data-type="software" data-radius="soft" data-buttons="pill" data-motion>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Oranga AI: an AI brain built around your business</title>
-<meta name="description" content="The Core is an AI brain built around your business. It never sleeps, so the business keeps growing without everything running through you. Installed in a day.">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Core: AI admin system for owner-operators | Oranga AI</title>
+<meta name="description" content="The Core reads every email, gets your replies and quotes ready and keeps working through the night. Installed in a day by Oranga AI.">
 <link rel="canonical" href="https://orangaai.com/">
-
-<!-- Open Graph / Twitter -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Oranga AI">
-<meta property="og:title" content="Oranga AI: an AI brain built around your business">
-<meta property="og:description" content="An AI brain that never sleeps, so the business keeps growing without everything running through you. Freedom of choice.">
+<meta property="og:title" content="The Core: AI admin system for owner-operators">
+<meta property="og:description" content="An AI admin system that never sleeps, so the business keeps growing without everything running through you.">
 <meta property="og:url" content="https://orangaai.com/">
 <meta property="og:image" content="https://orangaai.com/images/og.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Oranga AI: an AI brain built around your business">
-<meta name="twitter:description" content="An AI brain that never sleeps, so the business keeps growing without everything running through you. Freedom of choice.">
+<meta name="twitter:title" content="The Core: AI admin system for owner-operators">
+<meta name="twitter:description" content="An AI admin system that never sleeps, so the business keeps growing without everything running through you.">
 <meta name="twitter:image" content="https://orangaai.com/images/og.png">
-
-<link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+<link rel="icon" type="image/png" href="images/orb-fallback.png">
 <meta name="theme-color" content="#121517">
+<meta name="site-kind" content="software">
+<meta name="page-type" content="software">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Karla:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/styles.css">
-<!-- Lighting file for the 3D orb: fetch it alongside orb.js instead of after it.
-     The href is kept in sync by `npm run build:embed` in the oranga-orb-site project. -->
-<link rel="preload" href="/orb/orb-CaWRRY_y.hdr" as="fetch" crossorigin>
-<script>
-  // While the 3D orb loads, keep the hero's orb spot empty (no static image), so the live orb
-  // simply fades in. Skipped when the orb won't run (reduced motion, no WebGL). A backstop brings
-  // the static image back if the orb isn't ready after 5s on screen (a background tab doesn't
-  // draw, so hidden time doesn't count).
-  if (!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) && 'WebGLRenderingContext' in window) {
-    document.documentElement.classList.add('orb-loading');
-    (function backstop() {
-      setTimeout(function () {
-        if (document.hidden) document.addEventListener('visibilitychange', backstop, { once: true });
-        else document.documentElement.classList.remove('orb-loading');
-      }, 5000);
-    })();
-  }
-</script>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..700&family=Figtree:wght@400..600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/system.css">
+<link rel="stylesheet" href="assets/ui/cards.css">
+<link rel="stylesheet" href="assets/motion/motion.css">
+<link rel="stylesheet" href="assets/backgrounds/backgrounds.css">
+<link rel="stylesheet" href="assets/layout/layout.css">
+<link rel="stylesheet" href="assets/icons/icon.css">
+<style>
+:root {
+  --p-bg: #121517; --p-surface: #1b2124; --p-ink: #f2ebe1; --p-muted: #b9afa3;
+  --p-accent: #3dbf9f; --p-accent-ink: #121517; --p-action: #3dbf9f; --p-action-ink: #121517;
+  --p-inv-bg: #f2ebe1; --p-inv-surface: #e0dad1; --p-inv-ink: #121517; --p-inv-muted: #5d5d5b;
+  --p-inv-accent: #121517; --p-inv-accent-ink: #f2ebe1; --p-inv-action: #121517; --p-inv-action-ink: #f2ebe1;
+  --font-display: "Bricolage Grotesque", system-ui, sans-serif;
+  --font-text: "Figtree", system-ui, sans-serif;
+  --font-mono: "DM Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --display-weight: 400;
+  --display-tracking: -0.03em;
+  --display-tracking-xl: -0.04em;
+  --display-stretch: 96%;
+}
+</style>
+<link rel="stylesheet" href="assets/ui/base.css">
+<link rel="stylesheet" href="assets/ui/window/fragment.css">
+<link rel="stylesheet" href="assets/ui/chat/fragment.css">
+<link rel="stylesheet" href="assets/ui/notify/fragment.css">
+<link rel="stylesheet" href="assets/ui/checklist/fragment.css">
+<link rel="stylesheet" href="assets/ui/toggles/fragment.css">
+<link rel="stylesheet" href="assets/ui/integrations/fragment.css">
+<link rel="stylesheet" href="assets/ui/doc/fragment.css">
+<link rel="stylesheet" href="site.css">
+<script>document.documentElement.classList.add('m-enter');setTimeout(()=>document.documentElement.classList.add('m-enter-done'),700)</script>
+<script src="assets/backgrounds/backgrounds.js"></script>
+<script>document.documentElement.classList.add('mo-js');setTimeout(()=>document.documentElement.classList.add('mo-safe'),2500)</script>
+<link rel="modulepreload" href="assets/moments/moments.js">
+<link rel="modulepreload" href="assets/moments/lib.js">
+<link rel="modulepreload" href="assets/moments/line-carries-colour/moment.js">
+<style>
+  #handles .panel { --p-h: 200px; }
+  #results .lodge { --p-h: 112px; margin-block: var(--s-3); } #questions .drafts { --p-h: 196px; margin-top: var(--s-6); } @media (min-width: 1024px) { #questions .drafts { --p-h: 320px; } }
+  #install .panel { --p-h: 290px; }
+  @media (min-width: 1024px) and (max-width: 1279px) { #handles .panel { --p-h: 270px; } }
+  @media (max-width: 639px) { #handles .panel { --p-h: 168px; } #install .panel { --p-h: 150px; } }
+</style>
 
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   "name": "Oranga AI",
-  "description": "Oranga AI installs The Core, a system for owner-operators of established businesses that prepares the inbox, follow-ups and scheduling every day, with the owner approving what matters.",
+  "description": "Oranga AI installs The Core, an AI admin system for owner-operators that prepares replies, quotes and follow-ups, with the owner approving what goes out.",
   "url": "https://orangaai.com/",
   "email": "support@orangaai.com",
   "areaServed": ["AU", "NZ"],
@@ -58,7 +81,6 @@
   "founder": { "@type": "Person", "name": "Eru Osborne" }
 }
 </script>
-
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZXS09113QF"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -79,135 +101,420 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 fbq('init', '1601510988349512');
 fbq('track', 'PageView');
 </script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1601510988349512&ev=PageView&noscript=1"
-/></noscript>
+<noscript><img height="1" width="1" style="display:none" alt=""
+src="https://www.facebook.com/tr?id=1601510988349512&ev=PageView&noscript=1"></noscript>
 <!-- End Meta Pixel Code -->
 </head>
 <body>
+<!-- type: software (an AI admin system, installed as a service)
+     deal: hero centred, nav nav-centre, close close-word, footer footer-columns, rhythm space (dark-band dealt first:
+     its inverse ground is light, against the brand's dark-only rule, so dealt again from surface-pairs|space),
+     buttons pill, mark: the client's own orb logo in place of the dealt initial
+     palette: the client's brand colours through start.mjs brand, type bricolage (Bricolage Grotesque, Figtree, DM Mono)
+     effect: none in the hero (a CSS lit ground in the window frame); moments: line-carries-colour on #limits -->
 
-<a href="#top" class="skip-link">Skip to content</a>
+<header class="nav nav--centre">
+  <div class="wrap nav__bar">
+    <a class="skip-link" href="#top">Skip to content</a>
+    <a class="nav__logo" href="/"><img class="logo-orb" src="images/orb-fallback.png" alt="" width="28" height="28">Oranga AI</a>
+    <nav class="nav__links" aria-label="Main">
+      <div class="nav__item"><a class="nav__link" href="how-it-works">Product</a></div>
+      <div class="nav__item"><a class="nav__link" href="results">Results</a></div>
+      <div class="nav__item"><a class="nav__link" href="about">About</a></div>
+      <div class="nav__item"><a class="nav__link" href="admin-exposure">Quiz</a></div>
+    </nav>
+    <div class="nav__actions">
+      <a class="btn btn--primary" href="bottleneck-audit#book" data-track="nav">Book a call</a>
+    </div>
+    <button class="nav__toggle" type="button" aria-expanded="false" aria-label="Menu">
+      <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 5h14M2 13h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+</header>
 
 <main id="top">
-
-  <!-- HERO: the Oranga orb, connected to the tools a trade business already runs on.
-       3D scene is built in the oranga-orb-site project (npm run build:embed → /orb/). -->
-  <section class="hero-orb" aria-labelledby="hero-title">
-    <div class="container hero-orb-inner">
-      <div class="hero-orb-head">
-        <p class="hero-orb-brand">Oranga AI</p>
-        <span class="eyebrow">You didn't start a business to read emails</span>
-        <h1 id="hero-title">You started it for <em class="accent">freedom</em>.</h1>
-        <p class="hero-orb-sub">Meet <strong>The Core</strong>: an AI brain built around your business. It never sleeps, so the business keeps growing without everything running through you.</p>
+  <section class="hero hero--centred" data-enter aria-labelledby="hero-h">
+    <div class="wrap"><div class="hero-text">
+      <div class="hero__c">
+        <a class="pill" href="#install"><span>Installed in a day</span><span class="muted">More done in 7 days, or your money back</span></a>
+        <h1 id="hero-h">AI admin system for owner-operators</h1>
+        <p class="hero__lead">The Core reads every email, gets your replies and quotes ready and keeps working through the night. Nothing goes out until you tap send.</p>
+        <div class="btn-row">
+          <a class="btn btn--primary" href="bottleneck-audit#book" data-track="hero">Book a call<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
+          <a class="btn btn--secondary" href="how-it-works">See how it works</a>
+        </div>
       </div>
-
-      <!-- Desktop: fills the whole stage behind the text. Phones: its own band between headline and cards. -->
-      <div class="orb-root" id="orb-root" aria-hidden="true">
-        <img class="orb-fallback" src="/images/orb-fallback.png" alt="" width="556" height="542">
+      <div class="hero__window lit-teal" role="img" aria-label="An example: The Core has read a quote request from Sam and prepared a reply with a price and two dates, waiting for the owner to send or edit">
+        <div class="ly-piece d-win d-win--dark" aria-hidden="true">
+          <div class="d-win__bar"><span class="d-win__dots"><i></i><i></i><i></i></span><span><b>Inbox</b> · 3 replies ready</span><span class="sp"></span><span class="tag-example">Example</span></div>
+          <div class="d-win__body">
+            <div class="inbox">
+              <div class="t is-on"><i style="background:#3dbf9f">SP</i><b>Sam P.</b><time>6:12</time><span>Quote for a switchboard upgrade</span></div>
+              <div class="t"><i style="background:#e0b884">LN</i><b>Leah N.</b><time>5:48</time><span>Can you start on Thursday?</span></div>
+              <div class="t"><i style="background:#9dc4bc">HF</i><b>Harbour Fencing</b><time>5:30</time><span>Invoice 2214, 14 days overdue</span></div>
+              <div class="t"><i style="background:#c9a7a0">DK</i><b>Dave K.</b><time>Yesterday</time><span>Thanks, see you Monday</span></div>
+            </div>
+            <div class="convo">
+              <div class="d-chat" data-ly-steps="900">
+                <div class="d-msg d-msg--me">Hi, can you quote a switchboard upgrade for a 3-bed house in Burleigh? Hoping for next week.</div>
+                <div class="d-tool" data-step>Reading your price list and your last two switchboard quotes</div>
+                <div class="d-msg d-msg--bot" data-step>Hi Sam, a switchboard upgrade for a 3-bed home is $1,850 including the safety switch. I can do Tuesday or Wednesday next week. Which suits?<small>Draft · ready for you</small></div>
+                <div class="acts" data-step><span>Send</span><span>Edit</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-
-      <nav class="glass-cards" aria-label="Start here">
-        <a href="/about" class="glass-card glass-card-about" data-card="about">
-          <img class="glass-card-photo" src="/images/eru-osborne.jpg" alt="" width="76" height="76">
-          <span class="glass-card-label">The founder</span>
-          <span class="glass-card-title">About Eru</span>
-          <svg class="arrow" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-        <a href="/how-it-works" class="glass-card" data-card="how">
-          <img class="glass-card-logo" src="/images/orb-fallback.png" alt="" width="100" height="98">
-          <span class="glass-card-label">The workspace</span>
-          <span class="glass-card-title">How it works</span>
-          <svg class="arrow" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-        <a href="/results" class="glass-card" data-card="results">
-          <span class="glass-card-badge" aria-hidden="true">
-            <svg viewBox="0 0 76 76">
-              <text x="38" y="32" text-anchor="middle" class="badge-was">½ DAY</text>
-              <line x1="24" y1="29" x2="52" y2="29" class="badge-strike"/>
-              <text x="38" y="50" text-anchor="middle" class="badge-num">15 min</text>
-            </svg>
-          </span>
-          <span class="glass-card-label">Live builds</span>
-          <span class="glass-card-title">Real results</span>
-          <svg class="arrow" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-        <a href="/admin-exposure" class="glass-card" data-card="quiz">
-          <span class="glass-card-badge" aria-hidden="true">
-            <svg viewBox="0 0 76 76">
-              <circle cx="38" cy="38" r="24" class="badge-track"/>
-              <circle cx="38" cy="38" r="24" class="badge-arc" pathLength="100" stroke-dasharray="68 100" transform="rotate(-90 38 38)"/>
-              <text x="38" y="37" text-anchor="middle" class="badge-small-num">2</text>
-              <text x="38" y="48" text-anchor="middle" class="badge-unit">MIN</text>
-            </svg>
-          </span>
-          <span class="glass-card-label">2 minutes</span>
-          <span class="glass-card-title">Take the bottleneck quiz</span>
-          <svg class="arrow" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-        <a href="/bottleneck-audit#book" class="glass-card glass-card-primary" data-card="book">
-          <span class="glass-card-badge" aria-hidden="true">
-            <svg viewBox="0 0 76 76" class="badge-line">
-              <rect x="22" y="25" width="32" height="29" rx="5"/>
-              <path d="M22 33h32M30 21v8M46 21v8"/>
-              <path d="M31 43.5l4.5 4.5 9-9" class="badge-check"/>
-            </svg>
-          </span>
-          <span class="glass-card-label">Free · 30 min</span>
-          <span class="glass-card-title">Book an Bottleneck Audit</span>
-          <svg class="arrow" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-        <p class="hero-orb-proof"><span class="proof-item">Live in 5 businesses</span> <span class="proof-dot" aria-hidden="true">·</span> <span class="proof-item">Installed in a day</span> <span class="proof-dot" aria-hidden="true">·</span> <span class="proof-item">More done in 7 days, or your money back</span></p>
-      </nav>
-    </div>
-    <p class="hero-orb-legal">© 2026 Oranga AI <span aria-hidden="true">·</span> <a href="/privacy">Privacy</a> <span aria-hidden="true">·</span> <a href="/terms">Terms</a> <span aria-hidden="true">·</span> <a href="mailto:support@orangaai.com">support@orangaai.com</a></p>
+    </div></div>
   </section>
-  <script type="module" src="/orb/orb.js"></script>
-  <script>
-    document.querySelectorAll('.glass-card').forEach(function (card) {
-      card.addEventListener('click', function () {
-        if (window.gtag) gtag('event', 'hero_card_click', { card: card.dataset.card });
-      });
-    });
-  </script>
 
+  <section class="section" id="brief" aria-labelledby="brief-h">
+    <div class="wrap">
+      <div class="grid">
+        <h2 class="span-5" id="brief-h">The Core's morning brief, ready by 6am</h2>
+        <p class="span-6 start-7 muted">Overnight The Core works through your inbox, overdue first. The brief says what's finished, what needs you and what it couldn't get to, and why. <a class="link" href="how-it-works">See the brief in detail</a></p>
+      </div>
+      <div class="ui app fill" role="img" aria-label="An example morning brief: a list of last night's work beside The Core's summary of what is done and what needs the owner" data-ui-pause-host>
+        <div class="app__pane app__pane--list">
+          <div class="ui ui-panel ui-win" data-ui="window" data-open="Needs you" data-work="Working" data-done="Done">
+            <div class="ui-win__bar">
+              <span class="ui-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+              <span class="ui-win__crumb"><img class="ui-brand" src="images/orb-fallback.png" alt="" width="16" height="16">The Core <i>/</i> <b>Overnight</b></span>
+              <span class="ui-spacer"></span>
+              <span class="tag-example">Example</span>
+            </div>
+            <div class="ui-win__body">
+              <nav class="ui-win__side" aria-hidden="true">
+                <span class="ui-win__nav is-on">Needs you<em>4</em></span>
+                <span class="ui-win__nav">Done<em>11</em></span>
+                <span class="ui-win__nav">Couldn't do<em>1</em></span>
+              </nav>
+              <div class="ui-win__main">
+                <div class="ui-win__cols" aria-hidden="true"><span>From</span><span>Job</span><span>Status</span><span>Time</span></div>
+                <ul class="ui-win__rows">
+                  <li class="ui-win__row" data-row><span class="ui-avatar" data-tone="1">SP</span><span class="ui-win__who">Sam P.</span><span class="ui-win__sub">Switchboard quote drafted</span><span class="ui-win__st is-you" data-st>Needs you</span><span class="ui-win__age">6:12</span></li>
+                  <li class="ui-win__row" data-row><span class="ui-avatar" data-tone="3">LN</span><span class="ui-win__who">Leah N.</span><span class="ui-win__sub">Reply ready, Thursday start</span><span class="ui-win__st is-you" data-st>Needs you</span><span class="ui-win__age">5:48</span></li>
+                  <li class="ui-win__row" data-row><span class="ui-avatar" data-tone="4">HF</span><span class="ui-win__who">Harbour Fencing</span><span class="ui-win__sub">Overdue reminder drafted</span><span class="ui-win__st is-you" data-st>Needs you</span><span class="ui-win__age">5:30</span></li>
+                  <li class="ui-win__row" data-row><span class="ui-avatar" data-tone="2">RT</span><span class="ui-win__who">Rina T.</span><span class="ui-win__sub">Site visit moved to Friday</span><span class="ui-win__st is-you" data-st>Needs you</span><span class="ui-win__age">4:55</span></li>
+                  <li class="ui-win__row" data-row><span class="ui-avatar" data-tone="5">CW</span><span class="ui-win__who">Coast Wholesale</span><span class="ui-win__sub">Price list filed</span><span class="ui-win__st is-done" data-st>Done</span><span class="ui-win__age">3:20</span></li>
+                  <li class="ui-win__row" data-row><span class="ui-avatar" data-tone="1">MB</span><span class="ui-win__who">Mia B.</span><span class="ui-win__sub">Booking added to calendar</span><span class="ui-win__st is-done" data-st>Done</span><span class="ui-win__age">2:41</span></li>
+                  <li class="ui-win__row" data-row><span class="ui-avatar" data-tone="3">JO</span><span class="ui-win__who">Jo O.</span><span class="ui-win__sub">Follow-up on quote 1038</span><span class="ui-win__st is-done" data-st>Done</span><span class="ui-win__age">1:15</span></li>
+                  <li class="ui-win__row" data-row><span class="ui-avatar" data-tone="4">PL</span><span class="ui-win__who">Pete L.</span><span class="ui-win__sub">Newsletter sorted to read later</span><span class="ui-win__st is-done" data-st>Done</span><span class="ui-win__age">0:40</span></li>
+                  <li class="ui-win__row" data-row><span class="ui-avatar" data-tone="2">BS</span><span class="ui-win__who">Bank statement</span><span class="ui-win__sub">Password needed to open it</span><span class="ui-win__st" data-st>Couldn't do</span><span class="ui-win__age">0:12</span></li>
+                  <li class="ui-win__row" data-row><span class="ui-avatar" data-tone="5">GT</span><span class="ui-win__who">Gold Coast Tiles</span><span class="ui-win__sub">Delivery date confirmed</span><span class="ui-win__st is-done" data-st>Done</span><span class="ui-win__age">0:05</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="app__pane app__pane--open">
+          <div class="ui ui-panel ui-chat" data-ui="chat">
+            <div class="ui-head"><img class="ui-agent-img" src="images/orb-fallback.png" alt="" width="24" height="24"><div class="ui-title">The Core</div><span class="ui-spacer"></span><span class="ui-chat__online">6:00am</span></div>
+            <div class="ui-chat__body">
+              <div class="ui-chat__day">Thursday</div>
+              <div class="ui-msg ui-msg--me" data-chat-q><span class="ui-msg__text">What happened overnight?</span></div>
+              <div class="ui-msg ui-msg--bot" data-chat-a>
+                <span class="ui-msg__col">
+                  <span class="ui-chat__answer">Morning. 11 jobs are finished and 4 need you. <b>Sam's switchboard quote is $1,850</b> and ready to send. Leah wants a Thursday start, Harbour Fencing's invoice is 14 days overdue and Rina moved her site visit to Friday. I couldn't open the bank statement because it needs a password.</span>
+                  <span class="ui-chat__srcs"><span class="ui-chat__src">Inbox</span><span class="ui-chat__src">Price list</span><span class="ui-chat__src">Calendar</span></span>
+                </span>
+              </div>
+              <div class="ui-msg ui-msg--me"><span class="ui-msg__text">Draft a reminder for Harbour Fencing.</span></div>
+              <div class="ui-msg ui-msg--bot">
+                <span class="ui-msg__col">
+                  <span class="ui-chat__answer">It's in your drafts. Polite, with invoice 2214 attached and the 14 days noted. Send it when you're ready.</span>
+                </span>
+              </div>
+            </div>
+            <div class="ui-chat__input"><span class="ui-chat__ph">Ask about any job</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section g2" id="handles" aria-labelledby="handles-h">
+    <div class="wrap">
+      <div class="group">
+        <div class="section-head">
+          <h2 id="handles-h">What The Core handles. <span class="muted">Replies, quotes, follow-ups and the tools you already use.</span></h2>
+        </div>
+        <div class="grid">
+          <article class="card card--row span-6">
+            <h3>Replies to every enquiry</h3>
+            <p>Each new enquiry gets a reply ready in minutes, written the way you write, waiting in your drafts.</p>
+            <div class="panel panel--flush">
+              <div class="stage stage--fade-b"><div class="at-rise fit" style="--fit-max:420px;--ax:max(24px, 50% - 210px);--ay:32px;--ay-sm:24px">
+                <div class="ui ui-notify" data-ui="notify">
+                  <ul class="ui-notify__list" data-notify-list>
+                    <li class="ui-note"><span class="ui-avatar ui-note__av" data-tone="1">SP</span><span class="ui-note__text"><span class="ui-note__title">Reply ready for Sam<time>now</time></span><span class="ui-note__body">Switchboard quote, $1,850</span></span><span class="ui-btn ui-btn--sm ui-note__btn">Open</span></li>
+                    <li class="ui-note"><span class="ui-avatar ui-note__av" data-tone="3">LN</span><span class="ui-note__text"><span class="ui-note__title">Reply ready for Leah<time>4m</time></span><span class="ui-note__body">Thursday start confirmed</span></span></li>
+                    <li class="ui-note"><span class="ui-note__ico"><svg class="ui-icon" viewBox="0 0 16 16"><path d="m3.5 8.4 2.8 2.8 6.2-6.4"/></svg></span><span class="ui-note__text"><span class="ui-note__title">6 replies drafted overnight<time>6:00</time></span><span class="ui-note__body">All waiting for you to send</span></span></li>
+                  </ul>
+                </div>
+              </div></div>
+            </div>
+          </article>
+          <article class="card card--row span-6">
+            <h3>Writes quotes from your prices</h3>
+            <p>It reads your price list and past jobs, then drafts the quote the same day for you to check.</p>
+            <div class="panel panel--flush">
+              <div class="stage stage--fade-b"><div class="at-rise fit" style="--fit-max:420px;--ax:max(24px, 50% - 210px);--ay:32px;--ay-sm:24px" data-ui-loop>
+                <div class="ui ui-panel ui-checks" data-ui="checklist">
+                  <div class="ui-checks__head"><div class="ui-title">Quote 1042 · switchboard</div><span class="ui-spacer"></span><div class="ui-meta" data-checks-count>3 of 5</div></div>
+                  <div class="ui-checks__bar"><i data-checks-bar style="--k:0.6"></i></div>
+                  <ul class="ui-checks__list">
+                    <li class="ui-check is-done"><span class="ui-check__box"><svg viewBox="0 0 16 16"><path d="m4.5 8.2 2.3 2.3 4.7-5"/></svg></span><span class="ui-check__label">Prices from your list</span></li>
+                    <li class="ui-check is-done"><span class="ui-check__box"><svg viewBox="0 0 16 16"><path d="m4.5 8.2 2.3 2.3 4.7-5"/></svg></span><span class="ui-check__label">Travel to Burleigh added</span></li>
+                    <li class="ui-check is-done"><span class="ui-check__box"><svg viewBox="0 0 16 16"><path d="m4.5 8.2 2.3 2.3 4.7-5"/></svg></span><span class="ui-check__label">Safety switch included</span></li>
+                    <li class="ui-check"><span class="ui-check__box"><svg viewBox="0 0 16 16"><path d="m4.5 8.2 2.3 2.3 4.7-5"/></svg></span><span class="ui-check__label">You check the numbers</span></li>
+                    <li class="ui-check"><span class="ui-check__box"><svg viewBox="0 0 16 16"><path d="m4.5 8.2 2.3 2.3 4.7-5"/></svg></span><span class="ui-check__label">You send it</span></li>
+                  </ul>
+                </div>
+              </div></div>
+            </div>
+          </article>
+        </div>
+      </div>
+      <div class="grid">
+        <article class="card card--row span-6">
+          <h3>Follows up what's waiting</h3>
+          <p>Unpaid invoices and quiet quotes get a follow-up drafted on the day it's due, so nothing slips.</p>
+          <div class="panel panel--flush">
+            <div class="stage stage--fade-b"><div class="at-right to-edge" style="--ax:32px;--ay:48px">
+              <div class="ui ui-panel ui-toggles" data-ui="toggles">
+                <div class="ui-head"><div class="ui-title">Follow-up rules</div><span class="ui-spacer"></span><div class="ui-meta" data-tg-count>3 of 4 on</div></div>
+                <ul class="ui-toggles__list">
+                  <li class="ui-tg"><span class="ui-tg__text"><span class="ui-tg__label">Chase invoices after 14 days</span><span class="ui-tg__sub">A polite reminder, drafted for you</span></span><button class="ui-switch is-on" type="button" role="switch" aria-checked="true" aria-label="Chase invoices after 14 days"><i></i></button></li>
+                  <li class="ui-tg"><span class="ui-tg__text"><span class="ui-tg__label">Follow up quotes after 5 days</span><span class="ui-tg__sub">Only if they haven't replied</span></span><button class="ui-switch is-on" type="button" role="switch" aria-checked="true" aria-label="Follow up quotes after 5 days"><i></i></button></li>
+                  <li class="ui-tg"><span class="ui-tg__text"><span class="ui-tg__label">Remind me of site visits</span><span class="ui-tg__sub">The evening before</span></span><button class="ui-switch is-on" type="button" role="switch" aria-checked="true" aria-label="Remind me of site visits"><i></i></button></li>
+                  <li class="ui-tg"><span class="ui-tg__text"><span class="ui-tg__label">Thank customers after a job</span><span class="ui-tg__sub">With a review link</span></span><button class="ui-switch" type="button" role="switch" aria-checked="false" aria-label="Thank customers after a job"><i></i></button></li>
+                </ul>
+              </div>
+            </div></div>
+          </div>
+        </article>
+        <article class="card card--row span-6">
+          <h3>Works with the tools you use</h3>
+          <p>Gmail or Outlook, your calendar, Xero and your files stay where they are. The Core connects to them.</p>
+          <div class="panel panel--flush">
+            <div class="stage stage--fade-b"><div class="at-rise fit" style="--fit-max:420px;--ax:max(24px, 50% - 210px);--ay:48px;--ay-sm:24px">
+              <div class="ui ui-panel ui-apps" data-ui="integrations">
+                <div class="ui-head"><div class="ui-title">Connected</div><span class="ui-spacer"></span><div class="ui-meta" data-apps-count>4 connected</div></div>
+                <ul class="ui-apps__list">
+                  <li class="ui-app is-on"><span class="ui-logo ui-logo--sm"><img src="assets/icons/gmail.svg" alt=""></span><span class="ui-app__text"><span class="ui-app__name">Gmail</span><span class="ui-app__sub">Reads mail, saves drafts</span></span><span class="ui-app__state"><span class="ui-chip ui-app__on">Connected</span></span></li>
+                  <li class="ui-app is-on"><span class="ui-logo ui-logo--sm"><img src="assets/icons/outlook.svg" alt=""></span><span class="ui-app__text"><span class="ui-app__name">Outlook</span><span class="ui-app__sub">The same, on Microsoft 365</span></span><span class="ui-app__state"><span class="ui-chip ui-app__on">Connected</span></span></li>
+                  <li class="ui-app is-on"><span class="ui-logo ui-logo--sm"><img src="assets/icons/google-calendar.svg" alt=""></span><span class="ui-app__text"><span class="ui-app__name">Google Calendar</span><span class="ui-app__sub">Checks when you're free</span></span><span class="ui-app__state"><span class="ui-chip ui-app__on">Connected</span></span></li>
+                  <li class="ui-app is-on"><span class="ui-logo ui-logo--sm"><img src="assets/icons/xero.svg" alt=""></span><span class="ui-app__text"><span class="ui-app__name">Xero</span><span class="ui-app__sub">Looks up what's been paid</span></span><span class="ui-app__state"><span class="ui-chip ui-app__on">Connected</span></span></li>
+                </ul>
+              </div>
+            </div></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section ground-surface" id="limits" aria-labelledby="limits-h" data-moment="line-carries-colour" data-moment-opts='{"from": "base"}'>
+    <div class="wrap">
+      <div class="grid grid--top">
+        <div class="section-head span-5">
+          <h2 id="limits-h">Six things The Core never does on its own</h2>
+          <p>These limits sit in a file The Core can't edit. It prepares the work right up to each one, then stops and hands it to you.</p>
+          <a class="link" href="how-it-works#control">See how approval works</a>
+        </div>
+        <ol class="rows limits span-6 start-7">
+          <li><span class="rows__name">Contact a customer</span><p>Every email and message waits for you.</p></li>
+          <li><span class="rows__name">Move money</span><p>No payments, refunds or spending.</p></li>
+          <li><span class="rows__name">Change someone's job</span><p>No changes to pay, role or access.</p></li>
+          <li><span class="rows__name">Do something it can't undo</span><p>Nothing deleted for good.</p></li>
+          <li><span class="rows__name">Sign for the business</span><p>No contracts in your name.</p></li>
+          <li><span class="rows__name">Loosen its own limits</span><p>It can't edit this list.</p></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="contracts" aria-labelledby="contracts-h">
+    <div class="wrap">
+      <div class="grid">
+        <div class="span-5 stack-5">
+          <h2 id="contracts-h">The Core reads the fine print in contracts</h2>
+          <p class="t-lead">A civil construction business recovered $20,000 after The Core found a payment condition buried in a contract of about 30 pages.</p>
+          <p class="sm-hide">The condition asked for a warranty document before the final payment. It sat in an email thread going back months, and nobody had seen it. The Core found it, explained it and walked them through it.</p>
+          <a class="link" href="results">See more results</a>
+        </div>
+        <div class="frame frame--split frame--lit span-6 start-7" role="img" aria-label="An example contract page with the payment condition marked and a note explaining it">
+          <div class="stage stage--fade-br"><div class="at-corner to-edge" style="--ax:48px;--ay:56px" aria-hidden="true">
+            <div class="ui ui-doc" data-ui="doc">
+              <article class="ui-doc__page">
+                <div class="ui-doc__label">Subcontract, schedule 4 <span class="tag-example">Example</span></div>
+                <div class="ui-doc__title">14. Payment of the retention</div>
+                <div class="ui-doc__text">The final retention is released within 28 days of practical completion, once the subcontractor has <mark class="ui-doc__mark is-on">supplied the warranty document</mark> for the drainage works.</div>
+                <div class="ui-doc__text">Claims are made on the 25th of each month to the head contractor's accounts address.</div>
+                <div class="ui-doc__text">Retention not claimed within 12 months of completion may be forfeited.</div>
+              </article>
+              <aside class="ui-doc__note ui-panel is-on">
+                <div class="ui-doc__kind"><span class="ui-doc__dot"></span><span data-doc-kind>Before you're paid</span></div>
+                <div class="ui-doc__msg" data-doc-msg>You need to send the warranty document to release the final payment.</div>
+                <div class="ui-doc__where" data-doc-where>Clause 14, page 23</div>
+              </aside>
+            </div>
+          </div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section g2m" id="results" aria-labelledby="results-h">
+    <div class="wrap">
+      <div class="group">
+        <div class="section-head">
+        <h2 id="results-h">Results from installs of The Core</h2>
+      </div>
+        <div class="grid quotes">
+        <figure class="card quote span-6">
+          <blockquote>I don't need an admin at all now. I still work late, but I'm getting triple the work done in the same hours.</blockquote>
+          <div class="person"><span class="person__name">Chanse Perham</span><span class="person__role">Private Lending</span></div>
+        </figure>
+        <figure class="card quote span-6">
+          <blockquote>It's fast tracked me about 2 years in 2 months, I reckon.</blockquote>
+          <div class="person"><span class="person__name">Civil construction</span><span class="person__role">Owner</span></div>
+        </figure>
+        </div>
+      </div>
+      <div class="grid quotes quotes--2">
+        <figure class="card quote span-6">
+          <blockquote>Since using this we have successfully been awarded over $5m in contracts.</blockquote>
+          <div class="person"><span class="person__name">Crane company</span><span class="person__role">Owner</span></div>
+          <a class="link" href="how-it-works">See how The Core works</a>
+        </figure>
+        <div class="card quote result span-6">
+          <p>A hospitality lodge sorted a multi-year tour group booking mess in 15 minutes. It used to take half a day.</p>
+          <div class="panel panel--flush lodge"><div class="stage"><div class="at-rise fit" style="--fit-max:420px;--ax:max(24px, 50% - 210px);--ay:24px;--ay-sm:16px">
+            <div class="ui ui-panel mini" aria-hidden="true">
+              <div class="mini__head"><b>Tour group bookings</b><span class="ui-chip">Sorted</span></div>
+              <div class="mini__bar"><span>Before</span><i style="--k:1"></i><b>Half a day</b></div>
+              <div class="mini__bar"><span>With The Core</span><i style="--k:.06"></i><b>15 minutes</b></div>
+            </div>
+          </div></div></div>
+          <a class="link" href="results">See all results</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="install" aria-labelledby="install-h">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="install-h">From first call to running in 3 steps</h2>
+      </div>
+      <div class="grid steps">
+        <article class="card card--row span-4">
+          <span class="step-num">1</span>
+          <h3>Book a free call</h3>
+          <p>30 minutes on Google Meet. I look at where your week goes and whether The Core fits.</p>
+          <div class="panel panel--flush"><div class="stage"><div class="at-rise fit" style="--fit-max:300px;--ax:max(24px, 50% - 150px);--ay:32px;--ay-sm:24px">
+            <div class="ui ui-panel mini" aria-hidden="true">
+              <div class="mini__head"><b>Bottleneck Audit</b><span class="ui-chip">Booked</span></div>
+              <div class="mini__row"><span>Length</span><b>30 minutes</b></div>
+              <div class="mini__row"><span>Where</span><b>Google Meet</b></div>
+              <div class="mini__row"><span>Cost</span><b>Free</b></div>
+            </div>
+          </div></div></div>
+        </article>
+        <article class="card card--row span-4">
+          <span class="step-num">2</span>
+          <h3>Install it in a day</h3>
+          <p>I set it up with you in 3 to 8 hours, connected to your mail, calendar and files.</p>
+          <div class="panel panel--flush"><div class="stage"><div class="at-rise fit" style="--fit-max:300px;--ax:max(24px, 50% - 150px);--ay:32px;--ay-sm:24px">
+            <div class="ui ui-panel mini" aria-hidden="true">
+              <div class="mini__head"><b>Install day</b><span class="ui-chip">Ready</span></div>
+              <div class="mini__row"><span>Mailbox</span><b>Connected</b></div>
+              <div class="mini__row"><span>Price list</span><b>Loaded</b></div>
+              <div class="mini__row"><span>Your writing</span><b>Learned</b></div>
+            </div>
+          </div></div></div>
+        </article>
+        <article class="card card--row span-4">
+          <span class="step-num">3</span>
+          <h3>Judge it for 7 days</h3>
+          <p>More done in 7 days, or the install fee comes back. Then 30 days of support.</p>
+          <div class="panel panel--flush"><div class="stage"><div class="at-rise fit" style="--fit-max:300px;--ax:max(24px, 50% - 150px);--ay:32px;--ay-sm:24px">
+            <div class="ui ui-panel mini" aria-hidden="true">
+              <div class="mini__head"><b>Your 7 days</b><span class="ui-chip">Day 7</span></div>
+              <div class="mini__days"><i></i><i></i><i></i><i></i><i></i><i></i><i class="is-on"></i></div>
+              <div class="mini__row"><span>More done?</span><b>Keep it</b></div>
+              <div class="mini__row"><span>Not yet?</span><b>Fee back</b></div>
+            </div>
+          </div></div></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="questions" aria-labelledby="questions-h" style="--hm: 2">
+    <div class="wrap">
+      <div class="grid grid--top">
+        <div class="section-head span-5">
+          <h2 id="questions-h">Questions</h2>
+          <p class="muted">Something not covered here? Ask it on the call.</p>
+          <div class="panel panel--flush drafts"><div class="stage"><div class="at-rise fit" style="--fit-max:380px;--ax:max(24px, 50% - 190px);--ay:24px;--ay-sm:16px">
+            <div class="ui ui-panel mini" aria-hidden="true">
+              <div class="mini__head"><b>Drafts</b><span class="ui-chip">6 waiting for you</span></div>
+              <div class="mini__row"><span>Sam P.</span><b>Switchboard quote</b></div>
+              <div class="mini__row"><span>Leah N.</span><b>Thursday start</b></div>
+              <div class="mini__row"><span>Sent by The Core</span><b>0</b></div>
+            </div>
+          </div></div></div>
+        </div>
+        <div class="faq span-6 start-7">
+          <div class="faq__item"><h3>Does The Core send emails on its own?</h3><p>No. It leaves replies in your drafts and you send them yourself.</p></div>
+          <div class="faq__item"><h3>Can The Core spend money or pay bills?</h3><p>No. It prepares the numbers. Any payment is a step you take.</p></div>
+          <div class="faq__item"><h3>Where does my business data live with The Core?</h3><p>On your own computer or a server you choose. The text it works on goes to Claude, run by Anthropic.</p></div>
+          <div class="faq__item sm-hide"><h3>How long does it take to install The Core?</h3><p>Less than a working day. Installs so far have taken 3 to 8 hours, depending on your tools.</p></div>
+          <div class="faq__item"><h3>What do I need to run The Core?</h3><p>Your own Claude subscription and a computer that stays on. If yours doesn't, I set up a small server.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
 </main>
 
-
-<!-- CHATBOT -->
-<div class="chat-teaser" id="chatTeaser" role="status">
-  <button class="chat-teaser-close" id="chatTeaserClose" aria-label="Dismiss">
-    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-  </button>
-  <p>Got a question about The Core? I'm here if you need a hand.</p>
-</div>
-<button class="chat-launcher" id="chatLauncher" aria-label="Open chat">
-  <svg class="icon-chat" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-  <svg class="icon-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-</button>
-
-<aside class="chat-panel" id="chatPanel" role="dialog" aria-label="Oranga AI chatbot">
-  <header class="chat-header">
-    <div class="chat-avatar" aria-hidden="true"></div>
-    <div class="chat-title">
-      <div class="name">Oranga AI</div>
-      <div class="status">Online · Replies instantly</div>
+<footer class="footer closing" id="contact" aria-labelledby="close-h">
+  <div class="wrap">
+    <div class="closing__cta close--word">
+      <div class="section-head--split">
+        <div><h2 id="close-h">You started it for freedom.</h2><p class="t-lead">Book a free 30-minute call. I'll look at where your week goes and tell you plainly if The Core fits.</p></div>
+        <a class="btn btn--primary" href="bottleneck-audit#book" data-track="close">Book a call<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
+      </div>
+      <p class="close__word" aria-hidden="true">The Core</p>
     </div>
-    <button class="chat-close" id="chatClose" aria-label="Close chat">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-    </button>
-  </header>
-  <div class="chat-messages" id="chatMessages"></div>
-  <div class="chat-suggestions" id="chatSuggestions"></div>
-  <form class="chat-input-wrap" id="chatForm">
-    <label for="chatInput" class="skip-link">Ask Oranga AI a question</label>
-    <input type="text" class="chat-input" id="chatInput" placeholder="Ask anything about The Core..." autocomplete="off">
-    <button type="submit" class="chat-send" aria-label="Send message">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-    </button>
-  </form>
-</aside>
+    <div class="closing__links">
+      <div class="grid">
+        <div class="span-4 stack-4">
+          <a class="nav__logo" href="/"><img class="logo-orb" src="images/orb-fallback.png" alt="" width="28" height="28">Oranga AI</a>
+          <p class="footer__lede">The Core, installed for owner-operators in Australia and New Zealand.</p>
+        </div>
+        <div class="span-2 footer__col"><h3>Product</h3><ul><li><a href="how-it-works">How it works</a></li><li><a href="results">Results</a></li></ul></div>
+        <div class="span-2 footer__col"><h3>Start</h3><ul><li><a href="admin-exposure">Bottleneck Score</a></li><li><a href="bottleneck-audit#book">Book a call</a></li></ul></div>
+        <div class="span-2 footer__col"><h3>Company</h3><ul><li><a href="about">About Eru</a></li><li><a href="mailto:support@orangaai.com">Email support</a></li></ul></div>
+        <div class="span-2 footer__col"><h3>Legal</h3><ul><li><a href="privacy">Privacy</a></li><li><a href="terms">Terms</a></li></ul></div>
+      </div>
+      <div class="footer__legal">
+        <span>&copy; 2026 Oranga AI</span>
+        <div class="socials"></div>
+      </div>
+    </div>
+  </div>
+</footer>
 
-<script src="/app.js" defer></script>
-<script src="/booking-chatbot.js" defer></script>
+<script type="module" src="assets/system.js"></script>
+<script type="module" src="assets/motion/motion.js"></script>
+<script type="module" src="assets/layout/layout.js"></script>
+<script>
+  document.querySelectorAll('[data-track]').forEach(function (a) {
+    a.addEventListener('click', function () { if (window.gtag) gtag('event', 'book_call_click', { place: a.dataset.track }); });
+  });
+</script>
 </body>
 </html>

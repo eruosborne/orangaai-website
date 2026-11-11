@@ -90,14 +90,14 @@ const TOP_GAP = [
   { label: 'business knowledge that only lives in your head',
     fix: "Here's what The Core would do about that. It starts by getting your business written down once: your prices, your customers, how you work. After that it isn't only in your head." },
   { label: 'having to re-explain your business to AI every time you use it',
-    fix: "Here's what The Core would do about that. It's an AI brain built around your business, and it reads that before every job, so you never start from scratch." },
+    fix: "Here's what The Core would do about that. It's an AI admin system built around your business, and it reads that before every job, so you never start from scratch." },
   { label: "growth you'd go after if you had the room",
     fix: "Here's what The Core would do about that. It takes the work that runs through you off your plate, so you have the room to go after it. You just make the decisions." },
   { label: "a business that's already stretched, with no room to take on more",
     fix: "Here's what The Core would do about that. It never sleeps, so the business can take on more work without taking on more staff." },
 ];
 
-const HOW_IT_WORKS = "It's an AI brain built around your business (your prices, your customers, how you write). It runs around the clock and follows playbooks for jobs like quoting and replying. It prepares the work and you approve it. It never sends, spends or signs anything on its own.";
+const HOW_IT_WORKS = "It's an AI admin system built around your business (your prices, your customers, how you write). It runs around the clock and follows playbooks for jobs like quoting and replying. It prepares the work and you approve it. It never sends, spends or signs anything on its own.";
 const PROOF = "Chanse Perham, who works in private lending, installed it and says he's getting triple the work done in the same hours, and that he doesn't need an admin at all now.";
 const SIGNATURE = [
   'Eru Osborne',

@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-11T00:00:00+10:00",
+  "title": "Design System: Oranga AI",
+  "extensions": {
+    "colorMeta": {
+      "night-stage": { "role": "neutral", "displayName": "Night Stage", "canonical": "#121517", "cssVar": "--bg" },
+      "night-raised": { "role": "neutral", "displayName": "Night Raised", "canonical": "#1B2124", "cssVar": "--bg-elev" },
+      "night-sunk": { "role": "neutral", "displayName": "Night Sunk", "canonical": "#0D1012", "cssVar": "--bg-sunk" },
+      "night-deepest": { "role": "neutral", "displayName": "Night Deepest", "canonical": "#0B0E0F", "cssVar": "--zone-bg" },
+      "warm-ink": { "role": "neutral", "displayName": "Warm Ink", "canonical": "#F2EBE1", "cssVar": "--ink" },
+      "warm-ink-muted": { "role": "neutral", "displayName": "Warm Ink Muted", "canonical": "#B9AFA3", "cssVar": "--ink-muted" },
+      "warm-ink-faint": { "role": "neutral", "displayName": "Warm Ink Faint", "canonical": "#9A9085", "cssVar": "--ink-faint" },
+      "teal": { "role": "primary", "displayName": "Working Teal", "canonical": "#3DBF9F", "cssVar": "--accent", "tonalRamp": ["#0E2F27", "#15483C", "#1B6B5E", "#26907A", "#3DBF9F", "#6FDCC0", "#A6EBD9", "#DDF8F0"] },
+      "teal-deep": { "role": "primary", "displayName": "Deep Teal", "canonical": "#1B6B5E", "cssVar": "--accent-deep" },
+      "teal-text": { "role": "primary", "displayName": "Bright Teal Text", "canonical": "#6FDCC0", "cssVar": "--accent-text" },
+      "mint-glow": { "role": "primary", "displayName": "Mint Glow", "canonical": "#5EF2C4", "cssVar": "--accent-glow" },
+      "sage-success": { "role": "status", "displayName": "Sage", "canonical": "#A3B585", "cssVar": "--success" },
+      "coral-alert": { "role": "status", "displayName": "Coral", "canonical": "#E8866E", "cssVar": "--alert" },
+      "tag-seafoam": { "role": "status", "displayName": "Seafoam", "canonical": "#9DC4BC", "cssVar": "--tag" }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Page heroes." },
+      "headline": { "displayName": "Headline", "purpose": "Section headings." },
+      "title": { "displayName": "Title", "purpose": "Sub-sections and card titles." },
+      "body": { "displayName": "Body", "purpose": "Reading text." },
+      "body-large": { "displayName": "Body Large", "purpose": "Hero and section subheads." },
+      "ui": { "displayName": "UI", "purpose": "Buttons and controls." },
+      "label": { "displayName": "Label", "purpose": "Card labels and data captions, uppercase." },
+      "eyebrow": { "displayName": "Eyebrow", "purpose": "Section label above headings, uppercase, with a teal rule." }
+    },
+    "shadows": [
+      { "name": "glass-rest", "value": "inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 12px 32px rgba(0, 0, 0, 0.35)", "purpose": "Glass cards and the back button at rest." },
+      { "name": "glass-lift", "value": "inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 16px 40px rgba(0, 0, 0, 0.4), 0 0 24px rgba(94, 242, 196, 0.18)", "purpose": "Glass cards on hover or focus." },
+      { "name": "mint-halo", "value": "0 0 18px rgba(94, 242, 196, 0.18)", "purpose": "Badges and photos inside glass cards." },
+      { "name": "small-ui", "value": "0 1px 3px rgba(0, 0, 0, 0.4)", "purpose": "Chat bubbles and small controls." }
+    ],
+    "motion": [
+      { "name": "ease", "value": "cubic-bezier(0.22, 1, 0.36, 1)", "purpose": "Default easing for every transition." },
+      { "name": "card-hover", "value": "0.35s", "purpose": "Glass card lift, tilt and glow." },
+      { "name": "orb-reveal", "value": "opacity 0.8s, transform 1.1s", "purpose": "The orb fading in and settling from 103% scale." }
+    ],
+    "breakpoints": [
+      { "name": "phone-small", "value": "480px" },
+      { "name": "phone", "value": "600px" },
+      { "name": "tablet", "value": "767px" },
+      { "name": "narrow-desktop", "value": "900px" },
+      { "name": "wide", "value": "1360px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The main call to action, usually booking the call.",
+      "html": "<button class=\"ds-btn-primary\">Book a Free 30-Minute Strategy Call</button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; gap: 9px; padding: 13px 24px; border-radius: 6px; background: #1B6B5E; color: #F2EBE1; border: 1px solid #6FDCC0; font-family: Karla, system-ui, sans-serif; font-weight: 500; font-size: 0.9375rem; letter-spacing: 0.01em; cursor: pointer; transition: opacity 0.15s linear; } .ds-btn-primary:hover { opacity: 0.85; } .ds-btn-primary:focus-visible { outline: 2px solid #3DBF9F; outline-offset: 3px; }"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "A secondary action beside the primary button.",
+      "html": "<button class=\"ds-btn-ghost\">See how it works</button>",
+      "css": ".ds-btn-ghost { display: inline-flex; align-items: center; gap: 9px; padding: 13px 24px; border-radius: 6px; background: transparent; color: #F2EBE1; border: 1px solid #F2EBE1; font-family: Karla, system-ui, sans-serif; font-weight: 500; font-size: 0.9375rem; letter-spacing: 0.01em; cursor: pointer; transition: border-color 0.2s cubic-bezier(0.22, 1, 0.36, 1), color 0.2s cubic-bezier(0.22, 1, 0.36, 1); } .ds-btn-ghost:hover { border-color: #6FDCC0; color: #6FDCC0; } .ds-btn-ghost:focus-visible { outline: 2px solid #3DBF9F; outline-offset: 3px; }"
+    },
+    {
+      "name": "Glass Card",
+      "kind": "card",
+      "refersTo": "glass-card",
+      "description": "The signature card floating over the dark stage, used as a way into the site.",
+      "html": "<a class=\"ds-glass-card\" href=\"#\"><span class=\"ds-glass-label\">How it works</span><span class=\"ds-glass-title\">See The Core in a real business</span><svg class=\"ds-glass-arrow\" viewBox=\"0 0 16 16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"><path d=\"M3 8h10M9 4l4 4-4 4\"/></svg></a>",
+      "css": ".ds-glass-card { position: relative; display: flex; flex-direction: column; justify-content: flex-end; gap: 6px; min-height: 168px; max-width: 220px; padding: 18px 44px 18px 20px; border-radius: 10px; background: rgba(18, 26, 28, 0.55); border: 1px solid rgba(94, 242, 196, 0.18); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 12px 32px rgba(0, 0, 0, 0.35); backdrop-filter: blur(14px) saturate(140%); -webkit-backdrop-filter: blur(14px) saturate(140%); color: #F2EBE1; text-decoration: none; transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1); } .ds-glass-card:hover, .ds-glass-card:focus-visible { transform: translateY(-4px) rotateX(6deg); border-color: rgba(94, 242, 196, 0.5); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 16px 40px rgba(0, 0, 0, 0.4), 0 0 24px rgba(94, 242, 196, 0.18); } .ds-glass-label { font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: #B9AFA3; } .ds-glass-title { font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 1.12rem; font-weight: 600; line-height: 1.2; } .ds-glass-arrow { position: absolute; right: 18px; bottom: 20px; width: 16px; height: 16px; color: #5EF2C4; transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1); } .ds-glass-card:hover .ds-glass-arrow { transform: translateX(3px); }"
+    },
+    {
+      "name": "Text Field",
+      "kind": "input",
+      "refersTo": "input-field",
+      "description": "Booking and quiz form fields.",
+      "html": "<label class=\"ds-field\"><span class=\"ds-field-label\">Business name</span><input class=\"ds-input\" placeholder=\"e.g. Coastal Cranes\"></label>",
+      "css": ".ds-field { display: flex; flex-direction: column; gap: 6px; } .ds-field-label { font-family: Karla, system-ui, sans-serif; font-size: 0.88rem; color: #B9AFA3; } .ds-input { font-family: Karla, system-ui, sans-serif; font-size: 1rem; color: #F2EBE1; background: #0D1012; border: 1px solid rgba(242, 235, 225, 0.22); border-radius: 6px; padding: 11px 12px; } .ds-input::placeholder { color: #9A9085; } .ds-input:focus { outline: none; border-color: #6FDCC0; }"
+    },
+    {
+      "name": "Eyebrow",
+      "kind": "custom",
+      "refersTo": "eyebrow",
+      "description": "The mono section label above every section heading.",
+      "html": "<span class=\"ds-eyebrow\">How it works</span>",
+      "css": ".ds-eyebrow { font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #9A9085; display: inline-flex; align-items: center; gap: 10px; } .ds-eyebrow::before { content: ''; width: 18px; height: 1px; background: #3DBF9F; }"
+    },
+    {
+      "name": "Back Button",
+      "kind": "nav",
+      "refersTo": "back-home",
+      "description": "The fixed round glass button that returns to the homepage from inner pages.",
+      "html": "<a class=\"ds-back\" href=\"#\" aria-label=\"Back to home\"><svg viewBox=\"0 0 16 16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"><path d=\"M13 8H3M7 4L3 8l4 4\"/></svg></a>",
+      "css": ".ds-back { width: 44px; height: 44px; display: grid; place-items: center; border-radius: 50%; background: rgba(18, 26, 28, 0.72); border: 1px solid rgba(94, 242, 196, 0.35); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 8px 24px rgba(0, 0, 0, 0.4); backdrop-filter: blur(12px) saturate(140%); color: #5EF2C4; transition: border-color 0.25s cubic-bezier(0.22, 1, 0.36, 1), transform 0.25s cubic-bezier(0.22, 1, 0.36, 1); } .ds-back:hover, .ds-back:focus-visible { border-color: rgba(94, 242, 196, 0.7); transform: translateX(-2px); } .ds-back svg { width: 18px; height: 18px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Night Shift",
+    "overview": "The site is a calm dark room where the work keeps going after the owner has left. Everything sits on a near-black charcoal stage, lit by one source: the glowing glass orb on the homepage and the mint and teal light that comes off it. Nothing is loud. Text is a warm off-white rather than pure white, so the room reads as lamplit rather than screen-bright, and the accent appears where something is working or where the visitor can act.\n\nDensity is low and the pace is unhurried. Sections breathe with tall vertical padding, headlines are short and balanced, and the homepage replaces a menu with a row of glass cards that act as the ways in. Details read as instrumentation: small uppercase mono labels with a short teal rule, thin hairline borders and square-cornered buttons. The feeling is a system quietly running under control, not a product demanding attention.",
+    "keyCharacteristics": [
+      "Dark mode only, on a charcoal stage (#121517), with warm off-white text.",
+      "One light source: teal and mint, used sparingly for action and life.",
+      "Glass cards with blur, a thin mint edge and a soft shadow.",
+      "Engineered details: mono eyebrows, hairlines and 6px corners, never pills on buttons.",
+      "Slow, eased motion that settles rather than bounces."
+    ],
+    "rules": [
+      { "name": "The One Light Rule", "body": "Teal and mint are the only light in the room. Any other hue appears only as a status colour, and the accent stays a small share of any screen.", "section": "colors" },
+      { "name": "The Glow Stays Home Rule", "body": "Mint Glow belongs to the hero and the orb. Elsewhere use Working Teal or Bright Teal Text.", "section": "colors" },
+      { "name": "The Warm Ink Rule", "body": "Text is never pure white. Use Warm Ink, Muted or Faint.", "section": "colors" },
+      { "name": "The Readout Rule", "body": "Small uppercase text is always Plex Mono, tracked wide, in Warm Ink Faint or Muted.", "section": "typography" },
+      { "name": "The Balanced Headline Rule", "body": "Hero and section headlines use text-wrap: balance and stay short enough to sit on two or three lines on a phone.", "section": "typography" },
+      { "name": "The Tonal First Rule", "body": "Separate with surface tone and hairlines. A shadow appears only where something is glass or floats.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do keep every page on the Night Stage (#121517) with Warm Ink text.",
+      "Do use Deep Teal (#1B6B5E) for button fills and Working Teal (#3DBF9F) for text, icons and borders.",
+      "Do lead section headings with the mono eyebrow and its teal rule.",
+      "Do use the glass recipe exactly (55% smoked fill, 14px blur, 18% mint border, 10px corners) wherever a card floats over the stage.",
+      "Do ease motion with cubic-bezier(0.22, 1, 0.36, 1) and give every movement a reduced-motion fallback."
+    ],
+    "donts": [
+      "Don't use pill-shaped buttons. Buttons have 6px corners.",
+      "Don't use pure white text or a light background. The site is dark only.",
+      "Don't spread Mint Glow beyond the hero and glass elements.",
+      "Don't add a second accent hue. Sage, Coral and Seafoam are status colours only.",
+      "Don't use robot, neon or circuit-board imagery.",
+      "Don't use drop shadows on flat sections. Separate them with tone and hairlines."
+    ]
+  }
+}

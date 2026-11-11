@@ -1,30 +1,62 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" data-type="software" data-radius="soft" data-buttons="pill" data-motion>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Bottleneck Score | Oranga AI</title>
 <meta name="description" content="A 2-minute self-assessment. Six questions about how much of your business runs through you, and a straight answer on whether you're the bottleneck.">
 <link rel="canonical" href="https://orangaai.com/admin-exposure">
-
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Oranga AI">
-<meta property="og:title" content="Bottleneck Score | Oranga AI">
-<meta property="og:description" content="Six questions. Two minutes. A straight answer on how much of your business runs through you.">
+<meta property="og:title" content="The Bottleneck Score for owner-operators">
+<meta property="og:description" content="A 2-minute self-assessment. Six questions about how much of your business runs through you, and a straight answer on whether you're the bottleneck.">
 <meta property="og:url" content="https://orangaai.com/admin-exposure">
 <meta property="og:image" content="https://orangaai.com/images/og.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Bottleneck Score | Oranga AI">
-<meta name="twitter:description" content="Six questions. Two minutes. A straight answer on how much of your business runs through you.">
+<meta name="twitter:title" content="The Bottleneck Score for owner-operators">
+<meta name="twitter:description" content="A 2-minute self-assessment. Six questions about how much of your business runs through you, and a straight answer on whether you're the bottleneck.">
 <meta name="twitter:image" content="https://orangaai.com/images/og.png">
-
-<link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+<link rel="icon" type="image/png" href="images/orb-fallback.png">
 <meta name="theme-color" content="#121517">
+<meta name="site-kind" content="software">
+<meta name="page-type" content="software">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Karla:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..700&family=Figtree:wght@400..600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/system.css">
+<link rel="stylesheet" href="assets/ui/cards.css">
+<link rel="stylesheet" href="assets/motion/motion.css">
+<link rel="stylesheet" href="assets/backgrounds/backgrounds.css">
+<link rel="stylesheet" href="assets/layout/layout.css">
+<link rel="stylesheet" href="assets/icons/icon.css">
+<style>
+:root {
+  --p-bg: #121517; --p-surface: #1b2124; --p-ink: #f2ebe1; --p-muted: #b9afa3;
+  --p-accent: #3dbf9f; --p-accent-ink: #121517; --p-action: #3dbf9f; --p-action-ink: #121517;
+  --p-inv-bg: #f2ebe1; --p-inv-surface: #e0dad1; --p-inv-ink: #121517; --p-inv-muted: #5d5d5b;
+  --p-inv-accent: #121517; --p-inv-accent-ink: #f2ebe1; --p-inv-action: #121517; --p-inv-action-ink: #f2ebe1;
+  --font-display: "Bricolage Grotesque", system-ui, sans-serif;
+  --font-text: "Figtree", system-ui, sans-serif;
+  --font-mono: "DM Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --display-weight: 400;
+  --display-tracking: -0.03em;
+  --display-tracking-xl: -0.04em;
+  --display-stretch: 96%;
+}
+</style>
+<link rel="stylesheet" href="assets/ui/base.css">
+
+<link rel="stylesheet" href="site.css">
+<script>document.documentElement.classList.add('m-enter');setTimeout(()=>document.documentElement.classList.add('m-enter-done'),700)</script>
+<script src="assets/backgrounds/backgrounds.js"></script>
+<script>document.documentElement.classList.add('mo-js');setTimeout(()=>document.documentElement.classList.add('mo-safe'),2500)</script>
+<link rel="modulepreload" href="assets/moments/moments.js">
+<link rel="modulepreload" href="assets/moments/lib.js">
+<link rel="modulepreload" href="assets/moments/letters-assemble/moment.js">
+<style>
+
+</style>
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZXS09113QF"></script>
 <script>
@@ -33,54 +65,6 @@
   gtag('js', new Date());
   gtag('config', 'G-ZXS09113QF');
 </script>
-
-<style>
-  /* Bottleneck Score quiz: scoped additions, reusing existing tokens */
-  .quiz-wrap { max-width: 680px; margin: 0 auto; }
-  .quiz-progress { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 8px; }
-  .quiz-q { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px 22px 18px; margin-bottom: 16px; }
-  .quiz-q-title { font-weight: 600; font-size: 1.02rem; margin-bottom: 14px; line-height: 1.4; }
-  .quiz-opts { display: flex; flex-direction: column; gap: 8px; }
-  .quiz-opt { display: flex; align-items: flex-start; gap: 12px; padding: 12px 14px; border: 1px solid var(--line); border-radius: var(--radius); cursor: pointer; transition: border-color 0.15s, background 0.15s; }
-  .quiz-opt:hover { border-color: var(--line-strong); }
-  .quiz-opt input { margin-top: 3px; accent-color: var(--accent); flex-shrink: 0; }
-  .quiz-opt span { font-size: 0.94rem; color: var(--ink-muted); line-height: 1.45; }
-  .quiz-opt.checked { border-color: var(--accent); background: var(--accent-soft); }
-  .quiz-opt.checked span { color: var(--ink); }
-  .quiz-submit-row { text-align: center; margin: 28px 0 8px; }
-  .quiz-error { color: var(--alert); font-size: 0.88rem; text-align: center; margin-top: 10px; min-height: 1.2em; }
-
-  .quiz-result { display: none; }
-  .quiz-result.show { display: block; }
-  .result-band { text-align: center; padding: 28px 20px 24px; background: var(--surface); border: 1px solid var(--line); border-left: 3px solid var(--success); border-radius: var(--radius); margin-bottom: 20px; }
-  .result-band.band-high { border-left-color: var(--accent); }
-  .result-band-label { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 10px; }
-  .result-band-title { font-family: var(--display); font-size: 1.6rem; font-weight: 700; margin-bottom: 10px; }
-  .result-band-sub { color: var(--ink-muted); font-size: 0.98rem; max-width: 480px; margin: 0 auto; line-height: 1.5; }
-
-  .unlock-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px 22px; text-align: center; }
-  .unlock-card p { color: var(--ink-muted); font-size: 0.94rem; margin-bottom: 16px; }
-  .unlock-form { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
-  .unlock-form input[type="email"] {
-    flex: 1; min-width: 220px; max-width: 320px;
-    background: var(--bg-sunk); border: 1px solid var(--line-strong); border-radius: var(--radius);
-    padding: 12px 14px; color: var(--ink); font-family: var(--sans); font-size: 0.94rem;
-  }
-  .unlock-form input[type="email"]::placeholder { color: var(--ink-faint); }
-  .unlock-form input[type="email"]:focus { outline: none; border-color: var(--accent); }
-  .email-suggest {
-    display: block; margin: 6px auto 0; background: none; border: none; padding: 4px 8px;
-    color: var(--accent); font-family: var(--sans); font-size: 0.88rem; text-decoration: underline; cursor: pointer;
-  }
-  .email-suggest[hidden] { display: none; }
-
-  .breakdown { display: none; }
-  .breakdown.show { display: block; }
-  .breakdown-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px 22px; margin-top: 20px; }
-  .breakdown-card p { color: var(--ink-muted); line-height: 1.6; margin-bottom: 14px; }
-  .breakdown-card p:last-child { margin-bottom: 0; }
-  .breakdown-cta { text-align: center; margin-top: 22px; }
-</style>
 <!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
@@ -93,177 +77,141 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 fbq('init', '1601510988349512');
 fbq('track', 'PageView');
+fbq('track', 'ViewContent', { content_name: 'Admin Exposure Score quiz' });
 </script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1601510988349512&ev=PageView&noscript=1"
-/></noscript>
+<noscript><img height="1" width="1" style="display:none" alt=""
+src="https://www.facebook.com/tr?id=1601510988349512&ev=PageView&noscript=1"></noscript>
 <!-- End Meta Pixel Code -->
-<script>fbq('track', 'ViewContent', { content_name: 'Admin Exposure Score quiz' });</script>
 </head>
 <body>
-
-<a href="#main" class="skip-link">Skip to content</a>
-
-<header class="page-bar">
-  <div class="container page-bar-inner">
-    <a href="/" class="logo" aria-label="Oranga AI home">
-      <span class="logo-mark" aria-hidden="true"></span>
-      <span>Oranga AI</span>
-    </a>
-    <a href="/bottleneck-audit#book" class="btn btn-primary">
-      <span class="btn-long">Book your free Bottleneck Audit</span><span class="btn-short">Book a call</span>
-      <svg class="arrow" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </a>
+<!-- type: software. hero split, nav nav-centre, close close-word, footer footer-columns, buttons pill.
+     moments: letters-assemble on #statement. #quiz holds the live quiz (its script below, unchanged): it grows with the
+     result, so its height follows its content. -->
+<header class="nav nav--centre">
+  <div class="wrap nav__bar">
+    <a class="skip-link" href="#top">Skip to content</a>
+    <a class="nav__logo" href="/"><img class="logo-orb" src="images/orb-fallback.png" alt="" width="28" height="28">Oranga AI</a>
+    <nav class="nav__links" aria-label="Main">
+      <div class="nav__item"><a class="nav__link" href="how-it-works">Product</a></div>
+      <div class="nav__item"><a class="nav__link" href="results">Results</a></div>
+      <div class="nav__item"><a class="nav__link" href="about">About</a></div>
+      <div class="nav__item"><a class="nav__link" href="admin-exposure" aria-current="page">Quiz</a></div>
+    </nav>
+    <div class="nav__actions">
+      <a class="btn btn--primary" href="bottleneck-audit#book" data-track="nav">Book a call</a>
+    </div>
+    <button class="nav__toggle" type="button" aria-expanded="false" aria-label="Menu">
+      <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 5h14M2 13h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+    </button>
   </div>
 </header>
-<a href="/" class="back-home" aria-label="Back to the homepage">
-  <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M13 8H3M3 8L7 4M3 8L7 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-</a>
 
-<main id="main">
-
-  <section class="hero-simple">
-    <div class="container content">
-      <span class="eyebrow reveal">Free · 2 minutes · no obligation</span>
-      <h1 class="reveal">What's your <em>Bottleneck Score</em>?</h1>
-      <p class="hero-sub reveal">Six honest questions about how much of your business runs through you. No pitch first, just a straight read on whether you're the bottleneck.</p>
-    </div>
+<main id="top">
+  <section class="hero hero--split" data-enter aria-labelledby="hero-h">
+    <div class="wrap"><div class="hero-text grid hero__grid">
+      <div class="hero__text span-5">
+        <h1 id="hero-h">The Bottleneck Score for owner-operators</h1>
+        <p class="hero__lead">Six questions about how much of your business runs through you. No pitch first, just a straight read on whether you're the bottleneck.</p>
+        <div class="btn-row"><a class="btn btn--primary" href="#quiz">Start the 6 questions<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a></div>
+        <dl class="hero-facts"><div><dt>Time</dt><dd>About 2 minutes</dd></div><div><dt>Your score</dt><dd>Straight away, no email</dd></div><div><dt>Not the bottleneck?</dt><dd>We'll say so</dd></div></dl>
+      </div>
+      <div class="hero__media hero__media--ui lit-teal span-6 start-7" role="img" aria-label="An example Bottleneck Score result">
+        <div class="ly-piece" aria-hidden="true">
+          <div class="ui ui-panel mini" aria-hidden="true"><div class="mini__head"><b>Your Bottleneck Score</b><span class="ui-chip">Example</span></div><div class="mini__bar"><span>Score</span><i style="--k:.78"></i><b>High</b></div><div class="mini__row"><span>Week off</span><b>A lot would stall</b></div><div class="mini__row"><span>Enquiry replies</span><b>Sometimes days</b></div><div class="mini__row"><span>In your head</span><b>Most of it</b></div></div>
+        </div>
+      </div>
+    </div></div>
   </section>
 
-  <div class="trust-strip">
-    <div class="trust-item reveal"><span class="tick" aria-hidden="true">✓</span>Takes about 2 minutes.</div>
-    <div class="trust-item reveal"><span class="tick" aria-hidden="true">✓</span>Your score shows up straight away, no email needed.</div>
-    <div class="trust-item reveal"><span class="tick" aria-hidden="true">✓</span>If you're not the bottleneck, we'll say so.</div>
-  </div>
-
-  <section>
-    <div class="container">
-      <div class="quiz-wrap">
-
+  <section class="section section--live" id="quiz" aria-labelledby="quiz-h">
+    <div class="wrap">
+      <div class="grid"><div class="quiz-wrap span-12">
+        <h2 id="quiz-h" class="quiz-h">Six questions for your Bottleneck Score</h2>
         <form id="quizForm" novalidate>
           <div class="quiz-progress" id="quizProgress">0 of 6 answered</div>
-
-          <div class="quiz-q" data-q="0">
-            <div class="quiz-q-title">1. If you took a week off, what would happen to the business?</div>
-            <div class="quiz-opts">
-              <label class="quiz-opt"><input type="radio" name="q0" value="0"><span>It'd run fine without me</span></label>
-              <label class="quiz-opt"><input type="radio" name="q0" value="2"><span>Some things would wait until I got back</span></label>
-              <label class="quiz-opt"><input type="radio" name="q0" value="3"><span>A lot would stall until I got back</span></label>
-              <label class="quiz-opt"><input type="radio" name="q0" value="3"><span>I can't take a week off</span></label>
-            </div>
-          </div>
-
-          <div class="quiz-q" data-q="1">
-            <div class="quiz-q-title">2. When an enquiry comes in while you're busy, how long until it gets a reply?</div>
-            <div class="quiz-opts">
-              <label class="quiz-opt"><input type="radio" name="q1" value="0"><span>Within the hour, someone's on it</span></label>
-              <label class="quiz-opt"><input type="radio" name="q1" value="2"><span>Same day, usually</span></label>
-              <label class="quiz-opt"><input type="radio" name="q1" value="3"><span>Whenever I get to it, sometimes days</span></label>
-            </div>
-          </div>
-
-          <div class="quiz-q" data-q="2">
-            <div class="quiz-q-title">3. How much of the business (pricing, past jobs, client details) lives only in your head?</div>
-            <div class="quiz-opts">
-              <label class="quiz-opt"><input type="radio" name="q2" value="0"><span>Very little, it's written down where the team can find it</span></label>
-              <label class="quiz-opt"><input type="radio" name="q2" value="2"><span>Some of it, scattered across notes, texts, spreadsheets</span></label>
-              <label class="quiz-opt"><input type="radio" name="q2" value="3"><span>Most of it</span></label>
-            </div>
-          </div>
-
-          <div class="quiz-q" data-q="3">
-            <div class="quiz-q-title">4. Have you tried ChatGPT or Claude for any of this already?</div>
-            <div class="quiz-opts">
-              <label class="quiz-opt"><input type="radio" name="q3" value="1"><span>Haven't tried it</span></label>
-              <label class="quiz-opt"><input type="radio" name="q3" value="3"><span>Tried it, but I have to re-explain everything each time</span></label>
-              <label class="quiz-opt"><input type="radio" name="q3" value="2"><span>Tried it, didn't stick, went back to doing it myself</span></label>
-              <label class="quiz-opt"><input type="radio" name="q3" value="0"><span>Yes, and it's actually working well for this</span></label>
-            </div>
-          </div>
-
-          <div class="quiz-q" data-q="4">
-            <div class="quiz-q-title">5. If the business didn't need you for everything, do you know where you'd take it?</div>
-            <div class="quiz-opts">
-              <label class="quiz-opt"><input type="radio" name="q4" value="0"><span>Not really, I haven't thought that far</span></label>
-              <label class="quiz-opt"><input type="radio" name="q4" value="2"><span>Yes, I know exactly where I'd take it</span></label>
-            </div>
-          </div>
-
-          <div class="quiz-q" data-q="5">
-            <div class="quiz-q-title">6. Could you take on more work tomorrow without anything breaking, or without working more hours?</div>
-            <div class="quiz-opts">
-              <label class="quiz-opt"><input type="radio" name="q5" value="0"><span>Yes, easily</span></label>
-              <label class="quiz-opt"><input type="radio" name="q5" value="2"><span>Probably, but it'd be tight</span></label>
-              <label class="quiz-opt"><input type="radio" name="q5" value="3"><span>No, we're already stretched</span></label>
-            </div>
-          </div>
-
+<fieldset class="quiz-q" data-q="0"><legend class="quiz-q-title">1. If you took a week off, what would happen to the business?</legend><div class="quiz-opts"><label class="quiz-opt card"><input type="radio" name="q0" value="0"><span>It'd run fine without me</span></label><label class="quiz-opt card"><input type="radio" name="q0" value="2"><span>Some things would wait until I got back</span></label><label class="quiz-opt card"><input type="radio" name="q0" value="3"><span>A lot would stall until I got back</span></label><label class="quiz-opt card"><input type="radio" name="q0" value="3"><span>I can't take a week off</span></label></div></fieldset>
+<fieldset class="quiz-q" data-q="1"><legend class="quiz-q-title">2. When an enquiry comes in while you're busy, how long until it gets a reply?</legend><div class="quiz-opts"><label class="quiz-opt card"><input type="radio" name="q1" value="0"><span>Within the hour, someone's on it</span></label><label class="quiz-opt card"><input type="radio" name="q1" value="2"><span>Same day, usually</span></label><label class="quiz-opt card"><input type="radio" name="q1" value="3"><span>Whenever I get to it, sometimes days</span></label></div></fieldset>
+<fieldset class="quiz-q" data-q="2"><legend class="quiz-q-title">3. How much of the business (pricing, past jobs, client details) lives only in your head?</legend><div class="quiz-opts"><label class="quiz-opt card"><input type="radio" name="q2" value="0"><span>Very little, it's written down where the team can find it</span></label><label class="quiz-opt card"><input type="radio" name="q2" value="2"><span>Some of it, scattered across notes, texts, spreadsheets</span></label><label class="quiz-opt card"><input type="radio" name="q2" value="3"><span>Most of it</span></label></div></fieldset>
+<fieldset class="quiz-q" data-q="3"><legend class="quiz-q-title">4. Have you tried ChatGPT or Claude for any of this already?</legend><div class="quiz-opts"><label class="quiz-opt card"><input type="radio" name="q3" value="1"><span>Haven't tried it</span></label><label class="quiz-opt card"><input type="radio" name="q3" value="3"><span>Tried it, but I have to re-explain everything each time</span></label><label class="quiz-opt card"><input type="radio" name="q3" value="2"><span>Tried it, didn't stick, went back to doing it myself</span></label><label class="quiz-opt card"><input type="radio" name="q3" value="0"><span>Yes, and it's actually working well for this</span></label></div></fieldset>
+<fieldset class="quiz-q" data-q="4"><legend class="quiz-q-title">5. If the business didn't need you for everything, do you know where you'd take it?</legend><div class="quiz-opts"><label class="quiz-opt card"><input type="radio" name="q4" value="0"><span>Not really, I haven't thought that far</span></label><label class="quiz-opt card"><input type="radio" name="q4" value="2"><span>Yes, I know exactly where I'd take it</span></label></div></fieldset>
+<fieldset class="quiz-q" data-q="5"><legend class="quiz-q-title">6. Could you take on more work tomorrow without anything breaking, or without working more hours?</legend><div class="quiz-opts"><label class="quiz-opt card"><input type="radio" name="q5" value="0"><span>Yes, easily</span></label><label class="quiz-opt card"><input type="radio" name="q5" value="2"><span>Probably, but it'd be tight</span></label><label class="quiz-opt card"><input type="radio" name="q5" value="3"><span>No, we're already stretched</span></label></div></fieldset>
           <div class="quiz-submit-row">
-            <button type="submit" class="btn btn-primary btn-large" id="quizSubmit">
-              See your score
-              <svg class="arrow" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </button>
+            <button type="submit" class="btn btn--primary" id="quizSubmit">See your score<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></button>
             <div class="quiz-error" id="quizError"></div>
           </div>
         </form>
-
         <div class="quiz-result" id="quizResult">
           <div class="result-band" id="resultBand">
             <div class="result-band-label" id="resultLabel">Your bottleneck score</div>
             <div class="result-band-title" id="resultTitle"></div>
             <div class="result-band-sub" id="resultSub"></div>
           </div>
-
           <div class="unlock-card" id="unlockCard">
             <p>Want the full breakdown: which specific answers drove your score, and what it typically ends up costing a business like yours?</p>
             <form class="unlock-form" id="unlockForm" novalidate>
+              <label class="sr-only" for="unlockEmail">Email</label>
               <input type="email" id="unlockEmail" placeholder="you@business.com" autocomplete="email" required>
-              <button type="submit" class="btn btn-ghost">Get my full breakdown</button>
+              <button type="submit" class="btn btn--secondary">Get my full breakdown</button>
             </form>
             <div class="quiz-error" id="unlockError"></div>
             <button type="button" class="email-suggest" id="emailSuggest" hidden></button>
           </div>
-
           <div class="breakdown" id="breakdown">
             <div class="breakdown-card">
               <p id="breakdownText"></p>
               <p>One recent example: The Core found a payment condition buried in a 30-page contract one client didn't know existed, guided them through it, and they recovered $20,000 they otherwise wouldn't have chased down.</p>
-              <div class="breakdown-cta">
-                <a href="/bottleneck-audit#book" class="btn btn-primary btn-large">
-                  Book your free Bottleneck Audit
-                  <svg class="arrow" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </a>
-              </div>
+              <div class="breakdown-cta"><a href="bottleneck-audit#book" class="btn btn--primary" data-track="quiz-result">Book a call<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a></div>
             </div>
           </div>
         </div>
-
-      </div>
+      </div></div>
     </div>
   </section>
 
+  <section class="section statement" id="statement" data-moment="letters-assemble" aria-labelledby="statement-h">
+    <div class="wrap">
+      <h2 id="statement-h" class="mo-la__type">Everything runs through you.</h2>
+      <p class="mo-la__sub">It doesn't have to. The Core prepares the replies, quotes and follow-ups, and you make the decisions.</p>
+    </div>
+  </section>
 </main>
 
-<footer>
-  <div class="container footer-inner">
-    <div class="logo">
-      <span class="logo-mark" aria-hidden="true"></span>
-      <span>Oranga AI</span>
+<footer class="footer closing" id="contact" aria-labelledby="close-h">
+  <div class="wrap">
+    <div class="closing__cta close--word">
+      <div class="section-head--split">
+        <div><h2 id="close-h">Grow more. Do less.</h2><p class="t-lead">Book a free 30-minute call. More done in 7 days, or your money back.</p></div>
+        <a class="btn btn--primary" href="bottleneck-audit#book" data-track="close">Book a call<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
+      </div>
+      <p class="close__word" aria-hidden="true">The Core</p>
     </div>
-    <div class="footer-meta">
-      <a href="/">Home</a>
-      <a href="/about">About</a>
-      <a href="/privacy">Privacy</a>
-      <a href="/terms">Terms</a>
-      <a href="mailto:support@orangaai.com">support@orangaai.com</a>
-    </div>
-    <div class="footer-meta">
-      <span>© 2026 Oranga AI</span>
+    <div class="closing__links">
+      <div class="grid">
+        <div class="span-4 stack-4">
+          <a class="nav__logo" href="/"><img class="logo-orb" src="images/orb-fallback.png" alt="" width="28" height="28">Oranga AI</a>
+          <p class="footer__lede">The Core, installed for owner-operators in Australia and New Zealand.</p>
+        </div>
+        <div class="span-2 footer__col"><h3>Product</h3><ul><li><a href="how-it-works">How it works</a></li><li><a href="results">Results</a></li></ul></div>
+        <div class="span-2 footer__col"><h3>Start</h3><ul><li><a href="admin-exposure">Bottleneck Score</a></li><li><a href="bottleneck-audit#book">Book a call</a></li></ul></div>
+        <div class="span-2 footer__col"><h3>Company</h3><ul><li><a href="about">About Eru</a></li><li><a href="mailto:support@orangaai.com">Email support</a></li></ul></div>
+        <div class="span-2 footer__col"><h3>Legal</h3><ul><li><a href="privacy">Privacy</a></li><li><a href="terms">Terms</a></li></ul></div>
+      </div>
+      <div class="footer__legal">
+        <span>&copy; 2026 Oranga AI</span>
+        <div class="socials"></div>
+      </div>
     </div>
   </div>
 </footer>
 
-<script src="/app.js" defer></script>
+<script type="module" src="assets/system.js"></script>
+<script type="module" src="assets/motion/motion.js"></script>
+<script type="module" src="assets/layout/layout.js"></script>
+<script>
+  document.querySelectorAll('[data-track]').forEach(function (a) {
+    a.addEventListener('click', function () { if (window.gtag) gtag('event', 'book_call_click', { place: a.dataset.track, page: location.pathname }); });
+  });
+</script>
 <script>
 (function () {
   var form = document.getElementById('quizForm');
@@ -402,6 +350,5 @@ src="https://www.facebook.com/tr?id=1601510988349512&ev=PageView&noscript=1"
   });
 })();
 </script>
-
 </body>
 </html>

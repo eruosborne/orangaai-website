@@ -24,8 +24,9 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Karla:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..700&family=Figtree:wght@400..600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="/legacy.css">
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZXS09113QF"></script>
 <script>
@@ -159,15 +160,39 @@ src="https://www.facebook.com/tr?id=1601510988349512&ev=PageView&noscript=1"
     </div>
   </section>
 
-  <!-- FAQ VIDEO -->
-  <section>
+  <!-- FAQ (replaced the FAQ video, 2026-11-11) -->
+  <section id="faq">
     <div class="container">
       <div class="section-head center reveal">
-        <span class="eyebrow">Watch this before our call</span>
+        <span class="eyebrow">Before our call</span>
         <h2>The questions people ask before the call, answered.</h2>
-        <p>What The Core is and how it works, what makes it different, what's expected from you, and how the install works.</p>
       </div>
-      <div class="video-slot reveal" data-video="faq">Video coming soon.</div>
+      <div class="grid-3">
+        <div class="info-card reveal">
+          <div class="info-card-title">Does The Core send emails on its own?</div>
+          <p class="info-card-body">No. It prepares replies and leaves them in your drafts. You read them, change what you like and send them yourself. That's how the system is built, not a setting.</p>
+        </div>
+        <div class="info-card reveal">
+          <div class="info-card-title">Where does my business data live with The Core?</div>
+          <p class="info-card-body">On your own computer that stays on, or on a server set up for you that you pay the host for. You choose the host and the country it's in.</p>
+        </div>
+        <div class="info-card reveal">
+          <div class="info-card-title">Does the AI behind The Core train on my data?</div>
+          <p class="info-card-body">The text The Core works on is sent to Claude, run by Anthropic. Whether Anthropic may use your chats to improve its models depends on your Claude plan and a setting in your own account. On a Pro plan the choice is yours.</p>
+        </div>
+        <div class="info-card reveal">
+          <div class="info-card-title">Who can see my files once The Core is installed?</div>
+          <p class="info-card-body">During the install I can see what you see, including documents. I don't read them. Your files stay with you and Oranga AI keeps no copy.</p>
+        </div>
+        <div class="info-card reveal">
+          <div class="info-card-title">Am I locked in to The Core?</div>
+          <p class="info-card-body">No. Your business data stays yours. So does everything built on top of it. Your knowledge base stays usable if the agreement ends. Once it's paid in full the licence is permanent.</p>
+        </div>
+        <div class="info-card reveal">
+          <div class="info-card-title">What if The Core gets something wrong in front of a customer?</div>
+          <p class="info-card-body">It can't reach a customer on its own. Every reply waits in your drafts for you to read first, so a mistake stops with you.</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -227,7 +252,6 @@ src="https://www.facebook.com/tr?id=1601510988349512&ev=PageView&noscript=1"
   // Video embed URLs. Empty = placeholder. YouTube must use youtube-nocookie.com (allowed by the CSP).
   var VIDEOS = {
     homework: 'https://www.youtube-nocookie.com/embed/OoCWLe83yhw?rel=0&modestbranding=1&playsinline=1',
-    faq: 'https://www.youtube-nocookie.com/embed/QrpDzS2Ll3s?rel=0&modestbranding=1&playsinline=1',
   };
   document.querySelectorAll('.video-slot[data-video]').forEach(function (el) {
     var url = VIDEOS[el.getAttribute('data-video')];
