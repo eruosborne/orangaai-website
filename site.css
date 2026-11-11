@@ -356,3 +356,8 @@ main > section.section.section--prose { height: auto; min-height: 0; padding-bot
 .closing__links > .footer__legal:only-child > span { line-height: 1.4; }
 .hero--statement .hero-points li { text-wrap: pretty; }
 .book-field input[aria-invalid="true"]:focus { outline-color: var(--c-coral); }
+
+/* how-it-works #ask: request-and-result cards, panel sized to the mini panel (2026-11-12) */
+#ask .ask-cards, #ask .ask-learns { margin-top: var(--s-8, 48px); }
+#ask .ask-cards .panel { --p-h: 184px; }
+#ask .ask-cards .stage--fade-b { -webkit-mask: none; mask: none; }

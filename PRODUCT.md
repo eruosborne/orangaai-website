@@ -36,7 +36,7 @@ The Core is built around one business and installed for the owner, not bought as
 - **Public pages describe it as an AI admin system** (Eru, 2026-11-11). Landing pages use whatever term their ad uses, which is often "AI brain".
 - No AI jargon about the technology, such as agents, prompts, automations or workflows.
 - Never write that The Core sends anything. It prepares and the owner sends.
-- Quoting is standard. Tenders and invoices are not, so say "once you've shown it how" unless Eru approved the broader line for that page, as he did on `/watch`.
+- Quoting is standard. Tenders and invoices are not, so say "once you've shown it how" unless Eru approved the broader line for that page, as he did on `/watch` and on `/how-it-works` (2026-11-12). Eru, 2026-11-12: out of the box it does any computer job tied to the customer's connected tools, such as quote and proposal PDFs, documents, tender summaries and answers from Xero. Some jobs need setting up properly first, so public copy shows these as examples, not a fixed list.
 - No comparisons to chatbots or other tools, no "who it's not for" lists and no "10x".
 - Never claim hours saved for crane or civil clients, and never claim the AI won contracts.
 - The spoken guarantee is "More done in 7 days, or your money back." A stronger wording from 2026-11-10 is not approved.
