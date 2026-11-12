@@ -383,3 +383,9 @@ main > section.section.section--prose { height: auto; min-height: 0; padding-bot
   .hero--watch .vframe { order: 5; width: 100%; margin-top: var(--s-6); }
   .hero--watch .hero-points { order: 6; }
 }
+/* /watch polish (2026-11-12): video top level with the headline on a desktop; phone panels tall enough for their last row */
+@media (min-width: 1024px) { .hero--watch .vframe { align-self: start; margin-top: var(--watch-v-top, 46px); } }
+@media (max-width: 639px) {
+  #offer .frame--split:has(.ui-checks) { aspect-ratio: auto; height: 360px; }
+}
+#offer .frame--split .stage--fade-b, #faq .drafts .stage--fade-b { -webkit-mask: none; mask: none; }
