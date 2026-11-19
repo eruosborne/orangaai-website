@@ -379,12 +379,16 @@ main > section.section.section--prose { height: auto; min-height: 0; padding-bot
 @media (max-width: 1023px) {
   .hero--watch .hero__text { display: contents; }
   .hero--watch .hero__grid { align-items: stretch; }
-  .hero--watch .hero-notice { order: 1; } .hero--watch h1 { order: 2; } .hero--watch .hero__lead { order: 3; } .hero--watch .btn-row { order: 4; }
-  .hero--watch .vframe { order: 5; width: 100%; margin-top: var(--s-6); }
-  .hero--watch .hero-points { order: 6; }
+  .hero--watch .hero-notice { order: 1; } .hero--watch h1 { order: 2; } .hero--watch .hero__lead { order: 3; }
+  .hero--watch .watch-media { order: 4; grid-column: 1 / -1; width: 100%; margin-top: var(--s-6); }
+  .hero--watch .hero-points { order: 5; }
 }
 /* /watch polish (2026-11-12): video top level with the headline on a desktop; phone panels tall enough for their last row */
-@media (min-width: 1024px) { .hero--watch .vframe { align-self: start; margin-top: var(--watch-v-top, 46px); } }
+@media (min-width: 1024px) { .hero--watch .watch-media { align-self: start; margin-top: var(--watch-v-top, 46px); } }
+/* /watch (2026-11-19): the booking button sits right under the video, where the video says "click the button below" */
+.hero--watch .watch-media .vframe { width: 100%; }
+.hero--watch .watch-cta { margin-top: var(--s-5); justify-content: center; }
+@media (max-width: 639px) { .hero--watch .watch-cta .btn { width: 100%; justify-content: center; } }
 @media (max-width: 639px) {
   #offer .frame--split:has(.ui-checks) { aspect-ratio: auto; height: 360px; }
 }
