@@ -16,14 +16,25 @@ const QUESTIONS = [
   ['focus',     'Wants off their plate'],
 ];
 
+// /black-friday asks its own five (Black Friday free-install offer, 2026-11-20).
+const BF_QUESTIONS = [
+  ['businessName', 'Business name'],
+  ['business',     'What the business does'],
+  ['running',      'How long it has been running'],
+  ['eats',         'What eats most of their week'],
+  ['decider',      'Makes the call'],
+  ['keep',         'In a position to keep it'],
+];
+const LONG = ['focus', 'business'];
+
 function clean(v, max) {
   return typeof v === 'string' ? v.trim().slice(0, max) : '';
 }
 
 // Hand the reminder schedule to n8n. Failure is logged loudly but never blocks the booking.
-async function scheduleReminders({ eventId, name, email, startISO, tz, meetLink, origin }) {
+async function scheduleReminders({ eventId, name, email, startISO, tz, meetLink, origin, offer }) {
   const hook = process.env.N8N_BOOKING_WEBHOOK;
-  const payload = JSON.stringify({ eventId, name, email, startISO, tz, meetLink, bookedAt: new Date().toISOString() });
+  const payload = JSON.stringify({ eventId, name, email, startISO, tz, meetLink, offer: offer || undefined, bookedAt: new Date().toISOString() });
   const sig = B.sign(payload);
   if (!hook || !sig) {
     console.error('[book.js] REMINDERS NOT SCHEDULED: N8N_BOOKING_WEBHOOK or REMINDER_SECRET is not set.');
@@ -63,15 +74,18 @@ module.exports = async function handler(req, res) {
   const phone = clean(body.phone, 40);
   const tz    = B.safeTz(body.tz);
   const answers = body.answers && typeof body.answers === 'object' ? body.answers : {};
+  const offer = B.offerKey(body.offer);
+  const CALL = B.callName(offer);
+  const mail = offer === 'bf' ? EMAILS.bf : EMAILS;
 
   if (!startISO || !endISO) return res.status(400).json({ error: 'Please pick a time.' });
   if (name.length < 2) return res.status(400).json({ error: 'Name is required.' });
   if (!/^\S+@\S+\.\S+$/.test(email)) return res.status(400).json({ error: 'A valid email is required.' });
-  const qa = QUESTIONS.map(([key, label]) => [label, clean(answers[key], key === 'focus' || key === 'business' ? 500 : 60)]);
-  if (qa.some(([, v]) => !v)) return res.status(400).json({ error: 'Please answer all five questions.' });
+  const qa = (offer === 'bf' ? BF_QUESTIONS : QUESTIONS).map(([key, label]) => [label, clean(answers[key], LONG.includes(key) ? 500 : 120)]);
+  if (qa.some(([, v]) => !v)) return res.status(400).json({ error: 'Please answer all the questions.' });
 
   const isoDate = new Intl.DateTimeFormat('en-CA', { timeZone: B.TZ, year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date(startISO));
-  const dateErr = B.validateDate(isoDate);
+  const dateErr = B.validateDate(isoDate, new Date(), offer);
   if (dateErr) return res.status(400).json({ error: dateErr });
 
   const auth = B.getGoogleAuth();
@@ -91,7 +105,7 @@ module.exports = async function handler(req, res) {
   }
 
   const description = [
-    `${B.CALL_NAME} booked via orangaai.com.`,
+    `${CALL} booked via orangaai.com${offer === 'bf' ? '/black-friday' : ''}.`,
     '',
     `Name: ${name}`,
     `Email: ${email}`,
@@ -108,7 +122,7 @@ module.exports = async function handler(req, res) {
       conferenceDataVersion: 1,
       sendUpdates: 'all',
       requestBody: {
-        summary: `${B.CALL_NAME}: ${name}`,
+        summary: `${CALL}: ${name}`,
         description,
         start: { dateTime: startISO, timeZone: B.TZ },
         end:   { dateTime: endISO,   timeZone: B.TZ },
@@ -135,12 +149,12 @@ module.exports = async function handler(req, res) {
 
   // Email 1 and the reminder hand-off both finish before we respond,
   // so the serverless function isn't frozen halfway through either.
-  const msg = EMAILS.confirmation({ firstName, meetLink, ...B.formatCallTime(startISO, tz) });
+  const msg = mail.confirmation({ firstName, meetLink, ...B.formatCallTime(startISO, tz) });
   const origin = `https://${req.headers['x-forwarded-host'] || req.headers.host}`;
   await Promise.all([
     B.sendEmail(auth, { toName: name, toEmail: email, ...msg })
       .catch(e => console.error('[book.js] CONFIRMATION EMAIL FAILED:', e.message)),
-    scheduleReminders({ eventId: event.data.id, name, email, startISO, tz, meetLink, origin }),
+    scheduleReminders({ eventId: event.data.id, name, email, startISO, tz, meetLink, origin, offer }),
   ]);
 
   return res.status(200).json({ ok: true, startISO, meetLink });

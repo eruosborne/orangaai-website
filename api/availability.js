@@ -11,9 +11,10 @@ module.exports = async function handler(req, res) {
   if (req.method !== 'GET') return res.status(405).json({ error: 'Method not allowed' });
 
   const isoDate = req.query && req.query.date;
-  if (!isoDate) return res.status(200).json({ timezone: B.TZ, dates: B.bookableDates() });
+  const offer = B.offerKey(req.query && req.query.offer);
+  if (!isoDate) return res.status(200).json({ timezone: B.TZ, dates: B.bookableDates(new Date(), offer) });
 
-  const err = B.validateDate(isoDate);
+  const err = B.validateDate(isoDate, new Date(), offer);
   if (err) return res.status(400).json({ error: err, slots: [] });
 
   let busy = [];

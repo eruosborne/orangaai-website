@@ -40,7 +40,8 @@ module.exports = async function handler(req, res) {
     return res.status(502).json({ error: 'Calendar check failed' });
   }
 
-  const build = kind === '12h' ? EMAILS.reminder12h : EMAILS.reminder1h;
+  const set = p.offer === 'bf' ? EMAILS.bf : EMAILS;
+  const build = kind === '12h' ? set.reminder12h : set.reminder1h;
   const msg = build({ firstName: p.name.split(/\s+/)[0], meetLink: p.meetLink, ...B.formatCallTime(p.startISO, B.safeTz(p.tz)) });
   try {
     await B.sendEmail(auth, { toName: p.name, toEmail: p.email, ...msg });

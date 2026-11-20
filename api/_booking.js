@@ -24,6 +24,14 @@ const BLOCKED_DATES = ['2026-10-27'];
 
 const CALL_NAME = 'Bottleneck Audit';
 
+// Offer-specific booking windows. /black-friday books calls through to the end of January
+// (Eru, 2026-11-20); every other page keeps the five-day window above.
+const OFFERS = {
+  bf: { callName: 'Black Friday install call', lastDate: '2027-01-31' },
+};
+function offerKey(offer) { return typeof offer === 'string' && OFFERS[offer] ? offer : null; }
+function callName(offer) { const k = offerKey(offer); return k ? OFFERS[k].callName : CALL_NAME; }
+
 function isoInTz(date, tz = TZ) {
   return new Intl.DateTimeFormat('en-CA', {
     timeZone: tz, year: 'numeric', month: '2-digit', day: '2-digit',
@@ -37,13 +45,24 @@ function localToUtc(isoDate, hour, minute = 0) {
 }
 
 // Today (if slots are left) plus the next DAYS_AHEAD days, weekends included.
-function bookableDates(now = new Date()) {
+function bookableDates(now = new Date(), offer) {
+  const k = offerKey(offer);
   const today = isoInTz(now);
   const [y, m, d] = today.split('-').map(Number);
   const cursor = new Date(Date.UTC(y, m - 1, d));
   const dates = [];
   if (now < new Date(localToUtc(today, END_HOUR).getTime() - (LEAD_MIN + SLOT_MIN) * 60000)) {
     dates.push(today);
+  }
+  if (k) {
+    const last = OFFERS[k].lastDate;
+    while (true) {
+      cursor.setUTCDate(cursor.getUTCDate() + 1);
+      const iso = cursor.toISOString().slice(0, 10);
+      if (iso > last) break;
+      dates.push(iso);
+    }
+    return dates.filter(d => !BLOCKED_DATES.includes(d));
   }
   let ahead = 0;
   while (ahead < DAYS_AHEAD) {
@@ -54,9 +73,10 @@ function bookableDates(now = new Date()) {
   return dates.filter(d => !BLOCKED_DATES.includes(d));
 }
 
-function validateDate(isoDate, now = new Date()) {
+function validateDate(isoDate, now = new Date(), offer) {
   if (!/^\d{4}-\d{2}-\d{2}$/.test(isoDate)) return 'Invalid date format.';
-  if (!bookableDates(now).includes(isoDate)) {
+  if (!bookableDates(now, offer).includes(isoDate)) {
+    if (offerKey(offer)) return 'That day is not open. Please pick one of the days shown.';
     return 'Bottleneck Audits book in the next five days. Please pick one of the days shown.';
   }
   return null;
@@ -159,7 +179,7 @@ async function parseBody(req) {
 }
 
 module.exports = {
-  TZ, CAL_ID, SLOT_MIN, CALL_NAME,
+  TZ, CAL_ID, SLOT_MIN, CALL_NAME, offerKey, callName,
   bookableDates, validateDate, computeSlots, getBusy,
   getGoogleAuth, safeTz, formatCallTime, sendEmail, sign, verify, parseBody,
 };

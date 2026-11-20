@@ -99,4 +99,60 @@ function reminder1h({ firstName, time, zone, meetLink }) {
   };
 }
 
-module.exports = { confirmation, reminder12h, reminder1h };
+// ---- Black Friday install call (/black-friday, 2026-11-20). Eru approves wording before launch. ----
+const bf = {
+  confirmation({ firstName, date, time, zone, meetLink }) {
+    return {
+      subject: 'Your install call is booked',
+      body: [
+        `Hey ${firstName},`,
+        '',
+        `Thanks for booking in. Your call is on ${date} at ${time} (${zone}), 30 minutes.`,
+        '',
+        "On the call we'll talk about your business and where the work piles up. Then we'll pick your install day.",
+        '',
+        'Before we talk, have a think about the one job that eats most of your week. That is where we will start.',
+        '',
+        meetLine(meetLink),
+        '',
+        "Need to move it? Reply to this email and I'll sort a new time.",
+        '',
+        ...SIGNATURE,
+      ].join('\n'),
+    };
+  },
+  reminder12h({ firstName, date, time, zone, meetLink }) {
+    return {
+      subject: 'Your install call is tomorrow',
+      body: [
+        `Hey ${firstName},`,
+        '',
+        `Just a reminder that our call is on ${date} at ${time} (${zone}).`,
+        '',
+        "Think about the one job that eats most of your week and we'll start there. By the end of the call you'll have your install day locked in.",
+        '',
+        meetLine(meetLink),
+        '',
+        "Need to move it? Reply to this email and I'll sort a new time.",
+        '',
+        ...SIGNATURE,
+      ].join('\n'),
+    };
+  },
+  reminder1h({ firstName, time, zone, meetLink }) {
+    return {
+      subject: 'Our call starts in 1 hour',
+      body: [
+        `Hey ${firstName},`,
+        '',
+        `See you in an hour, at ${time} (${zone}).`,
+        '',
+        meetLine(meetLink),
+        '',
+        ...SIGNATURE,
+      ].join('\n'),
+    };
+  },
+};
+
+module.exports = { confirmation, reminder12h, reminder1h, bf };
