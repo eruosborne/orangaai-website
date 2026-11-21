@@ -393,3 +393,26 @@ main > section.section.section--prose { height: auto; min-height: 0; padding-bot
   #offer .frame--split:has(.ui-checks) { aspect-ratio: auto; height: 360px; }
 }
 #offer .frame--split .stage--fade-b, #faq .drafts .stage--fade-b { -webkit-mask: none; mask: none; }
+
+/* Landing pages that flow (Eru, 2026-11-21: "match my coach's page": one block straight after the next,
+   bigger writing). Only pages with <body class="lp-flow">: /black-friday, /watch, /time-back. Sections
+   size to their content instead of one or two full screens, the gaps between them are tight, and the
+   type steps up a size. The rest of the site keeps the whole-screen rhythm. */
+.lp-flow { --head-gap: 28px; --t-body: 18px; --t-lead: 21px; --t-card: 22px; --t-h3: 28px;
+  --t-h2: clamp(36px, 2.6vw + 22px, 64px); }
+.lp-flow main > :is(section, .section):not(.hero, .section--hero),
+.lp-flow footer.closing { height: auto !important; min-height: 0 !important; padding: 72px 0 !important; display: block; }
+.lp-flow main > :is(section, .section):not(.hero, .section--hero) > :is(.wrap, .container),
+.lp-flow footer.closing > .wrap { height: auto; }
+.lp-flow main > :is(section, .section).g2 > :is(.wrap, .container) { display: flex; flex-direction: column; row-gap: var(--s-7); }
+.lp-flow main > :is(.hero, .section--hero) { height: auto; min-height: 0; padding-bottom: 56px; }
+.lp-flow :is(.hero, .section--hero) > .wrap { height: auto; }
+.lp-flow h2 { font-size: var(--t-h2); line-height: 1.05; }
+.lp-flow .section-head p, .lp-flow .hero__lead, .lp-flow .t-lead { font-size: var(--t-lead); }
+/* the kit hard-codes 16px on card and list text, so the token alone does not reach it; small labels stay as they are */
+.lp-flow main :is(p, li):not(.sr-only, .hero-notice, .eyebrow, .book-hint, .book-error, .book-preview, .hero__lead, .t-lead, .section-head p) { font-size: 18px; line-height: 1.5; }
+@media (max-width: 639px) {
+  .lp-flow { --t-body: 17px; --t-lead: 19px; --t-card: 19px; --t-h3: 23px; --head-gap: 22px; }
+  .lp-flow main > :is(section, .section):not(.hero, .section--hero), .lp-flow footer.closing { padding: 48px 0 !important; }
+  .lp-flow main :is(p, li):not(.sr-only, .hero-notice, .eyebrow, .book-hint, .book-error, .book-preview, .hero__lead, .t-lead, .section-head p) { font-size: 17px; }
+}
