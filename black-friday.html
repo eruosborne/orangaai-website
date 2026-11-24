@@ -152,6 +152,23 @@ src="https://www.facebook.com/tr?id=1601510988349512&ev=PageView&noscript=1"></n
             <p class="t-label">Install call · 30 minutes · Google Meet</p>
           </div>
 
+          <div id="bfCalendar">
+            <p class="book-preview" id="bookPreview" aria-live="polite"></p>
+            <p class="book-tz">Times are shown in
+              <label for="bookTz">your timezone</label>
+              <select id="bookTz"></select>.
+              Check this matches where you are before you book.</p>
+            <div class="book-step">
+              <h3>Pick a day</h3>
+              <div class="book-days" id="bookDays"><p class="book-hint">Loading the calendar...</p></div>
+              <button type="button" class="btn btn--secondary bf-more" id="bookMoreDays" hidden>Show later dates</button>
+            </div>
+            <div class="book-step">
+              <h3>Pick a time</h3>
+              <div class="book-slots" id="bookSlots"><p class="book-hint">Pick a day first.</p></div>
+            </div>
+          </div>
+
           <form class="book-form bf-form" id="bfDetails" novalidate>
             <h3>Your details</h3>
             <div class="book-fields">
@@ -160,48 +177,10 @@ src="https://www.facebook.com/tr?id=1601510988349512&ev=PageView&noscript=1"></n
               <div class="book-field"><label for="bfPhone">Phone</label><input id="bfPhone" name="phone" type="tel" autocomplete="tel" required></div>
               <div class="book-field"><label for="bfBizName">Business name</label><input id="bfBizName" name="businessName" autocomplete="organization" required></div>
             </div>
-            <h3>Five quick questions</h3>
-            <div class="book-fields">
-              <div class="book-field wide"><label for="bfBusiness">What does your business do?</label><input id="bfBusiness" name="business" placeholder="e.g. civil contracting, a lodge, a consultancy" required></div>
-              <div class="book-field"><label for="bfRunning">How long has it been running?</label>
-                <select id="bfRunning" name="running" required><option value="">Choose one</option><option>Under a year</option><option>1 to 3 years</option><option>3+ years</option></select></div>
-              <div class="book-field"><label for="bfEats">What eats most of your week?</label>
-                <select id="bfEats" name="eats" required><option value="">Choose one</option><option>Emails</option><option>Quotes and tenders</option><option>Follow-ups</option><option>Paperwork</option><option>All of it</option></select></div>
-              <div class="book-field wide"><label for="bfDecider">Are you the one who makes the call on this?</label>
-                <select id="bfDecider" name="decider" required><option value="">Choose one</option><option>Yes</option><option>No, I'd need to bring someone in</option></select></div>
-              <div class="book-field wide"><label for="bfKeep">If The Core changes how you work in two weeks, are you in a position to keep it?</label>
-                <select id="bfKeep" name="keep" required><option value="">Choose one</option><option>Yes</option><option>I'd need to talk it through</option><option>No</option></select></div>
-            </div>
-            <button type="submit" class="btn btn--primary book-submit" id="bfNext">Next: pick a time</button>
-            <p class="book-error" id="bfError1" role="alert"></p>
-          </form>
-
-          <div id="bfCalendar" hidden>
-            <p class="bf-who" id="bfWho"></p>
-            <button type="button" class="bf-edit" id="bfEdit">Change my details</button>
-            <p class="book-preview" id="bookPreview" aria-live="polite"></p>
-            <p class="book-tz">Times are shown in
-              <label for="bookTz">your timezone</label>
-              <select id="bookTz"></select>.
-              Check this matches where you are before you book.</p>
-            <div class="book-step">
-              <h3 tabindex="-1">Pick a day</h3>
-              <div class="book-days" id="bookDays"><p class="book-hint">Loading the calendar...</p></div>
-              <button type="button" class="btn btn--secondary bf-more" id="bookMoreDays" hidden>Show later dates</button>
-            </div>
-            <div class="book-step">
-              <h3>Pick a time</h3>
-              <div class="book-slots" id="bookSlots"><p class="book-hint">Pick a day first.</p></div>
-            </div>
-            <button type="button" class="btn btn--primary book-submit" id="bookSubmit" disabled>Book my install call</button>
+            <button type="submit" class="btn btn--primary book-submit" id="bookSubmit" disabled>Book my install call</button>
             <p class="bf-under">On the call we'll lock in your install day. $500 holds it and comes back in full if you don't keep it.</p>
             <p class="book-error" id="bfError2" role="alert"></p>
-          </div>
-
-          <div class="bf-nofit" id="bfNoFit" tabindex="-1" hidden>
-            <h3>Thanks for being straight with me.</h3>
-            <p>This one's built for established businesses ready to keep it. I'll be in touch when there's a better fit.</p>
-          </div>
+          </form>
         </div>
 
     </div></div>

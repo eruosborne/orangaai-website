@@ -16,14 +16,9 @@ const QUESTIONS = [
   ['focus',     'Wants off their plate'],
 ];
 
-// /black-friday asks its own five (Black Friday free-install offer, 2026-11-20).
+// /black-friday asks for the business name only (2026-11-24: qualifying questions dropped, qualifying happens on the call).
 const BF_QUESTIONS = [
   ['businessName', 'Business name'],
-  ['business',     'What the business does'],
-  ['running',      'How long it has been running'],
-  ['eats',         'What eats most of their week'],
-  ['decider',      'Makes the call'],
-  ['keep',         'In a position to keep it'],
 ];
 const LONG = ['focus', 'business'];
 

@@ -1,7 +1,7 @@
 // bf-booking.js
 // Booking on /black-friday (free install, 14-day trial, 2026-11-20).
-// Step 1: details + five questions → qualify. Not a fit (says they couldn't keep it) → /api/bf-lead
-// and a polite message. A fit → step 2: day → time → /api/book (offer: 'bf') → /black-friday-booked.
+// Calendar first (2026-11-24): pick a day and time, then name, email, phone and business name → /api/book (offer: 'bf')
+// → /black-friday-booked. Lead fires on the first time picked. No qualifying questions: that happens on the call.
 
 (function () {
   'use strict';
@@ -11,18 +11,13 @@
 
   var $details = document.getElementById('bfDetails');
   var $cal     = document.getElementById('bfCalendar');
-  var $nofit   = document.getElementById('bfNoFit');
   var $days    = document.getElementById('bookDays');
   var $more    = document.getElementById('bookMoreDays');
   var $slots   = document.getElementById('bookSlots');
   var $preview = document.getElementById('bookPreview');
   var $tz      = document.getElementById('bookTz');
-  var $err1    = document.getElementById('bfError1');
   var $err2    = document.getElementById('bfError2');
-  var $next    = document.getElementById('bfNext');
   var $submit  = document.getElementById('bookSubmit');
-  var $who     = document.getElementById('bfWho');
-  var $edit    = document.getElementById('bfEdit');
 
   var OFFER = 'bf';
   var FIRST_DAYS = 14;
@@ -38,7 +33,7 @@
     ['Pacific/Auckland', 'New Zealand'],
   ];
 
-  var state = { tz: 'Australia/Brisbane', date: null, slot: null, slotsByDate: {}, person: null, loaded: false };
+  var state = { tz: 'Australia/Brisbane', date: null, slot: null, slotsByDate: {}, person: null, loaded: false, leadSent: false };
 
   try {
     var local = Intl.DateTimeFormat().resolvedOptions().timeZone;
@@ -61,51 +56,6 @@
     if (typeof window.fbq === 'function') window.fbq('track', evt, params || {});
     if (window.gtag) window.gtag('event', evt.toLowerCase(), { page: 'black-friday' });
   }
-
-  // ---------- step 1: details and questions ----------
-  var REQUIRED = ['name', 'email', 'phone', 'businessName', 'business', 'running', 'eats', 'decider', 'keep'];
-
-  $details.addEventListener('submit', function (e) {
-    e.preventDefault();
-    $err1.textContent = '';
-    var f = $details.elements;
-    var missing = REQUIRED.filter(function (k) { return !f[k].value.trim(); });
-    if (missing.length) { $err1.textContent = 'Please fill in everything.'; f[missing[0]].focus(); return; }
-    if (!/^\S+@\S+\.\S+$/.test(f.email.value.trim())) { $err1.textContent = 'That email doesn\'t look right.'; f.email.focus(); return; }
-
-    state.person = {
-      name: f.name.value.trim(), email: f.email.value.trim(), phone: f.phone.value.trim(),
-      answers: {
-        businessName: f.businessName.value, business: f.business.value, running: f.running.value,
-        eats: f.eats.value, decider: f.decider.value, keep: f.keep.value,
-      },
-    };
-    track('Lead', { content_name: 'Black Friday install' });
-
-    var fit = f.keep.value !== 'No';  // under a year is fine (Eru, 2026-11-20)
-    if (!fit) {
-      fetch('/api/bf-lead', {
-        method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name: state.person.name, email: state.person.email, phone: state.person.phone, tz: state.tz, answers: state.person.answers }),
-      }).catch(function () {});
-      $details.hidden = true;
-      $nofit.hidden = false;
-      $nofit.focus();
-      return;
-    }
-
-    $details.hidden = true;
-    $cal.hidden = false;
-    $who.textContent = state.person.name.split(/\s+/)[0] + ', pick a day and a time for your call.';
-    $cal.querySelector('h3').focus();
-    if (!state.loaded) loadDays();
-  });
-
-  $edit.addEventListener('click', function () {
-    $cal.hidden = true;
-    $details.hidden = false;
-    $details.elements.name.focus();
-  });
 
   // ---------- step 2: calendar ----------
   function fmt(iso, opts) { opts.timeZone = state.tz; return new Date(iso).toLocaleString('en-AU', opts); }
@@ -147,6 +97,7 @@
         renderPreview();
         $submit.disabled = false;
         $err2.textContent = '';
+        if (!state.leadSent) { state.leadSent = true; track('Lead', { content_name: 'Black Friday install' }); }
       });
       $slots.appendChild(b);
     });
@@ -196,9 +147,15 @@
       });
   }
 
-  $submit.addEventListener('click', function () {
+  $details.addEventListener('submit', function (e) {
+    e.preventDefault();
     $err2.textContent = '';
     if (!state.slot) { $err2.textContent = 'Please pick a time first.'; return; }
+    var f = $details.elements;
+    var missing = ['name', 'email', 'phone', 'businessName'].filter(function (k) { return !f[k].value.trim(); });
+    if (missing.length) { $err2.textContent = 'Please fill in everything.'; f[missing[0]].focus(); return; }
+    if (!/^\S+@\S+\.\S+$/.test(f.email.value.trim())) { $err2.textContent = 'That email doesn\'t look right.'; f.email.focus(); return; }
+    state.person = { name: f.name.value.trim(), email: f.email.value.trim(), phone: f.phone.value.trim(), answers: { businessName: f.businessName.value.trim() } };
     $submit.disabled = true;
     $submit.textContent = 'Booking...';
     fetch('/api/book', {
@@ -230,4 +187,5 @@
   });
 
   renderPreview();
+  loadDays();
 })();
