@@ -51,7 +51,7 @@ The Core is built around one business and installed for the owner, not bought as
 
 ## Evidence on Hand
 Real and in writing, used in this order:
-1. Chanse Perham, Private Lending (named with his agreement on 2026-10-28): "I don't need an admin at all now... triple the work done in the same hours."
+1. Chanse Perham, Ventas Capital (named with his agreement on 2026-10-28): "I don't need an admin at all now... triple the work done in the same hours."
 2. A hospitality lodge sorted a multi-year tour group booking mess in 15 minutes instead of half a day. Sector only.
 3. A civil construction business recovered $20,000 after The Core found a payment condition buried in a roughly 30-page contract. Sector only.
 4. A crane company, by email: "Since using this we have successfully been awarded over $5m in contracts", and the biggest change was "speed from thought to execution". Cleared for the site by Eru on 2026-11-11 as "a crane company", never named.

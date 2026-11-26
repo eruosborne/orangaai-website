@@ -98,7 +98,7 @@ const TOP_GAP = [
 ];
 
 const HOW_IT_WORKS = "It's an AI admin system built around your business (your prices, your customers, how you write). It runs around the clock and follows playbooks for jobs like quoting and replying. It prepares the work and you approve it. It never sends, spends or signs anything on its own.";
-const PROOF = "Chanse Perham, who works in private lending, installed it and says he's getting triple the work done in the same hours, and that he doesn't need an admin at all now.";
+const PROOF = "Chanse Perham, who works at Ventas Capital, installed it and says he's getting triple the work done in the same hours, and that he doesn't need an admin at all now.";
 const SIGNATURE = [
   'Eru Osborne',
   'FOUNDER · ORANGA AI',
